@@ -116,6 +116,8 @@ add_action( 'widgets_init', 'third_rail_widgets_init' );
 
 require get_template_directory() . '/inc/favicons.php';
 
+require get_template_directory() . '/inc/meta-box.php';
+
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
