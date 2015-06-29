@@ -1,0 +1,24 @@
+.tr-calendar {
+  .calendar-nav {
+    font-size: rem-calc(12);
+    position: absolute;
+    text-transform: uppercase;
+    top: 4px;
+    &#calendarNavPrev {left: 0}
+    &#calendarNavNext {right: 0}
+    &.slick-disabled {display: none !important}
+  }
+  .month {
+    margin-bottom: rem-calc(8);
+    max-width: 100%;
+    width: 100%;
+    th, .date {
+      position: relative;
+      text-align: center;
+      a {font-weight: bold}
+      .event {
+        .button {margin-bottom: rem-calc(8)}
+      }
+    }
+  }
+}

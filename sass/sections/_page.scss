@@ -1,0 +1,194 @@
+.page-header {
+	background-color: $black-light;
+	border-color: $orange;
+	border-style: solid;
+	border-width: rem-calc(8 0);
+	width: 100%;
+	@media #{$small-only} {
+		.info-section {@include grid-column(12)}
+		.graphic-section {@include grid-column(12)}
+	}
+	@media #{$medium-only} {
+		.info-section {@include grid-column(4)}
+		.graphic-section {@include grid-column(8)}
+	}
+	@media #{$large-up} {
+		.info-section {@include grid-column(5)}
+		.graphic-section {@include grid-column(7)}
+	}
+	
+	&:hover {
+		.graphic-section {
+			#thirdRailMembership {
+				.lightning-bolt {transform: translateY(10rem)}
+				.membership {transform: scale(1.1) translate(-5rem, -7rem)}
+			}
+			#ntLive {
+				#gradient stop.bottom {stop-color: rgba($orange, 1)}
+			}
+			#or {
+				.feather {transform: translateX(-4rem)}
+				.sword {transform: translateX(4rem)}
+			}
+			#mrKolpert {
+				.man {transform: rotate(20deg) translateX(4rem)}
+				.banana {transform: rotate(5deg) translateX(6rem) translateY(-10rem)}
+			}
+			#theNewElectricBallroom {
+				.shoe {transform: rotate(5deg) translateX(5rem) translateY(-5rem)}
+			}
+		}
+	}
+	
+	.info-section {
+		.content {
+			border-color: $white-dark;
+			border-style: solid;
+			border-width: rem-calc(1 0);
+			text-align: center;
+			h1, h2, h3, h4, h5, h6, p {color: $white}
+			h2 {font-size: rem-calc(40)}
+		}
+	}
+	
+	.graphic-section {
+		svg {width: 100%}
+		#thirdRailMembership {
+			.third-rail, .membership {fill: $white}
+			.lightning-bolt {fill: $orange}
+			.membership, .lightning-bolt {transition: all 300ms ease-in-out}
+		}
+		#ntLive {
+			.national, .theatre {fill: $white}
+			.live {fill: url(#gradient)}
+			#gradient {
+  			stop {
+    			stop-color: $white;
+    			transition: all 300ms ease-in-out
+  			}
+  		}
+		}
+		#or {
+			.feather, .hilt {fill: $white}
+			.blade {fill: $orange}
+			.feather, .sword {transition: all 300ms ease-in-out}
+		}
+		#mrKolpert {
+			.head, .banana, .cliff {fill: $white}
+			.man {fill: $orange}
+			.man, .banana {transition: all 300ms ease-in-out}
+		}
+		#theNewElectricBallroom {
+			.shoe-inside, .heel, .shadow {fill: $white}
+			.shoe-outside {fill: $orange}
+			.shoe {transition: all 300ms ease-in-out}
+		}
+	}
+}
+
+.page-home-banner, .page-content-area {
+	padding: rem-calc(24 0);
+	width: 100%;
+	@include clearfix();
+}
+
+.page-home-banner {
+	background-color: $gray-light;
+	article {
+		@include clearfix();
+		background-color: $white;
+		padding: rem-calc(6);
+	}
+}
+
+.page-content-area {
+	background-color: $white;
+}
+
+.section-title {
+	border-bottom: rem-calc(8) solid $black-light;
+	font-size: rem-calc(24);
+	font-weight: $font-weight-normal;
+	margin-bottom: 0;
+	text-transform: uppercase;
+}
+
+@media #{$small-up} {
+	.current-shows, .current-news, .current-calendar {
+		@include grid-column(12);
+		article {
+		}
+	}
+}
+
+@media #{$medium-only} {
+	.current-news, .current-calendar {
+		@include grid-column(6);
+	}
+}
+
+@media #{$large-up} {
+	.current-shows {
+		@include grid-column(5);
+	}
+	.current-news {
+		@include grid-column(3);
+	}
+	.current-calendar {
+		@include grid-column(4);
+	}
+}
+
+.current-shows {
+	.entry-header {
+		@include clearfix();
+		.entry-title {
+			display: inline-block;
+		}
+		.buy-link {
+			@include button($button-med, $green);
+			float: right;
+			margin-bottom: 0;
+		}
+	}
+	.thumbnail-link {
+		border: rem-calc(4) solid $white;
+		box-shadow: 0 0 0 1px rgba($black, 0.2);
+		display: inline-block;
+		float: right;
+		max-width: 60%;
+		margin: rem-calc(0 0 4 8);
+		transition: all 300ms ease-in-out;
+		&:hover {
+			box-shadow: 0 0 6px 1px rgba($orange, 0.5);
+		}
+	}
+}
+
+.current-news {
+	.post-category {
+		position: relative;
+		text-align: center;
+		z-index: 1;
+	  &:before {
+      border-top: 1px solid $gray-light;
+      content:"";
+      margin: 0 auto;
+      position: absolute;
+      top: 50%; left: 0; right: 0; bottom: 0;
+      width: 100%;
+      z-index: -1;
+	  }
+		a {
+			background-color: $white;
+			color: $black-light;
+			cursor: default;
+			display: inline-block;
+			font-weight: $font-weight-light;
+			padding: rem-calc(0 6);
+		}
+	}
+}
+
+.current-calendar {
+}
