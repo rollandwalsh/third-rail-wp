@@ -9,7 +9,8 @@ var gutil = require('gulp-util');
 
 var sassFiles = [
 	'./sass/**/*.scss',
-	'./node_modules/font-awesome/scss/*.scss'
+	'./node_modules/font-awesome/scss/*.scss',
+	'./node_modules/slick-carousel/slick/slick.scss'
 ]
  
 gulp.task('sass', function () {
