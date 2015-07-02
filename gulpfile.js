@@ -6,16 +6,21 @@ var coffeelint = require('gulp-coffeelint');
 var prefix = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var gutil = require('gulp-util');
+
+var sassFiles = [
+	'./sass/**/*.scss',
+	'./node_modules/font-awesome/scss/*.scss'
+]
  
 gulp.task('sass', function () {
-  gulp.src('./sass/**/*.scss')
+  gulp.src(sassFiles)
     .pipe(sass().on('error', sass.logError))
     .pipe(prefix('last 2 versions'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./css/'));
 });
  
 gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch(sassFiles, ['sass']);
 });
 
 gulp.task('coffee', function() {

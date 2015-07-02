@@ -34,11 +34,11 @@ body {
 	}
 	
 	.main-navigation {
-		.menu-toggle {
+		.main-nav-toggle {
 			display: block;
 			width: 100%;
 		}
-		.menu {
+		.main-nav {
 			display: none;
 			list-style-type: none;
 			margin: 0;
@@ -62,8 +62,8 @@ body {
 		@media #{$medium-up} {
 			display: inline-block;
 			float: right;
-			.menu-toggle {display: none !important}
-			.menu {
+			.main-nav-toggle {display: none !important}
+			.main-nav {
 				display: block !important;
 				padding-right: rem-calc(16);
 				li {
@@ -83,7 +83,7 @@ body {
 		}
 		
 		@media #{$large-up} {
-			.menu {
+			.main-nav {
 				li {
 					a {
 						padding: rem-calc(0 24);

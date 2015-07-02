@@ -12,9 +12,9 @@
 if ( ! function_exists( 'thirdrail_scripts' ) ) :
 	function thirdrail_scripts() {
 
-	wp_enqueue_style( 'third-rail-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'third-rail-style', get_template_directory_uri() . '/css/app.css' );
 	
-	wp_enqueue_style( 'font-awesome-style', get_template_directory_uri() . '/node_modules/font-awesome/css/font-awesome.css' );
+	wp_enqueue_style( 'font-awesome-style', get_template_directory_uri() . '/css/font-awesome.css' );
 
 	// Deregister the jquery version bundled with WordPress.
 	wp_deregister_script( 'jquery' );

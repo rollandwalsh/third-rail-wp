@@ -28,8 +28,8 @@
 			</div><!-- .site-branding -->
 	
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'third-rail' ); ?></button>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+				<a class="main-nav-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</a>
+				<?php thirdrail_main_nav(); ?>
 			</nav><!-- #site-navigation -->
 		</div><!-- .container -->
 	</header><!-- #masthead -->
