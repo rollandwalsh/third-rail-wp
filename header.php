@@ -6,14 +6,14 @@
  *
  * @package third-rail
  */
-
+ date_default_timezone_set('America/Los_Angeles');
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick.css"/>
 <?php wp_head(); ?>
 </head>
 

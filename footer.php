@@ -22,5 +22,13 @@
 
 <?php wp_footer(); ?>
 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/equalize.js/1.0.1/equalize.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.js"></script>
+<script>
+  $('#svgHeader').equalize();
+//   $('#homeTiles').equalize({children: '.entry-content'});
+  
+</script>
+
 </body>
 </html>

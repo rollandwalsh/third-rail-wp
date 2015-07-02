@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: NT Live
+ * Template Name: Show
  *
  * @package third-rail
  */
@@ -9,9 +9,32 @@ get_header(); ?>
 
   <?php
     $cast = rwmb_meta( 'cast' );
-    $creatives = rwmb_meta( 'creative' );
-    
+    $creatives = rwmb_meta( 'creative' );    
+    $show_type = rwmb_meta( 'show_type' );
+    $opening_date = rwmb_meta( 'opening_date' );
+    $closing_date = rwmb_meta( 'closing_date' );
+    $current_date = substr(date('c'), 0, 10);
     $tickets_url = rwmb_meta( 'tickets_url' );
+    
+    switch ($show_type) {
+      case "mainstage":
+        $svg = camelCase(get_the_title());
+        break;
+      case "nt_live":
+        $svg = "ntLive";
+        break;
+      case "wild_card":
+        $svg = "thirdRailMembership";
+        break;
+      case "bloody_sunday":
+        $svg = "bloodySunday";
+        break;
+      case "event":
+        $svg = "thirdRailMembership";
+        break;
+      default:
+        $svg = "thirdRailMembership";
+    } /* get the svg file based on show type */
 
     function creative($role, $before = '', $after = '', $echo = true) {
     	foreach (rwmb_meta( 'creatives' ) as &$creative) {$name = is_null( $creative[0] == $role ) ? '' : $creative[1];}
@@ -23,21 +46,25 @@ get_header(); ?>
     		echo $name;
     	else
     		return $name;
-    }
+    } /* get the name of a creative, optionally wrap / print it */
   ?>
 
 	<header class="page-header">
-		<div class="container">
+		<div id="svgHeader" class="container">
 			<div class="info-section">
 				<div class="content">
+				  <hr>
 					<?php the_title( '<h2>', '</h2>' ); ?>
 					<?php creative('Playwright', '<h5>by ', '</h5>'); ?>
 					
-					<a href="<?php echo $tickets_url; ?>" class="button buy large"><i class="fa fa-ticket"></i> Book Now</a>
+					<?php if ($current_date <= $closing_date && isset($tickets_url) && $tickets_url !== '') { ?>
+					  <a href="<?php echo $tickets_url; ?>" class="button buy large"><i class="fa fa-ticket"></i> Book Now</a>
+          <?php } ?>
+				  <hr>
 				</div>
 			</div>
 			<div class="graphic-section">
-				<?php echo file_get_contents(get_template_directory_uri() . "/svg/ntLive.svg"); ?>
+				<?php echo file_get_contents(get_template_directory_uri() . "/svg/" . $svg . ".svg"); ?>
 			</div>
 		</div>
 	</header>
@@ -57,11 +84,10 @@ while (list($key, $value) = each($values)) {
         $values[5] = 'e'; 
     } 
 } }
-echo rwmb_meta('open');
 ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
-
+        
 				<?php get_template_part( 'template-parts/content', 'page' ); ?>
 				
 			<?php endwhile; // End of the loop. ?>

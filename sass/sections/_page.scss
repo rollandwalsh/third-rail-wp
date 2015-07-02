@@ -41,11 +41,11 @@
 	}
 	
 	.info-section {
+  	display: table;
 		.content {
-			border-color: $white-dark;
-			border-style: solid;
-			border-width: rem-calc(1 0);
+			display: table-cell;
 			text-align: center;
+			vertical-align: middle;
 			h1, h2, h3, h4, h5, h6, p {color: $white}
 			h2 {font-size: rem-calc(40)}
 		}

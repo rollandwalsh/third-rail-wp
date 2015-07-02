@@ -8,12 +8,14 @@
 get_header(); ?>
 
 	<header class="page-header">
-		<div class="container">
+		<div id="svgHeader" class="container">
 			<div class="info-section">
 				<div class="content">
+				  <hr>
 					<h2>Third Rail Membership</h2>
 					<h5>Join the Movement!</h5>
 					<a href="#" class="button buy large"><i class="fa fa-bolt"></i> Join Now</a>
+				  <hr>
 				</div>
 			</div>
 			<div class="graphic-section">
@@ -22,9 +24,10 @@ get_header(); ?>
 		</div>
 	</header>
 	
-	<section class="page-home-banner">
+	<section id="homeTiles" class="page-home-banner">
 		<div class="current-shows">
 			<h2 class="section-title">On Stage Now</h2>
+			<div id="showSlider">
 			<?php
 			$args = array(
 		    'post_type'  	=> 'page',
@@ -52,6 +55,7 @@ get_header(); ?>
 			
 			wp_reset_postdata();
 			?><!-- Reset post data -->
+			</div>
 		</div>
 		
 		<div class="current-news">
@@ -98,3 +102,7 @@ get_header(); ?>
 	</div><!-- #primary -->
 	
 <?php get_footer(); ?>
+
+<script>
+  $('#showSlider').slick();
+</script>
