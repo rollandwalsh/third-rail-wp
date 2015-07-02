@@ -163,3 +163,8 @@ textarea { height: auto; min-height: 50px; }
 
 // Make select elements 100% width by default
 select { width: 100%; }
+
+// WP Admin bar fix
+#wpadminbar {
+	position: fixed !important;
+}

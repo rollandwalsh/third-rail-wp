@@ -9,8 +9,8 @@
  * @subpackage ThirdRail
  */
 
-if ( ! function_exists( 'foundationpress_scripts' ) ) :
-	function foundationpress_scripts() {
+if ( ! function_exists( 'thirdrail_scripts' ) ) :
+	function thirdrail_scripts() {
 
 	wp_enqueue_style( 'third-rail-style', get_stylesheet_uri() );
 	
@@ -19,7 +19,6 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 	// Deregister the jquery version bundled with WordPress.
 	wp_deregister_script( 'jquery' );
 
-	// Modernizr is used for polyfills and feature detection. Must be placed in header. (Not required).
 	wp_register_script( 'modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js', array(), '2.8.3', false );
 
 	// CDN hosted jQuery placed in the header, as some plugins require that jQuery is loaded in the header.
@@ -31,7 +30,7 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 
 	}
 
-	add_action( 'wp_enqueue_scripts', 'foundationpress_scripts' );
+	add_action( 'wp_enqueue_scripts', 'thirdrail_scripts' );
 endif;
 
 ?>

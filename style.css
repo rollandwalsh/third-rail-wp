@@ -251,6 +251,9 @@ textarea {
 select {
   width: 100%; }
 
+#wpadminbar {
+  position: fixed !important; }
+
 .text-left {
   text-align: left !important; }
 
@@ -2297,6 +2300,8 @@ table {
 
 body {
   padding-top: 5rem; }
+  body.admin-bar .site-header {
+    margin-top: 2rem; }
 
 .site-header {
   background: #FFFFFF;

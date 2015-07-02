@@ -1,4 +1,9 @@
-body {padding-top: rem-calc(80)}
+body {
+  padding-top: rem-calc(80);
+  &.admin-bar {
+    .site-header {margin-top: rem-calc(32)}
+  }
+}
 
 .site-header {
 	background: $white;
