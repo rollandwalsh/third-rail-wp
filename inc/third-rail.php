@@ -179,8 +179,8 @@ if ( ! function_exists( 'thirdrail_theme_support' ) ) :
 endif;
 
 
-if ( ! function_exists( 'thirdrail_custom_post_show' ) ) :
-  function thirdrail_custom_post_show() {
+if ( ! function_exists( 'thirdrail_custom_page_show' ) ) :
+  function thirdrail_custom_page_show() {
     $labels = array(
       'name' => 'Shows',
       'singular_name' => 'Show',
@@ -212,7 +212,44 @@ if ( ! function_exists( 'thirdrail_custom_post_show' ) ) :
     ); 
     register_post_type('show', $args);
   }
-  add_action( 'after_setup_theme', 'thirdrail_custom_post_show' );
+  add_action( 'after_setup_theme', 'thirdrail_custom_page_show' );
+endif;
+
+
+if ( ! function_exists( 'thirdrail_custom_page_company' ) ) :
+  function thirdrail_custom_page_company() {
+    $labels = array(
+      'name' => 'Company Members',
+      'singular_name' => 'Company Member',
+      'add_new' => 'Add Company Member',
+      'add_new_item' => 'Add New Company Member',
+      'edit_item' => 'Edit Company Member',
+      'new_item' => 'New Company Member',
+      'all_items' => 'All Company Members',
+      'view_item' => 'View Company Member',
+      'search_items' => 'Search Company Members',
+      'not_found' =>  'No Company Members found',
+      'not_found_in_trash' => 'No Company Members found in Trash', 
+      'menu_name' => 'Company Members'
+  
+    );
+    $args = array(
+      'labels' => $labels,
+      'public' => true,
+      'publicly_queryable' => true,
+      'show_ui' => true, 
+      'show_in_menu' => true, 
+      'query_var' => true,
+      'rewrite' => true,
+      'capability_type' => 'page',
+      'has_archive' => true, 
+      'hierarchical' => true,
+      'menu_position' => 20,
+      'supports' => array( 'title', 'editor', 'exerpt', 'thumbnail', 'page-attributes' )
+    ); 
+    register_post_type('company_member', $args);
+  }
+  add_action( 'after_setup_theme', 'thirdrail_custom_page_company' );
 endif;
 
 ?>
