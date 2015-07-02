@@ -178,5 +178,42 @@ if ( ! function_exists( 'thirdrail_theme_support' ) ) :
   add_action( 'after_setup_theme', 'thirdrail_theme_support' );
 endif;
 
+
+if ( ! function_exists( 'thirdrail_custom_post_show' ) ) :
+  function thirdrail_custom_post_show() {
+    $labels = array(
+      'name' => 'Shows',
+      'singular_name' => 'Show',
+      'add_new' => 'Add New',
+      'add_new_item' => 'Add New Show',
+      'edit_item' => 'Edit Show',
+      'new_item' => 'New Show',
+      'all_items' => 'All Shows',
+      'view_item' => 'View Show',
+      'search_items' => 'Search Shows',
+      'not_found' =>  'No Shows found',
+      'not_found_in_trash' => 'No Shows found in Trash', 
+      'menu_name' => 'Shows'
+  
+    );
+    $args = array(
+      'labels' => $labels,
+      'public' => true,
+      'publicly_queryable' => true,
+      'show_ui' => true, 
+      'show_in_menu' => true, 
+      'query_var' => true,
+      'rewrite' => true,
+      'capability_type' => 'page',
+      'has_archive' => true, 
+      'hierarchical' => true,
+      'menu_position' => 20,
+      'supports' => array( 'title', 'thumbnail', 'page-attributes' )
+    ); 
+    register_post_type('show', $args);
+  }
+  add_action( 'after_setup_theme', 'thirdrail_custom_post_show' );
+endif;
+
 ?>
  
