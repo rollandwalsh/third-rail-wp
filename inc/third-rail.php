@@ -208,7 +208,7 @@ if ( ! function_exists( 'thirdrail_custom_post_show' ) ) :
       'has_archive' => true, 
       'hierarchical' => true,
       'menu_position' => 20,
-      'supports' => array( 'title', 'thumbnail', 'page-attributes' )
+      'supports' => array( 'title', 'editor', 'exerpt', 'thumbnail', 'page-attributes' )
     ); 
     register_post_type('show', $args);
   }
