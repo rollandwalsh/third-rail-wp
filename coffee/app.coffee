@@ -1,3 +1,6 @@
+
+console.log 'load'
+
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList'
 cal = $('#calendar')
 
@@ -67,6 +70,7 @@ printMonth = (date) ->
 	
 	table = '<div id=""><table class="month">' + caption + tHead + tBody + '</table></div>' # table
 	cal.append(table) # append table
+	console.log('success')
   
 createLinks = (data) ->
   instances = []
@@ -87,6 +91,7 @@ createLinks = (data) ->
     $('#' + link.date).wrapInner('<a href="#" data-1-sold="' + link.sold + '" data-1-status="' + link.status + '" data-1-url="' + link.url + '" data-1-date="' + link.date + '" data-1-name="' + link.id + '"></a>')
 #   
 #   console.log links
+
 
 $ ->
   getEvents(api, createMonths)

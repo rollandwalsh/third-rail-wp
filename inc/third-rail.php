@@ -147,11 +147,9 @@ class Thirdrail_Comments extends Walker_Comment{
   	function __destruct() { ?>
      
     </ol><!-- /#comment-list -->
- 
     <?php }
 }
 endif;
-
 
 if ( ! function_exists( 'thirdrail_theme_support' ) ) :
   function thirdrail_theme_support() {
@@ -178,79 +176,4 @@ if ( ! function_exists( 'thirdrail_theme_support' ) ) :
   add_action( 'after_setup_theme', 'thirdrail_theme_support' );
 endif;
 
-
-if ( ! function_exists( 'thirdrail_custom_page_show' ) ) :
-  function thirdrail_custom_page_show() {
-    $labels = array(
-      'name' => 'Shows',
-      'singular_name' => 'Show',
-      'add_new' => 'Add New',
-      'add_new_item' => 'Add New Show',
-      'edit_item' => 'Edit Show',
-      'new_item' => 'New Show',
-      'all_items' => 'All Shows',
-      'view_item' => 'View Show',
-      'search_items' => 'Search Shows',
-      'not_found' =>  'No Shows found',
-      'not_found_in_trash' => 'No Shows found in Trash', 
-      'menu_name' => 'Shows'
-  
-    );
-    $args = array(
-      'labels' => $labels,
-      'public' => true,
-      'publicly_queryable' => true,
-      'show_ui' => true, 
-      'show_in_menu' => true, 
-      'query_var' => true,
-      'rewrite' => true,
-      'capability_type' => 'page',
-      'has_archive' => true, 
-      'hierarchical' => true,
-      'menu_position' => 20,
-      'supports' => array( 'title', 'editor', 'exerpt', 'thumbnail', 'page-attributes' )
-    ); 
-    register_post_type('show', $args);
-  }
-  add_action( 'after_setup_theme', 'thirdrail_custom_page_show' );
-endif;
-
-
-if ( ! function_exists( 'thirdrail_custom_page_company' ) ) :
-  function thirdrail_custom_page_company() {
-    $labels = array(
-      'name' => 'Company Members',
-      'singular_name' => 'Company Member',
-      'add_new' => 'Add Company Member',
-      'add_new_item' => 'Add New Company Member',
-      'edit_item' => 'Edit Company Member',
-      'new_item' => 'New Company Member',
-      'all_items' => 'All Company Members',
-      'view_item' => 'View Company Member',
-      'search_items' => 'Search Company Members',
-      'not_found' =>  'No Company Members found',
-      'not_found_in_trash' => 'No Company Members found in Trash', 
-      'menu_name' => 'Company Members'
-  
-    );
-    $args = array(
-      'labels' => $labels,
-      'public' => true,
-      'publicly_queryable' => true,
-      'show_ui' => true, 
-      'show_in_menu' => true, 
-      'query_var' => true,
-      'rewrite' => true,
-      'capability_type' => 'page',
-      'has_archive' => true, 
-      'hierarchical' => true,
-      'menu_position' => 20,
-      'supports' => array( 'title', 'editor', 'exerpt', 'thumbnail', 'page-attributes' )
-    ); 
-    register_post_type('company_member', $args);
-  }
-  add_action( 'after_setup_theme', 'thirdrail_custom_page_company' );
-endif;
-
 ?>
- 

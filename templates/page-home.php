@@ -85,7 +85,8 @@ get_header(); ?>
 		
 		<div class="current-calendar">
 			<h2 class="section-title">Calendar</h2>
-			<?php echo file_get_contents(get_template_directory_uri() . "/template-parts/calendar-full.php"); ?>
+			<div id="calendar">
+			</div>
 		</div>
 	</section>
 	
@@ -104,5 +105,5 @@ get_header(); ?>
 <?php get_footer(); ?>
 
 <script>
-  $('#showSlider').slick();
+//  $('#showSlider').slick();
 </script>

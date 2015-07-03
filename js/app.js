@@ -1,5 +1,7 @@
 var api, cal, createLinks, createMonths, getEvents, printMonth;
 
+console.log('load');
+
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
 
 cal = $('#calendar');
@@ -96,7 +98,8 @@ printMonth = function(date) {
   tHead = '<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>';
   tBody = '<tbody>' + trs + '</tbody>';
   table = '<div id=""><table class="month">' + caption + tHead + tBody + '</table></div>';
-  return cal.append(table);
+  cal.append(table);
+  return console.log('success');
 };
 
 createLinks = function(data) {

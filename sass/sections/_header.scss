@@ -43,7 +43,6 @@ body {
 			list-style-type: none;
 			margin: 0;
 			li {
-				border-top: 1px solid $orange;
 				text-align: left;
 				a {
 					color: $black-light;
@@ -67,7 +66,6 @@ body {
 				display: block !important;
 				padding-right: rem-calc(16);
 				li {
-					border: none;
 					display: inline-block;
 					&:last-child a {
 						border: 1px solid $black-light;
@@ -75,7 +73,7 @@ body {
 					}
 					a {
 						font-size: rem-calc(13);
-						line-height: 6;
+						line-height: rem-calc(80);
 						text-transform: uppercase;
 					}
 				}

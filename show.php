@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Show
+ * The template for displaying all shows.
  *
  * @package third-rail
  */
@@ -88,7 +88,7 @@ while (list($key, $value) = each($values)) {
 
 			<?php while ( have_posts() ) : the_post(); ?>
         
-				<?php get_template_part( 'template-parts/content', 'page' ); ?>
+				<?php get_template_part( 'template-parts/content', 'show' ); ?>
 				
 			<?php endwhile; // End of the loop. ?>
 

@@ -26,6 +26,8 @@ require_once( 'inc/entry-meta.php' );
 
 require_once( 'inc/enqueue-scripts.php' );
 
+require_once( 'inc/custom-types.php' );
+
 /**
  * Custom functions that act independently of the theme templates.
  */
