@@ -25,8 +25,12 @@ get_header(); ?>
 	</header>
 	
 	<section id="homeTiles" class="page-home-banner">
-		<div class="current-shows">
-			<h2 class="section-title">On Stage Now</h2>
+		<div class="current-shows" style="position: relative">
+			<h2 class="section-title">On Stage</h2>
+			<div id="showSliderControls" style="position: absolute; top: 4px; right:12px;">
+			  <i class="fa fa-2x fa-caret-left"></i>
+			  <i class="fa fa-2x fa-caret-right"></i>
+			</div>
 			<div id="showSlider">
 			<?php
 			$args = array(

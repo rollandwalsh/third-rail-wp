@@ -41,8 +41,9 @@
 <?php wp_footer(); ?>
 
 <script>
-//  $('#svgHeader').equalize();
-//  $('#homeTiles').equalize({children: '.entry-content'});
+  $('#svgHeader').equalize();
+  $('#homeTiles').equalize({children: 'article'});
+  $('#showSlider').slick();
 </script>
 
 </body>

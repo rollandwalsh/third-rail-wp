@@ -35,9 +35,9 @@ endif;
 if ( ! function_exists( 'thirdrail_footer_scripts' ) ) :
 	function thirdrail_footer_scripts() { ?>
 	
-	<scripts src="<?php echo get_template_directory_uri(); ?>/js/app.js"></scripts>
-	<scripts src="<?php echo get_template_directory_uri(); ?>/js/vendor/equalizer.min.js"></scripts>
-	<scripts src="<?php echo get_template_directory_uri(); ?>/js/vendor/slick.min.js"></scripts>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/app.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/vendor/equalize.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/vendor/slick.min.js"></script>
 	
 	<?php } 
 
