@@ -90,8 +90,8 @@ createLinks = (data) -> # create links based off of event instances
       events[event.id] = event.name
       if event.instances.constructor == Array
         instances.push instance for instance in event.instances
-      else instances.push event.instances      
-  console.log events
+      else instances.push event.instances
+
   for instance in instances # loops through instances to get dates to link to | TODO: illimnate duplicate code
     date = $('#' + instance.formattedDates.YYYYMMDD)
     if date.data('1')
@@ -117,7 +117,7 @@ createLinks = (data) -> # create links based off of event instances
   
   $('.has-event').on 'click', ->
     buttonPrint(@)
-  $('#calendar').first('.month').first('.has-event').trigger 'click'
+  $('.has-event').first().trigger 'click'
 
 buttonPrint = (date) -> # print buttons for date on calendar
   data = $(date).data('1')

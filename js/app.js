@@ -134,7 +134,6 @@ createLinks = function(data) {
       }
     }
   }
-  console.log(events);
   for (l = 0, len2 = instances.length; l < len2; l++) {
     instance = instances[l];
     date = $('#' + instance.formattedDates.YYYYMMDD);
@@ -161,7 +160,7 @@ createLinks = function(data) {
   $('.has-event').on('click', function() {
     return buttonPrint(this);
   });
-  return $('#calendar').first('.month').first('.has-event').trigger('click');
+  return $('.has-event').first().trigger('click');
 };
 
 buttonPrint = function(date) {
