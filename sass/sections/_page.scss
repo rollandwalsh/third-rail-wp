@@ -86,14 +86,13 @@
 	}
 }
 
-.page-home-banner, .page-content-area {
+.page-home-banner, .page-content-area, .page-home-secondary {
 	padding: rem-calc(24 0);
 	width: 100%;
 	@include clearfix();
 }
 
-.page-home-banner {
-	background-color: $gray-light;
+.page-home-banner, .page-home-secondary {
 	article {
 		@include clearfix();
 		background-color: $white;
@@ -101,9 +100,11 @@
 	}
 }
 
-.page-content-area {
-	background-color: $white;
-}
+.page-home-banner {background-color: $gray-light}
+
+.page-home-secondary {background-color: $orange}
+
+.page-content-area {background-color: $white}
 
 .section-title {
 	border-bottom: rem-calc(8) solid $black-light;
@@ -114,7 +115,7 @@
 }
 
 @media #{$small-up} {
-	.current-shows, .current-news, .current-calendar {
+	.current-shows, .current-news, .current-calendar, .home-membership, .current-media, .home-donate, .home-company-member {
 		@include grid-column(12);
 		article {
 		}
@@ -122,10 +123,11 @@
 }
 
 @media #{$medium-only} {
-	.current-news, .current-calendar {
+	.current-news, .current-calendar, .home-membership, .current-media, .home-donate, .home-company-member {
 		@include grid-column(6);
 	}
 }
+
 
 @media #{$large-up} {
 	.current-shows {
@@ -137,9 +139,24 @@
 	.current-calendar {
 		@include grid-column(4);
 	}
+	.home-membership, .current-media, .home-donate, .home-company-member {
+  	@include grid-column(3);
+	}
+}
+
+.home-slider-controls {
+  position: absolute;
+  right: rem-calc(8);
+  top: rem-calc(2);
+  i {
+    cursor: pointer;
+    padding: rem-calc(2 4);
+    transition: all 300ms ease-in-out;
+  }
 }
 
 .current-shows {
+  position: relative;
 	.entry-header {
 		@include clearfix();
 		.entry-title {
@@ -191,4 +208,11 @@
 }
 
 .current-calendar {
+}
+
+.current-media {
+  position: relative;
+  .entry-content {
+    @include flex-video-container();
+  }
 }

@@ -191,3 +191,33 @@
   overflow: visible;
   clip: auto;
 }
+
+// @mixins
+//
+// Video container
+@mixin flex-video-container($margin-bottom:0) {
+  height: 0;
+  margin-bottom: $margin-bottom;
+  overflow: hidden;
+  padding-bottom: 67.5%;
+  padding-top: rem-calc(25);
+  position: relative;
+
+  &.widescreen { padding-bottom: 56.34% }
+  &.vimeo { padding-top: 0; }
+
+  iframe,
+  object,
+  embed,
+  video {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+  }
+}
+
+@include exports("flex-video") {
+  .flex-video { @include flex-video-container; }
+}
