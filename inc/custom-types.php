@@ -29,7 +29,7 @@ if ( ! function_exists( 'thirdrail_custom_actor' ) ) :
 			'show_in_nav_menus'          => true,
 			'show_tagcloud'              => true,
 		);
-		register_taxonomy( 'actor', array( 'show' ), $args );
+		register_taxonomy( 'actor', array( 'page' ), $args );
 	
 	}
 	
@@ -65,7 +65,7 @@ if ( ! function_exists( 'thirdrail_custom_creative' ) ) :
 			'show_in_nav_menus'          => true,
 			'show_tagcloud'              => true,
 		);
-		register_taxonomy( 'creative', array( 'show' ), $args );
+		register_taxonomy( 'creative', array( 'page' ), $args );
 	
 	}
 	
