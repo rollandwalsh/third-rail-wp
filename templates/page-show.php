@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all shows.
+ * Template Name: Show
  *
  * @package third-rail
  */
