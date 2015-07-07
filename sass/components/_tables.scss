@@ -5,10 +5,10 @@ $table-even-row-bg: darken($white-dark, 2%);
 // These control the table cell border style
 $table-border-style: none;
 $table-border-size: 0;
-$table-border-color: $gray;
+$table-border-color: $white;
 
 // These control the table head styles
-$table-head-bg: $gray-light;
+$table-head-bg: $white-dark;
 $table-head-font-size: rem-calc(13);
 $table-head-font-color: $black-light;
 $table-head-font-weight: $font-weight-bold;
@@ -24,7 +24,7 @@ $table-foot-padding: $table-head-padding;
 // These control the caption
 $table-caption-bg: $table-head-bg;
 $table-caption-font-color: $table-head-font-color;
-$table-caption-font-size: rem-calc(14);
+$table-caption-font-size: rem-calc(16);
 $table-caption-font-weight: bold;
 
 // These control the row padding and font styles
@@ -36,7 +36,7 @@ $table-line-height: rem-calc(18);
 // These are for controlling the layout, display and margin of tables
 $table-layout: auto;
 $table-display: table-cell;
-$table-margin-bottom: rem-calc(20);
+$table-margin-bottom: rem-calc(8);
 
 
 //
@@ -56,6 +56,7 @@ $table-margin-bottom: rem-calc(20);
       size: $table-caption-font-size;
       weight: $table-caption-font-weight;
     }
+    padding: rem-calc(4);
     text-transform: uppercase;
   }
 

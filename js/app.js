@@ -1,29 +1,37 @@
-var api, cal, createLinks, createMonths, getEvents, printMonth;
-
-console.log('load');
+var api, buttonPrint, cal, createLinks, createMonths, getEvents, printMonth, timeStamp;
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
 
 cal = $('#calendar');
 
 getEvents = function(url, callback) {
-  var req;
-  req = $.getJSON(url);
-  return req.success(function(data) {
-    return callback(data.events);
+  return $.ajax({
+    url: 'http://query.yahooapis.com/v1/public/yql',
+    dataType: 'jsonp',
+    data: {
+      q: 'select * from json where url="' + url + '"',
+      format: 'json'
+    },
+    success: function(data) {
+      return callback(data.query.results.json.events);
+    }
   });
 };
 
 createMonths = function(data) {
-  var dates, event, i, instance, j, k, l, len, len1, len2, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, ref, results;
+  var dates, event, i, instance, j, k, l, len, len1, len2, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, ref;
   dates = [];
   for (j = 0, len = data.length; j < len; j++) {
     event = data[j];
     if (event.type === 'Tickets') {
-      ref = event.instances;
-      for (k = 0, len1 = ref.length; k < len1; k++) {
-        instance = ref[k];
-        dates.push(instance.formattedDates.YYYYMMDD);
+      if (event.instances.constructor === Array) {
+        ref = event.instances;
+        for (k = 0, len1 = ref.length; k < len1; k++) {
+          instance = ref[k];
+          dates.push(instance.formattedDates.YYYYMMDD);
+        }
+      } else {
+        dates.push(event.instances.formattedDates.YYYYMMDD);
       }
     }
   }
@@ -33,8 +41,8 @@ createMonths = function(data) {
   minM = minE.substr(4, 2);
   maxY = maxE.substr(0, 4);
   maxM = maxE.substr(4, 2);
-  minDate = new Date(minY, minM);
-  maxDate = new Date(maxY, maxM);
+  minDate = new Date(minY, minM - 1);
+  maxDate = new Date(maxY, maxM - 1);
   mDiff = function(m1, m2) {
     var ms;
     ms = (m2.getFullYear() - m1.getFullYear()) * 12;
@@ -50,12 +58,17 @@ createMonths = function(data) {
     months.push(new Date(minDate.getFullYear(), minDate.getMonth() + i));
     i++;
   }
-  results = [];
   for (l = 0, len2 = months.length; l < len2; l++) {
     month = months[l];
-    results.push(printMonth(month));
+    printMonth(month);
   }
-  return results;
+  getEvents(api, createLinks);
+  return $('#calendar').slick({
+    prevArrow: $('#calendarNavPrev'),
+    nextArrow: $('#calendarNavNext'),
+    infinite: false,
+    adaptiveHeight: true
+  });
 };
 
 printMonth = function(date) {
@@ -63,6 +76,7 @@ printMonth = function(date) {
   mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   m = date.getMonth();
   mName = mNames[m];
+  m++;
   y = date.getFullYear();
   dofW = date.getDay();
   dCount = new Date(date.getYear(), date.getMonth() + 1, 0).getDate();
@@ -97,47 +111,85 @@ printMonth = function(date) {
   caption = '<caption>' + mName + ' ' + y + '</caption>';
   tHead = '<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>';
   tBody = '<tbody>' + trs + '</tbody>';
-  table = '<div id=""><table class="month">' + caption + tHead + tBody + '</table></div>';
-  cal.append(table);
-  return console.log('success');
+  table = '<div id="' + mName + y + '"><table class="month">' + caption + tHead + tBody + '</table></div>';
+  return cal.append(table);
 };
 
 createLinks = function(data) {
-  var event, instance, instances, j, k, l, len, len1, len2, len3, link, links, n, ref, results;
+  var date, event, events, instance, instances, j, k, l, len, len1, len2, ref;
+  events = {};
   instances = [];
-  links = [];
   for (j = 0, len = data.length; j < len; j++) {
     event = data[j];
     if (event.type === 'Tickets') {
-      ref = event.instances;
-      for (k = 0, len1 = ref.length; k < len1; k++) {
-        instance = ref[k];
-        instances.push(instance);
+      events[event.id] = event.name;
+      if (event.instances.constructor === Array) {
+        ref = event.instances;
+        for (k = 0, len1 = ref.length; k < len1; k++) {
+          instance = ref[k];
+          instances.push(instance);
+        }
+      } else {
+        instances.push(event.instances);
       }
     }
   }
+  console.log(events);
   for (l = 0, len2 = instances.length; l < len2; l++) {
     instance = instances[l];
-    links.push({
-      sold: instance.soldOut,
-      status: instance.saleStatus,
-      url: instance.purchaseUrl,
-      date: instance.formattedDates.YYYYMMDD,
-      id: instance.id
-    });
+    date = $('#' + instance.formattedDates.YYYYMMDD);
+    if (date.data('1')) {
+      date.addClass('has-event').data('2', {
+        sold: instance.soldOut,
+        status: instance.saleStatus,
+        url: instance.purchaseUrl,
+        date: instance.formattedDates.YYYYMMDD,
+        name: events[instance.eventId],
+        time: timeStamp(instance.formattedDates.ISO8601)
+      });
+    } else {
+      date.addClass('has-event').data('1', {
+        sold: instance.soldOut,
+        status: instance.saleStatus,
+        url: instance.purchaseUrl,
+        date: instance.formattedDates.LONG_MONTH_DAY_YEAR,
+        name: events[instance.eventId],
+        time: timeStamp(instance.formattedDates.ISO8601)
+      });
+    }
   }
-  results = [];
-  for (n = 0, len3 = links.length; n < len3; n++) {
-    link = links[n];
-    results.push($('#' + link.date).wrapInner('<a href="#" data-1-sold="' + link.sold + '" data-1-status="' + link.status + '" data-1-url="' + link.url + '" data-1-date="' + link.date + '" data-1-name="' + link.id + '"></a>'));
+  $('.has-event').on('click', function() {
+    return buttonPrint(this);
+  });
+  return $('#calendar').first('.month').first('.has-event').trigger('click');
+};
+
+buttonPrint = function(date) {
+  var data;
+  data = $(date).data('1');
+  $('#calendarDisplay').html('<h3>' + data.date + '</h3><a href="' + data.url + '" class="button buy">' + data.name + ' - ' + data.time + '</a>');
+  if ($(date).data('2')) {
+    return $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button buy">' + data.name + ' - ' + data.time + '</a>');
   }
-  return results;
+};
+
+timeStamp = function(input) {
+  var date, i, suffix, time;
+  date = new Date(input);
+  time = [date.getHours(), date.getMinutes()];
+  suffix = time[0] < 12 ? 'am' : 'pm';
+  time[0] = time[0] < 12 ? time[0] : time[0] - 12;
+  time[0] = time[0] || 12;
+  i = 1;
+  while (i < 3) {
+    if (time[i] < 10) {
+      time[i] = '0' + time[i];
+    }
+    i++;
+  }
+  return time.join(':') + ' ' + suffix;
 };
 
 $(function() {
   return getEvents(api, createMonths);
-});
-
-$(function() {
-  return getEvents(api, createLinks);
 });

@@ -90,8 +90,7 @@ get_header(); ?>
 		
 		<div class="current-calendar">
 			<h2 class="section-title">Calendar</h2>
-			<div id="calendar">
-			</div>
+			<?php get_template_part( 'template-parts/calendar', 'full' ); ?>
 		</div>
 	</section>
 	

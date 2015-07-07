@@ -1,24 +1,41 @@
 .tr-calendar {
+  position: relative;
   .calendar-nav {
+    color: $orange;
+    cursor: pointer;
+    display: none;
     font-size: rem-calc(12);
     position: absolute;
     text-transform: uppercase;
-    top: 4px;
-    &#calendarNavPrev {left: 0}
-    &#calendarNavNext {right: 0}
+    top: rem-calc(14);
+    z-index: 1;
+    &#calendarNavPrev {left: rem-calc(14)}
+    &#calendarNavNext {right: rem-calc(14)}
     &.slick-disabled {display: none !important}
   }
   .month {
-    margin-bottom: rem-calc(8);
     max-width: 100%;
     width: 100%;
-    th, .date {
+    th, .day {
       position: relative;
       text-align: center;
-      a {font-weight: bold}
-      .event {
-        .button {margin-bottom: rem-calc(8)}
+    }
+    .day {
+      color: $gray-dark;
+      line-height: 2.5;
+      &.has-event {
+        color: $orange;
+        cursor: pointer;
+        font-weight: $font-weight-bold;
+        transition: all 300ms ease-in-out;
+        &:hover {
+          background-color: $orange;
+          color: $white;
+        }
       }
     }
+  }
+  #calendarDisplay {
+    text-align: center;
   }
 }

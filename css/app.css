@@ -2688,17 +2688,18 @@ label.error {
 
 table {
   background: #FAFAFA;
-  border: none 0 #AAAAAA;
-  margin-bottom: 1.25rem;
+  border: none 0 #FFFFFF;
+  margin-bottom: 0.5rem;
   table-layout: auto; }
   table caption {
-    background: #EFEFEF;
+    background: #FAFAFA;
     color: #222222;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: bold;
+    padding: 0.25rem;
     text-transform: uppercase; }
   table thead {
-    background: #EFEFEF; }
+    background: #FAFAFA; }
     table thead tr th,
     table thead tr td {
       color: #222222;
@@ -2706,7 +2707,7 @@ table {
       font-weight: 900;
       padding: 0.5rem 0.125rem; }
   table tfoot {
-    background: #EFEFEF; }
+    background: #FAFAFA; }
     table tfoot tr th,
     table tfoot tr td {
       color: #222222;
@@ -3112,29 +3113,43 @@ body {
       width: 100%;
       left: 0; }
 
-.tr-calendar .calendar-nav {
-  font-size: 0.75rem;
-  position: absolute;
-  text-transform: uppercase;
-  top: 4px; }
-  .tr-calendar .calendar-nav#calendarNavPrev {
-    left: 0; }
-  .tr-calendar .calendar-nav#calendarNavNext {
-    right: 0; }
-  .tr-calendar .calendar-nav.slick-disabled {
-    display: none !important; }
-
-.tr-calendar .month {
-  margin-bottom: 0.5rem;
-  max-width: 100%;
-  width: 100%; }
-  .tr-calendar .month th, .tr-calendar .month .date {
-    position: relative;
+.tr-calendar {
+  position: relative; }
+  .tr-calendar .calendar-nav {
+    color: #EA7600;
+    cursor: pointer;
+    display: none;
+    font-size: 0.75rem;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0.875rem;
+    z-index: 1; }
+    .tr-calendar .calendar-nav#calendarNavPrev {
+      left: 0.875rem; }
+    .tr-calendar .calendar-nav#calendarNavNext {
+      right: 0.875rem; }
+    .tr-calendar .calendar-nav.slick-disabled {
+      display: none !important; }
+  .tr-calendar .month {
+    max-width: 100%;
+    width: 100%; }
+    .tr-calendar .month th, .tr-calendar .month .day {
+      position: relative;
+      text-align: center; }
+    .tr-calendar .month .day {
+      color: #555555;
+      line-height: 2.5; }
+      .tr-calendar .month .day.has-event {
+        color: #EA7600;
+        cursor: pointer;
+        font-weight: 900;
+        -webkit-transition: all 300ms ease-in-out;
+                transition: all 300ms ease-in-out; }
+        .tr-calendar .month .day.has-event:hover {
+          background-color: #EA7600;
+          color: #FFFFFF; }
+  .tr-calendar #calendarDisplay {
     text-align: center; }
-    .tr-calendar .month th a, .tr-calendar .month .date a {
-      font-weight: bold; }
-    .tr-calendar .month th .event .button, .tr-calendar .month .date .event .button {
-      margin-bottom: 0.5rem; }
 
 .site-footer {
   background-color: #222222;
