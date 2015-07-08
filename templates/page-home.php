@@ -24,7 +24,7 @@ get_header(); ?>
 		</div>
 	</header>
 	
-	<section id="homeTiles" class="page-home-banner">
+	<section id="homeTiles" class="page-banner">
 		<div class="current-shows">
 			<h2 class="section-title">On Stage</h2>
 			<div id="showSliderControls" class="home-slider-controls">

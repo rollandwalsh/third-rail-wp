@@ -2928,16 +2928,16 @@ body {
     -webkit-transition: all 300ms ease-out;
             transition: all 300ms ease-out; }
 
-.page-home-banner, .page-content-area, .page-home-secondary {
+.page-banner, .page-home-secondary, .page-content-area {
   padding: 1.5rem 0;
   width: 100%; }
-  .page-home-banner:before, .page-home-banner:after, .page-content-area:before, .page-content-area:after, .page-home-secondary:before, .page-home-secondary:after {
+  .page-banner:before, .page-banner:after, .page-home-secondary:before, .page-home-secondary:after, .page-content-area:before, .page-content-area:after {
     content: " ";
     display: table; }
-  .page-home-banner:after, .page-content-area:after, .page-home-secondary:after {
+  .page-banner:after, .page-home-secondary:after, .page-content-area:after {
     clear: both; }
 
-.page-home-banner {
+.page-banner {
   background-color: #EFEFEF; }
 
 .page-home-secondary {
@@ -2954,25 +2954,74 @@ body {
   text-transform: uppercase; }
 
 @media only screen {
-  .current-shows, .current-news, .current-calendar, .home-membership, .current-media, .home-donate, .home-company-member {
+  .current-shows,
+  .current-news,
+  .current-calendar,
+  .home-membership,
+  .current-media,
+  .home-donate,
+  .home-company-member {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 100%;
     float: left; }
-    .current-shows article, .current-news article, .current-calendar article, .home-membership article, .current-media article, .home-donate article, .home-company-member article {
+    .current-shows article,
+    .current-news article,
+    .current-calendar article,
+    .home-membership article,
+    .current-media article,
+    .home-donate article,
+    .home-company-member article {
       background-color: #FFFFFF;
       padding: 0.375rem; }
-      .current-shows article:before, .current-shows article:after, .current-news article:before, .current-news article:after, .current-calendar article:before, .current-calendar article:after, .home-membership article:before, .home-membership article:after, .current-media article:before, .current-media article:after, .home-donate article:before, .home-donate article:after, .home-company-member article:before, .home-company-member article:after {
+      .current-shows article:before,
+      .current-shows article:after,
+      .current-news article:before,
+      .current-news article:after,
+      .current-calendar article:before,
+      .current-calendar article:after,
+      .home-membership article:before,
+      .home-membership article:after,
+      .current-media article:before,
+      .current-media article:after,
+      .home-donate article:before,
+      .home-donate article:after,
+      .home-company-member article:before, .home-company-member article:after {
         content: " ";
         display: table; }
-      .current-shows article:after, .current-news article:after, .current-calendar article:after, .home-membership article:after, .current-media article:after, .home-donate article:after, .home-company-member article:after {
-        clear: both; } }
+      .current-shows article:after,
+      .current-news article:after,
+      .current-calendar article:after,
+      .home-membership article:after,
+      .current-media article:after,
+      .home-donate article:after,
+      .home-company-member article:after {
+        clear: both; }
+  .show-dates,
+  .show-times,
+  .show-venue,
+  .show-cost {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 50%;
+    float: left;
+    text-align: center; }
+  .show-main {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 100%;
+    float: left; } }
 
 @media only screen and (min-width: 40.0625em) and (max-width: 60em) {
   .current-news, .current-calendar, .home-membership, .current-media, .home-donate, .home-company-member {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 50%;
+    float: left; }
+  .show-main {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 58.33333%;
     float: left; } }
 
 @media only screen and (min-width: 60.0625em) {
@@ -2981,7 +3030,11 @@ body {
     padding-right: 0.75rem;
     width: 41.66667%;
     float: left; }
-  .current-news {
+  .current-news,
+  .show-dates,
+  .show-times,
+  .show-venue,
+  .show-cost {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 25%;
@@ -2997,7 +3050,12 @@ body {
     width: 25%;
     float: left; }
   .current-shows article, .current-news article, .current-calendar article {
-    min-height: 28.125rem; } }
+    min-height: 28.125rem; }
+  .show-main {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 66.66667%;
+    float: left; } }
 
 .home-slider-controls {
   position: absolute;
@@ -3117,6 +3175,12 @@ body {
       top: 0;
       width: 100%;
       left: 0; }
+
+.show-main .playwright, .show-main .director {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  width: 50%;
+  float: left; }
 
 .tr-calendar {
   position: relative; }
