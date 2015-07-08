@@ -29,7 +29,7 @@ $h6-font-reduction: 0;
 // These control how subheaders are styled.
 $subheader-line-height: 1.4;
 $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
-$subheader-font-weight: $font-weight-thin;
+$subheader-font-weight: $font-weight-light;
 $subheader-top-margin: rem-calc(2);
 $subheader-bottom-margin: rem-calc(5);
 

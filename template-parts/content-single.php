@@ -12,7 +12,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php third_rail_posted_on(); ?>
+			<?php third_rail_entry_meta(); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 

@@ -40,7 +40,7 @@ get_header(); ?>
   		    'meta_query' 	   => array( 
   		      array(
   		        'key'   	   => '_wp_page_template', 
-  		        'value' 	   => array('templates/page-show-mainstage.php', 'templates/page-show-ntlive.php')
+  		        'value' 	   => array('templates/page-show.php')
   		      )
   		    )
   			);
@@ -67,8 +67,17 @@ get_header(); ?>
 			<h2 class="section-title">News</h2>
 			<?php
 			$args = array(
-		    'post_type'  	=> 'post',
-		    'post_status' => 'publish'
+		    'post_type'  	   => 'post',
+  		  'posts_per_page' => '1',
+		    'post_status'    => 'publish',
+		    'tax_query'      => array(
+      		'relation'     => 'OR',
+      		array(
+      			'taxonomy'   => 'category',
+      			'field'      => 'slug',
+      			'terms'      => array( 'this-month', 'this-week' ),
+      		),
+      	),
 			);
 			
 			$query = new WP_Query( $args );

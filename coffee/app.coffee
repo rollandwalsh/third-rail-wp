@@ -65,15 +65,21 @@ printMonth = (date) -> # prints calendar months as tables
 	ds = ('<td class="day" id="' + y + (if m<10 then '0' + m else m) + (if d<10 then '0' + d else d) + '">' + d + '</td>' for d in [1..dCount]) # td days based on dCount
 	tds = blankDs.concat ds # concatanated tds
 	
-	trs = '<tr class="week">' # start first week table row
+	trs = ''
 	i = 0
 	while i < tds.length # itereate over tds
-	  if i%7 == 0 or !i == 0 # if beginning of a week except the first day
-	    trs += '</tr><tr class="week">' + tds[i] # close week / open new week
+	  if i%7 == 0 # if beginning of a week except the first day
+	    trs += '</tr>*<tr class="week">' + tds[i] # close week / open new week
     else
       trs += tds[i] # add data
     i++
-  trs += '</tr>' # end final week
+  trs = trs.split('*') # create array of weeks
+  trs.shift() # remove the first </tr> item in array
+  lastTr = trs.pop() # remove last week from array
+  lastTr += Array(8 - (lastTr.match(/<\/td>/g) || []).length).join('<td></td>')
+  lastTr += '</tr>' # close final week tag
+  trs.push lastTr
+  trs = trs.join ''
 	  
 	caption = '<caption>' + mName + ' ' + y + '</caption>' # table caption
 	tHead = '<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>' # table head
@@ -101,8 +107,9 @@ createLinks = (data) -> # create links based off of event instances
           status: instance.saleStatus
           url: instance.purchaseUrl
           date: instance.formattedDates.YYYYMMDD
-          name: events[instance.eventId]
-          time: timeStamp(instance.formattedDates.ISO8601)
+          day: dayStamp instance.formattedDates.ISO8601
+          name: stripNTLive events[instance.eventId]
+          time: timeStamp instance.formattedDates.ISO8601
       )
     else
       date.addClass('has-event').data(
@@ -111,8 +118,9 @@ createLinks = (data) -> # create links based off of event instances
           status: instance.saleStatus
           url: instance.purchaseUrl
           date: instance.formattedDates.LONG_MONTH_DAY_YEAR
-          name: events[instance.eventId]
-          time: timeStamp(instance.formattedDates.ISO8601)
+          day: dayStamp instance.formattedDates.ISO8601
+          name: stripNTLive events[instance.eventId]
+          time: timeStamp instance.formattedDates.ISO8601
       )
   
   $('.has-event').on 'click', ->
@@ -121,11 +129,12 @@ createLinks = (data) -> # create links based off of event instances
 
 buttonPrint = (date) -> # print buttons for date on calendar
   data = $(date).data('1')
-  $('#calendarDisplay').html '<h3>' + data.date + '</h3><a href="' + data.url + '" class="button buy">' + data.name + ' - ' + data.time + '</a>'
+  $('#calendarDisplay').html '<h3>' + data.day + ' - <span class="subheader">' + data.date + '</span></h3><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
   if $(date).data('2')
-    $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy">' + data.name + ' - ' + data.time + '</a>'
+    data = $(date).data('2')
+    $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
     
-timeStamp = (input) -> # return a nicely formated time based on a date | TODO: move out of calendar js
+timeStamp = (input) -> # return a nicely formated time based on a date
   date = new Date(input)
   time = [
     date.getHours()
@@ -140,6 +149,14 @@ timeStamp = (input) -> # return a nicely formated time based on a date | TODO: m
       time[i] = '0' + time[i]
     i++
   time.join(':') + ' ' + suffix
+
+dayStamp = (input) -> # return day of week based on date
+  date = new Date(input)
+  weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  day = weekdays[date.getDay()]
+  
+stripNTLive = (input) -> # remove nt live prefix from Patron Manager event name
+  name = input.replace('NT LIVE: ', '').replace('NT LIVE Encore: ', '')
 
 $ -> # on page load, print calendar
   getEvents(api, createMonths)

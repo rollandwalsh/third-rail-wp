@@ -482,7 +482,7 @@ h6 {
 .subheader {
   line-height: 1.4;
   color: #6f6f6f;
-  font-weight: 100;
+  font-weight: 300;
   margin-top: 0.125rem;
   margin-bottom: 0.3125rem; }
 
@@ -2687,19 +2687,18 @@ label.error {
   color: #CD3627; }
 
 table {
-  background: #FAFAFA;
-  border: none 0 #FFFFFF;
+  background: #FFFFFF;
+  border: solid 1px #eaeaea;
   margin-bottom: 0.5rem;
   table-layout: auto; }
   table caption {
-    background: #FAFAFA;
+    background: #FFFFFF;
     color: #222222;
     font-size: 1rem;
     font-weight: bold;
-    padding: 0.25rem;
     text-transform: uppercase; }
   table thead {
-    background: #FAFAFA; }
+    background: whitesmoke; }
     table thead tr th,
     table thead tr td {
       color: #222222;
@@ -2707,7 +2706,7 @@ table {
       font-weight: 900;
       padding: 0.5rem 0.125rem; }
   table tfoot {
-    background: #FAFAFA; }
+    background: whitesmoke; }
     table tfoot tr th,
     table tfoot tr td {
       color: #222222;
@@ -3122,7 +3121,7 @@ body {
     font-size: 0.75rem;
     position: absolute;
     text-transform: uppercase;
-    top: 0.875rem;
+    top: 0.5rem;
     z-index: 1; }
     .tr-calendar .calendar-nav#calendarNavPrev {
       left: 0.875rem; }

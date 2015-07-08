@@ -1,4 +1,4 @@
-var api, buttonPrint, cal, createLinks, createMonths, getEvents, printMonth, timeStamp;
+var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvents, printMonth, stripNTLive, timeStamp;
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
 
@@ -72,7 +72,7 @@ createMonths = function(data) {
 };
 
 printMonth = function(date) {
-  var blank, blankDs, caption, d, dCount, dofW, ds, i, m, mName, mNames, tBody, tHead, table, tds, trs, y;
+  var blank, blankDs, caption, d, dCount, dofW, ds, i, lastTr, m, mName, mNames, tBody, tHead, table, tds, trs, y;
   mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   m = date.getMonth();
   mName = mNames[m];
@@ -97,17 +97,23 @@ printMonth = function(date) {
     return results;
   })();
   tds = blankDs.concat(ds);
-  trs = '<tr class="week">';
+  trs = '';
   i = 0;
   while (i < tds.length) {
-    if (i % 7 === 0 || !i === 0) {
-      trs += '</tr><tr class="week">' + tds[i];
+    if (i % 7 === 0) {
+      trs += '</tr>*<tr class="week">' + tds[i];
     } else {
       trs += tds[i];
     }
     i++;
   }
-  trs += '</tr>';
+  trs = trs.split('*');
+  trs.shift();
+  lastTr = trs.pop();
+  lastTr += Array(8 - (lastTr.match(/<\/td>/g) || []).length).join('<td></td>');
+  lastTr += '</tr>';
+  trs.push(lastTr);
+  trs = trs.join('');
   caption = '<caption>' + mName + ' ' + y + '</caption>';
   tHead = '<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>';
   tBody = '<tbody>' + trs + '</tbody>';
@@ -143,7 +149,8 @@ createLinks = function(data) {
         status: instance.saleStatus,
         url: instance.purchaseUrl,
         date: instance.formattedDates.YYYYMMDD,
-        name: events[instance.eventId],
+        day: dayStamp(instance.formattedDates.ISO8601),
+        name: stripNTLive(events[instance.eventId]),
         time: timeStamp(instance.formattedDates.ISO8601)
       });
     } else {
@@ -152,7 +159,8 @@ createLinks = function(data) {
         status: instance.saleStatus,
         url: instance.purchaseUrl,
         date: instance.formattedDates.LONG_MONTH_DAY_YEAR,
-        name: events[instance.eventId],
+        day: dayStamp(instance.formattedDates.ISO8601),
+        name: stripNTLive(events[instance.eventId]),
         time: timeStamp(instance.formattedDates.ISO8601)
       });
     }
@@ -166,9 +174,10 @@ createLinks = function(data) {
 buttonPrint = function(date) {
   var data;
   data = $(date).data('1');
-  $('#calendarDisplay').html('<h3>' + data.date + '</h3><a href="' + data.url + '" class="button buy">' + data.name + ' - ' + data.time + '</a>');
+  $('#calendarDisplay').html('<h3>' + data.day + ' - <span class="subheader">' + data.date + '</span></h3><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>');
   if ($(date).data('2')) {
-    return $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button buy">' + data.name + ' - ' + data.time + '</a>');
+    data = $(date).data('2');
+    return $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>');
   }
 };
 
@@ -187,6 +196,18 @@ timeStamp = function(input) {
     i++;
   }
   return time.join(':') + ' ' + suffix;
+};
+
+dayStamp = function(input) {
+  var date, day, weekdays;
+  date = new Date(input);
+  weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  return day = weekdays[date.getDay()];
+};
+
+stripNTLive = function(input) {
+  var name;
+  return name = input.replace('NT LIVE: ', '').replace('NT LIVE Encore: ', '');
 };
 
 $(function() {
