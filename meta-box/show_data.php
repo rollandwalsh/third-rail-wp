@@ -1,8 +1,8 @@
 <?php
 
-add_filter( 'rwmb_meta_boxes', 'your_prefix_register_meta_boxes' );
+add_filter( 'rwmb_meta_boxes', 'third_rail_show_data' );
 
-function your_prefix_register_meta_boxes( $meta_boxes )
+function third_rail_show_data( $meta_boxes )
 {
 
 	// 1st meta box
@@ -111,5 +111,3 @@ function your_prefix_register_meta_boxes( $meta_boxes )
 
 	return $meta_boxes;
 }
-
-

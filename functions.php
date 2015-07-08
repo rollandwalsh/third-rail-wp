@@ -38,3 +38,5 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 require get_template_directory() . '/meta-box/show_data.php';
+
+require get_template_directory() . '/meta-box/parent_show.php';
