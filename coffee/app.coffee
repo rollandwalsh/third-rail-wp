@@ -129,7 +129,7 @@ createLinks = (data) -> # create links based off of event instances
 
 buttonPrint = (date) -> # print buttons for date on calendar
   data = $(date).data('1')
-  $('#calendarDisplay').html '<h3>' + data.day + ' - <span class="subheader">' + data.date + '</span></h3><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
+  $('#calendarDisplay').html '<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
   if $(date).data('2')
     data = $(date).data('2')
     $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'

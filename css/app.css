@@ -1870,7 +1870,7 @@ button, .button {
   font-family: "Lato", Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.625rem;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -1881,18 +1881,18 @@ button, .button {
   border-color: #bb5e00;
   box-shadow: 0 4px #bb5e00;
   color: #FFFFFF;
-  -webkit-transition: all 300ms ease-out;
-          transition: all 300ms ease-out; }
+  -webkit-transition: background-color 300ms ease-out;
+          transition: background-color 300ms ease-out; }
   button:hover,
   button:focus, .button:hover,
   .button:focus {
     background-color: #bb5e00;
     box-shadow: 0 4px #964c00; }
   button:active, .button:active {
-    box-shadow: 0 3px #964c00;
-    -webkit-transform: translateY(1px);
-        -ms-transform: translateY(1px);
-            transform: translateY(1px); }
+    box-shadow: 0 2px #964c00;
+    -webkit-transform: translateY(2px);
+        -ms-transform: translateY(2px);
+            transform: translateY(2px); }
   button:hover,
   button:focus, .button:hover,
   .button:focus {
@@ -1908,10 +1908,10 @@ button, .button {
       background-color: #77401b;
       box-shadow: 0 4px #5f3316; }
     button.secondary:active, .button.secondary:active {
-      box-shadow: 0 3px #5f3316;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #5f3316;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     button.secondary:hover,
     button.secondary:focus, .button.secondary:hover,
     .button.secondary:focus {
@@ -1927,10 +1927,10 @@ button, .button {
       background-color: #328d3a;
       box-shadow: 0 4px #28712f; }
     button.success:active, .button.success:active {
-      box-shadow: 0 3px #28712f;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #28712f;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     button.success:hover,
     button.success:focus, .button.success:hover,
     .button.success:focus {
@@ -1946,10 +1946,10 @@ button, .button {
       background-color: #a42b1f;
       box-shadow: 0 4px #832319; }
     button.alert:active, .button.alert:active {
-      box-shadow: 0 3px #832319;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #832319;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     button.alert:hover,
     button.alert:focus, .button.alert:hover,
     .button.alert:focus {
@@ -1965,10 +1965,10 @@ button, .button {
       background-color: #d09d05;
       box-shadow: 0 4px #a77e04; }
     button.warning:active, .button.warning:active {
-      box-shadow: 0 3px #a77e04;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #a77e04;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     button.warning:hover,
     button.warning:focus, .button.warning:hover,
     .button.warning:focus {
@@ -1984,10 +1984,10 @@ button, .button {
       background-color: #446f96;
       box-shadow: 0 4px #375878; }
     button.info:active, .button.info:active {
-      box-shadow: 0 3px #375878;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #375878;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     button.info:hover,
     button.info:focus, .button.info:hover,
     .button.info:focus {
@@ -2003,10 +2003,10 @@ button, .button {
       background-color: #328d3a;
       box-shadow: 0 4px #28712f; }
     button.buy:active, .button.buy:active {
-      box-shadow: 0 3px #28712f;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #28712f;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     button.buy:hover,
     button.buy:focus, .button.buy:hover,
     .button.buy:focus {
@@ -2056,10 +2056,10 @@ button, .button {
       background-color: #bb5e00;
       box-shadow: 0 4px #964c00; }
     button.disabled:active, button[disabled]:active, .button.disabled:active, .button[disabled]:active {
-      box-shadow: 0 3px #964c00;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #964c00;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     button.disabled:hover,
     button.disabled:focus, button[disabled]:hover,
     button[disabled]:focus, .button.disabled:hover,
@@ -2088,10 +2088,10 @@ button, .button {
         background-color: #77401b;
         box-shadow: 0 4px #5f3316; }
       button.disabled.secondary:active, button[disabled].secondary:active, .button.disabled.secondary:active, .button[disabled].secondary:active {
-        box-shadow: 0 3px #5f3316;
-        -webkit-transform: translateY(1px);
-            -ms-transform: translateY(1px);
-                transform: translateY(1px); }
+        box-shadow: 0 2px #5f3316;
+        -webkit-transform: translateY(2px);
+            -ms-transform: translateY(2px);
+                transform: translateY(2px); }
       button.disabled.secondary:hover,
       button.disabled.secondary:focus, button[disabled].secondary:hover,
       button[disabled].secondary:focus, .button.disabled.secondary:hover,
@@ -2120,10 +2120,10 @@ button, .button {
         background-color: #328d3a;
         box-shadow: 0 4px #28712f; }
       button.disabled.success:active, button[disabled].success:active, .button.disabled.success:active, .button[disabled].success:active {
-        box-shadow: 0 3px #28712f;
-        -webkit-transform: translateY(1px);
-            -ms-transform: translateY(1px);
-                transform: translateY(1px); }
+        box-shadow: 0 2px #28712f;
+        -webkit-transform: translateY(2px);
+            -ms-transform: translateY(2px);
+                transform: translateY(2px); }
       button.disabled.success:hover,
       button.disabled.success:focus, button[disabled].success:hover,
       button[disabled].success:focus, .button.disabled.success:hover,
@@ -2152,10 +2152,10 @@ button, .button {
         background-color: #a42b1f;
         box-shadow: 0 4px #832319; }
       button.disabled.alert:active, button[disabled].alert:active, .button.disabled.alert:active, .button[disabled].alert:active {
-        box-shadow: 0 3px #832319;
-        -webkit-transform: translateY(1px);
-            -ms-transform: translateY(1px);
-                transform: translateY(1px); }
+        box-shadow: 0 2px #832319;
+        -webkit-transform: translateY(2px);
+            -ms-transform: translateY(2px);
+                transform: translateY(2px); }
       button.disabled.alert:hover,
       button.disabled.alert:focus, button[disabled].alert:hover,
       button[disabled].alert:focus, .button.disabled.alert:hover,
@@ -2184,10 +2184,10 @@ button, .button {
         background-color: #d09d05;
         box-shadow: 0 4px #a77e04; }
       button.disabled.warning:active, button[disabled].warning:active, .button.disabled.warning:active, .button[disabled].warning:active {
-        box-shadow: 0 3px #a77e04;
-        -webkit-transform: translateY(1px);
-            -ms-transform: translateY(1px);
-                transform: translateY(1px); }
+        box-shadow: 0 2px #a77e04;
+        -webkit-transform: translateY(2px);
+            -ms-transform: translateY(2px);
+                transform: translateY(2px); }
       button.disabled.warning:hover,
       button.disabled.warning:focus, button[disabled].warning:hover,
       button[disabled].warning:focus, .button.disabled.warning:hover,
@@ -2216,10 +2216,10 @@ button, .button {
         background-color: #446f96;
         box-shadow: 0 4px #375878; }
       button.disabled.info:active, button[disabled].info:active, .button.disabled.info:active, .button[disabled].info:active {
-        box-shadow: 0 3px #375878;
-        -webkit-transform: translateY(1px);
-            -ms-transform: translateY(1px);
-                transform: translateY(1px); }
+        box-shadow: 0 2px #375878;
+        -webkit-transform: translateY(2px);
+            -ms-transform: translateY(2px);
+                transform: translateY(2px); }
       button.disabled.info:hover,
       button.disabled.info:focus, button[disabled].info:hover,
       button[disabled].info:focus, .button.disabled.info:hover,
@@ -2248,10 +2248,10 @@ button, .button {
         background-color: #328d3a;
         box-shadow: 0 4px #28712f; }
       button.disabled.buy:active, button[disabled].buy:active, .button.disabled.buy:active, .button[disabled].buy:active {
-        box-shadow: 0 3px #28712f;
-        -webkit-transform: translateY(1px);
-            -ms-transform: translateY(1px);
-                transform: translateY(1px); }
+        box-shadow: 0 2px #28712f;
+        -webkit-transform: translateY(2px);
+            -ms-transform: translateY(2px);
+                transform: translateY(2px); }
       button.disabled.buy:hover,
       button.disabled.buy:focus, button[disabled].buy:hover,
       button[disabled].buy:focus, .button.disabled.buy:hover,
@@ -2896,37 +2896,37 @@ body {
   .page-header .graphic-section #thirdRailMembership .lightning-bolt {
     fill: #EA7600; }
   .page-header .graphic-section #thirdRailMembership .membership, .page-header .graphic-section #thirdRailMembership .lightning-bolt {
-    -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out; }
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out; }
   .page-header .graphic-section #ntLive .national, .page-header .graphic-section #ntLive .theatre {
     fill: #FFFFFF; }
   .page-header .graphic-section #ntLive .live {
     fill: url(#gradient); }
   .page-header .graphic-section #ntLive #gradient stop {
     stop-color: #FFFFFF;
-    -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out; }
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out; }
   .page-header .graphic-section #or .feather, .page-header .graphic-section #or .hilt {
     fill: #FFFFFF; }
   .page-header .graphic-section #or .blade {
     fill: #EA7600; }
   .page-header .graphic-section #or .feather, .page-header .graphic-section #or .sword {
-    -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out; }
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out; }
   .page-header .graphic-section #mrKolpert .head, .page-header .graphic-section #mrKolpert .banana, .page-header .graphic-section #mrKolpert .cliff {
     fill: #FFFFFF; }
   .page-header .graphic-section #mrKolpert .man {
     fill: #EA7600; }
   .page-header .graphic-section #mrKolpert .man, .page-header .graphic-section #mrKolpert .banana {
-    -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out; }
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out; }
   .page-header .graphic-section #theNewElectricBallroom .shoe-inside, .page-header .graphic-section #theNewElectricBallroom .heel, .page-header .graphic-section #theNewElectricBallroom .shadow {
     fill: #FFFFFF; }
   .page-header .graphic-section #theNewElectricBallroom .shoe-outside {
     fill: #EA7600; }
   .page-header .graphic-section #theNewElectricBallroom .shoe {
-    -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out; }
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out; }
 
 .page-home-banner, .page-content-area, .page-home-secondary {
   padding: 1.5rem 0;
@@ -2935,15 +2935,6 @@ body {
     content: " ";
     display: table; }
   .page-home-banner:after, .page-content-area:after, .page-home-secondary:after {
-    clear: both; }
-
-.page-home-banner article, .page-home-secondary article {
-  background-color: #FFFFFF;
-  padding: 0.375rem; }
-  .page-home-banner article:before, .page-home-banner article:after, .page-home-secondary article:before, .page-home-secondary article:after {
-    content: " ";
-    display: table; }
-  .page-home-banner article:after, .page-home-secondary article:after {
     clear: both; }
 
 .page-home-banner {
@@ -2967,7 +2958,15 @@ body {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 100%;
-    float: left; } }
+    float: left; }
+    .current-shows article, .current-news article, .current-calendar article, .home-membership article, .current-media article, .home-donate article, .home-company-member article {
+      background-color: #FFFFFF;
+      padding: 0.375rem; }
+      .current-shows article:before, .current-shows article:after, .current-news article:before, .current-news article:after, .current-calendar article:before, .current-calendar article:after, .home-membership article:before, .home-membership article:after, .current-media article:before, .current-media article:after, .home-donate article:before, .home-donate article:after, .home-company-member article:before, .home-company-member article:after {
+        content: " ";
+        display: table; }
+      .current-shows article:after, .current-news article:after, .current-calendar article:after, .home-membership article:after, .current-media article:after, .home-donate article:after, .home-company-member article:after {
+        clear: both; } }
 
 @media only screen and (min-width: 40.0625em) and (max-width: 60em) {
   .current-news, .current-calendar, .home-membership, .current-media, .home-donate, .home-company-member {
@@ -2996,7 +2995,9 @@ body {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 25%;
-    float: left; } }
+    float: left; }
+  .current-shows article, .current-news article, .current-calendar article {
+    min-height: 28.125rem; } }
 
 .home-slider-controls {
   position: absolute;
@@ -3005,8 +3006,8 @@ body {
   .home-slider-controls i {
     cursor: pointer;
     padding: 0.125rem 0.25rem;
-    -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out; }
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out; }
 
 .current-shows {
   position: relative; }
@@ -3027,7 +3028,7 @@ body {
     font-family: "Lato", Arial, sans-serif;
     font-weight: normal;
     line-height: normal;
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.625rem;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -3047,10 +3048,10 @@ body {
       background-color: #328d3a;
       box-shadow: 0 4px #28712f; }
     .current-shows .entry-header .buy-link:active {
-      box-shadow: 0 3px #28712f;
-      -webkit-transform: translateY(1px);
-          -ms-transform: translateY(1px);
-              transform: translateY(1px); }
+      box-shadow: 0 2px #28712f;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
     .current-shows .entry-header .buy-link:hover,
     .current-shows .entry-header .buy-link:focus {
       color: #FFFFFF; }
@@ -3061,8 +3062,8 @@ body {
     float: right;
     max-width: 60%;
     margin: 0 0 0.25rem 0.5rem;
-    -webkit-transition: all 300ms ease-in-out;
-            transition: all 300ms ease-in-out; }
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out; }
     .current-shows .thumbnail-link:hover {
       box-shadow: 0 0 6px 1px rgba(234, 118, 0, 0.5); }
 
@@ -3088,6 +3089,11 @@ body {
     display: inline-block;
     font-weight: 300;
     padding: 0 0.375rem; }
+
+.current-news .entry-summary {
+  margin-bottom: 0.25rem;
+  max-height: 19.375rem;
+  overflow: scroll; }
 
 .current-media {
   position: relative; }
@@ -3142,8 +3148,8 @@ body {
         color: #EA7600;
         cursor: pointer;
         font-weight: 900;
-        -webkit-transition: all 300ms ease-in-out;
-                transition: all 300ms ease-in-out; }
+        -webkit-transition: all 300ms ease-out;
+                transition: all 300ms ease-out; }
         .tr-calendar .month .day.has-event:hover {
           background-color: #EA7600;
           color: #FFFFFF; }

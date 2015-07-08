@@ -174,7 +174,7 @@ createLinks = function(data) {
 buttonPrint = function(date) {
   var data;
   data = $(date).data('1');
-  $('#calendarDisplay').html('<h3>' + data.day + ' - <span class="subheader">' + data.date + '</span></h3><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>');
+  $('#calendarDisplay').html('<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>');
   if ($(date).data('2')) {
     data = $(date).data('2');
     return $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>');

@@ -6,7 +6,7 @@ $button-lrg: rem-calc(18);
 
 // Display
 $button-display: inline-block;
-$button-margin-bottom: rem-calc(12);
+$button-margin-bottom: rem-calc(10);
 
 // Text
 $button-font-family: $body-font-family;
@@ -156,8 +156,8 @@ $button-disabled-cursor: default;
     }
     
     &:active {
-      box-shadow: 0 3px scale-color($bg-hover, $lightness: $button-function-factor);
-      transform: translateY(1px);
+      box-shadow: 0 2px scale-color($bg-hover, $lightness: $button-function-factor);
+      transform: translateY(2px);
     }
 
     // We control the text color for you based on the background color.
@@ -215,7 +215,7 @@ $button-disabled-cursor: default;
     @include button-size;
     @include button-style;
 
-    @include single-transition(all);
+    @include single-transition(background-color);
 
     &.secondary { @include button-style($bg:$brown, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color); }
     &.success   { @include button-style($bg:$green, $bg-hover:$success-button-bg-hover, $border-color:$success-button-border-color); }
