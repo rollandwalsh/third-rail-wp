@@ -292,6 +292,13 @@ figcaption {
 .alignright {
   float: right; }
 
+@media only screen and (max-width: 40em) {
+  .alignleft,
+  .alignright {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; } }
+
 .aligncenter {
   display: block;
   margin-left: auto;
@@ -3147,16 +3154,7 @@ body {
     .current-shows .entry-header .buy-link:focus {
       color: #FFFFFF; }
   .current-shows .thumbnail-link {
-    border: 0.25rem solid #FFFFFF;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    float: right;
-    max-width: 60%;
-    margin: 0 0 0.25rem 0.5rem;
-    -webkit-transition: all 300ms ease-out;
-            transition: all 300ms ease-out; }
-    .current-shows .thumbnail-link:hover {
-      box-shadow: 0 0 6px 1px rgba(234, 118, 0, 0.5); }
+    max-width: 60%; }
 
 .current-news .post-category {
   position: relative;
@@ -3214,6 +3212,18 @@ body {
   padding-right: 0.75rem;
   width: 50%;
   float: left; }
+
+.thumbnail-link {
+  border: 0.25rem solid #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  float: right;
+  max-width: 60%;
+  margin: 0 0 0.25rem 0.5rem;
+  -webkit-transition: all 300ms ease-out;
+          transition: all 300ms ease-out; }
+  .thumbnail-link:hover {
+    box-shadow: 0 0 6px 1px rgba(234, 118, 0, 0.5); }
 
 .tr-calendar {
   position: relative; }

@@ -194,6 +194,15 @@ figcaption {
 	float: right;
 }
 
+@media #{$small-only} {
+  .alignleft,
+  .alignright {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .aligncenter {
 	display: block;
 	margin-left: auto;

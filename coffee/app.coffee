@@ -100,7 +100,18 @@ createLinks = (data) -> # create links based off of event instances
 
   for instance in instances # loops through instances to get dates to link to | TODO: illimnate duplicate code
     date = $('#' + instance.formattedDates.YYYYMMDD)
-    if date.data('1')
+    if date.data('2')
+      date.addClass('has-event').data(
+        '3'
+          sold: instance.soldOut
+          status: instance.saleStatus
+          url: instance.purchaseUrl
+          date: instance.formattedDates.YYYYMMDD
+          day: dayStamp instance.formattedDates.ISO8601
+          name: stripNTLive events[instance.eventId]
+          time: timeStamp instance.formattedDates.ISO8601
+      )
+    else if date.data('1')
       date.addClass('has-event').data(
         '2'
           sold: instance.soldOut
@@ -132,6 +143,9 @@ buttonPrint = (date) -> # print buttons for date on calendar
   $('#calendarDisplay').html '<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
   if $(date).data('2')
     data = $(date).data('2')
+    $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
+  if $(date).data('3')
+    data = $(date).data('3')
     $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
     
 timeStamp = (input) -> # return a nicely formated time based on a date

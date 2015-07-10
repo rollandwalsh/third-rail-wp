@@ -193,16 +193,7 @@
 		}
 	}
 	.thumbnail-link {
-		border: rem-calc(4) solid $white;
-		box-shadow: 0 0 0 1px rgba($black, 0.2);
-		display: inline-block;
-		float: right;
 		max-width: 60%;
-		margin: rem-calc(0 0 4 8);
-		@include single-transition(all);
-		&:hover {
-			box-shadow: 0 0 6px 1px rgba($orange, 0.5);
-		}
 	}
 }
 
@@ -245,4 +236,17 @@
 
 .show-main {
   .playwright, .director {@include grid-column(6)}
+}
+
+.thumbnail-link {
+	border: rem-calc(4) solid $white;
+	box-shadow: 0 0 0 1px rgba($black, 0.2);
+	display: inline-block;
+	float: right;
+	max-width: 60%;
+	margin: rem-calc(0 0 4 8);
+	@include single-transition(all);
+	&:hover {
+		box-shadow: 0 0 6px 1px rgba($orange, 0.5);
+	}
 }
