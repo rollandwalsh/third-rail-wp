@@ -2857,16 +2857,8 @@ body {
   border-width: 0.5rem 0;
   width: 100%; }
   @media only screen and (max-width: 40em) {
-    .page-header .info-section {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-      width: 100%;
-      float: left; }
-    .page-header .graphic-section {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-      width: 100%;
-      float: left; } }
+    .page-header #svgHeader {
+      display: none; } }
   @media only screen and (min-width: 40.0625em) and (max-width: 60em) {
     .page-header .info-section {
       padding-left: 0.75rem;
@@ -3216,10 +3208,6 @@ body {
 .thumbnail-link {
   border: 0.25rem solid #FFFFFF;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
-  display: inline-block;
-  float: right;
-  max-width: 60%;
-  margin: 0 0 0.25rem 0.5rem;
   -webkit-transition: all 300ms ease-out;
           transition: all 300ms ease-out; }
   .thumbnail-link:hover {

@@ -5,8 +5,7 @@
 	border-width: rem-calc(8 0);
 	width: 100%;
 	@media #{$small-only} {
-		.info-section {@include grid-column(12)}
-		.graphic-section {@include grid-column(12)}
+		#svgHeader {display: none}
 	}
 	@media #{$medium-only} {
 		.info-section {@include grid-column(4)}
@@ -241,10 +240,6 @@
 .thumbnail-link {
 	border: rem-calc(4) solid $white;
 	box-shadow: 0 0 0 1px rgba($black, 0.2);
-	display: inline-block;
-	float: right;
-	max-width: 60%;
-	margin: rem-calc(0 0 4 8);
 	@include single-transition(all);
 	&:hover {
 		box-shadow: 0 0 6px 1px rgba($orange, 0.5);

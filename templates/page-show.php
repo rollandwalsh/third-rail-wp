@@ -99,12 +99,18 @@ get_header(); ?>
 	
 	<section class="page-banner">
 	  <div class="show-dates">
-	    <?php if ( !null == $opening_date && !null == $closing_date ) { ?><h3><?php echo date( 'M n', strtotime( $opening_date ) ); ?> - <?php echo date( 'M n', strtotime( $closing_date ) ); ?></h3>
-	    <h6 class="subheader"><?php if ( date( 'Y', strtotime( $opening_date ) ) == date( 'Y', strtotime( $closing_date ) ) ) { 
+	    <?php if ( !null == $opening_date && !null == $closing_date ) { ?>
+        <h3><?php if ( $opening_date == $closing_date ) { 
+                    echo date( 'F t', strtotime( $opening_date ) );
+                  } else {
+                    echo date( 'M t', strtotime( $opening_date ) ) . ' - ' . date( 'M t', strtotime( $closing_date ) );
+                  } ?></h3>
+        <h6 class="subheader"><?php if ( date( 'Y', strtotime( $opening_date ) ) == date( 'Y', strtotime( $closing_date ) ) ) { 
   	                                echo date( 'Y', strtotime( $opening_date ) ); 
   	                              } else { 
     	                              echo date( 'Y', strtotime( $opening_date ) ) . ' - ' . date( 'Y', strtotime( $closing_date ) );
-    	                            } ?></h6><?php } ?>
+    	                            } ?></h6>
+      <?php } ?>
 	  </div>
 	  <div class="show-times">
 	    <?php if ( !null == $show_times ) { ?><h3><?php echo $show_times; ?></h3><?php } ?>
