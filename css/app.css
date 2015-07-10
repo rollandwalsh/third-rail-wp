@@ -215,7 +215,9 @@ body {
   line-height: 1.4;
   margin: 0;
   padding: 0;
-  position: relative; }
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; }
 
 a:hover {
   cursor: pointer; }
@@ -274,6 +276,37 @@ select {
 
 #wpadminbar {
   position: fixed !important; }
+
+figure {
+  margin: 0;
+  padding: 0; }
+
+figcaption {
+  margin-bottom: 1.25rem;
+  margin-top: 0.625rem;
+  color: #6f6f6f; }
+
+.alignleft {
+  float: left; }
+
+.alignright {
+  float: right; }
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+blockquote.alignleft,
+img.alignleft {
+  margin: 0.4375rem 1.5rem 0.4375rem 0; }
+
+.wp-caption.alignleft {
+  margin: 0.4375rem 0.875rem 0.4375rem 0; }
+
+blockquote.alignright,
+img.alignright {
+  margin: 0.4375rem 0 0.4375rem 1.5rem; }
 
 .text-left {
   text-align: left !important; }
