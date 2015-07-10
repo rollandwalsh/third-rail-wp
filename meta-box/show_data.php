@@ -76,6 +76,11 @@ function third_rail_show_data( $meta_boxes )
 				'name'  => __( 'Ticket Price', 'tr_' ),
 				'id'    => "ticket_price",
 				'type'  => 'text'
+			),
+			array(
+				'name'  => __( 'Sponsors', 'tr_' ),
+				'id'    => "sponsors",
+				'type'  => 'text'
 			)
 		)
 	);

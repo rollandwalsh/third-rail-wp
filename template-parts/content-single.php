@@ -27,7 +27,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php third_rail_entry_footer(); ?>
+		<?php the_tags(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 
