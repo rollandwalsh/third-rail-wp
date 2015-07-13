@@ -2960,13 +2960,31 @@ body {
     -webkit-transition: all 300ms ease-out;
             transition: all 300ms ease-out; }
 
-.page-banner, .page-home-secondary, .page-content-area {
+.page-banner,
+.page-home-secondary,
+.page-content-area {
   padding: 1.5rem 0;
   width: 100%; }
-  .page-banner:before, .page-banner:after, .page-home-secondary:before, .page-home-secondary:after, .page-content-area:before, .page-content-area:after {
+  .page-banner:before,
+  .page-banner:after,
+  .page-home-secondary:before,
+  .page-home-secondary:after,
+  .page-content-area:before, .page-content-area:after {
     content: " ";
     display: table; }
-  .page-banner:after, .page-home-secondary:after, .page-content-area:after {
+  .page-banner:after,
+  .page-home-secondary:after,
+  .page-content-area:after {
+    clear: both; }
+
+.on-stage-shows {
+  margin: 0 -0.75rem;
+  padding: 0;
+  width: 100%; }
+  .on-stage-shows:before, .on-stage-shows:after {
+    content: " ";
+    display: table; }
+  .on-stage-shows:after {
     clear: both; }
 
 .page-banner {
@@ -3038,56 +3056,68 @@ body {
     width: 50%;
     float: left;
     text-align: center; }
-  .show-main {
+  .show-main,
+  .page-main,
+  .page-main-full {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 100%;
     float: left; } }
 
 @media only screen and (min-width: 40.0625em) and (max-width: 60em) {
-  .current-news, .current-calendar, .home-membership, .current-media, .home-donate, .home-company-member {
+  .current-news,
+  .current-calendar,
+  .home-membership,
+  .current-media,
+  .home-donate,
+  .home-company-member,
+  .on-stage-show-type {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 50%;
     float: left; }
-  .show-main {
+  .show-main,
+  .page-main {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 58.33333%;
     float: left; } }
 
 @media only screen and (min-width: 60.0625em) {
+  .current-news,
+  .current-media,
+  .show-dates,
+  .show-times,
+  .show-venue,
+  .show-cost,
+  .home-membership,
+  .home-donate,
+  .home-company-member {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 25%;
+    float: left; }
+  .current-calendar,
+  .on-stage-show-type {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 33.33333%;
+    float: left; }
   .current-shows {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 41.66667%;
     float: left; }
-  .current-news,
-  .show-dates,
-  .show-times,
-  .show-venue,
-  .show-cost {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    width: 25%;
-    float: left; }
-  .current-calendar {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    width: 33.33333%;
-    float: left; }
-  .home-membership, .current-media, .home-donate, .home-company-member {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    width: 25%;
-    float: left; }
-  .current-shows article, .current-news article, .current-calendar article {
-    min-height: 28.125rem; }
-  .show-main {
+  .show-main,
+  .page-main {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 66.66667%;
-    float: left; } }
+    float: left; }
+  .current-shows article,
+  .current-news article,
+  .current-calendar article {
+    min-height: 28.125rem; } }
 
 .home-slider-controls {
   position: absolute;
