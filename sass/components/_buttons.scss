@@ -42,6 +42,8 @@ $info-button-border-color: $info-button-bg-hover;
 
 $buy-button-bg-hover: scale-color($green, $lightness: $button-function-factor);
 $buy-button-border-color: $buy-button-bg-hover;
+$other-button-bg-hover: scale-color($gray-dark, $lightness: $button-function-factor);
+$other-button-border-color: $other-button-bg-hover;
 
 // Radius
 $button-radius: 1000px;
@@ -224,6 +226,7 @@ $button-disabled-cursor: default;
     &.info      { @include button-style($bg:$blue, $bg-hover:$info-button-bg-hover, $border-color:$info-button-border-color); }
     
     &.buy    { @include button-style($bg:$green, $bg-hover:$buy-button-bg-hover, $border-color:$buy-button-border-color); }
+    &.other    { @include button-style($bg:$gray-dark, $bg-hover:$other-button-bg-hover, $border-color:$other-button-border-color); }
 
     &.large  { @include button-size($padding:$button-lrg); }
     &.small  { @include button-size($padding:$button-sml); }
@@ -249,6 +252,7 @@ $button-disabled-cursor: default;
       &.info { @include button-style($bg:$blue, $disabled:true, $bg-hover:$info-button-bg-hover, $border-color:$info-button-border-color); }
       
       &.buy { @include button-style($bg:$green, $disabled:true, $bg-hover:$buy-button-bg-hover, $border-color:$buy-button-border-color); }
+      &.other { @include button-style($bg:$gray-dark, $disabled:true, $bg-hover:$other-button-bg-hover, $border-color:$other-button-border-color); }
     }
   }
 

@@ -9,7 +9,7 @@ get_header(); ?>
 
   <?php
     $cast = rwmb_meta( 'cast' );
-    $creatives = rwmb_meta( 'creative' );    
+    $creatives = rwmb_meta( 'creatives' );    
     $show_type = rwmb_meta( 'show_type' );
     $opening_date = rwmb_meta( 'opening_date' );
     $closing_date = rwmb_meta( 'closing_date' );
@@ -61,11 +61,15 @@ get_header(); ?>
         $svg = "thirdRailMembership";
     } /* get the svg file based on show type */
 
-    function creative($role, $echo = true, $before = '', $after = '') {
-      $name = '';
-      if ( !null == rwmb_meta( 'creatives' ) ) {
-      	foreach (rwmb_meta( 'creatives' ) as &$creative) {$name = $creative[0] == $role ? $creative[1] : '';}
-      	if ( strlen($name) == 0 )
+    if ( !null == $creatives ) {
+      function role($role, $array, $echo = true, $before = '', $after = '') {
+      	$name = '';
+      	foreach ($array as $entry) {
+        	if ($entry[0] === $role) {
+            $name = $entry[1];
+          }
+        }
+      	if ( $name === '' )
       		return;
         
         $name = $before . $name . $after;
@@ -83,7 +87,7 @@ get_header(); ?>
 				<div class="content">
 				  <hr>
 					<?php the_title( '<h2>', '</h2>' ); ?>
-					<?php if ( !null == creative('Playwright', false) ) { creative('Playwright', true, '<h5>by ', '</h5>'); } ?>
+					<?php if ( !null == role('Playwright', $creatives, false) ) { role('Playwright', $creatives, true, '<h5>by ', '</h5>'); } ?>
 					
 					<?php if ($current_date <= $closing_date && isset($tickets_url) && $tickets_url !== '') { ?>
 					  <a href="<?php echo $tickets_url; ?>" class="button buy large"><i class="fa fa-ticket"></i> Book Now</a>
@@ -101,9 +105,9 @@ get_header(); ?>
 	  <div class="show-dates">
 	    <?php if ( !null == $opening_date && !null == $closing_date ) { ?>
         <h3><?php if ( $opening_date == $closing_date ) { 
-                    echo date( 'F t', strtotime( $opening_date ) );
+                    echo date( 'F j', strtotime( $opening_date ) );
                   } else {
-                    echo date( 'M t', strtotime( $opening_date ) ) . ' - ' . date( 'M t', strtotime( $closing_date ) );
+                    echo date( 'M j', strtotime( $opening_date ) ) . ' - ' . date( 'M j', strtotime( $closing_date ) );
                   } ?></h3>
         <h6 class="subheader"><?php if ( date( 'Y', strtotime( $opening_date ) ) == date( 'Y', strtotime( $closing_date ) ) ) { 
   	                                echo date( 'Y', strtotime( $opening_date ) ); 
@@ -133,28 +137,46 @@ get_header(); ?>
 				<?php get_template_part( 'template-parts/content', 'show' ); ?>
 			<?php endwhile; // End of the loop. ?>
 			
-			<div class="container">
-  			<?php if ( !null == creative('Playwright', false) ) { ?>
+			<?php if ( !null == $run_time ) { ?> <p>Runtime: <strong><?php echo $run_time; ?></strong></p> <?php } ?>
+			
+			<div class="director-playwright">
+  			<?php if ( !null == role('Playwright', $creatives, false) ) { ?>
   			  <div class="playwright">
   			    <h5>Written by</h5>
-  			    <a href="#" class="button expand"><?php echo creative('Playwright'); ?></a>
+  			    <a href="#" class="button expand other"><i class="fa fa-user"></i> <?php role('Playwright', $creatives, true); ?></a>
   			  </div>
         <?php } ?>
   			
-  			<?php if ( !null == creative('Director', false) ) { ?>
+  			<?php if ( !null == role('Director', $creatives, false) ) { ?>
   			  <div class="director">
   			    <h5>Directed by</h5>
-  			    <a href="#" class="button expand"><?php echo creative('Director'); ?></a>
+  			    <a href="#" class="button expand"><i class="fa fa-bolt"></i> <?php role('Director', $creatives, true); ?></a>
   			  </div>
         <?php } ?>
 			</div>
 			
-			<?php if ( !null == $run_time ) { ?> <p><strong><?php echo $run_time; ?></strong></p> <?php } ?>
+			<?php if ( !null == $cast ) { ?>
+  			<h3 class="section-title">Cast</h3>
+  			<div class="show-section">
+    			<?php foreach ($cast as $actor) { ?>
+      			<div class="role-block">
+      			  <img src="<?php ?>">
+      			  <p><a href="#"><i class="fa fa-bolt"></i> <strong><?php echo $actor[1]; ?></strong></a><br><?php echo $actor[0]; ?></p>
+      			</div>
+      		<?php } ?>
+  			</div>
+  		<?php } ?>
 			
-			<h3 class="section-title">Cast</h3>
-			<?php foreach (rwmb_meta( 'creatives' ) as &$creative) echo $creative[0]; ?>
-			
-			<h3 class="section-title">Creative</h3>
+			<?php if ( !null == $creatives ) { ?>
+			  <h3 class="section-title">Creative</h3>
+  			<div class="show-section">
+    			<?php foreach ($creatives as $creative) { ?>
+      			<div class="role-block">
+      			  <p><?php echo $creative[0]; ?><br><a href="#" class="button other"><i class="fa fa-user"></i> <strong><?php echo $creative[1]; ?></strong></a></p>
+      			</div>
+      		<?php } ?>
+        </div>
+      <?php } ?>
 			
 			<h3 class="section-title">Media</h3>
 			

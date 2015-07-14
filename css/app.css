@@ -2051,6 +2051,25 @@ button, .button {
     button.buy:focus, .button.buy:hover,
     .button.buy:focus {
       color: #FFFFFF; }
+  button.other, .button.other {
+    background-color: #555555;
+    border-color: #444444;
+    box-shadow: 0 4px #444444;
+    color: #FFFFFF; }
+    button.other:hover,
+    button.other:focus, .button.other:hover,
+    .button.other:focus {
+      background-color: #444444;
+      box-shadow: 0 4px #363636; }
+    button.other:active, .button.other:active {
+      box-shadow: 0 2px #363636;
+      -webkit-transform: translateY(2px);
+          -ms-transform: translateY(2px);
+              transform: translateY(2px); }
+    button.other:hover,
+    button.other:focus, .button.other:hover,
+    .button.other:focus {
+      color: #FFFFFF; }
   button.large, .button.large {
     padding: 0.875rem 1.125rem 0.75rem 1.125rem;
     font-size: 1.25rem; }
@@ -2304,6 +2323,38 @@ button, .button {
       .button.disabled.buy:focus, .button[disabled].buy:hover,
       .button[disabled].buy:focus {
         background-color: #3EB049; }
+    button.disabled.other, button[disabled].other, .button.disabled.other, .button[disabled].other {
+      background-color: #555555;
+      border-color: #444444;
+      box-shadow: 0 4px #444444;
+      color: #FFFFFF;
+      cursor: default;
+      opacity: 0.7;
+      pointer-events: none; }
+      button.disabled.other:hover,
+      button.disabled.other:focus, button[disabled].other:hover,
+      button[disabled].other:focus, .button.disabled.other:hover,
+      .button.disabled.other:focus, .button[disabled].other:hover,
+      .button[disabled].other:focus {
+        background-color: #444444;
+        box-shadow: 0 4px #363636; }
+      button.disabled.other:active, button[disabled].other:active, .button.disabled.other:active, .button[disabled].other:active {
+        box-shadow: 0 2px #363636;
+        -webkit-transform: translateY(2px);
+            -ms-transform: translateY(2px);
+                transform: translateY(2px); }
+      button.disabled.other:hover,
+      button.disabled.other:focus, button[disabled].other:hover,
+      button[disabled].other:focus, .button.disabled.other:hover,
+      .button.disabled.other:focus, .button[disabled].other:hover,
+      .button[disabled].other:focus {
+        color: #FFFFFF; }
+      button.disabled.other:hover,
+      button.disabled.other:focus, button[disabled].other:hover,
+      button[disabled].other:focus, .button.disabled.other:hover,
+      .button.disabled.other:focus, .button[disabled].other:hover,
+      .button[disabled].other:focus {
+        background-color: #555555; }
 
 button::-moz-focus-inner {
   border: 0;
@@ -2977,14 +3028,21 @@ body {
   .page-content-area:after {
     clear: both; }
 
-.on-stage-shows {
+.on-stage-shows,
+.director-playwright,
+.show-section {
   margin: 0 -0.75rem;
-  padding: 0;
-  width: 100%; }
-  .on-stage-shows:before, .on-stage-shows:after {
+  padding: 0; }
+  .on-stage-shows:before,
+  .on-stage-shows:after,
+  .director-playwright:before,
+  .director-playwright:after,
+  .show-section:before, .show-section:after {
     content: " ";
     display: table; }
-  .on-stage-shows:after {
+  .on-stage-shows:after,
+  .director-playwright:after,
+  .show-section:after {
     clear: both; }
 
 .page-banner {
@@ -3056,6 +3114,11 @@ body {
     width: 50%;
     float: left;
     text-align: center; }
+  .role-block {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 50%;
+    float: left; }
   .show-main,
   .page-main,
   .page-main-full {
@@ -3065,6 +3128,11 @@ body {
     float: left; } }
 
 @media only screen and (min-width: 40.0625em) and (max-width: 60em) {
+  .role-block {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 33.33333%;
+    float: left; }
   .current-news,
   .current-calendar,
   .home-membership,
@@ -3092,7 +3160,8 @@ body {
   .show-cost,
   .home-membership,
   .home-donate,
-  .home-company-member {
+  .home-company-member,
+  .role-block {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 25%;

@@ -93,10 +93,11 @@
 	@include clearfix();
 }
 
-.on-stage-shows {
+.on-stage-shows,
+.director-playwright,
+.show-section {
   margin: rem-calc(0 -12);
   padding: rem-calc(0);
-  width: 100%;
   @include clearfix();
 }
 
@@ -136,6 +137,9 @@
   	@include grid-column(6);
   	text-align: center;
 	}
+	.role-block {
+  	@include grid-column(6);
+	}
 	.show-main,
 	.page-main,
 	.page-main-full {
@@ -144,6 +148,9 @@
 }
 
 @media #{$medium-only} {
+	.role-block {
+  	@include grid-column(4);
+	}
 	.current-news,
 	.current-calendar,
 	.home-membership,
@@ -169,7 +176,8 @@
 	.show-cost,
 	.home-membership,
 	.home-donate,
-	.home-company-member {
+	.home-company-member,
+	.role-block {
 		@include grid-column(3);
 	}
 	.current-calendar,
