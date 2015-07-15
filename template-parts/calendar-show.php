@@ -1,6 +1,6 @@
 <?php
 /**
- * Calendar for all shows
+ * Calendar for single shows
  *
  * @package third-rail
  */
@@ -15,3 +15,6 @@
 	<div id="calendarDisplay">
 	</div>
 </div>
+
+<script>var show = '<?php the_title(); ?>';</script>
+

@@ -93,12 +93,12 @@ $button-disabled-cursor: default;
   // We control which padding styles come through,
   // these can be turned off by setting $padding:false
   @if $padding {
-    padding: ($padding - rem-calc(4)) $padding ($padding / 2 + rem-calc(3)) $padding;
+    padding: ($padding - rem-calc(4)) $padding ($padding / 2 + rem-calc(1)) $padding;
     // We control the font-size based on mixin input.
     @if      $padding == $button-med { font-size: $button-font-med; }
     @else if $padding == $button-tny { font-size: $button-font-tny; }
     @else if $padding == $button-sml { font-size: $button-font-sml; }
-    @else if $padding == $button-lrg { font-size: $button-font-lrg; }
+    @else if $padding == $button-lrg { font-size: $button-font-lrg; padding: ($padding - rem-calc(6)) $padding ($padding / 2 + rem-calc(3)) $padding;}
   }
 
   // We can set $full-width:true to remove side padding extend width.

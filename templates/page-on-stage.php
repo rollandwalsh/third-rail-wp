@@ -10,7 +10,7 @@ get_header(); ?>
   <?php
     $page_name = get_the_title();
     $tickets_url = rwmb_meta( 'tickets_url' );
-    $today = time();
+    $today = date('Y-m-d');  
 
     switch ($page_name) {
       case 'Membership':
@@ -141,7 +141,7 @@ get_header(); ?>
                 'relation'    => 'AND',
                 array(
                   'key'       => 'show_type',
-                  'value'     => 'mainstage',
+                  'value'     => 'nt_live',
                 ),
                 array(
                   'key'       => 'closing_date',

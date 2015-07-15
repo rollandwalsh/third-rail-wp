@@ -1915,7 +1915,7 @@ button, .button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  padding: 0.5625rem 0.8125rem 0.59375rem 0.8125rem;
+  padding: 0.5625rem 0.8125rem 0.46875rem 0.8125rem;
   font-size: 0.875rem;
   background-color: #EA7600;
   border-color: #bb5e00;
@@ -2071,13 +2071,14 @@ button, .button {
     .button.other:focus {
       color: #FFFFFF; }
   button.large, .button.large {
-    padding: 0.875rem 1.125rem 0.75rem 1.125rem;
-    font-size: 1.25rem; }
+    padding: 0.875rem 1.125rem 0.625rem 1.125rem;
+    font-size: 1.25rem;
+    padding: 0.75rem 1.125rem 0.75rem 1.125rem; }
   button.small, .button.small {
-    padding: 0.4375rem 0.6875rem 0.53125rem 0.6875rem;
+    padding: 0.4375rem 0.6875rem 0.40625rem 0.6875rem;
     font-size: 0.75rem; }
   button.tiny, .button.tiny {
-    padding: 0.3125rem 0.5625rem 0.46875rem 0.5625rem;
+    padding: 0.3125rem 0.5625rem 0.34375rem 0.5625rem;
     font-size: 0.625rem; }
   button.expand, .button.expand {
     padding-left: 0;
@@ -2950,6 +2951,10 @@ body {
     -webkit-transform: translateX(4rem);
         -ms-transform: translateX(4rem);
             transform: translateX(4rem); }
+  .page-header:hover .graphic-section #theRealisticJoneses .board {
+    -webkit-transform: rotate(90deg) translateX(-15rem) translateY(-160rem);
+        -ms-transform: rotate(90deg) translateX(-15rem) translateY(-160rem);
+            transform: rotate(90deg) translateX(-15rem) translateY(-160rem); }
   .page-header:hover .graphic-section #mrKolpert .man {
     -webkit-transform: rotate(20deg) translateX(4rem);
         -ms-transform: rotate(20deg) translateX(4rem);
@@ -2996,6 +3001,12 @@ body {
   .page-header .graphic-section #or .feather, .page-header .graphic-section #or .sword {
     -webkit-transition: all 300ms ease-out;
             transition: all 300ms ease-out; }
+  .page-header .graphic-section #theRealisticJoneses .fence {
+    fill: #FFFFFF; }
+  .page-header .graphic-section #theRealisticJoneses .board {
+    -webkit-transition: all 300ms ease-out;
+            transition: all 300ms ease-out;
+    fill: #EA7600; }
   .page-header .graphic-section #mrKolpert .head, .page-header .graphic-section #mrKolpert .banana, .page-header .graphic-section #mrKolpert .cliff {
     fill: #FFFFFF; }
   .page-header .graphic-section #mrKolpert .man {
@@ -3121,7 +3132,8 @@ body {
     float: left; }
   .show-main,
   .page-main,
-  .page-main-full {
+  .page-main-full,
+  .page-sidebar {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 100%;
@@ -3132,6 +3144,11 @@ body {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 33.33333%;
+    float: left; }
+  .page-sidebar {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 41.66667%;
     float: left; }
   .current-news,
   .current-calendar,
@@ -3167,7 +3184,8 @@ body {
     width: 25%;
     float: left; }
   .current-calendar,
-  .on-stage-show-type {
+  .on-stage-show-type,
+  .page-sidebar {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 33.33333%;
@@ -3182,11 +3200,7 @@ body {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: 66.66667%;
-    float: left; }
-  .current-shows article,
-  .current-news article,
-  .current-calendar article {
-    min-height: 28.125rem; } }
+    float: left; } }
 
 .home-slider-controls {
   position: absolute;
@@ -3222,7 +3236,7 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    padding: 0.5625rem 0.8125rem 0.59375rem 0.8125rem;
+    padding: 0.5625rem 0.8125rem 0.46875rem 0.8125rem;
     font-size: 0.875rem;
     background-color: #3EB049;
     border-color: #328d3a;
@@ -3244,8 +3258,6 @@ body {
     .current-shows .entry-header .buy-link:hover,
     .current-shows .entry-header .buy-link:focus {
       color: #FFFFFF; }
-  .current-shows .thumbnail-link {
-    max-width: 60%; }
 
 .current-news .post-category {
   position: relative;

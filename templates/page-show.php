@@ -172,7 +172,7 @@ get_header(); ?>
   			<div class="show-section">
     			<?php foreach ($creatives as $creative) { ?>
       			<div class="role-block">
-      			  <p><?php echo $creative[0]; ?><br><a href="#" class="button other"><i class="fa fa-user"></i> <strong><?php echo $creative[1]; ?></strong></a></p>
+      			  <p><?php echo $creative[0]; ?><br><a href="#" class="button other small"><i class="fa fa-user"></i> <?php echo $creative[1]; ?></a></p>
       			</div>
       		<?php } ?>
         </div>
@@ -184,11 +184,15 @@ get_header(); ?>
 
 		</main><!-- #main -->
 		
-    <?php get_sidebar(); ?>
+    <?php get_sidebar( 'show' ); ?>
 	</div><!-- #primary -->
 
 <?php get_footer(); ?>
 
 <script>
+  $(function() {
+    return getEvent(api, createMonths, show);
+  });
+
   $('#svgHeader').equalize();
 </script>

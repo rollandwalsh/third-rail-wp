@@ -39,13 +39,5 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
-<script>
-  
-  $('.has-event').on('click', function() {
-  console.log('test');
-});
-</script>
-
 </body>
 </html>

@@ -7,6 +7,10 @@
 
 get_header(); ?>
 
+  <?php
+    $today = date('Y-m-d');  
+  ?>
+
 	<header class="page-header">
 		<div id="svgHeader" class="container">
 			<div class="info-section">
@@ -36,12 +40,22 @@ get_header(); ?>
   			$args = array(
   		    'post_type'  	   => 'page',
   		    'post_status'    => 'publish',
+  		    'order'          => 'ASC',
+  		    'orderby'        => 'meta_value_num',
+  		    'meta_key'       => 'closing_date',
   		    'posts_per_page' => '5',
   		    'meta_query' 	   => array( 
+            'relation'    => 'AND',
   		      array(
   		        'key'   	   => '_wp_page_template', 
   		        'value' 	   => array('templates/page-show.php')
-  		      )
+  		      ),
+            array(
+              'key'        => 'closing_date',
+              'value'      => $today,
+              'type'       => 'DATE',
+              'compare'    => '>='
+            )
   		    )
   			);
   			
@@ -236,6 +250,10 @@ get_header(); ?>
 <?php get_footer(); ?>
 
 <script>
+  $(function() {
+    return getEvents(api, createMonths);
+  });
+  
   $('#svgHeader').equalize();
   
   $('#showSlider').slick({

@@ -15,12 +15,7 @@
 
 	<div class="entry-content">
 		<?php if ( has_post_thumbnail() ) { ?>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="thumbnail-link"><?php the_post_thumbnail( 'large' ); ?></a> 
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large', array( 'class' => 'thumbnail-link' ) ); ?></a> 
 		<?php } ?>
-		<?php the_excerpt(); ?>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="button small">Find out more</a>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

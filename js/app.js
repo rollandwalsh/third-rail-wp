@@ -1,8 +1,31 @@
-var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvents, printMonth, stripNTLive, timeStamp;
+var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvent, getEvents, printMonth, stripNTLive, timeStamp;
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
 
 cal = $('#calendar');
+
+getEvent = function(url, callback, show) {
+  return $.ajax({
+    url: 'http://query.yahooapis.com/v1/public/yql',
+    dataType: 'jsonp',
+    data: {
+      q: 'select * from json where url="' + url + '"',
+      format: 'json'
+    },
+    success: function(data) {
+      var event, events, j, len, results;
+      events = data.query.results.json.events;
+      results = [];
+      for (j = 0, len = events.length; j < len; j++) {
+        event = events[j];
+        if (new RegExp(show).test(event.name)) {
+          results.push(callback(event));
+        }
+      }
+      return results;
+    }
+  });
+};
 
 getEvents = function(url, callback) {
   return $.ajax({
@@ -19,19 +42,33 @@ getEvents = function(url, callback) {
 };
 
 createMonths = function(data) {
-  var dates, event, i, instance, j, k, l, len, len1, len2, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, ref;
+  var dates, event, i, instance, j, k, l, len, len1, len2, len3, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, n, ref, ref1;
   dates = [];
-  for (j = 0, len = data.length; j < len; j++) {
-    event = data[j];
-    if (event.type === 'Tickets') {
-      if (event.instances.constructor === Array) {
-        ref = event.instances;
-        for (k = 0, len1 = ref.length; k < len1; k++) {
-          instance = ref[k];
+  if (data instanceof Array) {
+    for (j = 0, len = data.length; j < len; j++) {
+      event = data[j];
+      if (event.type === 'Tickets') {
+        if (event.instances.constructor === Array) {
+          ref = event.instances;
+          for (k = 0, len1 = ref.length; k < len1; k++) {
+            instance = ref[k];
+            dates.push(instance.formattedDates.YYYYMMDD);
+          }
+        } else {
+          dates.push(event.instances.formattedDates.YYYYMMDD);
+        }
+      }
+    }
+  } else {
+    if (data.type === 'Tickets') {
+      if (data.instances.constructor === Array) {
+        ref1 = data.instances;
+        for (l = 0, len2 = ref1.length; l < len2; l++) {
+          instance = ref1[l];
           dates.push(instance.formattedDates.YYYYMMDD);
         }
       } else {
-        dates.push(event.instances.formattedDates.YYYYMMDD);
+        dates.push(data.instances.formattedDates.YYYYMMDD);
       }
     }
   }
@@ -58,8 +95,8 @@ createMonths = function(data) {
     months.push(new Date(minDate.getFullYear(), minDate.getMonth() + i));
     i++;
   }
-  for (l = 0, len2 = months.length; l < len2; l++) {
-    month = months[l];
+  for (n = 0, len3 = months.length; n < len3; n++) {
+    month = months[n];
     printMonth(month);
   }
   getEvents(api, createLinks);
@@ -144,7 +181,7 @@ createLinks = function(data) {
     instance = instances[l];
     date = $('#' + instance.formattedDates.YYYYMMDD);
     if (date.data('2')) {
-      date.addClass('has-event').data('3', {
+      date.data('3', {
         sold: instance.soldOut,
         status: instance.saleStatus,
         url: instance.purchaseUrl,
@@ -154,7 +191,7 @@ createLinks = function(data) {
         time: timeStamp(instance.formattedDates.ISO8601)
       });
     } else if (date.data('1')) {
-      date.addClass('has-event').data('2', {
+      date.data('2', {
         sold: instance.soldOut,
         status: instance.saleStatus,
         url: instance.purchaseUrl,
@@ -223,7 +260,3 @@ stripNTLive = function(input) {
   var name;
   return name = input.replace('NT LIVE: ', '').replace('NT LIVE Encore: ', '');
 };
-
-$(function() {
-  return getEvents(api, createMonths);
-});

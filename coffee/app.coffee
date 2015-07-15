@@ -1,6 +1,17 @@
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList'
 cal = $('#calendar')
-		
+
+getEvent = (url, callback, show) ->
+	$.ajax
+	  url: 'http://query.yahooapis.com/v1/public/yql'
+	  dataType: 'jsonp'
+	  data:
+	    q: 'select * from json where url="' + url + '"'
+	    format: 'json'
+	  success: (data) ->
+	    events = data.query.results.json.events
+	    callback event for event in events when new RegExp(show).test event.name
+	    
 getEvents = (url, callback) ->
 	$.ajax
 	  url: 'http://query.yahooapis.com/v1/public/yql'
@@ -13,11 +24,17 @@ getEvents = (url, callback) ->
 
 createMonths = (data) -> # creates a list of months with events in them
   dates = []
-  for event in data
-    if event.type == 'Tickets'
-      if event.instances.constructor == Array
-        dates.push instance.formattedDates.YYYYMMDD for instance in event.instances
-      else dates.push event.instances.formattedDates.YYYYMMDD
+  if data instanceof Array
+    for event in data
+      if event.type == 'Tickets'
+        if event.instances.constructor == Array
+          dates.push instance.formattedDates.YYYYMMDD for instance in event.instances
+        else dates.push event.instances.formattedDates.YYYYMMDD
+  else 
+    if data.type == 'Tickets'
+      if data.instances.constructor == Array
+        dates.push instance.formattedDates.YYYYMMDD for instance in data.instances
+      else dates.push data.instances.formattedDates.YYYYMMDD
   
   minE = (Math.min.apply @, dates).toString()
   maxE = (Math.max.apply @, dates).toString()
@@ -101,7 +118,7 @@ createLinks = (data) -> # create links based off of event instances
   for instance in instances # loops through instances to get dates to link to | TODO: illimnate duplicate code
     date = $('#' + instance.formattedDates.YYYYMMDD)
     if date.data('2')
-      date.addClass('has-event').data(
+      date.data(
         '3'
           sold: instance.soldOut
           status: instance.saleStatus
@@ -112,7 +129,7 @@ createLinks = (data) -> # create links based off of event instances
           time: timeStamp instance.formattedDates.ISO8601
       )
     else if date.data('1')
-      date.addClass('has-event').data(
+      date.data(
         '2'
           sold: instance.soldOut
           status: instance.saleStatus
@@ -148,7 +165,7 @@ buttonPrint = (date) -> # print buttons for date on calendar
     data = $(date).data('3')
     $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
     
-timeStamp = (input) -> # return a nicely formated time based on a date
+timeStamp = (input) -> # return a nicely formatted time based on a date
   date = new Date(input)
   time = [
     date.getHours()
@@ -171,6 +188,4 @@ dayStamp = (input) -> # return day of week based on date
   
 stripNTLive = (input) -> # remove nt live prefix from Patron Manager event name
   name = input.replace('NT LIVE: ', '').replace('NT LIVE Encore: ', '')
-
-$ -> # on page load, print calendar
-  getEvents(api, createMonths)
+  
