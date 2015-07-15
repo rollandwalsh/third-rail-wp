@@ -3212,16 +3212,22 @@ body {
     -webkit-transition: all 300ms ease-out;
             transition: all 300ms ease-out; }
 
-.current-shows {
+.current-shows,
+.on-stage-show-type {
   position: relative; }
-  .current-shows .entry-header:before, .current-shows .entry-header:after {
+  .current-shows .entry-header:before,
+  .current-shows .entry-header:after,
+  .on-stage-show-type .entry-header:before, .on-stage-show-type .entry-header:after {
     content: " ";
     display: table; }
-  .current-shows .entry-header:after {
+  .current-shows .entry-header:after,
+  .on-stage-show-type .entry-header:after {
     clear: both; }
-  .current-shows .entry-header .entry-title {
+  .current-shows .entry-header .entry-title,
+  .on-stage-show-type .entry-header .entry-title {
     display: inline-block; }
-  .current-shows .entry-header .buy-link {
+  .current-shows .entry-header .buy-link,
+  .on-stage-show-type .entry-header .buy-link {
     -webkit-appearance: none;
     -moz-appearance: none;
     border-radius: 0;
@@ -3247,16 +3253,21 @@ body {
     float: right;
     margin-bottom: 0; }
     .current-shows .entry-header .buy-link:hover,
-    .current-shows .entry-header .buy-link:focus {
+    .current-shows .entry-header .buy-link:focus,
+    .on-stage-show-type .entry-header .buy-link:hover,
+    .on-stage-show-type .entry-header .buy-link:focus {
       background-color: #328d3a;
       box-shadow: 0 4px #28712f; }
-    .current-shows .entry-header .buy-link:active {
+    .current-shows .entry-header .buy-link:active,
+    .on-stage-show-type .entry-header .buy-link:active {
       box-shadow: 0 2px #28712f;
       -webkit-transform: translateY(2px);
           -ms-transform: translateY(2px);
               transform: translateY(2px); }
     .current-shows .entry-header .buy-link:hover,
-    .current-shows .entry-header .buy-link:focus {
+    .current-shows .entry-header .buy-link:focus,
+    .on-stage-show-type .entry-header .buy-link:hover,
+    .on-stage-show-type .entry-header .buy-link:focus {
       color: #FFFFFF; }
 
 .current-news .post-category {

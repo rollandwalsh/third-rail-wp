@@ -11,6 +11,7 @@
 	<header class="entry-header">
 		<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>		
 		<a href="#" class="buy-link"><i class="fa fa-ticket"></i> Book Now</a>
+		<?php echo rwmb_meta( 'closing_date' ); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

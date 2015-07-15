@@ -56,7 +56,7 @@ get_header(); ?>
       		<?php
             $args = array (
               'post_type'     => 'page',
-              'order'         => 'DESC',
+              'order'         => 'ASC',
               'orderby'       => 'meta_value_num',
               'meta_key'      => 'closing_date',
               'meta_query'    => array(

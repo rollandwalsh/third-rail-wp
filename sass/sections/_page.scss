@@ -219,7 +219,8 @@
   }
 }
 
-.current-shows {
+.current-shows,
+.on-stage-show-type {
   position: relative;
 	.entry-header {
 		@include clearfix();
