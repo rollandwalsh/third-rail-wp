@@ -7,10 +7,6 @@
 
 get_header(); ?>
 
-  <?php
-    $today = date('Y-m-d');  
-  ?>
-
 	<header class="page-header">
 		<div id="svgHeader" class="container">
 			<div class="info-section">
@@ -41,7 +37,7 @@ get_header(); ?>
   		    'post_type'  	   => 'page',
   		    'post_status'    => 'publish',
   		    'order'          => 'ASC',
-  		    'orderby'        => 'meta_value_num',
+  		    'orderby'        => 'meta_value',
   		    'meta_key'       => 'closing_date',
   		    'posts_per_page' => '5',
   		    'meta_query' 	   => array( 
@@ -52,7 +48,7 @@ get_header(); ?>
   		      ),
             array(
               'key'        => 'closing_date',
-              'value'      => $today,
+              'value'      => date('Y-m-d'),
               'type'       => 'DATE',
               'compare'    => '>='
             )
