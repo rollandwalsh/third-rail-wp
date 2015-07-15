@@ -57,7 +57,7 @@ get_header(); ?>
             $args = array (
               'post_type'     => 'page',
               'order'         => 'ASC',
-              'orderby'       => 'meta_value_num',
+              'orderby'       => 'meta_value',
               'meta_key'      => 'closing_date',
               'meta_query'    => array(
                 'relation'    => 'AND',
