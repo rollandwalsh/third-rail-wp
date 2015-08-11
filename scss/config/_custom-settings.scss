@@ -1,59 +1,91 @@
-/* 
-	My custom settings. These variables are copied from _settings.css
-	This file will only contain uncommented settings that are actually used in the theme.
-*/
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
-// We use these to define default font stacks
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
+// Grid
+$row-width: rem-calc(1060);
+$column-gutter: rem-calc(24);
 
-// We use these to define default font weights
-$font-weight-normal: normal !default;
-$font-weight-bold: bold !default;
+// Font Stacks
+$body-font-family: "Lato", Arial, sans-serif;
+$header-font-family: "Oswald", Arial, sans-serif;
 
-// Foundation color naming conventions
-$white       : #FFFFFF;
-$ghost       : #FAFAFA;
-$snow        : #F9F9F9;
-$vapor       : #F6F6F6;
-$white-smoke : #F5F5F5;
-$silver      : #EFEFEF;
-$smoke       : #EEEEEE;
-$gainsboro   : #DDDDDD;
-$iron        : #CCCCCC;
-$base        : #AAAAAA;
-$aluminum    : #999999;
-$jumbo       : #888888;
-$monsoon     : #777777;
-$steel       : #666666;
-$charcoal    : #555555;
-$tuatara     : #444444;
-$oil         : #333333;
-$jet         : #222222;
-$black       : #000000;
+// Font weights
+$font-weight-thin: 100;
+$font-weight-light: 300;
+$font-weight-normal: normal;
+$font-weight-heavy: 700;
+$font-weight-bold: 900;
+
+// Font sizes
+$paragraph-font-size: rem-calc(14);
+
+// Grayscale
+$white: 			#FFFFFF;
+$white-dark:	#FAFAFA;
+$gray-light:	#EFEFEF;
+$gray:				#AAAAAA;
+$gray-dark:		#666666;
+$black-light:	#222222;
+$black:				#000000;
+
+// Theme Colors
+$orange: 			#EA7600;
+$red:					#CD3627;
+$yellow:			#F9BF12;
+$green:				#3EB049;
+$blue:				#5C8AB5;
+$purple:			#6B4990;
+$brown:				#955022;
 
 // We use these as default colors throughout
-$primary-color: #008CBA;
-$secondary-color: #e7e7e7;
-$alert-color: #f04124;
-$success-color: #43AC6A;
-$warning-color: #f08a24;
-$info-color: #a0d3e8;
-
-// We use these to control various global styles
-$body-bg: $white;
-$body-font-color: $jet;
-$body-font-family: $font-family-sans-serif;
-$body-font-weight: $font-weight-normal;
-$body-font-style: normal;
-$header-font-weight: 300;
-$header-text-rendering: optimizeLegibility;
-$topbar-link-weight: bold;
+$primary-color: $orange;
+$secondary-color: $gray-dark;
+$alert-color: $red;
+$success-color: $green;
+$warning-color: $yellow;
+$info-color: $blue;
 
 // Media query breakpoints
 $small-breakpoint:  em-calc(640);
-$medium-breakpoint: em-calc(1024);
+$medium-breakpoint: em-calc(960);
 $topbar-breakpoint: em-calc(820);
 $large-breakpoint:  em-calc(1440);
 $xlarge-breakpoint: em-calc(1920);
+
+// Top Bar
+$topbar-bg-color: $white;
+$topbar-height: rem-calc(90);
+
+$topbar-link-color: $black-light;
+$topbar-link-color-hover: $orange;
+$topbar-link-color-active: $orange;
+$topbar-link-color-active-hover: darken($orange, 10%);
+
+$topbar-link-bg-hover: $white;
+$topbar-link-bg-active: $white;
+$topbar-link-bg-active-hover: $white;
+
+$topbar-link-text-transform: uppercase;
+
+// Buttons
+$button-tny: rem-calc(9);
+$button-sml: rem-calc(11);
+$button-med: rem-calc(13);
+$button-lrg: rem-calc(18);
+
+$button-margin-bottom: rem-calc(8);
+
+$button-font-color-alt: $black-light;
+$button-font-tny: rem-calc(10);
+$button-font-sml: rem-calc(12);
+$button-font-med: rem-calc(14);
+$button-font-lrg: rem-calc(20);
+
+// Tables
+$table-margin-bottom: rem-calc(4);
+
+// Block Grid
+$block-grid-default-spacing: rem-calc(16);
+
+// Flex Video
+$flex-video-margin-bottom: rem-calc(4);

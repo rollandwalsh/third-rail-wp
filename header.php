@@ -2,11 +2,11 @@
 /**
  * The template for displaying the header
  *
- * Displays all of the head element and everything up until the "container" div.
+ * Displays all of the head element and everything up until the "site-body" div.
  *
  * @package WordPress
- * @subpackage FoundationPress
- * @since FoundationPress 1.0
+ * @subpackage ThirdRail
+ * @since ThirdRail 1.0
  */
 
 ?>
@@ -25,14 +25,14 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
-	<?php do_action( 'foundationpress_after_body' ); ?>
+	<?php do_action( 'thirdrail_after_body' ); ?>
 	
 	<div class="off-canvas-wrap" data-offcanvas>
 	<div class="inner-wrap">
 	
-	<?php do_action( 'foundationpress_layout_start' ); ?>
+	<?php do_action( 'thirdrail_layout_start' ); ?>
 	
-	<nav class="tab-bar">
+	<nav class="tab-bar show-for-small-only">
 		<section class="left-small">
 			<a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
 		</section>
@@ -47,7 +47,7 @@
 
 	<?php get_template_part( 'parts/off-canvas-menu' ); ?>
 
-	<?php get_template_part( 'parts/top-bar' ); ?>
+	<?php get_template_part( 'parts/site-header' ); ?>
 
-<section class="container" role="document">
-	<?php do_action( 'foundationpress_after_header' ); ?>
+  <section class="site-body" role="document">
+  	<?php do_action( 'thirdrail_after_header' ); ?>

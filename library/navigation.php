@@ -4,8 +4,8 @@
  *
  * @link http://codex.wordpress.org/Function_Reference/register_nav_menus#Examples
  * @package WordPress
- * @subpackage FoundationPress
- * @since FoundationPress 1.0
+ * @subpackage ThirdRail
+ * @since ThirdRail 1.0
  */
 
 register_nav_menus(array(
@@ -19,8 +19,8 @@ register_nav_menus(array(
  * Left top bar
  * http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
-if ( ! function_exists( 'foundationpress_top_bar_l' ) ) {
-	function foundationpress_top_bar_l() {
+if ( ! function_exists( 'thirdrail_top_bar_l' ) ) {
+	function thirdrail_top_bar_l() {
 	    wp_nav_menu(array(
 	        'container' => false,                           // Remove nav container
 	        'container_class' => '',                        // Class of container
@@ -33,7 +33,7 @@ if ( ! function_exists( 'foundationpress_top_bar_l' ) ) {
 	        'link_after' => '',                             // After each link text
 	        'depth' => 5,                                   // Limit the depth of the nav
 	        'fallback_cb' => false,                         // Fallback function (see below)
-	        'walker' => new Foundationpress_Top_Bar_Walker(),
+	        'walker' => new Thirdrail_Top_Bar_Walker(),
 	    ));
 	}
 }
@@ -41,8 +41,8 @@ if ( ! function_exists( 'foundationpress_top_bar_l' ) ) {
 /**
  * Right top bar
  */
-if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
-	function foundationpress_top_bar_r() {
+if ( ! function_exists( 'thirdrail_top_bar_r' ) ) {
+	function thirdrail_top_bar_r() {
 	    wp_nav_menu(array(
 	        'container' => false,                           // Remove nav container
 	        'container_class' => '',                        // Class of container
@@ -55,7 +55,7 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 	        'link_after' => '',                             // After each link text
 	        'depth' => 5,                                   // Limit the depth of the nav
 	        'fallback_cb' => false,                         // Fallback function (see below)
-	        'walker' => new Foundationpress_Top_Bar_Walker(),
+	        'walker' => new Thirdrail_Top_Bar_Walker(),
 	    ));
 	}
 }
@@ -63,8 +63,8 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 /**
  * Mobile off-canvas
  */
-if ( ! function_exists( 'foundationpress_mobile_off_canvas' ) ) {
-	function foundationpress_mobile_off_canvas() {
+if ( ! function_exists( 'thirdrail_mobile_off_canvas' ) ) {
+	function thirdrail_mobile_off_canvas() {
 	    wp_nav_menu(array(
 	        'container' => false,                           // Remove nav container
 	        'container_class' => '',                        // Class of container
@@ -77,7 +77,7 @@ if ( ! function_exists( 'foundationpress_mobile_off_canvas' ) ) {
 	        'link_after' => '',                             // After each link text
 	        'depth' => 5,                                   // Limit the depth of the nav
 	        'fallback_cb' => false,                         // Fallback function (see below)
-	        'walker' => new Foundationpress_Offcanvas_Walker(),
+	        'walker' => new thirdrail_Offcanvas_Walker(),
 	    ));
 	}
 }
@@ -89,14 +89,14 @@ if ( ! function_exists( 'foundationpress_mobile_off_canvas' ) ) {
  * 3) On your menu item, type 'has-form' in the CSS-classes field. Type 'button' in the XFN field
  * 4) Save Menu. Your menu item will now appear as a button in your top-menu
 */
-if ( ! function_exists( 'foundationpress_add_menuclass' ) ) {
-	function foundationpress_add_menuclass($ulclass) {
+if ( ! function_exists( 'thirdrail_add_menuclass' ) ) {
+	function thirdrail_add_menuclass($ulclass) {
 	    $find = array('/<a rel="button"/', '/<a title=".*?" rel="button"/');
 	    $replace = array('<a rel="button" class="button"', '<a rel="button" class="button"');
 
 	    return preg_replace( $find, $replace, $ulclass, 1 );
 	}
-	add_filter( 'wp_nav_menu','foundationpress_add_menuclass' );
+	add_filter( 'wp_nav_menu','thirdrail_add_menuclass' );
 }
 
 
@@ -105,7 +105,7 @@ if ( ! function_exists( 'foundationpress_add_menuclass' ) ) {
  * @param bool $showhome should the breadcrumb be shown when on homepage (only one deactivated entry for home).
  * @param bool $separatorclass should a separator class be added (in case :before is not an option).
  */
-function foundationpress_breadcrumb($showhome = true, $separatorclass = false) {
+function thirdrail_breadcrumb($showhome = true, $separatorclass = false) {
 
     // Settings
     $separator  = '&gt;';

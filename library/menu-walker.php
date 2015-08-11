@@ -3,12 +3,12 @@
  * Customize the output of menus for Foundation top bar
  *
  * @package WordPress
- * @subpackage FoundationPress
- * @since FoundationPress 1.0
+ * @subpackage ThirdRail
+ * @since ThirdRail 1.0
  */
 
-if ( ! class_exists( 'Foundationpress_Top_Bar_Walker' ) ) :
-class Foundationpress_Top_Bar_Walker extends Walker_Nav_Menu {
+if ( ! class_exists( 'Thirdrail_Top_Bar_Walker' ) ) :
+class Thirdrail_Top_Bar_Walker extends Walker_Nav_Menu {
 
 	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 		$element->has_children = ! empty( $children_elements[ $element->ID ] );
@@ -22,12 +22,9 @@ class Foundationpress_Top_Bar_Walker extends Walker_Nav_Menu {
 		$item_html = '';
 		parent::start_el( $item_html, $object, $depth, $args );
 
-		$output .= ( 0 == $depth ) ? '<li class="divider"></li>' : '';
-
 		$classes = empty( $object->classes ) ? array() : (array) $object->classes;
 
 		if ( in_array( 'label', $classes ) ) {
-			$output .= '<li class="divider"></li>';
 			$item_html = preg_replace( '/<a[^>]*>(.*)<\/a>/iU', '<label>$1</label>', $item_html );
 		}
 

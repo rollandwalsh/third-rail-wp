@@ -10,8 +10,8 @@
  * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
  *
  * @package WordPress
- * @subpackage FoundationPress
- * @since FoundationPress 1.0
+ * @subpackage ThirdRail
+ * @since ThirdRail 1.0
  */
 
 get_header(); ?>
@@ -21,7 +21,7 @@ get_header(); ?>
 
 	<?php if ( have_posts() ) : ?>
 
-		<?php do_action( 'foundationpress_before_content' ); ?>
+		<?php do_action( 'thirdrail_before_content' ); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'content', get_post_format() ); ?>
@@ -30,20 +30,20 @@ get_header(); ?>
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>
 
-		<?php do_action( 'foundationpress_before_pagination' ); ?>
+		<?php do_action( 'thirdrail_before_pagination' ); ?>
 
 	<?php endif;?>
 
 
 
-	<?php if ( function_exists( 'foundationpress_pagination' ) ) { foundationpress_pagination(); } else if ( is_paged() ) { ?>
+	<?php if ( function_exists( 'thirdrail_pagination' ) ) { thirdrail_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
-			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationpress' ) ); ?></div>
-			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationpress' ) ); ?></div>
+			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'thirdrail' ) ); ?></div>
+			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'thirdrail' ) ); ?></div>
 		</nav>
 	<?php } ?>
 
-	<?php do_action( 'foundationpress_after_content' ); ?>
+	<?php do_action( 'thirdrail_after_content' ); ?>
 
 	</div>
 	<?php get_sidebar(); ?>

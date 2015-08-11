@@ -5,24 +5,51 @@
  * Contains the closing of the "off-canvas-wrap" div and all content after.
  *
  * @package WordPress
- * @subpackage FoundationPress
- * @since FoundationPress 1.0
+ * @subpackage ThirdRail
+ * @since ThirdRail 1.0
  */
 
 ?>
 
-</section>
-<footer class="row">
-	<?php do_action( 'foundationpress_before_footer' ); ?>
-	<?php dynamic_sidebar( 'footer-widgets' ); ?>
-	<?php do_action( 'foundationpress_after_footer' ); ?>
-</footer>
-<a class="exit-off-canvas"></a>
-
-	<?php do_action( 'foundationpress_layout_end' ); ?>
-	</div>
-</div>
-<?php wp_footer(); ?>
-<?php do_action( 'foundationpress_before_closing_body' ); ?>
-</body>
+    </section>
+    
+  	<footer class="site-footer">
+  		<div class="footer-links">
+  			<ul class="footer-nav">
+  				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailLogo.svg" ); ?></a></li>
+  				<li><a href="<?php echo esc_url( home_url() ); ?>/on-sale">Shows</a></li>
+  				<li><a href="<?php echo esc_url( home_url() ); ?>/about">About</a></li>
+  				<li><a href="<?php echo esc_url( home_url() ); ?>/join">Join</a></li>
+  				<li><a href="<?php echo esc_url( home_url() ); ?>/support">Support</a></li>
+  				<li><a href="<?php echo esc_url( home_url() ); ?>/contact">Contact</a></li>
+  				<li><a href="<?php echo esc_url( home_url() ); ?>/press">Press</a></li>
+  			</ul>
+  		</div>
+  		
+  		<div class="footer-contact">
+  			<ul class="contact-nav">
+  				<li><a href="<?php echo esc_url( home_url() ); ?>/location">17 SE 8th Ave PDX, OR 97214</a></li>
+  				<li><a href="tel:15032351101">503-235-1101</a></li>
+  				<li><a href="mailto:info@thirdrailrep.org">info@thirdrailrep.org</a></li>
+  			</ul>
+  		</div>
+  		
+  		<div class="footer-membership">
+  			<a href="/membership" class="membership"><i class="fa fa-bolt"></i> Membership</a>
+  		</div>
+  	</footer><!-- #colophon -->
+	
+    <footer class="row">
+    	<?php do_action( 'thirdrail_before_footer' ); ?>
+    	<?php dynamic_sidebar( 'footer-widgets' ); ?>
+    	<?php do_action( 'thirdrail_after_footer' ); ?>
+    </footer>
+    <a class="exit-off-canvas"></a>
+    
+    	<?php do_action( 'thirdrail_layout_end' ); ?>
+    	</div>
+    </div>
+    <?php wp_footer(); ?>
+    <?php do_action( 'thirdrail_before_closing_body' ); ?>
+  </body>
 </html>

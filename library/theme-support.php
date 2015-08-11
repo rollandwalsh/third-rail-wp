@@ -3,14 +3,14 @@
  * Register theme support for languages, menus, post-thumbnails, post-formats etc.
  *
  * @package WordPress
- * @subpackage FoundationPress
- * @since FoundationPress 1.0
+ * @subpackage ThirdRail
+ * @since ThirdRail 1.0
  */
 
-if ( ! function_exists( 'foundationpress_theme_support' ) ) :
-function foundationpress_theme_support() {
+if ( ! function_exists( 'thirdrail_theme_support' ) ) :
+function thirdrail_theme_support() {
 	// Add language support
-	load_theme_textdomain( 'foundationpress', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'thirdrail', get_template_directory() . '/languages' );
 
 	// Add menu support
 	add_theme_support( 'menus' );
@@ -29,6 +29,6 @@ function foundationpress_theme_support() {
 
 }
 
-add_action( 'after_setup_theme', 'foundationpress_theme_support' );
+add_action( 'after_setup_theme', 'thirdrail_theme_support' );
 endif;
 ?>
