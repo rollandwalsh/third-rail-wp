@@ -1,5 +1,6 @@
 <?php
 /**
+<<<<<<< HEAD
  * The sidebar containing the main widget area
  *
  * @package WordPress
@@ -67,3 +68,14 @@
 </aside>
 
 <script>var show = '<?php the_title(); ?>';</script>
+=======
+ * The sidebar containing the show sidebar.
+ *
+ * @package third-rail
+ */
+?>
+
+<div id="secondary" class="page-sidebar" role="complementary">
+  <?php get_template_part( 'template-parts/calendar', 'show' ); ?>
+</div>
+>>>>>>> 084f6e5e4c6896368154a1af98702b191957ed64

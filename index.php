@@ -1,10 +1,15 @@
 <?php
 /**
+<<<<<<< HEAD
  * The main template file
+=======
+ * The main template file.
+>>>>>>> 084f6e5e4c6896368154a1af98702b191957ed64
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
+<<<<<<< HEAD
  * e.g., it puts together the home page when no home.php file exists.
  *
  * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
@@ -12,10 +17,17 @@
  * @package WordPress
  * @subpackage ThirdRail
  * @since ThirdRail 1.0
+=======
+ * E.g., it puts together the home page when no home.php file exists.
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package third-rail
+>>>>>>> 084f6e5e4c6896368154a1af98702b191957ed64
  */
 
 get_header(); ?>
 
+<<<<<<< HEAD
 <div class="row">
 	<div class="small-12 large-8 columns" role="main">
 
@@ -49,3 +61,38 @@ get_header(); ?>
 	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
+=======
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		<?php if ( have_posts() ) : ?>
+
+			<?php /* Start the Loop */ ?>
+			<?php while ( have_posts() ) : the_post(); ?>
+
+				<?php
+
+					/*
+					 * Include the Post-Format-specific template for the content.
+					 * If you want to override this in a child theme, then include a file
+					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+					 */
+					get_template_part( 'template-parts/content', get_post_format() );
+				?>
+
+			<?php endwhile; ?>
+
+			<?php the_posts_navigation(); ?>
+
+		<?php else : ?>
+
+			<?php get_template_part( 'template-parts/content', 'none' ); ?>
+
+		<?php endif; ?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
+>>>>>>> 084f6e5e4c6896368154a1af98702b191957ed64

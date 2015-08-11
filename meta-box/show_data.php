@@ -23,7 +23,7 @@ function third_rail_show_data( $meta_boxes )
 				'options' => array(
 					'mainstage' => __( 'Mainstage', 'tr_' ),
 					'nt_live' => __( 'NT Live', 'tr_' ),
-					'wild_card' => __( 'Wild Card', 'tr_' ),
+					'wildcard' => __( 'Wild Card', 'tr_' ),
 					'bloody_sunday' => __( 'Bloody Sunday', 'tr_' ),
 					'event' => __( 'Event', 'tr_' ),
 				),
