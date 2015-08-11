@@ -1,5 +1,8 @@
 .DS_Store
 node_modules/
 *.sass-cache*
+<<<<<<< HEAD
 bower_components/
+=======
+>>>>>>> 084f6e5e4c6896368154a1af98702b191957ed64
 *.log
