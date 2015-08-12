@@ -1,5 +1,5 @@
-article {
-  .format-gallery {
+.post {
+  &.format-gallery {
     .entry-content {
       display: flex;
       flex-wrap: wrap;
