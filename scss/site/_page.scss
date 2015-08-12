@@ -285,11 +285,6 @@
   }
 }
 
-.type-post.format-video {
-  position: relative;
-  .media-container {@include flex-video-container()}
-}
-
 .on-stage-current-show {
   
 	.buy-link {
