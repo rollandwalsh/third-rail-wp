@@ -289,3 +289,12 @@
   position: relative;
   .media-container {@include flex-video-container()}
 }
+
+.on-stage-current-show {
+  
+	.buy-link {
+		@include button($button-med, $green);
+		float: right;
+		margin-bottom: 0;
+	}
+}

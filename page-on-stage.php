@@ -70,37 +70,46 @@ get_header(); ?>
     				switch ( rwmb_meta( 'show_type' ) ) {
               case 'mainstage':
                 $show_type = 'Mainstage';
+                $show_class = 'mainstage';
                 break;
               case 'nt_live':
                 $show_type = 'National Theatre Live';
+                $show_class = 'nt-live';
                 break;
               case 'wildcard':
                 $show_type = 'Wild Card';
+                $show_class = 'wild-card';
                 break;
               case 'bloody_sunday':
                 $show_type = 'Bloody Sunday';
+                $show_class = 'bloody-sunday';
                 break;
               case 'event':
                 $show_type = 'Event';
+                $show_class = 'event';
                 break;
               default:
                 $show_type = 'Upcoming Show';
             } // change show_type to print text ?> <!-- Start query for current shows -->
   				
-          	<div class="on-stage-current-shows">
-          		<h2 class="section-title"><?php echo $show_type; ?></h2>
-  					
+          	<div class="on-stage-current-show">
           		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+          			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
           			<div class="entry-content">
               		<?php if ( has_post_thumbnail() ) { ?>
               			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => 'th' ) ); ?></a> 
               		<?php } ?>
           			</div>
+          			<?php do_action( 'thirdrail_after_content' ); ?>
               	<header class="entry-header">
               		<?php the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h4>' ); ?>		
               		<a href="#" class="buy-link"><i class="fa fa-ticket"></i> Book Now</a>
               	</header>
-          			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
+              	<footer>
+              	  <?php if( $post->post_parent ) { $parent_link = get_permalink($post->post_parent); ?>
+                    <a href="<?php echo $parent_link; ?>" class="<?php echo $show_class; ?>"><?php echo $show_type; ?></a>
+                  <?php } ?>
+              	</footer>
           		</article>
           	</div>
   				<?php endwhile;

@@ -1,0 +1,10 @@
+article {
+  .format-gallery {
+    .entry-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .th {margin-bottom: rem-calc(8)}
+    }
+  }
+}
