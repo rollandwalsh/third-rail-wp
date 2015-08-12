@@ -182,6 +182,7 @@
 
 
 @media #{$large-up} {
+	.home-current-shows,
 	.home-current-media,
 	.show-dates,
 	.show-times,
@@ -192,7 +193,6 @@
 	.home-company-member {
 		@include grid-column(3);
 	}
-	.home-current-shows,
 	.home-current-news,
 	.home-current-calendar,
 	.on-stage-show-type,
