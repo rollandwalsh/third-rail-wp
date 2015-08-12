@@ -10,6 +10,6 @@
   
   &.format-video {
     position: relative;
-    .media-container {@include flex-video-container()}
+    .media-container, .embed-youtube {@include flex-video-container()}
   }
 }
