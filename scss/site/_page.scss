@@ -102,7 +102,8 @@
 
 .page-banner,
 .page-home-secondary,
-.page-content-area {
+.page-content-area,
+.on-stage-show-type {
 	padding: rem-calc(24 0);
 	width: 100%;
 	@include clearfix();
@@ -115,11 +116,20 @@
   @include clearfix();
 }
 
-.page-banner {background-color: $gray-light}
+.page-banner,
+.on-stage-show-type:nth-of-type(2n-1) {background-color: $gray-light}
 
 .page-home-secondary {background-color: $orange}
 
 .page-content-area {background-color: $white}
+
+.on-stage-show-type {
+  margin: 0 (-($column-gutter/2));
+  max-width: none;
+  padding: rem-calc(12) 0;
+  width: auto;
+  article {margin-bottom: rem-calc(8);}
+}
 
 .section-title {
 	border-bottom: rem-calc(8) solid $black-light;
@@ -134,9 +144,10 @@
 	.home-current-news,
 	.home-current-calendar,
 	.home-membership,
-  	.home-current-media,
+  .home-current-media,
 	.home-donate,
-	.home-company-member, {
+	.home-company-member,,
+	.on-stage-current-show {
 		@include grid-column(12);
 		article {
   		@include clearfix();
@@ -155,7 +166,8 @@
 	.page-main,
 	.page-main-full,
 	.page-sidebar,
-	.show-sidebar {
+	.show-sidebar,
+	.on-stage-show-type-header {
   	@include grid-column(12);
 	}
 }
@@ -165,13 +177,14 @@
 	.show-sidebar {
   	@include grid-column(5);
 	}
+	.home-current-shows,
 	.home-current-news,
 	.home-current-calendar,
 	.home-membership,
 	.home-current-media,
 	.home-donate,
 	.home-company-member,
-	.on-stage-show-type {
+	.on-stage-current-show {
 		@include grid-column(6);
 	}
 	.show-main,
@@ -195,7 +208,7 @@
 	}
 	.home-current-news,
 	.home-current-calendar,
-	.on-stage-show-type,
+	.on-stage-current-show,
 	.page-sidebar,
 	.show-sidebar {
 		@include grid-column(4);
@@ -218,20 +231,12 @@
 }
 
 .home-current-shows,
-.on-stage-show-type {
-  position: relative;
+.on-stage-current-show {
+  text-align: center;
 	.entry-header {
-		@include clearfix();
-		.entry-title {
-			display: inline-block;
-		}
-		.buy-link {
-			@include button($button-med, $green);
-			float: right;
-			margin-bottom: 0;
-		}
-	}
-	.thumbnail-link {
+  	padding: rem-calc(8 0 0);
+		.info-link {@include button($button-med)}
+		.buy-link {@include button($button-med, $green)}
 	}
 }
 
@@ -283,13 +288,4 @@
   .entry-content {
     @include flex-video-container();
   }
-}
-
-.on-stage-current-show {
-  
-	.buy-link {
-		@include button($button-med, $green);
-		float: right;
-		margin-bottom: 0;
-	}
 }
