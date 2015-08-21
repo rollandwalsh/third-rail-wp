@@ -54,7 +54,7 @@ get_header(); ?>
           'numberposts'   => -1,
           'post_status'   => 'publish',
         	'child_of' => 'on-stage',
-        	'sort_order' => 'ASC',
+        	'sort_order' => 'DESC',
         	'sort_column' => 'menu_order'
         ));
     		foreach ($categories as $category) {
