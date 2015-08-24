@@ -1,4 +1,18 @@
 .type-post {
+  
+  footer {
+    @include clearfix();
+    .tags {
+      margin: rem-calc(8) 0 0;
+      text-align: center;
+      a {
+        @include button($button-tny, $gray-light, $button-round);
+        box-shadow: none;
+        &:hover, &:active {box-shadow: none}
+      }
+    }
+  }
+  
   &.format-gallery {
     .entry-content {
       display: flex;
@@ -10,6 +24,19 @@
   
   &.format-video {
     position: relative;
-    .media-container, .embed-youtube {@include flex-video-container()}
+    .media-container, .embed-youtube, .entry-content {@include flex-video-container()}
+  }
+}
+
+.entry-meta {
+  @include clearfix();
+  .byline {
+    float: left;
+  }
+  time.date {
+    color: $gray-dark;
+    float: right;
+    font-size: rem-calc(13);
+    font-style: italic;
   }
 }

@@ -15,8 +15,8 @@ function thirdrail_sidebar_widgets() {
 	  'description' => __( 'Drag widgets to this sidebar container.', 'thirdrail' ),
 	  'before_widget' => '<article id="%1$s" class="row widget %2$s"><div class="small-12 columns">',
 	  'after_widget' => '</div></article>',
-	  'before_title' => '<h6>',
-	  'after_title' => '</h6>',
+	  'before_title' => '<h3 class="section-title">',
+	  'after_title' => '</h3>',
 	));
 
 	register_sidebar(array(
@@ -25,8 +25,8 @@ function thirdrail_sidebar_widgets() {
 	  'description' => __( 'Drag widgets to this footer container', 'thirdrail' ),
 	  'before_widget' => '<article id="%1$s" class="large-4 columns widget %2$s">',
 	  'after_widget' => '</article>',
-	  'before_title' => '<h6>',
-	  'after_title' => '</h6>',
+	  'before_title' => '<h3>',
+	  'after_title' => '</h3>',
 	));
 }
 

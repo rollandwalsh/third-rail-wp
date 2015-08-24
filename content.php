@@ -20,7 +20,7 @@
 		<?php the_content( __( 'Continue reading...', 'thirdrail' ) ); ?>
 	</div>
 	<footer>
-		<?php $tag = get_the_tags(); if ( $tag ) { ?><p><?php the_tags(); ?></p><?php } ?>
+		<?php if ( get_the_tags() ) { ?><p class="tags"><?php the_tags('', ' '); ?></p><?php } ?>
 	</footer>
 	<hr />
 </article>

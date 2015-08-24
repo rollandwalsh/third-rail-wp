@@ -1,0 +1,43 @@
+.widget {
+  padding-bottom: rem-calc(8);
+  
+  p {
+    color: $gray-dark;
+    font-size: rem-calc(14);
+  }
+  h4 {margin-bottom: rem-calc(8)}
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      padding: rem-calc(6) 0;
+    }
+  }
+  
+  &.widget_search {
+    #searchform {margin-top: rem-calc(16)}
+  }
+  
+  &.widget_archive {
+    ul li {
+      @include clearfix();
+      color: $gray;
+      font-size: rem-calc(13);
+      text-align: right;
+      a {
+        float: left;
+        font-size: rem-calc(16);
+        text-transform: uppercase;
+      }
+    }
+  }
+  
+  &.widget_categories {
+    ul li {
+      a {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
