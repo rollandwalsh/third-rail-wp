@@ -2,42 +2,64 @@
 	background: $white;
 	border-bottom: rem-calc(8) solid $orange;
 	
-	.title-area {
-  	h1 {
-    	line-height: 1;
-    	a {
-      	padding: 0;
-    		#thirdRailLogo {
-    			@include single-transition(all);
-          max-width: rem-calc(276);
-    			vertical-align: text-bottom;
-    			width: 100%;
-    			&:hover {transform: scale(1.15)}
-    			.third, .rail {fill: $black-light}
-    			.lightning-bolt {fill: $orange} 
-    		}
-    	}
-  	}
-	}
-	
-	.top-bar-section {
-  	.top-bar-menu {
-    	li {
-      	&:last-child {
-        	background: $topbar-bg-color;
-        	a {
-          	border: 1px solid $black-light;
-          	line-height: 2.8;
-          	margin-top: rem-calc(26);
-        	}
-        }
+	.top-bar {
+  	
+  	.title-area {
+    	h1 {
+      	line-height: 1;
       	a {
-    			@include single-transition(all);
-        	@media #{$medium-only} {
-          	padding: rem-calc(0 18);
+        	padding: 0;
+      		#thirdRailLogo {
+      			@include single-transition(all);
+            max-width: rem-calc(276);
+      			vertical-align: text-bottom;
+      			width: 100%;
+      			&:hover {transform: scale(1.15)}
+      			.third, .rail {fill: $black-light}
+      			.lightning-bolt {fill: $orange} 
+      		}
+      	}
+    	}
+    	.burger-icon {
+      	a {
+        	padding: rem-calc(36 16);
+        	div {
+          	@include burger(rem-calc(22), $burger-height, $burger-gutter);
         	}
       	}
     	}
   	}
-	}
+  	
+  	&.expanded {
+    	.title-area .burger-icon a div {
+      	@include burger-to-cross;
+    	}
+  	}
+  	
+  	.top-bar-section {
+    	.top-bar-menu {
+      	@media #{$small-only} {text-align: center}
+      	li {
+          &:last-child {
+            a {font-weight: bolder}
+            @media #{$medium-up} {
+            	background: $topbar-bg-color;
+            	a {
+              	border: 1px solid $black-light;
+              	font-weight: $topbar-link-weight;
+              	line-height: 2.8;
+              	margin-top: rem-calc(26);
+            	}
+            }
+        	}
+        	a {
+      			@include single-transition(all);
+          	@media #{$medium-only} {
+            	padding: rem-calc(0 16);
+          	}
+        	}
+      	}
+    	}
+  	}
+  }
 }

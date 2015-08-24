@@ -1,5 +1,8 @@
 body.admin-bar {
-  .site-header {margin-top: rem-calc(32)}
+  .site-header {
+    margin-top: rem-calc(46);
+    @media #{$large-up} {margin-top: rem-calc(32)}
+  }
 }
 
 #wpadminbar {

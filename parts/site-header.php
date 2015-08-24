@@ -14,6 +14,7 @@
       <li class="name">
         <h1><a href="<?php echo home_url(); ?>"><?php echo file_get_contents(get_stylesheet_directory_uri() . "/svg/thirdRailLogo.svg"); ?></a></h1>
       </li>
+      <li class="toggle-topbar burger-icon"><a href="#"><div></div></a></li>
     </ul>
     <section class="top-bar-section">
       <?php thirdrail_top_bar_r(); ?>

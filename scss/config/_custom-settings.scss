@@ -67,6 +67,15 @@ $topbar-link-bg-active-hover: $white;
 
 $topbar-link-text-transform: uppercase;
 
+$topbar-dropdown-bg: $topbar-bg-color;
+$topbar-dropdown-link-color: $topbar-link-color;
+$topbar-dropdown-link-color-hover: $topbar-link-color-hover;
+$topbar-dropdown-link-bg: $topbar-dropdown-bg;
+$topbar-dropdown-link-bg-hover: $topbar-dropdown-bg;
+
+$burger-height: rem-calc(2);
+$burger-gutter: rem-calc(6);
+
 // Buttons
 $button-tny: rem-calc(9);
 $button-sml: rem-calc(11);
