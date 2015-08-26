@@ -50,14 +50,15 @@ get_header(); ?>
 			
   		<?php
         $categories = get_children(array(
-          'post_parent'   => get_page_by_path('on-stage')->ID,
+          'post_parent'   => get_the_ID(),
           'numberposts'   => -1,
           'post_status'   => 'publish',
-        	'child_of' => 'on-stage',
-        	'sort_order' => 'ASC',
-        	'sort_column' => 'menu_order'
+        	'child_of'      => 'on-stage',
+        	'orderby'       => 'menu_order',
+        	'order'         => 'ASC'
         ));
     		foreach ($categories as $category) {
+      		echo $category->ID .', ';
     			$args = array(
     		    'post_type'  	  => 'page',
     		    'post_status'   => 'publish',
@@ -85,7 +86,7 @@ get_header(); ?>
     			if ( $query->have_posts() ) { ?>
       			<section class="on-stage-show-type">
       			  <header class="on-stage-show-type-header">
-      			    <h2 class="section-title"><?php echo get_the_title( $category->ID ); ?></h2>
+      			    <h2 class="section-title"><a href="<?php echo get_page_link( get_page_by_title( get_the_title( $category->ID ) )->ID ); ?>" title="<?php echo get_the_title( $category->ID ); ?>"><?php echo get_the_title( $category->ID ); ?></a></h2>
       			  </header>
               <?php while ( $query->have_posts() ) : $query->the_post(); 
       				
@@ -138,7 +139,7 @@ get_header(); ?>
   		?> <!-- End query for current shows -->
 
 	</div>
-	<?php get_sidebar( 'membership' ); ?>
+	<?php get_sidebar( 'on-stage' ); ?>
 
   <?php get_footer(); ?>
   <script>

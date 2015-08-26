@@ -39,6 +39,14 @@ module.exports = function(grunt) {
         flatten: 'true',
         dest: 'js/vendor/'
       },
+      
+      slick: {
+        expand: true,
+        cwd: 'node_modules/slick-carousel/slick/',
+        src: 'slick.min.js',
+        flatten: 'true',
+        dest: 'js/vendor/'
+      },
 
       iconfonts: {
         expand: true,
