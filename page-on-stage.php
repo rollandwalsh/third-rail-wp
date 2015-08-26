@@ -58,7 +58,6 @@ get_header(); ?>
         	'order'         => 'ASC'
         ));
     		foreach ($categories as $category) {
-      		echo $category->ID .', ';
     			$args = array(
     		    'post_type'  	  => 'page',
     		    'post_status'   => 'publish',

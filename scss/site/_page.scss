@@ -120,7 +120,13 @@
 .on-stage-show-type:nth-of-type(2n-1) {background-color: $gray-light}
 
 .page-home-secondary,
-.on-stage-show-type:nth-of-type(2n) {background-color: $orange}
+.on-stage-show-type:nth-of-type(2n) {
+  background-color: $orange;
+  .section-title a {
+    color: $white;
+    &:hover {color: $gray-light}
+  }
+}
 
 .page-content-area {background-color: $white}
 
