@@ -23,7 +23,7 @@ if ( ! function_exists( 'thirdrail_scripts' ) ) :
 
 	wp_register_script( 'fastclick', get_template_directory_uri() . '/js/vendor/fastclick.js', array(), '1.0.0', false );
 	
-	wp_register_script( 'slick', get_template_directory_uri() . '/node_modules/slick-carousel/slick/slick.min.js', array(), '1.5.6', false );
+	wp_register_script( 'slick', get_template_directory_uri() . '/js/vendor/slick.min.js', array(), '1.5.6', false );
 
 	wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js', array(), '2.1.4', false );
 	
