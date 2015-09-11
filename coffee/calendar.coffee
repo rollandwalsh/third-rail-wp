@@ -164,12 +164,12 @@ buttonPrint = (date) -> # print buttons for date on calendar
   if $(date).data('2')
     data = $(date).data('2')
     purchase = if data.sold then 'buy disabled' else 'buy'
-    tickets = if data.sold then ' SOLD OUT!'
+    tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
     $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
   if $(date).data('3')
     data = $(date).data('3')
     purchase = if data.sold then 'buy disabled' else 'buy'
-    tickets = if data.sold then ' SOLD OUT!'
+    tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
     $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
     
 timeStamp = (input) -> # return a nicely formatted time based on a date
