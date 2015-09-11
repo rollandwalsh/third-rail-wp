@@ -303,6 +303,6 @@ function isCompanyMember( $name ) {
 
 <script>
   $(function() {
-    return getEvent(api, createMonths, show);
+    return getEvents(api, createMonths, show);
   });
 </script>

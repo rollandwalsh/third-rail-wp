@@ -1,18 +1,7 @@
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList'
 cal = $('#calendar')
-
-getEvent = (url, callback, show) ->
-	$.ajax
-	  url: 'http://query.yahooapis.com/v1/public/yql'
-	  dataType: 'jsonp'
-	  data:
-	    q: 'select * from json where url="' + url + '"'
-	    format: 'json'
-	  success: (data) ->
-	    events = data.query.results.json.events
-	    callback event for event in events when new RegExp(show).test event.name
 	    
-getEvents = (url, callback) ->
+getEvents = (url, callback, show = false) ->
 	$.ajax
 	  url: 'http://query.yahooapis.com/v1/public/yql'
 	  dataType: 'jsonp'
@@ -20,11 +9,14 @@ getEvents = (url, callback) ->
 	    q: 'select * from json where url="' + url + '"'
 	    format: 'json'
 	  success: (data) ->
-	    callback(data.query.results.json.events)
+	    if show
+	      events = data.query.results.json.events
+	      callback (event for event in events when new RegExp(show).test event.name), show
+      else
+	      callback(data.query.results.json.events)
 
-createMonths = (data) -> # creates a list of months with events in them
+createMonths = (data, show = false) -> # creates a list of months with events in them
   dates = []
-  console.log 'tst'
   if data instanceof Array
     for event in data
       if event.type == 'Tickets'
@@ -37,36 +29,44 @@ createMonths = (data) -> # creates a list of months with events in them
         dates.push instance.formattedDates.YYYYMMDD for instance in data.instances
       else dates.push data.instances.formattedDates.YYYYMMDD
   
-  minE = (Math.min.apply @, dates).toString()
-  maxE = (Math.max.apply @, dates).toString()
-  
-  minY = minE.substr 0,4
-  minM = minE.substr 4,2
-  maxY = maxE.substr 0,4
-  maxM = maxE.substr 4,2
-  
-  minDate = new Date minY, minM-1
-  maxDate = new Date maxY, maxM-1
-
-  mDiff = (m1, m2) -> # get number of months between first and last months with events
-    ms = (m2.getFullYear() - m1.getFullYear()) * 12
-    ms += m2.getMonth() - m1.getMonth()
-    ms = 0 if ms <= 0
-    ms
+  if dates.length > 0
+    minE = (Math.min.apply @, dates).toString()
+    maxE = (Math.max.apply @, dates).toString()
     
-  months = []
-  i = 0
-  while i <= mDiff minDate, maxDate
-    months.push new Date(minDate.getFullYear(), minDate.getMonth() + i)
-    i++
+    minY = minE.substr 0,4
+    minM = minE.substr 4,2
+    maxY = maxE.substr 0,4
+    maxM = maxE.substr 4,2
+    
+    minDate = new Date minY, minM-1
+    maxDate = new Date maxY, maxM-1
   
-  printMonth month for month in months
-  getEvents(api, createLinks)
-  $('#calendar').slick 
-    prevArrow: $('#calendarNavPrev'),
-    nextArrow: $('#calendarNavNext'),
-    infinite: false,
-    adaptiveHeight: true
+    mDiff = (m1, m2) -> # get number of months between first and last months with events
+      ms = (m2.getFullYear() - m1.getFullYear()) * 12
+      ms += m2.getMonth() - m1.getMonth()
+      ms = 0 if ms <= 0
+      ms
+      
+    months = []
+    i = 0
+    while i <= mDiff minDate, maxDate
+      months.push new Date(minDate.getFullYear(), minDate.getMonth() + i)
+      i++
+    
+    printMonth month for month in months
+    
+    if show
+      getEvents(api, createLinks, show)
+    else
+      getEvents(api, createLinks)
+      
+    $('#calendar').slick 
+      prevArrow: $('#calendarNavPrev'),
+      nextArrow: $('#calendarNavNext'),
+      infinite: false,
+      adaptiveHeight: true
+  else
+    $('#calendarContainer').remove
 		
 printMonth = (date) -> # prints calendar months as tables
 	mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] # names of months
@@ -106,7 +106,7 @@ printMonth = (date) -> # prints calendar months as tables
 	table = '<div id="' + mName + y + '"><table class="month">' + caption + tHead + tBody + '</table></div>' # table
 	cal.append table # append table
   
-createLinks = (data) -> # create links based off of event instances
+createLinks = (data, show = false) -> # create links based off of event instances
   events = {}
   instances = []
   for event in data
@@ -154,7 +154,7 @@ createLinks = (data) -> # create links based off of event instances
   
   $('.has-event').on 'click', ->
     buttonPrint(@)
-  $('.has-event').first().trigger 'click'
+  $('.has-event').first().trigger 'click'  
 
 buttonPrint = (date) -> # print buttons for date on calendar
   data = $(date).data('1')
