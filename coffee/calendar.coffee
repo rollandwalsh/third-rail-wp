@@ -158,18 +158,18 @@ createLinks = (data, show = false) -> # create links based off of event instance
 
 buttonPrint = (date) -> # print buttons for date on calendar
   data = $(date).data('1')
-  purchase = if data.sold then 'buy' else 'buy disabled'
-  tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
+  purchase = if data.sold then 'buy disabled' else 'buy'
+  tickets = if data.sold then 'SOLD OUT! - ' else '<i class="fa fa-ticket"></i> '
   $('#calendarDisplay').html '<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
   if $(date).data('2')
     data = $(date).data('2')
     purchase = if data.sold then 'buy disabled' else 'buy'
-    tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
+    tickets = if data.sold then 'SOLD OUT! - ' else '<i class="fa fa-ticket"></i> '
     $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
   if $(date).data('3')
     data = $(date).data('3')
     purchase = if data.sold then 'buy disabled' else 'buy'
-    tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
+    tickets = if data.sold then 'SOLD OUT! - ' else '<i class="fa fa-ticket"></i> '
     $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
     
 timeStamp = (input) -> # return a nicely formatted time based on a date
