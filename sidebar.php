@@ -15,7 +15,7 @@
   		$args = array(
   	    'post_type'  	   => 'post',
   	    'post_status'    => 'publish',
-  	    'posts_per_page' => 5
+  	    'posts_per_page' => 3
   		);
   	
   		$query = new WP_Query( $args );
@@ -40,6 +40,8 @@
       wp_reset_postdata();
   	?>
 	</article>
+	
 	<?php dynamic_sidebar( 'sidebar-widgets' ); ?>
+	
 	<?php do_action( 'thirdrail_after_sidebar' ); ?>
 </aside>
