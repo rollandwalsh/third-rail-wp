@@ -494,6 +494,7 @@ createLinks = function(data, show) {
 buttonPrint = function(date) {
   var data, purchase, tickets;
   data = $(date).data('1');
+  console.log(data.name + ' - ' + data.day + ' - ' + data.time + ' - ' + data.sold);
   purchase = data.sold ? 'buy' : 'buy disabled';
   tickets = data.sold ? '<i class="fa fa-ticket"></i> ' : 'SOLD OUT! - ';
   $('#calendarDisplay').html('<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>');
