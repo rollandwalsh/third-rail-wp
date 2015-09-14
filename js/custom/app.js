@@ -494,19 +494,19 @@ createLinks = function(data, show) {
 buttonPrint = function(date) {
   var data, purchase, tickets;
   data = $(date).data('1');
-  purchase = data.sold ? 'buy disabled' : 'buy';
-  tickets = data.sold ? 'SOLD OUT! - ' : '<i class="fa fa-ticket"></i> ';
+  purchase = data.sold ? 'buy' : 'buy disabled';
+  tickets = data.sold ? '<i class="fa fa-ticket"></i> ' : 'SOLD OUT! - ';
   $('#calendarDisplay').html('<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>');
   if ($(date).data('2')) {
     data = $(date).data('2');
-    purchase = data.sold ? 'buy disabled' : 'buy';
-    tickets = data.sold ? 'SOLD OUT! - ' : '<i class="fa fa-ticket"></i> ';
+    purchase = data.sold ? 'buy' : 'buy disabled';
+    tickets = data.sold ? '<i class="fa fa-ticket"></i> ' : 'SOLD OUT! - ';
     $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>');
   }
   if ($(date).data('3')) {
     data = $(date).data('3');
-    purchase = data.sold ? 'buy disabled' : 'buy';
-    tickets = data.sold ? 'SOLD OUT! - ' : '<i class="fa fa-ticket"></i> ';
+    purchase = data.sold ? 'buy' : 'buy disabled';
+    tickets = data.sold ? '<i class="fa fa-ticket"></i> ' : 'SOLD OUT! - ';
     return $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>');
   }
 };
