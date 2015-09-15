@@ -89,7 +89,7 @@ $director = role('Director', $creatives, false);
 
 function isCompanyMember( $name ) {
   $args = array(
-  	'child_of'     => 77,
+  	'child_of'     => get_page_by_title( 'Company' )->ID,
   	'post_type'    => 'page',
   	'post_status'  => 'publish'
   );
@@ -210,13 +210,15 @@ function isCompanyMember( $name ) {
   			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
       			<?php foreach ($cast as $actor) { ?>
         			<li class="role-block">
-        			  <?php if ( isCompanyMember($actor[1]) ) { ?>
-          			  <img src="<?php ?>">
-          			  <p><a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button small"><i class="fa fa-bolt"></i> <strong><?php echo $actor[1]; ?></strong></a><br><?php echo $actor[0]; ?></p>
+        			  <?php if ( isCompanyMember($actor[1]) ) { 
+          			  $actorPage = get_page_by_title( $actor[1] ); ?>
+          			  <?php echo get_the_post_thumbnail( $actorPage->ID, 'portrait', array( 'class' => 'actor-image' ) ); ?>
+          			  <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button small expand"><i class="fa fa-bolt"></i> <?php echo $actor[1]; ?></strong></a>
                 <?php } else { ?>
           			  <img src="<?php ?>">
-          			  <p><a href="<?php echo site_url(); ?>/actor/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button other small"><i class="fa fa-user"></i> <strong><?php echo $actor[1]; ?></strong></a><br><?php echo $actor[0]; ?></p>
+          			  <a href="<?php echo site_url(); ?>/actor/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button other small expand"><i class="fa fa-user"></i> <?php echo $actor[1]; ?></strong></a>
                 <?php } ?>
+                <p class="actor-role"><span><?php echo $actor[0]; ?></span></p>
         			</li>
         		<?php } ?>
   			  </ul>
@@ -231,10 +233,10 @@ function isCompanyMember( $name ) {
         			<li class="role-block">
         			  <?php if ( isCompanyMember($creative[1]) ) { ?>
         			    <h6><?php echo $creative[0]; ?></h6>
-        			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button small"><i class="fa fa-bolt"></i> <?php echo $creative[1]; ?></a>
+        			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button small expand"><i class="fa fa-bolt"></i> <?php echo $creative[1]; ?></a>
         			  <?php } else { ?>
         			    <h6><?php echo $creative[0]; ?></h6>
-        			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other small"><i class="fa fa-user"></i> <?php echo $creative[1]; ?></a>
+        			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other small expand"><i class="fa fa-user"></i> <?php echo $creative[1]; ?></a>
         			  <?php } ?>
         			</li>
         		<?php } ?>

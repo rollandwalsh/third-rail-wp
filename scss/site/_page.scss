@@ -296,3 +296,33 @@
     @include flex-video-container();
   }
 }
+
+.actor-image {
+  height: auto;
+  max-width: 100%;
+  
+  display: block;
+}
+
+.actor-role {
+	position: relative;
+	text-align: center;
+	z-index: 1;
+  &:before {
+    border-top: 1px solid $gray-light;
+    content:"";
+    margin: 0 auto;
+    position: absolute;
+    top: 50%; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    z-index: -1;
+  }
+	span {
+		background-color: $white;
+		color: $black-light;
+		cursor: default;
+		display: inline-block;
+		font-weight: $font-weight-light;
+		padding: rem-calc(0 6);
+	}
+}
