@@ -1,13 +1,15 @@
 <?php
 /**
- * The main template file
+ * The template for displaying archive pages
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * e.g., it puts together the home page when no home.php file exists.
+ * Used to display archive-type pages if nothing more specific matches a query.
+ * For example, puts together date-based pages if no date.php file exists.
  *
- * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
+ * If you'd like to further customize these archive views, you may create a
+ * new template file for each one. For example, tag.php (Tag archives),
+ * category.php (Category archives), author.php (Author archives), etc.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
  * @subpackage ThirdRail
@@ -17,14 +19,14 @@
 get_header(); ?>
 
 <div class="row">
+<!-- Row for main content area -->
 	<div class="small-12 large-8 columns" role="main">
 	
-	<h1>Third Rail News</h1>
+	<h1><?php single_cat_title(); ?> News</h1>
 
 	<?php if ( have_posts() ) : ?>
 
-		<?php do_action( 'thirdrail_before_content' ); ?>
-
+		<?php /* Start the Loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'content', get_post_format() ); ?>
 		<?php endwhile; ?>
@@ -32,20 +34,15 @@ get_header(); ?>
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>
 
-		<?php do_action( 'thirdrail_before_pagination' ); ?>
+	<?php endif; // End have_posts() check. ?>
 
-	<?php endif;?>
-
-
-
+	<?php /* Display navigation to next/previous pages when applicable */ ?>
 	<?php if ( function_exists( 'thirdrail_pagination' ) ) { thirdrail_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
 			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'thirdrail' ) ); ?></div>
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'thirdrail' ) ); ?></div>
 		</nav>
 	<?php } ?>
-
-	<?php do_action( 'thirdrail_after_content' ); ?>
 
 	</div>
 	<?php get_sidebar(); ?>

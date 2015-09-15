@@ -374,7 +374,7 @@ createMonths = function(data, show) {
       adaptiveHeight: true
     });
   } else {
-    return $('#calendarContainer').remove;
+    return $('#calendarContainer').remove();
   }
 };
 
@@ -485,6 +485,7 @@ createLinks = function(data, show) {
       });
     }
   }
+  $('#calendarContainer').fadeIn();
   $('.has-event').on('click', function() {
     return buttonPrint(this);
   });

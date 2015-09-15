@@ -126,7 +126,7 @@ get_header(); ?>
             <article <?php post_class() ?> id="post-<?php the_ID(); ?>" data-equalizer-watch>
         			<header class="entry-header">
         				<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
-        				<a href="http://thirdrailrep.org/news/" title="Third Rail News" class="read-more-link">More News</a>
+        				<a href="http://thirdrailrep.org/news/" title="Third Rail News" class="read-more-link">Read More <i class="fa fa-long-arrow-right"></i></a>
             		<p class="post-category"><?php the_category( ' ' ); ?></p>
         			</header>
         			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>

@@ -22,5 +22,5 @@
 	<footer>
 		<?php if ( get_the_tags() ) { ?><p class="tags"><?php the_tags('', ' '); ?></p><?php } ?>
 	</footer>
-	<hr />
+	<hr>
 </article>

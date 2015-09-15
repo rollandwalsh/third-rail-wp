@@ -11,7 +11,7 @@ if ( ! function_exists( 'thirdrail_entry_meta' ) ) :
   function cats() {
     foreach( wp_get_post_categories( get_the_ID() ) as $c ) {
       $cat = get_category( $c ); 
-      return ' - <a href="'. $cat->slug .'" title="'. $cat->name .'" class="category">'. $cat->name .'</a>';
+      return ' - <a href="'. get_category_link( $cat ) .'" title="'. $cat->name .'" class="category">'. $cat->name .'</a>';
     }
   }
   

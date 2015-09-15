@@ -3,9 +3,12 @@
   
   p {
     color: $gray-dark;
-    font-size: rem-calc(14);
+    font-size: rem-calc(13);
   }
-  h4 {margin-bottom: rem-calc(8)}
+  h4 {
+    font-size: rem-calc(20);
+    margin-bottom: rem-calc(8)
+  }
   ul {
     margin: 0;
     padding: 0;
@@ -15,11 +18,18 @@
     }
   }
   
+  hr {
+    margin-top: 0;
+    border-color: $gray-light;
+    border-width: rem-calc(2 0 0);
+  }
+  
   &.widget_search {
     #searchform {margin-top: rem-calc(16)}
   }
   
-  &.widget_archive {
+  &.widget_archive,
+  &.widget_categories {
     ul li {
       @include clearfix();
       color: $gray;
@@ -27,15 +37,7 @@
       text-align: right;
       a {
         float: left;
-        font-size: rem-calc(16);
-        text-transform: uppercase;
-      }
-    }
-  }
-  
-  &.widget_categories {
-    ul li {
-      a {
+        font-size: rem-calc(15);
         text-transform: uppercase;
       }
     }

@@ -66,7 +66,7 @@ createMonths = (data, show = false) -> # creates a list of months with events in
       infinite: false,
       adaptiveHeight: true
   else
-    $('#calendarContainer').remove
+    $('#calendarContainer').remove()
 		
 printMonth = (date) -> # prints calendar months as tables
 	mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] # names of months
@@ -151,7 +151,7 @@ createLinks = (data, show = false) -> # create links based off of event instance
           name: stripNTLive events[instance.eventId]
           time: timeStamp instance.formattedDates.ISO8601
       )
-  
+  $('#calendarContainer').fadeIn()
   $('.has-event').on 'click', ->
     buttonPrint(@)
   $('.has-event').first().trigger 'click'  

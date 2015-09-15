@@ -26,6 +26,11 @@
     position: relative;
     .media-container, .embed-youtube, .entry-content {@include flex-video-container()}
   }
+  
+  hr {
+    border-color: $gray-light;
+    border-width: rem-calc(4 0 0);
+  }
 }
 
 .entry-meta {

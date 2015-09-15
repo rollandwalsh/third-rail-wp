@@ -33,6 +33,7 @@
   					<footer>
   						<?php thirdrail_entry_meta(); ?>
   					</footer>
+  					<hr>
   				<?php endwhile; ?>
   			</div>
   		<?php }
