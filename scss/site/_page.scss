@@ -10,7 +10,7 @@
 	border-width: rem-calc(0 0 8 0);
 	width: 100%;
 	@media #{$small-only} {
-		#svgHeader {display: none}
+		display: none;
 	}
 	@media #{$medium-only} {
 		.info-section {@include grid-column(4)}

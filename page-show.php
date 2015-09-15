@@ -185,9 +185,9 @@ function isCompanyMember( $name ) {
   			  <li class="playwright">
   			    <h5>Written by</h5>
   			      <?php if ( isCompanyMember( $playwright ) ) { ?>
-      			    <a href="<?php isCompanyMember( $creative[1] ); ?>" class="button expand"><i class="fa fa-bolt"></i> <?php echo $playwright; ?></a>
+      			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button expand"><i class="fa fa-bolt"></i> <?php echo $playwright; ?></a>
       			  <?php } else { ?>
-      			    <a href="/creative/<?php echo strtolower( str_replace( ' ', '-', $playwright ) ); ?>/" class="button other expand"><i class="fa fa-user"></i> <?php echo $playwright; ?></a>
+      			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other expand"><i class="fa fa-user"></i> <?php echo $playwright; ?></a>
       			  <?php } ?>
   			  </li>
         <?php } ?>
@@ -196,9 +196,9 @@ function isCompanyMember( $name ) {
   			  <li class="director">
   			    <h5>Directed by</h5>
   			      <?php if ( isCompanyMember( $director ) ) { ?>
-      			    <a href="<?php isCompanyMember( $director ); ?>" class="button expand"><i class="fa fa-bolt"></i> <?php echo $director; ?></a>
+      			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button expand"><i class="fa fa-bolt"></i> <?php echo $director; ?></a>
       			  <?php } else { ?>
-      			    <a href="/creative/<?php echo strtolower( str_replace( ' ', '-', $director ) ); ?>/" class="button other expand"><i class="fa fa-user"></i> <?php echo $director; ?></a>
+      			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other expand"><i class="fa fa-user"></i> <?php echo $director; ?></a>
       			  <?php } ?>
   			  </li>
         <?php } ?>
@@ -207,12 +207,19 @@ function isCompanyMember( $name ) {
 			<?php if ( !null == $cast ) { ?>
   			<h3 class="section-title">Cast</h3>
   			<div class="show-section">
-    			<?php foreach ($cast as $actor) { ?>
-      			<div class="role-block">
-      			  <img src="<?php ?>">
-      			  <p><a href="#"><i class="fa fa-bolt"></i> <strong><?php echo $actor[1]; ?></strong></a><br><?php echo $actor[0]; ?></p>
-      			</div>
-      		<?php } ?>
+  			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
+      			<?php foreach ($cast as $actor) { ?>
+        			<li class="role-block">
+        			  <?php if ( isCompanyMember($actor[1]) ) { ?>
+          			  <img src="<?php ?>">
+          			  <p><a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button small"><i class="fa fa-bolt"></i> <strong><?php echo $actor[1]; ?></strong></a><br><?php echo $actor[0]; ?></p>
+                <?php } else { ?>
+          			  <img src="<?php ?>">
+          			  <p><a href="<?php echo site_url(); ?>/actor/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button other small"><i class="fa fa-user"></i> <strong><?php echo $actor[1]; ?></strong></a><br><?php echo $actor[0]; ?></p>
+                <?php } ?>
+        			</li>
+        		<?php } ?>
+  			  </ul>
   			</div>
   		<?php } ?>
 			
@@ -224,10 +231,10 @@ function isCompanyMember( $name ) {
         			<li class="role-block">
         			  <?php if ( isCompanyMember($creative[1]) ) { ?>
         			    <h6><?php echo $creative[0]; ?></h6>
-        			    <a href="<?php isCompanyMember( $creative[1] ); ?>" class="button small"><i class="fa fa-bolt"></i> <?php echo $creative[1]; ?></a>
+        			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button small"><i class="fa fa-bolt"></i> <?php echo $creative[1]; ?></a>
         			  <?php } else { ?>
         			    <h6><?php echo $creative[0]; ?></h6>
-        			    <a href="/actor/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other small"><i class="fa fa-user"></i> <?php echo $creative[1]; ?></a>
+        			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other small"><i class="fa fa-user"></i> <?php echo $creative[1]; ?></a>
         			  <?php } ?>
         			</li>
         		<?php } ?>
