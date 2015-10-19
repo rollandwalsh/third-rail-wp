@@ -22,42 +22,6 @@ get_header(); ?>
 		<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailMembership.svg" ); ?>
   </div>
 </section>
-    
-<section class="tr-home-show-cards">
-  <div class="tr-show-card">
-    <a href="#"><img src="img/the-realistic-joneses.jpg" alt="The Realistic Joneses"></a>
-    <div class="tr-show-card-overlay">
-      <header>
-        <h2><a href="#">The Realistic Joneses</a></h2>
-        <h5>by Will Eno</h5>
-      </header>
-      <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
-    </div>
-  </div>
-  
-  <div class="tr-show-card nt-live">
-    <a href="#"><img src="img/hamlet-poster.jpg" alt="Mr. Kolpert"></a>
-    <div class="tr-show-card-overlay">
-      <header>
-        <h2><a href="#">Hamlet</a></h2>
-        <h5>by William Shakespeare</h5>
-      </header>
-      <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
-    </div>
-  </div>
-  
-  <div class="tr-show-card wild-card">
-    <a href="#"><img src="img/pete-all-well.jpg" alt="The New Electric Ballroom"></a>
-    <div class="tr-show-card-overlay">
-      <header>
-        <h2><a href="#">All Well</a></h2>
-        <h5>by PETE</h5>
-      </header>
-      <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
-    </div>
-  </div>
-</section>
-
   
 <section class="tr-home-show-cards">
 	<?php
@@ -120,8 +84,8 @@ get_header(); ?>
           <?php } ?>
           <div class="tr-show-card-overlay">
             <header>
-              <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">The Realistic Joneses</a></h2>
-              <h5>by Will Eno</h5>
+              <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
+              <h5>by <?php echo rwmb_meta( 'playwright' ); ?></h5>
             </header>
             <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
           </div>
@@ -133,6 +97,10 @@ get_header(); ?>
 			
     wp_reset_postdata();
   ?> <!-- End query for current shows -->
+</section>
+    
+<section class="tr-home-calendar" id="trCalendar">
+
 </section>
   
   <section class="page-home-secondary">
@@ -179,9 +147,7 @@ get_header(); ?>
   	
   	<div class="home-current-calendar">
   		<h2 class="section-title">Calendar</h2>
-        <article class="tr-calendar" data-equalizer-watch>
-          <span class="calendar-nav" id="calendarNavPrev"><i class="fa fa-long-arrow-left"></i> Prev</span>
-          <span class="calendar-nav" id="calendarNavNext">Next <i class="fa fa-long-arrow-right"></i></span>
+        <article class="tr-calendar">
         	<div id="calendar">
         	</div>
         	<div id="calendarDisplay">
