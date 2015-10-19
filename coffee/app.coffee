@@ -85,6 +85,8 @@ printMonth = (date) -> # prints calendar months as tables
 	ds = ('<div class="tr-calendar-day" id="' + y + (if m<10 then '0' + m else m) + (if d<10 then '0' + d else d) + '">' + d + '</div>' for d in [1..dCount]) # days based on dCount
 	days = blankDs.concat ds # concatanated days divs
 	divs = dayNames.concat days
+	
+	console.log divs
 	  
 	header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>' # calendar month header
 	weeks = '<section class="tr-calendar-weeks">' + divs.toString() + '</section>' # calendar weeks
