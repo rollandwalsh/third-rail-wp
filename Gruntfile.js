@@ -91,6 +91,7 @@ module.exports = function(grunt) {
         },
         dist: {
           src: [
+/*
           'bower_components/foundation/js/foundation/foundation.js',
 
           'bower_components/foundation/js/foundation/foundation.abide.js',
@@ -106,6 +107,7 @@ module.exports = function(grunt) {
           'bower_components/foundation/js/foundation/foundation.tab.js',
           'bower_components/foundation/js/foundation/foundation.tooltip.js',
           'bower_components/foundation/js/foundation/foundation.topbar.js',
+*/
 
           'js/custom/app.js'
 
