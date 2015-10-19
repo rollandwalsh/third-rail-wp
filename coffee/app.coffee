@@ -89,7 +89,7 @@ printMonth = (date) -> # prints calendar months as tables
 	console.log divs
 	  
 	header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>' # calendar month header
-	weeks = '<section class="tr-calendar-weeks">' + divs.join "" + '</section>' # calendar weeks
+	weeks = '<section class="tr-calendar-weeks">' + divs.join('') + '</section>' # calendar weeks
 	
 	month = '<article id="' + mName + y + '" class="tr-calendar-month">' + header + weeks + '</article>' # month
 	cal.append month # append month
