@@ -25,7 +25,7 @@ if ( ! function_exists( 'thirdrail_top_bar_l' ) ) {
 	        'container' => false,                           // Remove nav container
 	        'container_class' => '',                        // Class of container
 	        'menu' => '',                                   // Menu name
-	        'menu_class' => 'top-bar-menu left',            // Adding custom nav class
+	        'menu_class' => 'tr-site-nav-menu left',        // Adding custom nav class
 	        'theme_location' => 'top-bar-l',                // Where it's located in the theme
 	        'before' => '',                                 // Before each link <a>
 	        'after' => '',                                  // After each link </a>
@@ -47,7 +47,7 @@ if ( ! function_exists( 'thirdrail_top_bar_r' ) ) {
 	        'container' => false,                           // Remove nav container
 	        'container_class' => '',                        // Class of container
 	        'menu' => '',                                   // Menu name
-	        'menu_class' => 'top-bar-menu right',           // Adding custom nav class
+	        'menu_class' => 'tr-site-nav-menu right',       // Adding custom nav class
 	        'theme_location' => 'top-bar-r',                // Where it's located in the theme
 	        'before' => '',                                 // Before each link <a>
 	        'after' => '',                                  // After each link </a>

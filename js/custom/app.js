@@ -109,7 +109,7 @@ createMonths = function(data) {
 };
 
 printMonth = function(date) {
-  var blank, blankDs, d, dCount, day, dayNames, days, dofW, dowNames, ds, header, m, mName, mNames, month, weeks, y;
+  var blank, blankDs, d, dCount, day, dayNames, days, divs, dofW, dowNames, ds, header, m, mName, mNames, month, weeks, y;
   mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   dowNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   m = date.getMonth();
@@ -144,8 +144,9 @@ printMonth = function(date) {
     return results;
   })();
   days = blankDs.concat(ds);
+  divs = dayNames.concat(days);
   header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>';
-  weeks = '<section class="tr-calendar-weeks">' + dayNames.concat(days + '</section>');
+  weeks = '<section class="tr-calendar-weeks">' + divs.toString() + '</section>';
   month = '<article id="' + mName + y + '" class="tr-calendar-month">' + header + weeks + '</article>';
   return cal.append(month);
 };
