@@ -147,7 +147,7 @@ printMonth = function(date) {
   divs = dayNames.concat(days);
   console.log(divs);
   header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>';
-  weeks = '<section class="tr-calendar-weeks">' + divs.toString() + '</section>';
+  weeks = '<section class="tr-calendar-weeks">' + divs.join("" + '</section>');
   month = '<article id="' + mName + y + '" class="tr-calendar-month">' + header + weeks + '</article>';
   return cal.append(month);
 };
