@@ -69,6 +69,7 @@ createMonths = (data) -> # creates a list of months with events in them
 		
 printMonth = (date) -> # prints calendar months as tables
 	mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] # names of months
+	dowNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] # names of days of week
 	
 	m = date.getMonth() # month number
 	mName = mNames[m] # month name
@@ -78,32 +79,17 @@ printMonth = (date) -> # prints calendar months as tables
 	dofW = date.getDay() # first day of week
 	dCount = new Date(date.getYear(), date.getMonth() + 1, 0).getDate() # day count in month
 	
-	blankDs  = ('<td class="day blank"></td>' for blank in [0...dofW]) # td blank days based on dofW
-	ds = ('<td class="day" id="' + y + (if m<10 then '0' + m else m) + (if d<10 then '0' + d else d) + '">' + d + '</td>' for d in [1..dCount]) # td days based on dCount
-	tds = blankDs.concat ds # concatanated tds
+	dayNames = ('<div class="tr-calendar-day name">' + dowNames[n] + '</div>' for n in [1..dowNames]) # names of days row
 	
-	trs = ''
-	i = 0
-	while i < tds.length # itereate over tds
-	  if i%7 == 0 # if beginning of a week except the first day
-	    trs += '</tr>*<tr class="week">' + tds[i] # close week / open new week
-    else
-      trs += tds[i] # add data
-    i++
-  trs = trs.split('*') # create array of weeks
-  trs.shift() # remove the first </tr> item in array
-  lastTr = trs.pop() # remove last week from array
-  lastTr += Array(8 - (lastTr.match(/<\/td>/g) || []).length).join('<td></td>')
-  lastTr += '</tr>' # close final week tag
-  trs.push lastTr
-  trs = trs.join ''
+	blankDs  = ('<div class="tr-calendar-day"></div>>' for blank in [0...dofW]) # blank days based on dofW
+	ds = ('<div class="tr-calendar-day" id="' + y + (if m<10 then '0' + m else m) + (if d<10 then '0' + d else d) + '">' + d + '</div>' for d in [1..dCount]) # days based on dCount
+	days = blankDs.concat ds # concatanated days divs
 	  
-	caption = '<caption>' + mName + ' ' + y + '</caption>' # table caption
-	tHead = '<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>' # table head
-	tBody = '<tbody>' + trs + '</tbody>' # table body
+	header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>' # calendar month header
+	weeks = '<section class="tr-calendar-weeks">' + dayNames.concat days + '</section>' # calendar weeks
 	
-	table = '<div id="' + mName + y + '"><table class="month">' + caption + tHead + tBody + '</table></div>' # table
-	cal.append table # append table
+	month = '<article id="' + mName + y + '" class="tr-calendar-month">' + header + weeks + '</article>' # month
+	cal.append month # append month
   
 createLinks = (data) -> # create links based off of event instances
   events = {}
@@ -157,14 +143,20 @@ createLinks = (data) -> # create links based off of event instances
 
 buttonPrint = (date) -> # print buttons for date on calendar
   data = $(date).data('1')
-  $('#calendarDisplay').html '<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
+  purchase = if data.sold then 'buy' else 'buy disabled'
+  tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
+  $('#calendarDisplay').html '<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
   if $(date).data('2')
     data = $(date).data('2')
-    $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
+    purchase = if data.sold then 'buy' else 'buy disabled'
+    tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
+    $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
   if $(date).data('3')
     data = $(date).data('3')
-    $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button buy expand"><i class="fa fa-ticket"></i> ' + data.name + ' - ' + data.time + '</a>'
-    
+    purchase = if data.sold then 'buy' else 'buy disabled'
+    tickets = if data.sold then '<i class="fa fa-ticket"></i> ' else 'SOLD OUT! - '
+    $('#calendarDisplay').append '<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>'
+        
 timeStamp = (input) -> # return a nicely formatted time based on a date
   date = new Date(input)
   time = [
