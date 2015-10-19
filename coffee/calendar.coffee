@@ -1,5 +1,5 @@
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList'
-cal = $('#calendar')
+cal = $('#trCalendar')
 	    
 getEvents = (url, callback, show = false) ->
 	$.ajax
@@ -70,6 +70,7 @@ createMonths = (data, show = false) -> # creates a list of months with events in
 		
 printMonth = (date) -> # prints calendar months as tables
 	mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] # names of months
+	dowNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] # names of days of week
 	
 	m = date.getMonth() # month number
 	mName = mNames[m] # month name
@@ -79,32 +80,17 @@ printMonth = (date) -> # prints calendar months as tables
 	dofW = date.getDay() # first day of week
 	dCount = new Date(date.getYear(), date.getMonth() + 1, 0).getDate() # day count in month
 	
-	blankDs  = ('<td class="day blank"></td>' for blank in [0...dofW]) # td blank days based on dofW
-	ds = ('<td class="day" id="' + y + (if m<10 then '0' + m else m) + (if d<10 then '0' + d else d) + '">' + d + '</td>' for d in [1..dCount]) # td days based on dCount
-	tds = blankDs.concat ds # concatanated tds
+	dayNames = ('<div class="tr-calendar-day name">' + dowNames[n] + '</div>' for n in [1..dowNames]) # names of days row
 	
-	trs = ''
-	i = 0
-	while i < tds.length # itereate over tds
-	  if i%7 == 0 # if beginning of a week except the first day
-	    trs += '</tr>*<tr class="week">' + tds[i] # close week / open new week
-    else
-      trs += tds[i] # add data
-    i++
-  trs = trs.split('*') # create array of weeks
-  trs.shift() # remove the first </tr> item in array
-  lastTr = trs.pop() # remove last week from array
-  lastTr += Array(8 - (lastTr.match(/<\/td>/g) || []).length).join('<td></td>')
-  lastTr += '</tr>' # close final week tag
-  trs.push lastTr
-  trs = trs.join ''
+	blankDs  = ('<div class="tr-calendar-day"></div>' for blank in [0...dofW]) # blank days based on dofW
+	ds = ('<div class="tr-calendar-day" id="' + y + (if m<10 then '0' + m else m) + (if d<10 then '0' + d else d) + '">' + d + '</div>' for d in [1..dCount]) # div days based on dCount
+	divs = blankDs.concat ds # concatanated divs
 	  
-	caption = '<caption>' + mName + ' ' + y + '</caption>' # table caption
-	tHead = '<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>' # table head
-	tBody = '<tbody>' + trs + '</tbody>' # table body
+	header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>' # calendar month header
+	weeks = '<section class="tr-calendar-weeks">' + dayNames + divs + '</section>' # calendar weeks
 	
-	table = '<div id="' + mName + y + '"><table class="month">' + caption + tHead + tBody + '</table></div>' # table
-	cal.append table # append table
+	month = '<article id="' + mName + y + '" class="tr-calendar-month">' + header + weeks + '</article>' # month
+	cal.append month # append month
   
 createLinks = (data, show = false) -> # create links based off of event instances
   events = {}
@@ -141,7 +127,7 @@ createLinks = (data, show = false) -> # create links based off of event instance
           time: timeStamp instance.formattedDates.ISO8601
       )
     else
-      date.addClass('has-event').data(
+      date.addClass('event').data(
         '1'
           sold: instance.soldOut
           status: instance.saleStatus

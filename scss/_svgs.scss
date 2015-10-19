@@ -1,0 +1,40 @@
+// SVGS
+// - - - - - - - - - - - - -
+
+.tr-page-banner {
+  
+  #thirdRailMembership {
+    .third-rail,
+    .membership {
+      fill: $white;
+    }
+    
+    .lightning-bolt {
+      fill: $orange;
+    }
+  }
+	
+	&:hover {
+		#thirdRailMembership {
+			.lightning-bolt {transform: translateY(10rem)}
+			.membership {transform: scale(1.1) translate(-5rem, -7rem)}
+		}
+		#ntLive {
+			#gradient stop.bottom {stop-color: rgba($orange, 1)}
+		}
+		#or {
+			.feather {transform: translateX(-4rem)}
+			.sword {transform: translateX(4rem)}
+		}
+		#theRealisticJoneses {
+			.board {transform: rotate(90deg) translateX(-15rem) translateY(-160rem)}
+		}
+		#mrKolpert {
+			.man {transform: rotate(20deg) translateX(4rem)}
+			.banana {transform: rotate(5deg) translateX(6rem) translateY(-10rem)}
+		}
+		#theNewElectricBallroom {
+			.shoe {transform: rotate(5deg) translateX(5rem) translateY(-5rem)}
+		}
+	}
+}

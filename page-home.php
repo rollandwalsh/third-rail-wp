@@ -8,97 +8,132 @@
  */
 
 get_header(); ?>
-
-  <header class="page-header">
-  	<div id="svgHeader" class="row" data-equalizer="header">
-  		<div class="info-section" data-equalizer-watch="header">
-  			<div class="content">
-  			  <hr>
-  				<h2>Third Rail Membership</h2>
-  				<h5 id="membershipMessage">Join the Movement!</h5>
-  				<a href="/test/membership/" class="button large">Learn More</a> <a href="#" class="button buy large" id="membershipJoin"><i class="fa fa-bolt"></i> Join Now</a>
-  			  <hr>
-  			</div>
-  		</div>
-  		<div class="graphic-section" data-equalizer-watch="header">
-  			<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailMembership.svg" ); ?>
-  		</div>
-  	</div>
-  </header>
+    
+<section class="tr-page-banner">
+  <div class="tr-container">
+    <header class="tr-page-banner-header">
+			<h2>Third Rail Membership</h2>
+			<h5 id="membershipMessage">Join the Movement!</h5>
+			<div class="tr-page-banner-buttons">
+			  <a href="/test/membership/" class="button">Learn More</a><a href="#" class="button buy" id="membershipJoin"><i class="fa fa-bolt"></i> Join Now</a>
+			</div>
+		</header>
+		
+		<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailMembership.svg" ); ?>
+  </div>
+</section>
+    
+<section class="tr-home-show-cards">
+  <div class="tr-show-card">
+    <a href="#"><img src="img/the-realistic-joneses.jpg" alt="The Realistic Joneses"></a>
+    <div class="tr-show-card-overlay">
+      <header>
+        <h2><a href="#">The Realistic Joneses</a></h2>
+        <h5>by Will Eno</h5>
+      </header>
+      <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
+    </div>
+  </div>
   
-  <section id="homeTiles" class="page-banner">
-		<?php
-			$args = array(
-		    'post_type'  	   => 'page',
-		    'post_status'    => 'publish',
-		    'post__not_in'   => array( 186, 195, 197, 199, 202, 259 ),
-		    'order'          => 'ASC',
-		    'orderby'        => 'meta_value',
-		    'meta_key'       => 'closing_date',
-		    'posts_per_page' => 4,
-		    'meta_query' 	   => array( 
-          'relation'    => 'AND',
-		      array(
-		        'key'   	   => '_wp_page_template', 
-		        'value' 	   => array('page-show.php')
-		      ),
-          array(
-            'key'        => 'closing_date',
-            'value'      => date('Y-m-d'),
-            'type'       => 'DATE',
-            'compare'    => '>='
-          )
-		    )
-			);
+  <div class="tr-show-card nt-live">
+    <a href="#"><img src="img/hamlet-poster.jpg" alt="Mr. Kolpert"></a>
+    <div class="tr-show-card-overlay">
+      <header>
+        <h2><a href="#">Hamlet</a></h2>
+        <h5>by William Shakespeare</h5>
+      </header>
+      <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
+    </div>
+  </div>
+  
+  <div class="tr-show-card wild-card">
+    <a href="#"><img src="img/pete-all-well.jpg" alt="The New Electric Ballroom"></a>
+    <div class="tr-show-card-overlay">
+      <header>
+        <h2><a href="#">All Well</a></h2>
+        <h5>by PETE</h5>
+      </header>
+      <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
+    </div>
+  </div>
+</section>
+
+  
+<section class="tr-home-show-cards">
+	<?php
+		$args = array(
+	    'post_type'  	   => 'page',
+	    'post_status'    => 'publish',
+	    'post__not_in'   => array( ), // Use for shows to hide
+	    'order'          => 'ASC',
+	    'orderby'        => 'meta_value',
+	    'meta_key'       => 'closing_date',
+	    'posts_per_page' => 3,
+	    'meta_query' 	   => array( 
+        'relation'    => 'AND',
+	      array(
+	        'key'   	   => '_wp_page_template', 
+	        'value' 	   => array('page-show.php')
+	      ),
+        array(
+          'key'        => 'closing_date',
+          'value'      => date('Y-m-d'),
+          'type'       => 'DATE',
+          'compare'    => '>='
+        )
+	    )
+		);
+		
+		$query = new WP_Query( $args );
+		
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) : $query->the_post(); 
 			
-			$query = new WP_Query( $args );
+				switch ( rwmb_meta( 'show_type' ) ) {
+          case 'mainstage':
+            $show_class = '';
+            $show_type = 'Mainstage';
+            break;
+          case 'nt_live':
+            $show_class = 'nt-live';
+            $show_type = 'National Theatre Live';
+            break;
+          case 'wildcard':
+            $show_class = 'wild-card';
+            $show_type = 'Wild Card';
+            break;
+          case 'bloody_sunday':
+            $show_class = 'bloody-sunday';
+            $show_type = 'Bloody Sunday';
+            break;
+          case 'event':
+            $show_class = 'event';
+            $show_type = 'Event';
+            break;
+          default:
+            $show_type = 'Upcoming Show';
+        } // change show_type to print text ?> <!-- Start query for current shows -->
+        
+        <article class="tr-show-card <?php echo $show_class; ?>" id="post-<?php the_ID(); ?>">
+          <?php if ( has_post_thumbnail() ) { ?>
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
+          <?php } ?>
+          <div class="tr-show-card-overlay">
+            <header>
+              <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">The Realistic Joneses</a></h2>
+              <h5>by Will Eno</h5>
+            </header>
+            <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
+          </div>
+        </article>
+      <?php endwhile;
+		} else {
+			// no posts found
+		}
 			
-			if ( $query->have_posts() ) {
-				while ( $query->have_posts() ) : $query->the_post(); 
-				
-  				switch ( rwmb_meta( 'show_type' ) ) {
-            case 'mainstage':
-              $show_type = 'Mainstage';
-              break;
-            case 'nt_live':
-              $show_type = 'National Theatre Live';
-              break;
-            case 'wildcard':
-              $show_type = 'Wild Card';
-              break;
-            case 'bloody_sunday':
-              $show_type = 'Bloody Sunday';
-              break;
-            case 'event':
-              $show_type = 'Event';
-              break;
-            default:
-              $show_type = 'Upcoming Show';
-          } // change show_type to print text ?> <!-- Start query for current shows -->
-				
-        	<div class="home-current-shows">
-        		<h2 class="section-title"><?php echo $show_type; ?></h2>
-					
-        		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-        			<div class="entry-content">
-            		<?php if ( has_post_thumbnail() ) { ?>
-            			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
-            		<?php } ?>
-        			</div>
-            	<header class="entry-header">
-            		<a href="#" class="info-link">Learn More</a> <a href="#" class="buy-link"><i class="fa fa-ticket"></i> Book Now</a>
-            	</header>
-        			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
-        		</article>
-        	</div>
-				<?php endwhile;
-			} else {
-				// no posts found
-			}
-			
-			wp_reset_postdata();
-		?> <!-- End query for current shows -->
-  </section>
+    wp_reset_postdata();
+  ?> <!-- End query for current shows -->
+</section>
   
   <section class="page-home-secondary">
   	<div class="home-current-news">
@@ -289,12 +324,4 @@ get_header(); ?>
 		$('#membershipMessage').replaceWith('<h5>Would you rather join annually or monthly?</h5>');
 		$(this).replaceWith('<br><a href="https://thirdrailrep.secure.force.com/ticket#membership_a0So0000002BughEAC" class="button buy large">$352/year</a> <a href="https://thirdrailrep.secure.force.com/donate/?dfId=a0no000000HByN7AAL" class="button buy large">$29.33/month</a>');
 	});	
-  
-  $('#mediaSlider').slick({
-    autoplay: true,
-    autoplaySpeed: 6000,
-    prevArrow: $('#mediaSliderControls i:first-child'),
-    nextArrow: $('#mediaSliderControls i:last-child'),
-    speed: 1500
-  });
 </script>

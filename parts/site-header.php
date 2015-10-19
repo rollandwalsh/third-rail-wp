@@ -8,16 +8,26 @@
  */
 
 ?>
-<header class="site-header contain-to-grid fixed">
-  <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="<?php echo home_url(); ?>"><?php echo file_get_contents(get_stylesheet_directory_uri() . "/svg/thirdRailLogo.svg"); ?></a></h1>
-      </li>
-      <li class="toggle-topbar burger-icon"><a href="#"><div></div></a></li>
-    </ul>
-    <section class="top-bar-section">
+
+<header class="tr-site-header">
+  <div class="tr-container">
+    <a href="<?php echo home_url(); ?>" class="tr-site-logo"><?php echo file_get_contents(get_stylesheet_directory_uri() . "/svg/thirdRailLogo.svg"); ?></a>
+    
+    <nav class="tr-site-nav">
       <?php thirdrail_top_bar_r(); ?>
-    </section>
-  </nav>
+<!--
+      <ul class="tr-site-nav-menu" id="trSiteNavMenu">
+        <li><a href="#">On Stage</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Join</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Membership</a></li>
+      </ul>
+-->
+      
+      <a href="#" class="tr-site-nav-button" id="trSiteNavButton"><span class="tr-site-nav-burger"></span></a>
+    </nav>
+  </div>
 </header>
+    

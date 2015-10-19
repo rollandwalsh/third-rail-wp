@@ -185,7 +185,7 @@ function isCompanyMember( $name ) {
   			  <li class="playwright">
   			    <h5>Written by</h5>
   			      <?php if ( isCompanyMember( $playwright ) ) { ?>
-      			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button expand"><i class="fa fa-bolt"></i> <?php echo $playwright; ?></a>
+      			    <a href="<?php echo site_url(); ?>/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button expand"><i class="fa fa-bolt"></i> <?php echo $playwright; ?></a>
       			  <?php } else { ?>
       			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other expand"><i class="fa fa-user"></i> <?php echo $playwright; ?></a>
       			  <?php } ?>
@@ -196,7 +196,7 @@ function isCompanyMember( $name ) {
   			  <li class="director">
   			    <h5>Directed by</h5>
   			      <?php if ( isCompanyMember( $director ) ) { ?>
-      			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button expand"><i class="fa fa-bolt"></i> <?php echo $director; ?></a>
+      			    <a href="<?php echo site_url(); ?>/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button expand"><i class="fa fa-bolt"></i> <?php echo $director; ?></a>
       			  <?php } else { ?>
       			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other expand"><i class="fa fa-user"></i> <?php echo $director; ?></a>
       			  <?php } ?>
@@ -210,13 +210,14 @@ function isCompanyMember( $name ) {
   			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
       			<?php foreach ($cast as $actor) { ?>
         			<li class="role-block">
-        			  <?php if ( isCompanyMember($actor[1]) ) { 
+        			  <?php if ( isCompanyMember( $actor[1] ) ) { 
           			  $actorPage = get_page_by_title( $actor[1] ); ?>
           			  <?php echo get_the_post_thumbnail( $actorPage->ID, 'portrait', array( 'class' => 'actor-image' ) ); ?>
-          			  <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button small expand"><i class="fa fa-bolt"></i> <?php echo $actor[1]; ?></strong></a>
-                <?php } else { ?>
-          			  <img src="<?php ?>">
-          			  <a href="<?php echo site_url(); ?>/actor/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button other small expand"><i class="fa fa-user"></i> <?php echo $actor[1]; ?></strong></a>
+          			  <a href="<?php echo site_url(); ?>/company/<?php echo strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>/" class="button small expand"><i class="fa fa-bolt"></i> <?php echo $actor[1]; ?></strong></a>
+                <?php } else { 
+                  $actorSlug = strtolower( str_replace( ' ', '-', $actor[1] ) ); ?>
+          			  <img src="<?php echo site_url() . '/wp-content/themes/third-rail-wp/assets/img/actors/' . $actorSlug; ?>">
+          			  <a href="<?php echo site_url(); ?>/actor/<?php echo $actorSlug; ?>/" class="button other small expand"><i class="fa fa-user"></i> <?php echo $actor[1]; ?></strong></a>
                 <?php } ?>
                 <p class="actor-role"><span><?php echo $actor[0]; ?></span></p>
         			</li>
@@ -229,17 +230,18 @@ function isCompanyMember( $name ) {
 			  <h3 class="section-title">Creative</h3>
   			<div class="show-section">
   			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
-      			<?php foreach ($creatives as $creative) { ?>
-        			<li class="role-block">
-        			  <?php if ( isCompanyMember($creative[1]) ) { ?>
-        			    <h6><?php echo $creative[0]; ?></h6>
-        			    <a href="<?php echo site_url(); ?>/about/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button small expand"><i class="fa fa-bolt"></i> <?php echo $creative[1]; ?></a>
-        			  <?php } else { ?>
-        			    <h6><?php echo $creative[0]; ?></h6>
-        			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other small expand"><i class="fa fa-user"></i> <?php echo $creative[1]; ?></a>
-        			  <?php } ?>
-        			</li>
-        		<?php } ?>
+      			<?php foreach ($creatives as $creative) { 
+        			if ( !in_array($creative[1], array($director, $playwright) ) ) { ?>
+          			<li class="role-block">
+          			  <?php if ( isCompanyMember( $creative[1] ) ) { ?>
+          			    <h6><?php echo $creative[0]; ?></h6>
+          			    <a href="<?php echo site_url(); ?>/company/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button small expand"><i class="fa fa-bolt"></i> <?php echo $creative[1]; ?></a>
+          			  <?php } else { ?>
+          			    <h6><?php echo $creative[0]; ?></h6>
+          			    <a href="<?php echo site_url(); ?>/creative/<?php echo strtolower( str_replace( ' ', '-', $creative[1] ) ); ?>/" class="button other small expand"><i class="fa fa-user"></i> <?php echo $creative[1]; ?></a>
+          			  <?php } ?>
+          			</li>
+        		<?php } } ?>
           </ul>
         </div>
   		<?php } ?>

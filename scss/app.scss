@@ -1,49 +1,189 @@
-@charset "UTF-8";
+@import 'config/functions';
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-@import "normalize";
+// COLORS
+// - - - - - - - - - - - - - 
 
-@import "config/settings";
-@import "config/custom-settings";
+// GRAYSCALE
 
-@import "../bower_components/foundation/scss/foundation/components/grid";
-@import "../bower_components/foundation/scss/foundation/components/accordion";
-@import "../bower_components/foundation/scss/foundation/components/alert-boxes";
-@import "../bower_components/foundation/scss/foundation/components/block-grid";
-@import "../bower_components/foundation/scss/foundation/components/breadcrumbs";
-@import "../bower_components/foundation/scss/foundation/components/buttons";
-@import "../bower_components/foundation/scss/foundation/components/clearing";
-@import "../bower_components/foundation/scss/foundation/components/dropdown";
-@import "../bower_components/foundation/scss/foundation/components/flex-video";
-@import "../bower_components/foundation/scss/foundation/components/forms";
-@import "../bower_components/foundation/scss/foundation/components/inline-lists";
-@import "../bower_components/foundation/scss/foundation/components/keystrokes";
-@import "../bower_components/foundation/scss/foundation/components/labels";
-@import "../bower_components/foundation/scss/foundation/components/pagination";
-@import "../bower_components/foundation/scss/foundation/components/panels";
-@import "../bower_components/foundation/scss/foundation/components/progress-bars";
-@import "../bower_components/foundation/scss/foundation/components/range-slider";
-@import "../bower_components/foundation/scss/foundation/components/reveal";
-@import "../bower_components/foundation/scss/foundation/components/split-buttons";
-@import "../bower_components/foundation/scss/foundation/components/sub-nav";
-@import "../bower_components/foundation/scss/foundation/components/switches";
-@import "../bower_components/foundation/scss/foundation/components/tables";
-@import "../bower_components/foundation/scss/foundation/components/tabs";
-@import "../bower_components/foundation/scss/foundation/components/thumbs";
-@import "../bower_components/foundation/scss/foundation/components/tooltips";
-@import "../bower_components/foundation/scss/foundation/components/top-bar";
-@import "../bower_components/foundation/scss/foundation/components/type";
-@import "../bower_components/foundation/scss/foundation/components/offcanvas";
-@import "../bower_components/foundation/scss/foundation/components/visibility";
+$white: 			#FFFFFF;
+$white-dark:	#FAFAFA;
+$gray-light:	#EFEFEF;
+$gray:				#AAAAAA;
+$gray-dark:		#666666;
+$black-light:	#222222;
+$black:				#000000;
 
-@import "../assets/fontawesome/scss/font-awesome.scss";
-@import "../bower_components/sass-burger/burger";
+// THIRD RAIL
 
-@import "site/global"; 
-@import "site/wp-admin";
-@import "site/header";
-@import "site/page";
-@import "site/post";
-@import "site/sidebar";
-@import "site/calendar";
-@import "site/footer";
+$orange: 			#EA7600;
+$red:					#CD3627;
+$yellow:			#F9BF12;
+$green:				#3EB049;
+$blue:				#5C8AB5;
+$purple:			#6B4990;
+$brown:				#955022;
+
+$brand-primary: $orange;
+
+// SOCIAL
+
+$facebook: #3b5998;
+$twitter: #00aced;
+$google-plus: #dd4b39;
+$linkedin: #007bb5;
+$you-tube: #bb0000;
+$rss: #ff6600;
+
+// FONTS
+// - - - - - - - - - - - - -
+
+$base-font-size: 100%;
+$small-font-size: rem-calc(10);
+
+$body-font-family: "Lato", Arial, sans-serif;
+$header-font-family: "Oswald", Arial, sans-serif;
+
+// SIZES
+// - - - - - - - - - - - - - 
+
+// GLOBAL
+
+$container-width: rem-calc(1200);
+$gutter-width: rem-calc(16);
+$global-gutter: $gutter-width / 2;
+
+// SITE HEADER
+
+$site-header-height: rem-calc(112);
+$site-header-height-medium: rem-calc(128);
+$site-header-height-small: rem-calc(64);
+
+// BORDERS
+// - - - - - - - - - - - - -
+
+$border-color: $brand-primary !default;
+$border-side: bottom !default;
+$border-style: solid !default;
+$border-width: $gutter-width / 2 !default;
+
+// MEDIA QUERIES
+// - - - - - - - - - - - - -
+$small-breakpoint:  em-calc(640);
+$medium-breakpoint: em-calc(960);
+$large-breakpoint:  em-calc(1240);
+$xlarge-breakpoint: em-calc(1920);
+
+$small-range:   (0, $small-breakpoint);
+$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
+$large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint);
+$xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint);
+$xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999));
+
+$screen: "only screen";
+
+$landscape: "#{$screen} and (orientation: landscape)";
+$portrait: "#{$screen} and (orientation: portrait)";
+
+$small-up: $screen;
+$small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})";
+
+$medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})";
+$medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})";
+
+$large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})";
+$large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})";
+
+$xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
+$xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})";
+
+$xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
+$xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
+
+$retina: (
+  "#{$screen} and (-webkit-min-device-pixel-ratio: 2)",
+  "#{$screen} and (min--moz-device-pixel-ratio: 2)",
+  "#{$screen} and (-o-min-device-pixel-ratio: 2/1)",
+  "#{$screen} and (min-device-pixel-ratio: 2)",
+  "#{$screen} and (min-resolution: 192dpi)",
+  "#{$screen} and (min-resolution: 2dppx)"
+);
+
+// BOX SIZING RESET
+// - - - - - - - - - - - - - 
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// BASIC STYLING
+// - - - - - - - - - - - - -
+
+html,
+body {
+  font-family: $body-font-family;
+  font-size: $base-font-size;
+  line-height: 2;
+}
+
+a {
+  color: $brand-primary;
+  text-decoration: none;
+  
+  @include single-transition(all);
+  
+  &:hover,
+  &:focus {
+    color: darken($brand-primary, 8%);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+  font-family: $header-font-family;
+  font-weight: normal;
+}
+
+p {
+  line-height: inherit;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  
+  display: block;
+}
+
+// GLOBAL
+// - - - - - - - - - - - - -
+
+.tr-container {
+  margin: 0 auto;
+  max-width: 100%;
+  width: $container-width;
+}
+
+@mixin border($color: $brand-primary, $side: $border-side, $width: $border-width, $style: $border-style) {
+  border-#{$side}: $width $style $color;
+}
+
+@mixin padding() {
+  padding: $global-gutter;
+}
+
+@mixin transition($property: all, $speed: 200ms, $style: ease-in-out) {
+  transition: $property $speed $style;
+}
+
+@import 'config/buttons',
+        'header',
+        'page',
+        'home',
+        'shows',
+        'calendar',
+        'blog';

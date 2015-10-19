@@ -1,0 +1,190 @@
+@import 'svgs';
+
+// PAGE BANNER
+// - - - - - - - - - - - - -
+
+.tr-page-banner {
+  background: $black-light;
+  @include border();
+  
+  > .tr-container {
+    @include padding();
+    
+    align-items: center;
+    display: flex;
+  }
+  
+  svg {
+    max-height: 100%;
+    
+    flex: 1 1 60%;
+  }
+}
+
+.tr-page-banner-header {
+  color: $white;
+  text-align: center;
+  
+  @include padding();
+  
+  flex: 1 1 40%;
+  
+  h2 {
+    font-size: rem-calc(32);
+    font-weight: 300;
+    line-height: 1.4;
+    
+    margin: 0;
+  }
+  
+  h5 {
+    font-size: rem-calc(16);
+    font-weight: 300;
+    line-height: 2.8;
+    
+    margin: 0;
+  }
+}
+
+.tr-page-banner-buttons {
+  display: flex;
+  flex-direction: column;
+  
+  .button {
+    margin: $gutter-width / 2;
+    
+    flex: 1;
+  }
+}
+
+// SHOW CARDS
+// - - - - - - - - - - - - -
+
+.tr-show-card {
+  @include border($side: top);
+  @include border();
+  text-align: center;
+  
+  margin: 0 ($gutter-width / 2);
+  
+  flex: 1 1 30%;
+  
+  &.nt-live {
+    @include border($yellow, top);
+    @include border($yellow);
+    
+    h2 a {
+      color: $yellow;
+      
+      &:hover,
+      &:focus {
+        color: darken($yellow, 12%);
+      }
+    }
+  }
+  
+  &.wild-card {
+    @include border($purple, top);
+    @include border($purple);
+    
+    h2 a {
+      color: $purple;
+      
+      &:hover,
+      &:focus {
+        color: darken($purple, 12%);
+      }
+    }
+  }
+  
+  &.bloody-sunday {
+    @include border($red, top);
+    @include border($red);
+    
+    h2 a {
+      color: $red;
+      
+      &:hover,
+      &:focus {
+        color: darken($red, 12%);
+      }
+    }
+  }
+}
+
+.tr-show-card-overlay {
+  line-height: 1.4;
+  
+  padding: ($gutter-width / 2) 0;
+  
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  
+  header {
+    flex: 1;
+  }
+  
+  h2,
+  h5 {
+    margin: 0;
+  }
+  
+  a {
+    flex: 0 0 auto;
+  }
+}
+
+// ALTERNATE DISPLAYS
+// - - - - - - - - - - - - -
+
+// SMALL
+
+@media #{$small-only} {
+  .tr-page-banner {
+    .tr-container {
+      align-items: stretch;
+      flex-direction: column-reverse;
+    }
+    
+    svg {
+      max-height: 33vh;
+      
+      flex: 1 1 auto;
+    }
+  }
+  
+  .tr-page-banner-header {
+    padding: 0;
+    
+    flex: 1 1 auto;
+    
+    h2,
+    h5 {
+      display: none;
+    }
+  }
+  
+  .tr-page-banner-buttons {
+    flex-direction: row;
+  }
+  
+  .tr-show-card {
+    margin: $gutter-width / 2;
+    
+    flex: 1;
+  }
+}
+
+// MEDIUM-UP
+
+@media #{$medium-up} {
+}
+
+// LARGE-UP
+
+@media #{$large-up} {
+  .tr-page-banner-buttons {
+    flex-direction: row;
+  }
+}

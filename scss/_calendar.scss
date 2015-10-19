@@ -1,0 +1,100 @@
+// CALENDAR
+// - - - - - - - - - - - - -
+
+.tr-calendar-month {
+  text-align: center;
+}
+
+.tr-calendar-month-header {
+  h1 {
+    font-weight: 300;
+  }
+}
+
+.tr-calendar-weeks {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tr-calendar-day {
+  border-bottom: 1px solid $gray-light;
+  color: $gray-dark;
+  font-weight: lighter;
+  
+  flex: 1 1 calc(100% / 7);
+  
+  @include padding();
+  
+  &.name {
+    background: $black-light;
+    color: $white;
+    font-weight: bolder;
+  }
+  
+  &.event {
+	  @include border($width: 1px);
+    color: $brand-primary;
+    font-weight: bolder;
+    
+    cursor: pointer;
+    
+    &:hover {
+      background: $brand-primary;
+      color: $white;
+      
+      @include transition();
+    }
+    
+    &.nt-live {
+	    border-color: $yellow;
+	    color: $yellow;
+	    
+	    &:hover {
+		    background: $yellow;
+		    color: $white;
+	    }
+    }
+    
+    &.wild-card {
+	    border-color: $purple;
+	    color: $purple;
+	    
+	    &:hover {
+		    background: $purple;
+		    color: $white;
+	    }
+    }
+    
+    &.bloody-sunday {
+	    border-color: $red;
+	    color: $red;
+	    
+	    &:hover {
+		    background: $red;
+		    color: $white;
+	    }
+    }
+  }
+}
+
+// ALTERNATE DISPLAYS
+// - - - - - - - - - - - - -
+
+// SMALL
+
+@media #{$small-only} {
+}
+
+// MEDIUM-UP
+
+@media #{$medium-up} {
+  .tr-calendar-day {
+    padding: $gutter-width;
+  }
+}
+
+// LARGE-UP
+
+@media #{$large-up} {
+
+}

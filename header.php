@@ -31,5 +31,4 @@
 
 	<?php get_template_part( 'parts/site-header' ); ?>
 
-  <section class="site-body" role="document">
-  	<?php do_action( 'thirdrail_after_header' ); ?>
+	<?php do_action( 'thirdrail_after_header' ); ?>

@@ -265,7 +265,7 @@ var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvents, print
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
 
-cal = $('#calendar');
+cal = $('#trCalendar');
 
 getEvents = function(url, callback, show) {
   if (show == null) {
@@ -301,7 +301,7 @@ getEvents = function(url, callback, show) {
 };
 
 createMonths = function(data, show) {
-  var dates, event, i, instance, j, k, l, len, len1, len2, len3, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, n, ref, ref1;
+  var dates, event, i, instance, j, k, l, len, len1, len2, len3, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, o, ref, ref1;
   if (show == null) {
     show = false;
   }
@@ -358,8 +358,8 @@ createMonths = function(data, show) {
       months.push(new Date(minDate.getFullYear(), minDate.getMonth() + i));
       i++;
     }
-    for (n = 0, len3 = months.length; n < len3; n++) {
-      month = months[n];
+    for (o = 0, len3 = months.length; o < len3; o++) {
+      month = months[o];
       printMonth(month);
     }
     if (show) {
@@ -379,19 +379,28 @@ createMonths = function(data, show) {
 };
 
 printMonth = function(date) {
-  var blank, blankDs, caption, d, dCount, dofW, ds, i, lastTr, m, mName, mNames, tBody, tHead, table, tds, trs, y;
+  var blank, blankDs, d, dCount, dayNames, divs, dofW, dowNames, ds, header, m, mName, mNames, month, n, weeks, y;
   mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  dowNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   m = date.getMonth();
   mName = mNames[m];
   m++;
   y = date.getFullYear();
   dofW = date.getDay();
   dCount = new Date(date.getYear(), date.getMonth() + 1, 0).getDate();
+  dayNames = (function() {
+    var j, ref, results;
+    results = [];
+    for (n = j = 1, ref = dowNames; 1 <= ref ? j <= ref : j >= ref; n = 1 <= ref ? ++j : --j) {
+      results.push('<div class="tr-calendar-day name">' + dowNames[n] + '</div>');
+    }
+    return results;
+  })();
   blankDs = (function() {
     var j, ref, results;
     results = [];
     for (blank = j = 0, ref = dofW; 0 <= ref ? j < ref : j > ref; blank = 0 <= ref ? ++j : --j) {
-      results.push('<td class="day blank"></td>');
+      results.push('<div class="tr-calendar-day"></div>');
     }
     return results;
   })();
@@ -399,33 +408,15 @@ printMonth = function(date) {
     var j, ref, results;
     results = [];
     for (d = j = 1, ref = dCount; 1 <= ref ? j <= ref : j >= ref; d = 1 <= ref ? ++j : --j) {
-      results.push('<td class="day" id="' + y + (m < 10 ? '0' + m : m) + (d < 10 ? '0' + d : d) + '">' + d + '</td>');
+      results.push('<div class="tr-calendar-day" id="' + y + (m < 10 ? '0' + m : m) + (d < 10 ? '0' + d : d) + '">' + d + '</div>');
     }
     return results;
   })();
-  tds = blankDs.concat(ds);
-  trs = '';
-  i = 0;
-  while (i < tds.length) {
-    if (i % 7 === 0) {
-      trs += '</tr>*<tr class="week">' + tds[i];
-    } else {
-      trs += tds[i];
-    }
-    i++;
-  }
-  trs = trs.split('*');
-  trs.shift();
-  lastTr = trs.pop();
-  lastTr += Array(8 - (lastTr.match(/<\/td>/g) || []).length).join('<td></td>');
-  lastTr += '</tr>';
-  trs.push(lastTr);
-  trs = trs.join('');
-  caption = '<caption>' + mName + ' ' + y + '</caption>';
-  tHead = '<thead><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></thead>';
-  tBody = '<tbody>' + trs + '</tbody>';
-  table = '<div id="' + mName + y + '"><table class="month">' + caption + tHead + tBody + '</table></div>';
-  return cal.append(table);
+  divs = blankDs.concat(ds);
+  header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>';
+  weeks = '<section class="tr-calendar-weeks">' + dayNames + divs + '</section>';
+  month = '<article id="' + mName + y + '" class="tr-calendar-month">' + header + weeks + '</article>';
+  return cal.append(month);
 };
 
 createLinks = function(data, show) {
@@ -474,7 +465,7 @@ createLinks = function(data, show) {
         time: timeStamp(instance.formattedDates.ISO8601)
       });
     } else {
-      date.addClass('has-event').data('1', {
+      date.addClass('event').data('1', {
         sold: instance.soldOut,
         status: instance.saleStatus,
         url: instance.purchaseUrl,

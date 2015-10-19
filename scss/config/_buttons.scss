@@ -1,0 +1,62 @@
+@mixin button-base() {
+  text-align: center;
+  text-transform: uppercase;
+  
+  display: inline-block;
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+@mixin button-size($size: $gutter-width, $full-width: false) {
+  font-size: $size;
+  
+  padding: ($size * .7) $size;
+  
+  @if $full-width {
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
+@mixin button-color($color: $brand-primary) {
+  $color-lightness: lightness($color);
+  
+  background: $color;
+  @include border(darken($color, 12%), bottom, 3px);
+  color: if($color-lightness > 70%, $black, $white);
+  
+  &:hover {
+    background: $white;
+    border-color: $color;
+    color: if($color-lightness > 70%, $black, $color);;
+  }
+}
+
+@mixin button($color: $brand-primary, $size: $gutter-width, $full-width: false, $transition: true) {
+  @include button-base();
+  @include button-size();
+  @include button-color();
+  
+  @if $transition {
+    @include transition();
+  }
+}
+
+button,
+.button {
+  @include button();
+  
+  &.buy {@include button-color($green)}
+  &.success {@include button-color($blue)}
+  &.warning {@include button-color($yellow)}
+  &.alert {@include button-color($red)}
+  &.gray {@include button-color($gray)}
+  &.black {@include button-color($black-light)}
+  
+  &.tiny {@include button-size(rem-calc(8))}
+  &.small {@include button-size(rem-calc(10))}
+  &.large {@include button-size(rem-calc(16))}
+  &.wide {@include button-size($full-width: true)}
+}
