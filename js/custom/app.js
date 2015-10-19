@@ -42,7 +42,7 @@ getEvents = function(url, callback) {
 };
 
 createMonths = function(data) {
-  var dates, event, i, instance, j, k, l, len, len1, len2, len3, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, o, ref, ref1;
+  var dates, event, i, instance, j, k, l, len, len1, len2, len3, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, n, ref, ref1;
   dates = [];
   if (data instanceof Array) {
     for (j = 0, len = data.length; j < len; j++) {
@@ -95,8 +95,8 @@ createMonths = function(data) {
     months.push(new Date(minDate.getFullYear(), minDate.getMonth() + i));
     i++;
   }
-  for (o = 0, len3 = months.length; o < len3; o++) {
-    month = months[o];
+  for (n = 0, len3 = months.length; n < len3; n++) {
+    month = months[n];
     printMonth(month);
   }
   getEvents(api, createLinks);
@@ -109,7 +109,7 @@ createMonths = function(data) {
 };
 
 printMonth = function(date) {
-  var blank, blankDs, d, dCount, dayNames, days, dofW, dowNames, ds, header, m, mName, mNames, month, n, weeks, y;
+  var blank, blankDs, d, dCount, day, dayNames, days, dofW, dowNames, ds, header, m, mName, mNames, month, weeks, y;
   mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   dowNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   m = date.getMonth();
@@ -119,10 +119,11 @@ printMonth = function(date) {
   dofW = date.getDay();
   dCount = new Date(date.getYear(), date.getMonth() + 1, 0).getDate();
   dayNames = (function() {
-    var j, ref, results;
+    var j, len, results;
     results = [];
-    for (n = j = 1, ref = dowNames.length; 1 <= ref ? j <= ref : j >= ref; n = 1 <= ref ? ++j : --j) {
-      results.push('<div class="tr-calendar-day name">' + dowNames[n] + '</div>');
+    for (j = 0, len = dowNames.length; j < len; j++) {
+      day = dowNames[j];
+      results.push('<div class="tr-calendar-day name">' + day + '</div>');
     }
     return results;
   })();
