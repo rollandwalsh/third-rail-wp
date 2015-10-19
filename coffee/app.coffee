@@ -79,7 +79,7 @@ printMonth = (date) -> # prints calendar months as tables
 	dofW = date.getDay() # first day of week
 	dCount = new Date(date.getYear(), date.getMonth() + 1, 0).getDate() # day count in month
 	
-	dayNames = ('<div class="tr-calendar-day name">' + dowNames[n] + '</div>' for n in [1..dowNames.length()]) # names of days row
+	dayNames = ('<div class="tr-calendar-day name">' + dowNames[n] + '</div>' for n in [1..dowNames.length]) # names of days row
 	
 	blankDs  = ('<div class="tr-calendar-day"></div>' for blank in [0...dofW]) # blank days based on dofW
 	ds = ('<div class="tr-calendar-day" id="' + y + (if m<10 then '0' + m else m) + (if d<10 then '0' + d else d) + '">' + d + '</div>' for d in [1..dCount]) # days based on dCount

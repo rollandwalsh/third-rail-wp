@@ -121,7 +121,7 @@ printMonth = function(date) {
   dayNames = (function() {
     var j, ref, results;
     results = [];
-    for (n = j = 1, ref = dowNames.length(); 1 <= ref ? j <= ref : j >= ref; n = 1 <= ref ? ++j : --j) {
+    for (n = j = 1, ref = dowNames.length; 1 <= ref ? j <= ref : j >= ref; n = 1 <= ref ? ++j : --j) {
       results.push('<div class="tr-calendar-day name">' + dowNames[n] + '</div>');
     }
     return results;
