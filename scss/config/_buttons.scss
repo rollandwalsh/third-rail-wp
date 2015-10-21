@@ -55,6 +55,10 @@ button,
   &.gray {@include button-color($gray)}
   &.black {@include button-color($black-light)}
   
+  &.nt-live {@include button-color($yellow)}
+  &.wild-card {@include button-color($purple)}
+  &.bloody-sunday {@include button-color($red)}
+  
   &.tiny {@include button-size(rem-calc(8))}
   &.small {@include button-size(rem-calc(10))}
   &.large {@include button-size(rem-calc(16))}

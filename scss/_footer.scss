@@ -1,0 +1,120 @@
+.tr-page-footer {
+	background-color: $black-light;
+	@include border($side: top);
+	font-size: rem-calc(13);
+  
+  align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  
+  a {
+    color: $gray;
+    
+    @include padding();
+    
+    &:hover {
+      color: $gray-light;
+    }
+  }
+}
+
+.tr-footer-nav,
+.tr-footer-contact-nav,
+.tr-footer-membership {
+  list-style: none;
+
+  margin: 0;
+  @include padding();
+  
+  align-items: center;
+  display: flex;
+}
+
+.tr-footer-nav {
+  li {
+    align-items: center;
+    display: flex;
+    
+		a {
+			font-weight: bold;
+			line-height: 1;
+			text-transform: uppercase;
+		}
+		
+		#thirdRailLogo {
+			width: rem-calc(110);
+			transition: all 300ms ease-in-out;
+			&:hover {transform: scale(1.15)}
+			.third, .rail {fill: $gray}
+			.lightning-bolt {fill: $gray-light} 
+		}
+	}
+}
+
+.tr-footer-contact-nav {
+  justify-content: center;
+}
+
+.tr-footer-membership {
+  padding: $gutter-width;
+  
+  justify-content: flex-end;
+  
+  a {
+    border: 1px solid $brand-primary;
+    text-transform: uppercase;
+    
+    padding: ($gutter-width / 2) ($gutter-width * 2);
+    
+    @include transition();
+  }
+}
+
+// ALTERNATE DISPLAYS
+// - - - - - - - - - - - - -
+
+// SMALL
+  
+@media #{$small-only} {
+  .tr-footer-membership {
+  }
+}
+
+// MEDIUM UP
+  
+@media #{$medium-up} {
+  .tr-page-footer {
+  }
+}
+
+// LARGE
+  
+@media #{$large-only} {
+  .tr-page-footer {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+  }
+}
+
+// LARGE UP
+  
+@media #{$large-up} {
+  .tr-page-footer {
+    flex-direction: row;
+  }
+}
+
+// XLARGE UP
+  
+@media #{$xxlarge-up} {
+  .tr-page-footer {
+    > * {
+      flex-basis: (100% / 3);
+    }
+  }
+  
+  .tr-footer-membership {
+    @include padding();
+  }
+}

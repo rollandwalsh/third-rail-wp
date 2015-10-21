@@ -1,10 +1,22 @@
-var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvent, getEvents, printMonth, stripNTLive, timeStamp;
+
+
+var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripNTLive, timeStamp, wildCard,
+  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
 
-cal = $('#calendar');
+cal = $('#trCalendar');
 
-getEvent = function(url, callback, show) {
+mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom'];
+
+ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it'];
+
+wildCard = ['the bylines: meant to be', 'pete: all well'];
+
+getEvents = function(url, callback, show) {
+  if (show == null) {
+    show = false;
+  }
   return $.ajax({
     url: 'http://query.yahooapis.com/v1/public/yql',
     dataType: 'jsonp',
@@ -13,36 +25,32 @@ getEvent = function(url, callback, show) {
       format: 'json'
     },
     success: function(data) {
-      var event, events, j, len, results;
-      events = data.query.results.json.events;
-      results = [];
-      for (j = 0, len = events.length; j < len; j++) {
-        event = events[j];
-        if (new RegExp(show).test(event.name)) {
-          results.push(callback(event));
-        }
+      var event, events;
+      if (show) {
+        events = data.query.results.json.events;
+        return callback((function() {
+          var j, len, results;
+          results = [];
+          for (j = 0, len = events.length; j < len; j++) {
+            event = events[j];
+            if (new RegExp(show).test(event.name)) {
+              results.push(event);
+            }
+          }
+          return results;
+        })(), show);
+      } else {
+        return callback(data.query.results.json.events);
       }
-      return results;
     }
   });
 };
 
-getEvents = function(url, callback) {
-  return $.ajax({
-    url: 'http://query.yahooapis.com/v1/public/yql',
-    dataType: 'jsonp',
-    data: {
-      q: 'select * from json where url="' + url + '"',
-      format: 'json'
-    },
-    success: function(data) {
-      return callback(data.query.results.json.events);
-    }
-  });
-};
-
-createMonths = function(data) {
+createMonths = function(data, show) {
   var dates, event, i, instance, j, k, l, len, len1, len2, len3, mDiff, maxDate, maxE, maxM, maxY, minDate, minE, minM, minY, month, months, n, ref, ref1;
+  if (show == null) {
+    show = false;
+  }
   dates = [];
   if (data instanceof Array) {
     for (j = 0, len = data.length; j < len; j++) {
@@ -72,40 +80,49 @@ createMonths = function(data) {
       }
     }
   }
-  minE = (Math.min.apply(this, dates)).toString();
-  maxE = (Math.max.apply(this, dates)).toString();
-  minY = minE.substr(0, 4);
-  minM = minE.substr(4, 2);
-  maxY = maxE.substr(0, 4);
-  maxM = maxE.substr(4, 2);
-  minDate = new Date(minY, minM - 1);
-  maxDate = new Date(maxY, maxM - 1);
-  mDiff = function(m1, m2) {
-    var ms;
-    ms = (m2.getFullYear() - m1.getFullYear()) * 12;
-    ms += m2.getMonth() - m1.getMonth();
-    if (ms <= 0) {
-      ms = 0;
+  if (dates.length > 0) {
+    minE = (Math.min.apply(this, dates)).toString();
+    maxE = (Math.max.apply(this, dates)).toString();
+    minY = minE.substr(0, 4);
+    minM = minE.substr(4, 2);
+    maxY = maxE.substr(0, 4);
+    maxM = maxE.substr(4, 2);
+    minDate = new Date(minY, minM - 1);
+    maxDate = new Date(maxY, maxM - 1);
+    mDiff = function(m1, m2) {
+      var ms;
+      ms = (m2.getFullYear() - m1.getFullYear()) * 12;
+      ms += m2.getMonth() - m1.getMonth();
+      if (ms <= 0) {
+        ms = 0;
+      }
+      return ms;
+    };
+    months = [];
+    i = 0;
+    while (i < mDiff(minDate, maxDate)) {
+      months.push(new Date(minDate.getFullYear(), minDate.getMonth() + i));
+      i++;
     }
-    return ms;
-  };
-  months = [];
-  i = 0;
-  while (i <= mDiff(minDate, maxDate)) {
-    months.push(new Date(minDate.getFullYear(), minDate.getMonth() + i));
-    i++;
+    $('.tr-calendar-loading').remove();
+    for (n = 0, len3 = months.length; n < len3; n++) {
+      month = months[n];
+      printMonth(month);
+    }
+    if (show) {
+      getEvents(api, createLinks, show);
+    } else {
+      getEvents(api, createLinks);
+    }
+    return $('#trCalendar').slick({
+      prevArrow: $('.fa-angle-double-left'),
+      nextArrow: $('.fa-angle-double-right'),
+      infinite: false,
+      adaptiveHeight: true
+    });
+  } else {
+    return $('#trCalendar').remove();
   }
-  for (n = 0, len3 = months.length; n < len3; n++) {
-    month = months[n];
-    printMonth(month);
-  }
-  getEvents(api, createLinks);
-  return $('#calendar').slick({
-    prevArrow: $('#calendarNavPrev'),
-    nextArrow: $('#calendarNavNext'),
-    infinite: false,
-    adaptiveHeight: true
-  });
 };
 
 printMonth = function(date) {
@@ -131,7 +148,7 @@ printMonth = function(date) {
     var j, ref, results;
     results = [];
     for (blank = j = 0, ref = dofW; 0 <= ref ? j < ref : j > ref; blank = 0 <= ref ? ++j : --j) {
-      results.push('<div class="tr-calendar-day"></div>');
+      results.push('<div class="tr-calendar-day blank"></div>');
     }
     return results;
   })();
@@ -145,15 +162,17 @@ printMonth = function(date) {
   })();
   days = blankDs.concat(ds);
   divs = dayNames.concat(days);
-  console.log(divs);
-  header = '<header class="tr-calendar-month-header"><h1>' + mName + ' ' + y + '</h1></header>';
+  header = '<header class="tr-calendar-month-header"><i class="fa fa-angle-double-left fa-2x"></i><h1>' + mName + ' ' + y + '</h1><i class="fa fa-angle-double-right fa-2x"></i></header>';
   weeks = '<section class="tr-calendar-weeks">' + divs.join('') + '</section>';
   month = '<article id="' + mName + y + '" class="tr-calendar-month">' + header + weeks + '</article>';
   return cal.append(month);
 };
 
-createLinks = function(data) {
-  var date, event, events, instance, instances, j, k, l, len, len1, len2, ref;
+createLinks = function(data, show) {
+  var button, date, event, eventId, eventName, events, instance, instances, j, k, l, len, len1, len2, ref;
+  if (show == null) {
+    show = false;
+  }
   events = {};
   instances = [];
   for (j = 0, len = data.length; j < len; j++) {
@@ -174,62 +193,54 @@ createLinks = function(data) {
   for (l = 0, len2 = instances.length; l < len2; l++) {
     instance = instances[l];
     date = $('#' + instance.formattedDates.YYYYMMDD);
-    if (date.data('2')) {
-      date.data('3', {
-        sold: instance.soldOut,
-        status: instance.saleStatus,
-        url: instance.purchaseUrl,
-        date: instance.formattedDates.YYYYMMDD,
-        day: dayStamp(instance.formattedDates.ISO8601),
-        name: stripNTLive(events[instance.eventId]),
-        time: timeStamp(instance.formattedDates.ISO8601)
-      });
-    } else if (date.data('1')) {
-      date.data('2', {
-        sold: instance.soldOut,
-        status: instance.saleStatus,
-        url: instance.purchaseUrl,
-        date: instance.formattedDates.YYYYMMDD,
-        day: dayStamp(instance.formattedDates.ISO8601),
-        name: stripNTLive(events[instance.eventId]),
-        time: timeStamp(instance.formattedDates.ISO8601)
-      });
-    } else {
-      date.addClass('has-event').data('1', {
-        sold: instance.soldOut,
-        status: instance.saleStatus,
-        url: instance.purchaseUrl,
-        date: instance.formattedDates.LONG_MONTH_DAY_YEAR,
-        day: dayStamp(instance.formattedDates.ISO8601),
-        name: stripNTLive(events[instance.eventId]),
-        time: timeStamp(instance.formattedDates.ISO8601)
-      });
+    eventName = stripNTLive(events[instance.eventId].toLowerCase());
+    eventId = instance.id;
+    button = 'main-stage';
+    if (indexOf.call(mainStage, eventName) >= 0) {
+      date.addClass('main-stage');
+    }
+    if (indexOf.call(ntLive, eventName) >= 0) {
+      date.addClass('nt-live');
+      button = 'nt-live';
+    }
+    if (indexOf.call(wildCard, eventName) >= 0) {
+      date.addClass('wild-card');
+      button = 'wild-card';
+    }
+    date.data(eventId, {
+      sold: instance.soldOut,
+      status: instance.saleStatus,
+      url: instance.purchaseUrl,
+      date: instance.formattedDates.LONG_MONTH_DAY_YEAR,
+      day: dayStamp(instance.formattedDates.ISO8601),
+      name: eventName,
+      time: timeStamp(instance.formattedDates.ISO8601),
+      button: button
+    });
+    if (!date.hasClass('event')) {
+      date.addClass('event');
     }
   }
-  $('.has-event').on('click', function() {
-    return buttonPrint(this);
+  $('.event').on('click', function() {
+    buttonPrint(this);
+    return $('html, body').animate({
+      scrollTop: $('#trCalendarDisplay').offset().top - 160
+    }, 1000);
   });
-  return $('.has-event').first().trigger('click');
+  return buttonPrint($('.event').first());
 };
 
-buttonPrint = function(date) {
-  var data, purchase, tickets;
-  data = $(date).data('1');
-  purchase = data.sold ? 'buy' : 'buy disabled';
-  tickets = data.sold ? '<i class="fa fa-ticket"></i> ' : 'SOLD OUT! - ';
-  $('#calendarDisplay').html('<h4>' + data.day + ' - <span class="subheader">' + data.date + '</span></h4><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>');
-  if ($(date).data('2')) {
-    data = $(date).data('2');
-    purchase = data.sold ? 'buy' : 'buy disabled';
+buttonPrint = function(input) {
+  var data, date, eventId, output, purchase, tickets;
+  output = [];
+  for (eventId in $(input).data()) {
+    data = $(input).data()[eventId];
+    purchase = data.sold == null ? ' disabled' : '';
     tickets = data.sold ? '<i class="fa fa-ticket"></i> ' : 'SOLD OUT! - ';
-    $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>');
+    date = '<h3>' + data.day + ' - <span class="subheader">' + data.date + '</span></h3>';
+    output.push('<a href="' + data.url + '" class="button ' + data.button + purchase + '">' + tickets + data.name + ' - ' + data.time + '</a>');
   }
-  if ($(date).data('3')) {
-    data = $(date).data('3');
-    purchase = data.sold ? 'buy' : 'buy disabled';
-    tickets = data.sold ? '<i class="fa fa-ticket"></i> ' : 'SOLD OUT! - ';
-    return $('#calendarDisplay').append('<br><a href="' + data.url + '" class="button ' + purchase + ' expand">' + tickets + data.name + ' - ' + data.time + '</a>');
-  }
+  return $('#trCalendarDisplay').html(date).append(output.join(' '));
 };
 
 timeStamp = function(input) {
@@ -258,9 +269,5 @@ dayStamp = function(input) {
 
 stripNTLive = function(input) {
   var name;
-  return name = input.replace('NT LIVE: ', '').replace('NT LIVE Encore: ', '');
+  return name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace(' wildcard', '');
 };
-
-
-
-jQuery(document).foundation();

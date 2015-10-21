@@ -1,5 +1,5 @@
-body.admin-bar.f-topbar-fixed {
-  .site-header {
+body.admin-bar {
+  .tr-site-header {
     margin-top: rem-calc(46);
     @media #{$large-up} {margin-top: rem-calc(32)}
   }

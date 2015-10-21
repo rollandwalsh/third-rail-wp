@@ -1,15 +1,36 @@
-// CALENDAR
+// CALENDAR MONTH
 // - - - - - - - - - - - - -
 
 .tr-calendar-month {
   text-align: center;
+  
+  outline: none;
 }
 
 .tr-calendar-month-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  
   h1 {
     font-weight: 300;
   }
+  
+  i {
+    padding: $gutter-width;
+    
+    cursor: pointer;
+    
+    &.slick-disabled {
+      color: $gray-light;
+      
+      cursor: not-allowed;
+    }
+  }
 }
+
+// CALENDAR DAYS / WEEKS
+// - - - - - - - - - - - - -
 
 .tr-calendar-weeks {
   display: flex;
@@ -17,22 +38,27 @@
 }
 
 .tr-calendar-day {
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid $gray;
   color: $gray-dark;
-  font-weight: lighter;
+  font-weight: 300;
   
-  flex: 1 1 calc(100% / 7);
+  flex: 0 0 calc(100% / 7);
   
   @include padding();
   
   &.name {
     background: $black-light;
+    border: none;
     color: $white;
     font-weight: bolder;
   }
   
+  &.blank {
+    border-bottom: none;
+  }
+  
   &.event {
-	  @include border($width: 1px);
+	  @include border($width: 2px);
     color: $brand-primary;
     font-weight: bolder;
     
@@ -74,7 +100,52 @@
 		    color: $white;
 	    }
     }
+    
+    &.main-stage {
+      border-color: $orange;
+      color: $orange;
+      
+      &:hover {
+        background: $orange;
+        color: $white;
+      }
+    }
   }
+}
+
+// CALENDAR DISPLAY
+// - - - - - - - - - - - - -
+
+.tr-calendar-display {
+  @extend .tr-container;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  h3 {
+    text-align: center;
+    
+    width: 100%;
+    
+    .subheader {
+      font-weight: lighter;
+    }
+  }
+  
+  .button {
+    margin: ($gutter-width / 4);
+  }
+}
+
+// CALENDAR LOADING
+// - - - - - - - - - - - - -
+
+.tr-calendar-loading {
+  font-family: $header-font-family;
+  font-size: rem-calc(24);
+  font-weight: lighter;
+  text-align: center;
 }
 
 // ALTERNATE DISPLAYS
@@ -90,6 +161,10 @@
 @media #{$medium-up} {
   .tr-calendar-day {
     padding: $gutter-width;
+    
+    &.name {
+      @include padding();
+    }
   }
 }
 

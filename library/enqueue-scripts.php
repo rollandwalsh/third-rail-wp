@@ -13,9 +13,13 @@
 if ( ! function_exists( 'thirdrail_scripts' ) ) :
 	function thirdrail_scripts() {
 
+	wp_enqueue_style( 'normalize-stylesheet', get_stylesheet_directory_uri() . '/css/normalize.css' );
+	
 	wp_enqueue_style( 'main-stylesheet', get_stylesheet_directory_uri() . '/css/app.css' );
 	
 	wp_enqueue_style( 'slick-stylesheet', get_stylesheet_directory_uri() . '/css/slick.css' );
+	
+	wp_enqueue_style( 'icon-stylesheet', get_template_directory_uri() . '/bower_components/fontawesome/css/font-awesome.css' );
 
 	wp_deregister_script( 'jquery' );
 
