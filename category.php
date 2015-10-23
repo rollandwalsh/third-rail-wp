@@ -18,9 +18,7 @@
 
 get_header(); ?>
 
-<div class="row">
-<!-- Row for main content area -->
-	<div class="small-12 large-8 columns" role="main">
+<div class="tr-page-container" role="main">
 	
 	<h1><?php single_cat_title(); ?> News</h1>
 
@@ -44,7 +42,6 @@ get_header(); ?>
 		</nav>
 	<?php } ?>
 
-	</div>
 	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

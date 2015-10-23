@@ -9,8 +9,7 @@
 
 get_header(); ?>
 
-<div class="row">
-	<div class="small-12 large-8 columns" role="main">
+<div class="tr-page-container" role="main">
 
 	<?php do_action( 'thirdrail_before_content' ); ?>
 
@@ -40,7 +39,6 @@ get_header(); ?>
 
 	<?php do_action( 'thirdrail_after_content' ); ?>
 
-	</div>
 	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

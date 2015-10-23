@@ -11,16 +11,28 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header>
-		<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-		<?php thirdrail_entry_meta(); ?>
-	</header>
-	<div class="entry-content">
+<article class="tr-page-article" id="post-<?php the_ID(); ?>">
+  <header class="tr-blog-header">
+    <div class="title">
+      <?php the_title( sprintf( '<h1><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+      <h4><?php the_time('l - F jS, Y') ?></h4>
+      <h5><?php the_category( ' ' ); ?></h5>
+<!--       <?php thirdrail_entry_meta(); ?> -->
+    </div>
+    <div class="image">
+      <?php if ( has_post_thumbnail() ) { ?>
+        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
+      <?php } ?>
+    </div>
+  </header>
+	<div class="tr-entry-content">
 		<?php the_content( __( 'Continue reading...', 'thirdrail' ) ); ?>
 	</div>
-	<footer>
-		<?php if ( get_the_tags() ) { ?><p class="tags"><?php the_tags('', ' '); ?></p><?php } ?>
+	<footer class="tr-blog-footer">
+    <?php if ( get_the_tags() ) { ?>
+      <ul class="tr-blog-tags">
+        <?php the_tags('<li>', '</li><li>', '</li>'); ?>
+      </ul>
+    <?php } ?>
 	</footer>
-	<hr>
 </article>

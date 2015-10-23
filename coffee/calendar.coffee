@@ -138,7 +138,7 @@ createLinks = (data, show = false) -> # create links based off of event instance
     
   $('.event').on 'click', ->
     buttonPrint(@)
-    $('html, body').animate { scrollTop: $('#trCalendarDisplay').offset().top - 160 }, 1000
+    $('html, body').animate { scrollTop: $('#trCalendarDisplay').offset().top - 160 }, 500
   buttonPrint $('.event').first()
 
 buttonPrint = (input) -> # print buttons for date on calendar

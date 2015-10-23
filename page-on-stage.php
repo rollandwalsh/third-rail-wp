@@ -9,38 +9,35 @@
 
 get_header(); ?>
 
-  <header class="page-header">
-  	<div id="svgHeader" class="row" data-equalizer>
-  		<div class="info-section" data-equalizer-watch>
-  			<div id="membershipJoinContainer" class="content">
-  			  <hr>
-  				<h2>Third Rail Membership</h2>
-  				<h5 id="membershipMessage">Join the Movement!</h5>
-  				<a href="#" class="button buy large" id="membershipJoin"><i class="fa fa-bolt"></i> Join Now</a>
-  			  <hr>
-  			</div>
-  		</div>
-  		<div class="graphic-section" data-equalizer-watch>
-  			<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailMembership.svg" ); ?>
-  		</div>
-  	</div>
-  </header>
+<section class="tr-page-banner">
+  <div class="tr-container">
+    <header class="tr-page-banner-header">
+			<h2>Third Rail Membership</h2>
+			<h5 id="membershipMessage">Join the Movement!</h5>
+			<div class="tr-page-banner-buttons">
+			  <a href="/test/membership/" class="button">Learn More</a><a href="#" class="button buy" id="membershipJoin"><i class="fa fa-bolt"></i> Join Now</a>
+			</div>
+		</header>
+		
+		<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailMembership.svg" ); ?>
+  </div>
+</section>
 
-	<div class="small-12 large-8 columns" role="main">
+<div class="tr-page-container" role="main">
 
 	<?php do_action( 'thirdrail_before_content' ); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<header>
+		<article class="tr-page-article" id="post-<?php the_ID(); ?>">
+			<header class="tr-article-header">
 				<h1 class="page-title"><?php the_title(); ?></h1>
 			</header>
 			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
-			<div class="entry-content">
+			<div class="tr-entry-content">
 				<?php the_content(); ?>
 			</div>
 			
-			<footer>
+			<footer class="tr-article-footer">
 				
 			</footer>
 		</article>
@@ -82,53 +79,70 @@ get_header(); ?>
     			
     			$query = new WP_Query( $args );
     			
-    			if ( $query->have_posts() ) { ?>
-      			<section class="on-stage-show-type">
-      			  <header class="on-stage-show-type-header">
-      			    <h2 class="section-title"><a href="<?php echo get_page_link( get_page_by_title( get_the_title( $category->ID ) )->ID ); ?>" title="<?php echo get_the_title( $category->ID ); ?>"><?php echo get_the_title( $category->ID ); ?></a></h2>
+    			if ( $query->have_posts() ) { 
+    			
+    				switch ( get_the_title( $category->ID ) ) {
+              case 'Mainstage':
+                $show_class = 'main-stage';
+                break;
+              case 'National Theatre Live':
+                $show_class = 'nt-live';
+                break;
+              case 'Wild Card':
+                $show_class = 'wild-card';
+                break;
+              case 'Bloody Sunday':
+                $show_class = 'bloody-sunday';
+                break;
+              case 'Event':
+                $show_class = 'event';
+                break;
+              default:
+                $show_type = ''; 
+            } ?>
+    			
+      			<section class="tr-on-stage-show-cards <?php echo $show_class; ?>">
+      			  <header class="tr-on-stage-show-cards-header">
+      			    <h2 class="tr-section-title"><a href="<?php echo get_page_link( get_page_by_title( get_the_title( $category->ID ) )->ID ); ?>" title="<?php echo get_the_title( $category->ID ); ?>"><?php echo get_the_title( $category->ID ); ?></a></h2>
       			  </header>
-              <?php while ( $query->have_posts() ) : $query->the_post(); 
-      				
-        				switch ( rwmb_meta( 'show_type' ) ) {
-                  case 'mainstage':
-                    $show_type = 'Mainstage';
-                    $show_class = 'mainstage';
-                    break;
-                  case 'nt_live':
-                    $show_type = 'National Theatre Live';
-                    $show_class = 'nt-live';
-                    break;
-                  case 'wildcard':
-                    $show_type = 'Wild Card';
-                    $show_class = 'wild-card';
-                    break;
-                  case 'bloody_sunday':
-                    $show_type = 'Bloody Sunday';
-                    $show_class = 'bloody-sunday';
-                    break;
-                  case 'event':
-                    $show_type = 'Event';
-                    $show_class = 'event';
-                    break;
-                  default:
-                    $show_type = 'Upcoming Show';
-                } // change show_type to print text ?> <!-- Start query for current shows -->
-      				
-              	<div class="on-stage-current-show">
-              		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-              			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
-              			<div class="entry-content">
-                  		<?php if ( has_post_thumbnail() ) { ?>
-                  			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
-                  		<?php } ?>
-              			</div>
-              			<?php do_action( 'thirdrail_after_content' ); ?>
-                  	<header class="entry-header">
-                		  <a href="#" class="info-link">Learn More</a> <a href="#" class="buy-link"><i class="fa fa-ticket"></i> Book Now</a>
-                  	</header>
-              		</article>
-              	</div>
-      				<?php endwhile; ?>
+      			  
+      			  <div class="tr-page-show-cards">
+                <?php while ( $query->have_posts() ) : $query->the_post(); 
+        				  
+          				switch ( rwmb_meta( 'show_type' ) ) {
+                    case 'mainstage':
+                      $show_type = 'Mainstage';
+                      break;
+                    case 'nt_live':
+                      $show_type = 'National Theatre Live';
+                      break;
+                    case 'wildcard':
+                      $show_type = 'Wild Card';
+                      break;
+                    case 'bloody_sunday':
+                      $show_type = 'Bloody Sunday';
+                      break;
+                    case 'event':
+                      $show_type = 'Event';
+                      break;
+                    default:
+                      $show_type = 'Upcoming Show';
+                  } // change show_type to print text ?> <!-- Start query for current shows -->
+        				
+                  <article class="tr-show-card <?php echo $show_class; ?>" id="post-<?php the_ID(); ?>">
+                    <?php if ( has_post_thumbnail() ) { ?>
+                      <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large' , array( 'class' => '' ) ); ?></a> 
+                    <?php } ?>
+                    <div class="tr-show-card-overlay">
+                      <header>
+                        <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
+                        <h5>by *Playwright*</h5>
+                      </header>
+                      <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
+                    </div>
+                  </article>
+        				<?php endwhile; ?>
+      			  </div>
       			</section>
     			<?php } else {
     				// no posts found
@@ -138,9 +152,16 @@ get_header(); ?>
   		?> <!-- End query for current shows -->
 
 	</div>
-	<?php get_sidebar( 'on-stage' ); ?>
+<?php get_sidebar( 'on-stage' ); ?>
 
-  <?php get_footer(); ?>
+<section class="tr-page-calendar">
+  <div id="trCalendar"></div>
+  <div class="tr-calendar-display" id="trCalendarDisplay">
+    <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
+  </div>
+</section>
+
+<?php get_footer(); ?>
   <script>
     $(function() {
       return getEvents(api, createMonths);

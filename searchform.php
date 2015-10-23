@@ -8,17 +8,11 @@
  */
 
 do_action( 'thirdrail_before_searchform' ); ?>
-<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-	<div class="row collapse">
-		<?php do_action( 'thirdrail_searchform_top' ); ?>
-		<div class="small-10 columns">
-			<input type="text" value="" name="s" id="s" placeholder="<?php esc_attr_e( 'Type here...', 'thirdrail' ); ?>">
-		</div>
-		<?php do_action( 'thirdrail_searchform_before_search_button' ); ?>
-		<div class="small-2 columns">
-			<button type="submit" id="searchsubmit" class="prefix button"><i class="fa fa-search fa-lg"></i></button>
-		</div>
-		<?php do_action( 'thirdrail_searchform_after_search_button' ); ?>
-	</div>
+<form class="tr-search-form" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+	<?php do_action( 'thirdrail_searchform_top' ); ?>
+	<input type="text" value="" name="s" id="s" placeholder="<?php esc_attr_e( 'Search', 'thirdrail' ); ?>">
+	<?php do_action( 'thirdrail_searchform_before_search_button' ); ?>
+  <button type="submit" id="searchsubmit"><i class="fa fa-search fa-lg"></i></button>
+	<?php do_action( 'thirdrail_searchform_after_search_button' ); ?>
 </form>
 <?php do_action( 'thirdrail_after_searchform' ); ?>

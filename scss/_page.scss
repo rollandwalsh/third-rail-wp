@@ -57,82 +57,104 @@
   }
 }
 
+.tr-page-calendar {
+  padding: ($gutter-width * 2) ($gutter-width / 2);
+  
+  @extend .tr-container;
+}
+
+// PAGE CONTENT
+// - - - - - - - - - - - - -
+
+.tr-page-container {
+  @extend .tr-container;
+}
+
+.tr-page-article {
+  @include border($black-light);
+  
+  padding: ($gutter-width * 2) ($gutter-width / 2);
+}
+
+.tr-section-title {
+  margin: 0;
+}
+
 // SHOW CARDS
 // - - - - - - - - - - - - -
 
-.tr-show-card {
-  @include border($side: top);
+.tr-page-show-cards {
+  margin: 0 ($gutter-width / -2);
+  padding: ($gutter-width * 2) 0;
+  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// ON STAGE PAGE
+// - - - - - - - - - - - - -
+
+.tr-on-stage-show-cards {
   @include border();
-  text-align: center;
   
-  margin: 0 ($gutter-width / 2);
-  
-  flex: 1 1 30%;
+  padding: ($gutter-width * 2) ($gutter-width / 2);
   
   &.nt-live {
-    @include border($yellow, top);
     @include border($yellow);
     
-    h2 a {
-      color: $yellow;
-      
-      &:hover,
-      &:focus {
-        color: darken($yellow, 12%);
+    .tr-section-title {
+      a {
+        color: $yellow;
+        
+        &:hover,
+        &:focus {
+          color: darken($yellow, 8%);
+        }
       }
     }
   }
   
   &.wild-card {
-    @include border($purple, top);
     @include border($purple);
     
-    h2 a {
-      color: $purple;
-      
-      &:hover,
-      &:focus {
-        color: darken($purple, 12%);
+    .tr-section-title {
+      a {
+        color: $purple;
+        
+        &:hover,
+        &:focus {
+          color: darken($purple, 8%);
+        }
       }
     }
   }
   
   &.bloody-sunday {
-    @include border($red, top);
     @include border($red);
     
-    h2 a {
-      color: $red;
-      
-      &:hover,
-      &:focus {
-        color: darken($red, 12%);
+    .tr-section-title {
+      a {
+        color: $red;
+        
+        &:hover,
+        &:focus {
+          color: darken($red, 8%);
+        }
       }
     }
   }
 }
 
-.tr-show-card-overlay {
-  line-height: 1.4;
-  
-  padding: ($gutter-width / 2) 0;
+
+// ERROR PAGE
+// - - - - - - - - - - - - -
+
+.tr-404-options {
+  list-style: none;
   
   align-items: center;
   display: flex;
-  justify-content: space-between;
-  
-  header {
-    flex: 1;
-  }
-  
-  h2,
-  h5 {
-    margin: 0;
-  }
-  
-  a {
-    flex: 0 0 auto;
-  }
+  justify-content: space-around;
 }
 
 // ALTERNATE DISPLAYS

@@ -1,4 +1,5 @@
 @mixin button-base() {
+  line-height: 1.4;
   text-align: center;
   text-transform: uppercase;
   
@@ -63,4 +64,10 @@ button,
   &.small {@include button-size(rem-calc(10))}
   &.large {@include button-size(rem-calc(16))}
   &.wide {@include button-size($full-width: true)}
+}
+
+button {
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }

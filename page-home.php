@@ -139,7 +139,11 @@ get_header(); ?>
   			</section>
   			
   			<footer class="tr-blog-footer">
-  			
+          <?php if ( get_the_tags() ) { ?>
+            <ul class="tr-blog-tags">
+              <?php the_tags('<li>', '</li><li>', '</li>'); ?>
+            </ul>
+          <?php } ?>
   			</footer>
   		</article>
 

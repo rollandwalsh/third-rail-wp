@@ -2,8 +2,8 @@
 // - - - - - - - - - - - - -
 
 .tr-show-card {
-  @include border($side: top);
-  @include border();
+  @include border($side: top, $width: rem-calc(3));
+  @include border($width: rem-calc(3));
   text-align: center;
   
   margin: 0 ($gutter-width / 2);
@@ -12,8 +12,8 @@
   flex: 0 0 calc((100% / 3) - #{$gutter-width});
   
   &.nt-live {
-    @include border($yellow, top);
-    @include border($yellow);
+    @include border($yellow, top, rem-calc(3));
+    @include border($yellow, bottom, rem-calc(3));
     
     h2 a {
       color: $yellow;
@@ -26,8 +26,8 @@
   }
   
   &.wild-card {
-    @include border($purple, top);
-    @include border($purple);
+    @include border($purple, top, rem-calc(3));
+    @include border($purple, bottom, rem-calc(3));
     
     h2 a {
       color: $purple;
@@ -40,8 +40,8 @@
   }
   
   &.bloody-sunday {
-    @include border($red, top);
-    @include border($red);
+    @include border($red, top, rem-calc(3));
+    @include border($red, bottom, rem-calc(3));
     
     h2 a {
       color: $red;

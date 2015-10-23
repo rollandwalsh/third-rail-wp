@@ -16,8 +16,7 @@
 
 get_header(); ?>
 
-<div class="row">
-	<div class="small-12 large-8 columns" role="main">
+<div class="tr-page-container" role="main">
 	
 	<h1>Third Rail News</h1>
 
@@ -36,8 +35,6 @@ get_header(); ?>
 
 	<?php endif;?>
 
-
-
 	<?php if ( function_exists( 'thirdrail_pagination' ) ) { thirdrail_pagination(); } else if ( is_paged() ) { ?>
 		<nav id="post-nav">
 			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'thirdrail' ) ); ?></div>
@@ -47,7 +44,6 @@ get_header(); ?>
 
 	<?php do_action( 'thirdrail_after_content' ); ?>
 
-	</div>
 	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

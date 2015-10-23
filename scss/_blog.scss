@@ -37,17 +37,25 @@
 }
 
 .tr-blog-footer {
-  text-align: center;
 }
 
 .tr-blog-tags {
+  text-align: center;
+  
   margin: 0;
   padding: 0;
   
   list-style: none;
   
-  li {
-    display: inline-block;
+  display: flex;
+  justify-content: center;
+  
+  a {
+    @include button();
+    @include button-color($gray);
+    @include button-size(rem-calc(10));
+    
+    margin: 0 ($gutter-width / 4);
   }
 }
 

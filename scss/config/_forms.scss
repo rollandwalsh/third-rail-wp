@@ -1,0 +1,37 @@
+input {
+  background: darken($white, 5%);
+  border-top: none;
+  border-right: none;
+  @include border($black-light, bottom, 3px);
+  border-left: none;
+  border-radius: 0;
+  color: rgba($black,.75);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.4;
+  
+  height: rem-calc(48);
+  margin: 0;
+  @include padding();
+  
+  @include transition();
+  
+  display: inline-block;
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  
+  &:focus {
+    background: $white;
+    border-color: $gray-dark;
+  }
+}
+
+.tr-search-form {
+  display: flex;
+  
+  button {
+    padding: 0 1rem;
+  }
+}

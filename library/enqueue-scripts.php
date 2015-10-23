@@ -19,7 +19,7 @@ if ( ! function_exists( 'thirdrail_scripts' ) ) :
 	
 	wp_enqueue_style( 'slick-stylesheet', get_stylesheet_directory_uri() . '/css/slick.css' );
 	
-	wp_enqueue_style( 'icon-stylesheet', get_template_directory_uri() . '/bower_components/fontawesome/css/font-awesome.css' );
+	wp_enqueue_style( 'icon-stylesheet', get_stylesheet_directory_uri() . '/css/font-awesome.css' );
 
 	wp_deregister_script( 'jquery' );
 
