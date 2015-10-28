@@ -31,19 +31,38 @@
 // SMALL
 
 @media #{$small-only} {
-
+  .tr-home-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tr-home-show-cards {
+    padding: $gutter-width 0;
+    
+    order: 1;
+  }
+  
+  .tr-home-calendar {
+    order: 1;
+  }
+  
+  .tr-home-blog {
+    order: 3;
+  }
 }
 
 // MEDIUM-UP
 
 @media #{$medium-up} {
   .tr-home-show-cards {
-    padding: ($gutter-width * 6) 0;
+    padding: ($gutter-width * 3) 0;
   }
 }
 
 // LARGE-UP
 
 @media #{$large-up} {
-
+  .tr-home-show-cards {
+    padding: ($gutter-width * 6) 0;
+  }
 }

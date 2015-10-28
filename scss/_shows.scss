@@ -2,18 +2,22 @@
 // - - - - - - - - - - - - -
 
 .tr-show-card {
-  @include border($side: top, $width: rem-calc(3));
-  @include border($width: rem-calc(3));
+  @include border($side: top);
   text-align: center;
   
-  margin: 0 ($gutter-width / 2);
+  margin: $gutter-width / 2;
   min-width: rem-calc(300);
+  
+  @include transition();
   
   flex: 0 0 calc((100% / 3) - #{$gutter-width});
   
+  &:hover {
+    box-shadow: 0 0 8px 0 rgba($black, .8);
+  }
+  
   &.nt-live {
-    @include border($yellow, top, rem-calc(3));
-    @include border($yellow, bottom, rem-calc(3));
+    @include border($yellow, top);
     
     h2 a {
       color: $yellow;
@@ -26,8 +30,7 @@
   }
   
   &.wild-card {
-    @include border($purple, top, rem-calc(3));
-    @include border($purple, bottom, rem-calc(3));
+    @include border($purple, top);
     
     h2 a {
       color: $purple;
@@ -40,8 +43,7 @@
   }
   
   &.bloody-sunday {
-    @include border($red, top, rem-calc(3));
-    @include border($red, bottom, rem-calc(3));
+    @include border($red, top);
     
     h2 a {
       color: $red;
@@ -61,7 +63,7 @@
   
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   
   header {
     flex: 1;
@@ -73,6 +75,7 @@
   }
   
   a {
+    margin: 0 ($gutter-width / 2);
     flex: 0 0 auto;
   }
 }
@@ -87,6 +90,10 @@
     margin: $gutter-width / 2;
     
 		flex: 0 1 100%;
+		
+		img {
+  		display: none;
+		}
   }
 }
 
@@ -95,6 +102,10 @@
 @media #{$medium-only} {
 	.tr-show-card {
 		flex-basis: calc((100% / 2) - #{$gutter-width});
+		
+		&:last-child {
+  		display: none;
+		}
 	}
 }
 

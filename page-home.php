@@ -8,7 +8,9 @@
  */
 
 get_header(); ?>
-    
+
+<div class="tr-home-container">
+
 <section class="tr-page-banner">
   <div class="tr-container">
     <header class="tr-page-banner-header">
@@ -159,6 +161,8 @@ get_header(); ?>
     <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
   </div>
 </section>
+
+</div>
 
 <?php get_footer(); ?>
 
