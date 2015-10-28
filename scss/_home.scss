@@ -37,12 +37,14 @@
   }
   
   .tr-home-show-cards {
-    padding: $gutter-width 0;
+    padding: ($gutter-width * 2) 0;
     
     order: 1;
   }
   
   .tr-home-calendar {
+    border-color: $black-light;
+    
     order: 1;
   }
   

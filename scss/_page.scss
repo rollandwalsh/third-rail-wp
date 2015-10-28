@@ -5,7 +5,6 @@
 
 .tr-page-banner {
   background: $black-light;
-  @include border();
   
   > .tr-container {
     @include padding();
