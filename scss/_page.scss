@@ -94,13 +94,9 @@
 // - - - - - - - - - - - - -
 
 .tr-on-stage-show-cards {
-  @include border();
-  
-  padding: ($gutter-width * 2) ($gutter-width / 2);
+  padding: $gutter-width ($gutter-width / 2);
   
   &.nt-live {
-    @include border($yellow);
-    
     .tr-section-title {
       a {
         color: $yellow;
@@ -114,8 +110,6 @@
   }
   
   &.wild-card {
-    @include border($purple);
-    
     .tr-section-title {
       a {
         color: $purple;
@@ -129,8 +123,6 @@
   }
   
   &.bloody-sunday {
-    @include border($red);
-    
     .tr-section-title {
       a {
         color: $red;

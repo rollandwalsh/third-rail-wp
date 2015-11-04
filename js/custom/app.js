@@ -1,4 +1,14 @@
+var nav, navButton;
 
+navButton = $('#trSiteNavButton');
+
+nav = $('.tr-site-nav-menu');
+
+navButton.on('click', function(e) {
+  navButton.toggleClass('is-active');
+  nav.slideToggle();
+  return e.preventDefault();
+});
 
 var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripNTLive, timeStamp, wildCard,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };

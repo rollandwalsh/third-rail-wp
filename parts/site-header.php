@@ -15,17 +15,7 @@
     
     <nav class="tr-site-nav">
       <?php thirdrail_top_bar_r(); ?>
-<!--
-      <ul class="tr-site-nav-menu" id="trSiteNavMenu">
-        <li><a href="#">On Stage</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Join</a></li>
-        <li><a href="#">Support</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Membership</a></li>
-      </ul>
--->
-      
+
       <a href="#" class="tr-site-nav-button" id="trSiteNavButton"><span class="tr-site-nav-burger"></span></a>
     </nav>
   </div>
