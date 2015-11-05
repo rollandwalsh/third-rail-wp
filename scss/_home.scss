@@ -13,16 +13,12 @@
   @include border($black-light, top);
   
   padding: ($gutter-width * 2) ($gutter-width / 2);
-  
-  @extend .tr-container;
 }
 
 .tr-home-calendar {
   @include border($side: top);
   
   padding: ($gutter-width * 2) ($gutter-width / 2);
-  
-  @extend .tr-container;
 }
 
 // ALTERNATE DISPLAYS

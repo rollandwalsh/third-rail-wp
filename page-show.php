@@ -307,8 +307,9 @@ function isCompanyMember( $name ) {
 
 		</main><!-- #main -->
 		
-    <?php get_sidebar( 'show' ); ?>
 	</div><!-- #primary -->
+
+<?php get_sidebar( 'show' ); ?>
 
 <?php get_footer(); ?>
 

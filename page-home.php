@@ -122,6 +122,7 @@ get_header(); ?>
 	  while ( $query->have_posts() ) : $query->the_post(); ?>
 			
       <article class="tr-home-blog" id="post-<?php the_ID(); ?>">
+      <div class="tr-container">
   			<header class="tr-blog-header">
           <div class="title">
             <?php the_title( sprintf( '<h1><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
@@ -147,6 +148,7 @@ get_header(); ?>
             </ul>
           <?php } ?>
   			</footer>
+      </div>
   		</article>
 
 		<?php endwhile;
@@ -156,9 +158,11 @@ get_header(); ?>
 ?>
 
 <section class="tr-home-calendar">
-  <div id="trCalendar"></div>
-  <div class="tr-calendar-display" id="trCalendarDisplay">
-    <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
+  <div class="tr-container">
+    <div id="trCalendar"></div>
+    <div class="tr-calendar-display" id="trCalendarDisplay">
+      <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
+    </div>
   </div>
 </section>
 

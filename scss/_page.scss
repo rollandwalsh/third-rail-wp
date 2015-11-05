@@ -66,11 +66,11 @@
 // - - - - - - - - - - - - -
 
 .tr-page-container {
-  @extend .tr-container;
+  @include border($black-light);
 }
 
 .tr-page-article {
-  @include border($black-light);
+  @extend .tr-container;
   
   padding: ($gutter-width * 2) ($gutter-width / 2);
 }
@@ -94,6 +94,8 @@
 // - - - - - - - - - - - - -
 
 .tr-on-stage-show-cards {
+  @extend .tr-container;
+  
   padding: $gutter-width ($gutter-width / 2);
   
   &.nt-live {

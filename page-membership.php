@@ -43,8 +43,6 @@ get_header(); ?>
 	<?php endwhile;?>
 
 	<?php do_action( 'thirdrail_after_content' ); ?>
-
-	<?php get_sidebar( 'membership' ); ?>
 </div>
 
 <section class="tr-page-calendar">
@@ -53,6 +51,8 @@ get_header(); ?>
     <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
   </div>
 </section>
+
+<?php get_sidebar( 'membership' ); ?>
 
 <?php get_footer(); ?>
 <script>

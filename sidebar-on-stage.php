@@ -11,16 +11,6 @@
 <aside id="sidebar" class="show-sidebar">
 	<?php do_action( 'thirdrail_before_sidebar' ); ?>
 	
-	<div id="calendarContainer">
-    <h3 class="section-title">Calendar</h3>
-  	<article class="show-sidebar-section tr-calendar">
-      <span class="calendar-nav" id="calendarNavPrev"><i class="fa fa-long-arrow-left"></i> Prev</span>
-      <span class="calendar-nav" id="calendarNavNext">Next <i class="fa fa-long-arrow-right"></i></span>
-    	<div id="calendar"></div>
-    	<div id="calendarDisplay"></div>
-    </article>
-	</div>
-	
 	<article class="row widget widget_search">
 	  <h3 class="section-title">Search</h3>
 	  <?php do_action( 'thirdrail_before_searchform' ); ?>

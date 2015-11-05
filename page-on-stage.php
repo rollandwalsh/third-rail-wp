@@ -152,7 +152,6 @@ get_header(); ?>
   		?> <!-- End query for current shows -->
 
 	</div>
-<?php get_sidebar( 'on-stage' ); ?>
 
 <section class="tr-page-calendar">
   <div id="trCalendar"></div>
@@ -160,6 +159,8 @@ get_header(); ?>
     <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
   </div>
 </section>
+
+<?php get_sidebar( 'on-stage' ); ?>
 
 <?php get_footer(); ?>
   <script>

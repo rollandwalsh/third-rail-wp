@@ -18,9 +18,7 @@
 
 get_header(); ?>
 
-<div class="row">
-<!-- Row for main content area -->
-	<div class="small-12 large-8 columns" role="main">
+<div class="tr-page-container" role="main">
 
 	<?php if ( have_posts() ) : ?>
 
@@ -41,8 +39,8 @@ get_header(); ?>
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'thirdrail' ) ); ?></div>
 		</nav>
 	<?php } ?>
-
-	</div>
-	<?php get_sidebar(); ?>
 </div>
+
+<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>

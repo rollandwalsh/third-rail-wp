@@ -41,7 +41,8 @@ get_header(); ?>
 			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'thirdrail' ) ); ?></div>
 		</nav>
 	<?php } ?>
-
-	<?php get_sidebar(); ?>
 </div>
+
+<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>

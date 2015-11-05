@@ -9,34 +9,39 @@
 
 get_header(); ?>
 
-<div class="row">
-	<div class="small-12 large-8 columns" role="main">
+<div class="tr-page-container" role="main">
 
 	<?php do_action( 'thirdrail_before_content' ); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-				<?php thirdrail_entry_meta(); ?>
-			</header>
+		<article class="tr-page-article" id="post-<?php the_ID(); ?>">
+			<header class="tr-blog-header">
+        <div class="title">
+          <?php the_title( sprintf( '<h1><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+          <h4><?php the_time('l - F jS, Y') ?></h4>
+          <h5><?php the_category( ' ' ); ?></h5>
+        </div>
+        <div class="image">
+          <?php if ( has_post_thumbnail() ) { ?>
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
+          <?php } ?>
+        </div>
+      </header>
 			<?php do_action( 'thirdrail_post_before_entry_content' ); ?>
-			<div class="entry-content">
-
-			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="row">
-					<div class="column">
-						<?php the_post_thumbnail( '', array('class' => 'th') ); ?>
-					</div>
-				</div>
-			<?php endif; ?>
-
-			<?php the_content(); ?>
-			</div>
-			<footer>
+			
+			<section class="tr-blog-content">
+			  <?php the_content(); ?>
+			</section>
+			
+      <footer class="tr-blog-footer">
+        <?php if ( get_the_tags() ) { ?>
+          <ul class="tr-blog-tags">
+            <?php the_tags('<li>', '</li><li>', '</li>'); ?>
+          </ul>
+        <?php } ?>
 				<?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'thirdrail' ), 'after' => '</p></nav>' ) ); ?>
-				<p><?php the_tags(); ?></p>
 			</footer>
+			
 			<?php do_action( 'thirdrail_post_before_comments' ); ?>
 			<?php comments_template(); ?>
 			<?php do_action( 'thirdrail_post_after_comments' ); ?>
@@ -44,8 +49,8 @@ get_header(); ?>
 	<?php endwhile;?>
 
 	<?php do_action( 'thirdrail_after_content' ); ?>
-
-	</div>
-	<?php get_sidebar(); ?>
 </div>
+
+<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>
