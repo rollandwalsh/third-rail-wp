@@ -158,13 +158,13 @@
     
     &.current {
       a {
-        @include button-color($black-light);
+        @include button-color($gray);
       }
     }
   }
   
   a {
-    @include button($gray, rem-calc(8));
+    @include button($orange, rem-calc(10));
   }
 }
 

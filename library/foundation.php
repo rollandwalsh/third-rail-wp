@@ -22,8 +22,8 @@ function thirdrail_pagination() {
 		'total' => $wp_query->max_num_pages,
 		'mid_size' => 5,
 		'prev_next' => true,
-	    'prev_text' => __( '&laquo;', 'thirdrail' ),
-	    'next_text' => __( '&raquo;', 'thirdrail' ),
+	    'prev_text' => __( '<i class="fa fa-angle-double-left"></i>', 'thirdrail' ),
+	    'next_text' => __( '<i class="fa fa-angle-double-right"></i>', 'thirdrail' ),
 		'type' => 'list',
 	) );
 
