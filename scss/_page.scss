@@ -75,6 +75,14 @@
   padding: ($gutter-width * 2) ($gutter-width / 2);
 }
 
+.tr-page-title {
+  font-weight: lighter;
+  text-align: center;
+  
+  @include padding();
+  width: 100%;
+}
+
 .tr-section-title {
   margin: 0;
 }
@@ -135,6 +143,23 @@
         }
       }
     }
+  }
+}
+
+.tr-page-numbers,
+.tr-pagination {
+  list-style: none;
+  
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  
+  li {
+    @include padding();
+  }
+  
+  a {
+    @include button($gray, rem-calc(8));
   }
 }
 

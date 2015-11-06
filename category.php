@@ -20,7 +20,7 @@ get_header(); ?>
 
 <div class="tr-page-container" role="main">
 	
-	<h1><?php single_cat_title(); ?> News</h1>
+	<h1 class="tr-page-title"><?php single_cat_title(); ?> News</h1>
 
 	<?php if ( have_posts() ) : ?>
 

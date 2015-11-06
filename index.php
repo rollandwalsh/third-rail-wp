@@ -18,7 +18,7 @@ get_header(); ?>
 
 <div class="tr-page-container" role="main">
 	
-	<h1>Third Rail News</h1>
+	<h1 class="tr-page-title">Third Rail News</h1>
 
 	<?php if ( have_posts() ) : ?>
 
