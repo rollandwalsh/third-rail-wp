@@ -146,7 +146,6 @@
   }
 }
 
-.tr-page-numbers,
 .tr-pagination {
   list-style: none;
   
@@ -156,6 +155,12 @@
   
   li {
     @include padding();
+    
+    &.current {
+      a {
+        @include button-color($black-light);
+      }
+    }
   }
   
   a {

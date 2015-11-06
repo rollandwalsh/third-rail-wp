@@ -27,7 +27,7 @@ function thirdrail_pagination() {
 		'type' => 'list',
 	) );
 
-	$paginate_links = str_replace( "<ul class='page-numbers'>", "<ul class='tr-page-numbers'>", $paginate_links );
+	$paginate_links = str_replace( "<ul class='page-numbers'>", "<ul class='tr-pagination'>", $paginate_links );
 	$paginate_links = str_replace( '<li><span class="page-numbers dots">', "<li><a href='#'>", $paginate_links );
 	$paginate_links = str_replace( "<li><span class='page-numbers current'>", "<li class='current'><a href='#'>", $paginate_links );
 	$paginate_links = str_replace( '</span>', '</a>', $paginate_links );
