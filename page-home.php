@@ -122,7 +122,6 @@ get_header(); ?>
 	  while ( $query->have_posts() ) : $query->the_post(); ?>
 			
       <article class="tr-home-blog" id="post-<?php the_ID(); ?>">
-      <div class="tr-container">
   			<header class="tr-blog-header">
           <div class="title">
             <?php the_title( sprintf( '<h1><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
@@ -131,7 +130,7 @@ get_header(); ?>
           </div>
           <div class="image">
             <?php if ( has_post_thumbnail() ) { ?>
-              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
+              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'square' , array( 'class' => '' ) ); ?></a> 
             <?php } ?>
           </div>
         </header>
@@ -148,7 +147,6 @@ get_header(); ?>
             </ul>
           <?php } ?>
   			</footer>
-      </div>
   		</article>
 
 		<?php endwhile;

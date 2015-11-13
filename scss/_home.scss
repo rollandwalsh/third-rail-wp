@@ -12,7 +12,13 @@
 .tr-home-blog {
   @include border($black-light, top);
   
-  padding: ($gutter-width * 2) ($gutter-width / 2);
+  .tr-blog-header,
+  .tr-blog-content,
+  .tr-blog-footer {
+    @extend .tr-container;
+    
+    padding: ($gutter-width * 2) ($gutter-width / 2);
+  }
 }
 
 .tr-home-calendar {

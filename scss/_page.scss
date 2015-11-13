@@ -70,15 +70,24 @@
 }
 
 .tr-page-article {
-  @extend .tr-container;
+  @include border($black-light);
   
-  padding: ($gutter-width * 2) ($gutter-width / 2);
+  .tr-blog-header,
+  .tr-blog-content,
+  .tr-blog-footer {
+    @extend .tr-container;
+    
+    padding: ($gutter-width * 2) ($gutter-width / 2);
+  }
 }
 
 .tr-page-title {
+  @include border($black-light);
+  font-size: rem-calc(40);
   font-weight: lighter;
   text-align: center;
   
+  margin: 0;
   @include padding();
   width: 100%;
 }
@@ -151,6 +160,7 @@
   
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   
   li {
@@ -158,7 +168,7 @@
     
     &.current {
       a {
-        @include button-color($gray);
+        @include button-color($gray-light);
       }
     }
   }

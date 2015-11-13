@@ -21,11 +21,11 @@
     </div>
     <div class="image">
       <?php if ( has_post_thumbnail() ) { ?>
-        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
+        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'square' , array( 'class' => '' ) ); ?></a> 
       <?php } ?>
     </div>
   </header>
-	<div class="tr-entry-content">
+	<div class="tr-blog-content">
 		<?php the_content( __( 'Continue reading...', 'thirdrail' ) ); ?>
 	</div>
 	<footer class="tr-blog-footer">

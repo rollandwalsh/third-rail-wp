@@ -17,13 +17,13 @@ get_header(); ?>
 		<article class="tr-page-article" id="post-<?php the_ID(); ?>">
 			<header class="tr-blog-header">
         <div class="title">
-          <?php the_title( sprintf( '<h1><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+          <h1><?php the_title(); ?>
           <h4><?php the_time('l - F jS, Y') ?></h4>
           <h5><?php the_category( ' ' ); ?></h5>
         </div>
         <div class="image">
           <?php if ( has_post_thumbnail() ) { ?>
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
+            <?php the_post_thumbnail( 'square' , array( 'class' => '' ) ); ?>
           <?php } ?>
         </div>
       </header>
@@ -41,10 +41,6 @@ get_header(); ?>
         <?php } ?>
 				<?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'thirdrail' ), 'after' => '</p></nav>' ) ); ?>
 			</footer>
-			
-			<?php do_action( 'thirdrail_post_before_comments' ); ?>
-			<?php comments_template(); ?>
-			<?php do_action( 'thirdrail_post_after_comments' ); ?>
 		</article>
 	<?php endwhile;?>
 
