@@ -1,14 +1,25 @@
-.rn-page-sidebar {
+.rn-sidebar-widget {
   @extend .tr-container;
   
   padding: $gutter-width ($gutter-width / 2);
+  
+  &.recent-news {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  &.widget_search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
   .tagcloud {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     a {
-      @include button($gray, rem-calc(10));
+      @include button($gray, rem-calc(8));
       
       margin: rem-calc(0 4 4 0);
     }
@@ -24,18 +35,11 @@
   width: 100%;
 }
 
-.rn-sidebar-widget {
-  &.recent-news {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
 .tr-sidebar-recent-news-item {
   @include show-card();
 }
 
-.tr-sidebar-recent-news-item {
+.tr-sidebar-recent-news-content {
   @include padding();
   
   h2 {
