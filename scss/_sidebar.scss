@@ -1,0 +1,47 @@
+.rn-page-sidebar {
+  @extend .tr-container;
+  
+  padding: $gutter-width ($gutter-width / 2);
+
+  .tagcloud {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    a {
+      @include button($gray, rem-calc(10));
+      
+      margin: rem-calc(0 4 4 0);
+    }
+  }
+}
+
+.tr-sidebar-section-title {
+  font-size: rem-calc(24);
+  font-weight: lighter;
+  text-align: center;
+  
+  margin: 0;
+  width: 100%;
+}
+
+.rn-sidebar-widget {
+  &.recent-news {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.tr-sidebar-recent-news-item {
+  @include show-card();
+}
+
+.tr-sidebar-recent-news-item {
+  @include padding();
+  
+  h2 {
+    text-overflow: ellipsis;
+    
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

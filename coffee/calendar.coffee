@@ -1,8 +1,8 @@
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList'
 cal = $('#trCalendar')
 mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom']
-ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it']
-wildCard = ['the bylines: meant to be', 'pete: all well']
+ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it', 'the winter\'s tale', 'les liaisons dangereuses']
+wildCard = ['the bylines: meant to be', 'pete: all well', 'eowyn emerald & dancers']
 	    
 getEvents = (url, callback, show = false) ->
 	$.ajax
@@ -175,5 +175,5 @@ dayStamp = (input) -> # return day of week based on date
   day = weekdays[date.getDay()]
   
 stripNTLive = (input) -> # remove nt live prefix from Patron Manager event name
-  name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace(' wildcard', '')
+  name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace('branagh: ', '').replace(' wildcard', '').replace('wildcard: ', '').replace(' - january 8', '')
   
