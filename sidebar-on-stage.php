@@ -46,7 +46,6 @@
   						<?php the_excerpt(); ?>
   					</div>
   					<footer>
-  						<hr>
   					</footer>
   				<?php endwhile; ?>
   			</div>
@@ -55,37 +54,6 @@
 	
     wp_reset_postdata();
 	?>
-  		
-	<?php
-		$args = array(
-	    'post_type'  	   => 'post',
-	    'post_status'    => 'publish',
-	    'posts_per_page' => 1,
-	    'category_name'  => 'this-month'
-		);
 	
-		$query = new WP_Query( $args );
-		
-		if ( $query->have_posts() ) { ?>
-  		<article class="rn-sidebar-widget search">
-  			<h3 class="tr-sidebar-section-title">This Month at Third Rail</h3>
-  			<div class="tr-sidebar-post this-month">
-  				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-  					<header>
-  						<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-  					</header>
-  					<div class="tr-sidebar-post-content">
-  						<?php the_excerpt(); ?>
-  					</div>
-  					<footer>
-  						<hr>
-  					</footer>
-  				<?php endwhile; ?>
-  			</div>
-  		</article>
-		<?php }
-	
-    wp_reset_postdata();
-	?>
 	<?php do_action( 'thirdrail_after_sidebar' ); ?>
 </aside>
