@@ -163,14 +163,15 @@ get_header(); ?>
 <?php get_sidebar( 'on-stage' ); ?>
 
 <?php get_footer(); ?>
-  <script>
-    $(function() {
-      return getEvents(api, createMonths);
-    });
-    
-  	$('#membershipJoin').on('click', function (e) {
-    	e.preventDefault();
-  		$('#membershipMessage').replaceWith('<h5>Would you rather join annually or monthly?</h5>');
-  		$(this).replaceWith('<a href="https://thirdrailrep.secure.force.com/ticket#membership_a0So0000002BughEAC" class="button buy large">$352/year</a> <a href="https://thirdrailrep.secure.force.com/donate/?dfId=a0no000000HByN7AAL" class="button buy large">$29.33/month</a>');
-  	});	
-  </script>
+
+<script>
+  $(function() {
+    return getEvents(api, createMonths);
+  });
+  
+	$('#membershipJoin').on('click', function (e) {
+  	e.preventDefault();
+		$('#membershipMessage').replaceWith('<h5>Would you rather join annually or monthly?</h5>');
+		$(this).replaceWith('<a href="https://thirdrailrep.secure.force.com/ticket#membership_a0So0000002BughEAC" class="button buy large">$352/year</a> <a href="https://thirdrailrep.secure.force.com/donate/?dfId=a0no000000HByN7AAL" class="button buy large">$29.33/month</a>');
+	});	
+</script>

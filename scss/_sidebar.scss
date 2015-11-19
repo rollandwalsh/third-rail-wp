@@ -8,7 +8,8 @@
     flex-wrap: wrap;
   }
   
-  &.widget_search {
+  &.widget_search,
+  &.search {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
