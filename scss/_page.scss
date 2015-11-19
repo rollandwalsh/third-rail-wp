@@ -66,11 +66,15 @@
 // - - - - - - - - - - - - -
 
 .tr-page-container {
-  @include border($black-light);
+  @include border($orange);
 }
 
 .tr-page-article {
-  @include border($black-light);
+  @include border($gray-dark);
+  
+  &:last-child {
+    border: none;
+  }
   
   .tr-blog-header,
   .tr-blog-content,

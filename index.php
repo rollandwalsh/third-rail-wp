@@ -43,7 +43,8 @@ get_header(); ?>
 	<?php } ?>
 
 	<?php do_action( 'thirdrail_after_content' ); ?>
-
-	<?php get_sidebar(); ?>
 </div>
+
+<?php get_sidebar(); ?>
+	
 <?php get_footer(); ?>

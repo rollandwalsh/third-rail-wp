@@ -18,6 +18,8 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    
     a {
       @include button($gray, rem-calc(8));
       
@@ -40,10 +42,15 @@
 }
 
 .tr-sidebar-recent-news-content {
+  font-size: rem-calc(12);
+  
   @include padding();
   
   h2 {
+    font-size: rem-calc(24);
     text-overflow: ellipsis;
+    
+    margin: 0;
     
     overflow: hidden;
     white-space: nowrap;
