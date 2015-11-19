@@ -159,6 +159,17 @@
   }
 }
 
+.tr-on-stage-content {
+  @extend .tr-container;
+}
+
+.tr-on-stage-post {
+  @include border($gray-dark);
+}
+
+// PAGINATION
+// - - - - - - - - - - - - -
+
 .tr-pagination {
   list-style: none;
   
