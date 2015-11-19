@@ -2,6 +2,9 @@
 // - - - - - - - - - - - - -
 
 .tr-page-banner {
+  svg * {
+    @include single-transition(all);
+  }
   
   #thirdRailMembership {
     .third-rail,
