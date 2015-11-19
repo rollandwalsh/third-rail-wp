@@ -8,34 +8,71 @@
   
   #thirdRailMembership {
     .third-rail,
-    .membership {
-      fill: $white;
-    }
+    .membership {fill: $white}
     
-    .lightning-bolt {
-      fill: $orange;
-    }
+    .lightning-bolt {fill: $orange}
   }
+  
+  #ntLive {
+		.national, .theatre {fill: $white}
+		
+		.live {fill: url(#gradient)}
+		
+		#gradient {
+			stop {stop-color: $white}
+		}
+	}
+	
+	#or {
+		.feather, .hilt {fill: $white}
+		
+		.blade {fill: $orange}
+	}
+	
+	#theRealisticJoneses {
+		.fence {fill: $white}
+		
+		.board {fill: $orange}
+	}
+	
+	#mrKolpert {
+		.head, .banana, .cliff {fill: $white}
+		
+		.man {fill: $orange}
+	}
+	
+	#theNewElectricBallroom {
+		.shoe-inside, .heel, .shadow {fill: $white}
+		
+		.shoe-outside {fill: $orange}
+	}
+
+  
 	
 	&:hover {
 		#thirdRailMembership {
 			.lightning-bolt {transform: translateY(10rem)}
 			.membership {transform: scale(1.1) translate(-5rem, -7rem)}
 		}
+		
 		#ntLive {
 			#gradient stop.bottom {stop-color: rgba($orange, 1)}
 		}
+		
 		#or {
 			.feather {transform: translateX(-4rem)}
 			.sword {transform: translateX(4rem)}
 		}
+		
 		#theRealisticJoneses {
 			.board {transform: rotate(90deg) translateX(-15rem) translateY(-160rem)}
 		}
+		
 		#mrKolpert {
 			.man {transform: rotate(20deg) translateX(4rem)}
 			.banana {transform: rotate(5deg) translateX(6rem) translateY(-10rem)}
 		}
+		
 		#theNewElectricBallroom {
 			.shoe {transform: rotate(5deg) translateX(5rem) translateY(-5rem)}
 		}
