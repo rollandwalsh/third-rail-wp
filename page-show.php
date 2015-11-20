@@ -105,25 +105,22 @@ function isCompanyMember( $name ) {
 } /* test to determin if provided name is a company member */
 ?>
 
-	<header class="page-header">
-  	<div id="svgHeader" class="row" data-equalizer>
-  		<div class="info-section" data-equalizer-watch>
-				<div class="content">
-				  <hr>
-					<?php the_title( '<h2>', '</h2>' ); ?>
-					<?php if ( !null == role('Playwright', $creatives, false) ) { role('Playwright', $creatives, true, '<h5>by ', '</h5>'); } ?>
-					
-					<?php if ($current_date <= $closing_date && isset($tickets_url) && $tickets_url !== '') { ?>
-					  <a href="<?php echo $tickets_url; ?>" class="button success large"><i class="fa fa-ticket"></i> Book Now</a>
-          <?php } ?>
-				  <hr>
-				</div>
+<section class="tr-page-banner">
+  <div class="tr-container">
+    <header class="tr-page-banner-header">
+		  <?php the_title( '<h2>', '</h2>' ); ?>
+			<?php if ( !null == role('Playwright', $creatives, false) ) { role('Playwright', $creatives, true, '<h5>by ', '</h5>'); } ?>
+			
+			<div class="tr-page-banner-buttons">
+  			<?php if ($current_date <= $closing_date && isset($tickets_url) && $tickets_url !== '') { ?>
+  			  <a href="<?php echo $tickets_url; ?>" class="button buy"><i class="fa fa-ticket"></i> Tickets</a>
+        <?php } ?>
 			</div>
-			<div class="graphic-section" data-equalizer-watch>
-				<?php echo file_get_contents(get_template_directory_uri() . "/svg/" . $svg . ".svg"); ?>
-			</div>
-		</div>
-	</header>
+		</header>
+		
+		<?php echo file_get_contents(get_template_directory_uri() . "/svg/" . $svg . ".svg"); ?>
+  </div>
+</section>
 	
 	<section class="page-banner">
 	  <div class="show-dates">
