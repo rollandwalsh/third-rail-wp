@@ -78,7 +78,16 @@
 // SMALL
   
 @media #{$small-only} {
-  .tr-footer-membership {
+  .tr-footer-nav {
+	  li {
+		  text-align: center;
+		  
+		  width: 50%;
+		  
+		  &:first-child {
+			  width: 100%;
+		  }
+	  }
   }
 }
 
