@@ -22,12 +22,12 @@ function thirdrail_pagination() {
 		'total' => $wp_query->max_num_pages,
 		'mid_size' => 5,
 		'prev_next' => true,
-	    'prev_text' => __( '&laquo;', 'thirdrail' ),
-	    'next_text' => __( '&raquo;', 'thirdrail' ),
+	    'prev_text' => __( '<i class="fa fa-chevron-left"></i>', 'thirdrail' ),
+	    'next_text' => __( '<i class="fa fa-chevron-right"></i>', 'thirdrail' ),
 		'type' => 'list',
 	) );
 
-	$paginate_links = str_replace( "<ul class='page-numbers'>", "<ul class='pagination'>", $paginate_links );
+	$paginate_links = str_replace( "<ul class='page-numbers'>", "<ul class='tr-pagination'>", $paginate_links );
 	$paginate_links = str_replace( '<li><span class="page-numbers dots">', "<li><a href='#'>", $paginate_links );
 	$paginate_links = str_replace( "<li><span class='page-numbers current'>", "<li class='current'><a href='#'>", $paginate_links );
 	$paginate_links = str_replace( '</span>', '</a>', $paginate_links );
@@ -36,9 +36,7 @@ function thirdrail_pagination() {
 
 	// Display the pagination if more than one page is found.
 	if ( $paginate_links ) {
-		echo '<div class="pagination-centered">';
 		echo $paginate_links;
-		echo '</div><!--// end .pagination -->';
 	}
 }
 endif;

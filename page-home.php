@@ -8,7 +8,9 @@
  */
 
 get_header(); ?>
-    
+
+<div class="tr-home-container">
+
 <section class="tr-page-banner">
   <div class="tr-container">
     <header class="tr-page-banner-header">
@@ -85,7 +87,7 @@ get_header(); ?>
           <div class="tr-show-card-overlay">
             <header>
               <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
-              <h5>by *Playwright*</h5>
+              <h5><?php echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) )), date('M j', strtotime( rwmb_meta( 'closing_date' ) )); ?></h5>
             </header>
             <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
           </div>
@@ -128,7 +130,7 @@ get_header(); ?>
           </div>
           <div class="image">
             <?php if ( has_post_thumbnail() ) { ?>
-              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'medium' , array( 'class' => '' ) ); ?></a> 
+              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'square' , array( 'class' => '' ) ); ?></a> 
             <?php } ?>
           </div>
         </header>
@@ -154,11 +156,15 @@ get_header(); ?>
 ?>
 
 <section class="tr-home-calendar">
-  <div id="trCalendar"></div>
-  <div class="tr-calendar-display" id="trCalendarDisplay">
-    <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
+  <div class="tr-container">
+    <div id="trCalendar"></div>
+    <div class="tr-calendar-display" id="trCalendarDisplay">
+      <div class="tr-calendar-loading">Loading <i class="fa fa-spinner fa-spin"></i></div>
+    </div>
   </div>
 </section>
+
+</div>
 
 <?php get_footer(); ?>
 

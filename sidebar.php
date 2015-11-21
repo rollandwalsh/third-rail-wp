@@ -8,9 +8,10 @@
  */
 
 ?>
-<aside id="sidebar" class="small-12 large-4 columns">
+<aside id="sidebar" class="rn-page-sidebar">
 	<?php do_action( 'thirdrail_before_sidebar' ); ?>
-	<article class="row widget widget_resent_news">
+	
+	<article class="rn-sidebar-widget recent-news">
   	<?php
   		$args = array(
   	    'post_type'  	   => 'post',
@@ -21,21 +22,21 @@
   		$query = new WP_Query( $args );
   		
   		if ( $query->have_posts() ) { ?>
-  			<h3 class="section-title">Recent News</h3>
-  			<div class="show-sidebar-section">
-  				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-  					<header>
-  						<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-  					</header>
-  					<div class="entry-content">
-  						<?php the_excerpt(); ?>
-  					</div>
-  					<footer>
-  						<?php thirdrail_entry_meta(); ?>
-  					</footer>
-  					<hr>
-  				<?php endwhile; ?>
-  			</div>
+  			<h3 class="tr-sidebar-section-title">Recent News</h3>
+        <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+  			  <div class="tr-sidebar-recent-news-item">
+            <?php if ( has_post_thumbnail() ) { ?>
+              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'poster-small' , array( 'class' => '' ) ); ?></a> 
+            <?php } ?>
+            <div class="tr-sidebar-recent-news-content">
+              <header>
+                <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
+                <?php echo '<time class="updated date" datetime="'. get_the_time( 'c' ) .'">'. sprintf( __( '%s', 'thirdrail' ), get_the_date() ) .'</time>'; ?>
+                <?php echo cats(); ?>
+              </header>
+            </div>
+          </div>
+        <?php endwhile; ?>
   		<?php }
   	
       wp_reset_postdata();

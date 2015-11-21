@@ -18,7 +18,7 @@ get_header(); ?>
 
 <div class="tr-page-container" role="main">
 	
-	<h1>Third Rail News</h1>
+	<h1 class="tr-page-title">Third Rail News</h1>
 
 	<?php if ( have_posts() ) : ?>
 
@@ -43,7 +43,8 @@ get_header(); ?>
 	<?php } ?>
 
 	<?php do_action( 'thirdrail_after_content' ); ?>
-
-	<?php get_sidebar(); ?>
 </div>
+
+<?php get_sidebar(); ?>
+	
 <?php get_footer(); ?>

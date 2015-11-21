@@ -1,0 +1,59 @@
+.rn-sidebar-widget {
+  @extend .tr-container;
+  
+  padding: $gutter-width ($gutter-width / 2);
+  
+  &.recent-news {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  &.widget_search,
+  &.search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tagcloud {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    a {
+      @include button($gray, rem-calc(8));
+      
+      margin: rem-calc(0 4 4 0);
+    }
+  }
+}
+
+.tr-sidebar-section-title {
+  font-size: rem-calc(24);
+  font-weight: lighter;
+  text-align: center;
+  
+  margin: 0;
+  width: 100%;
+}
+
+.tr-sidebar-recent-news-item {
+  @include show-card();
+}
+
+.tr-sidebar-recent-news-content {
+  font-size: rem-calc(12);
+  
+  @include padding();
+  
+  h2 {
+    font-size: rem-calc(24);
+    text-overflow: ellipsis;
+    
+    margin: 0;
+    
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

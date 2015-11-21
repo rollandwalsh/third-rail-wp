@@ -37,8 +37,8 @@
 
 @mixin button($color: $brand-primary, $size: $gutter-width, $full-width: false, $transition: true) {
   @include button-base();
-  @include button-size();
-  @include button-color();
+  @include button-size($size, $full-width);
+  @include button-color($color);
   
   @if $transition {
     @include transition();

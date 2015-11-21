@@ -2,7 +2,7 @@ input {
   background: darken($white, 5%);
   border-top: none;
   border-right: none;
-  @include border($black-light, bottom, 3px);
+  @include border($gray, bottom, 3px);
   border-left: none;
   border-radius: 0;
   color: rgba($black,.75);

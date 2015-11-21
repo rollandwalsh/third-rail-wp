@@ -13,12 +13,19 @@
   }
   
   h1,
-  h4 {
+  h4,
+  h5 {
     margin: 0;
   }
   
-  h4 {
+  h4,
+  h5 {
     font-weight: 300;
+  }
+  
+  h4,
+  h5 {
+    font-size: rem-calc(16);
   }
   
   .image {
@@ -48,6 +55,7 @@
   list-style: none;
   
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   
   a {

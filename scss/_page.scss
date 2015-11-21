@@ -5,7 +5,6 @@
 
 .tr-page-banner {
   background: $black-light;
-  @include border();
   
   > .tr-container {
     @include padding();
@@ -67,13 +66,34 @@
 // - - - - - - - - - - - - -
 
 .tr-page-container {
-  @extend .tr-container;
+  @include border($orange);
 }
 
 .tr-page-article {
-  @include border($black-light);
+  @include border($gray-dark);
   
-  padding: ($gutter-width * 2) ($gutter-width / 2);
+  &:last-child {
+    border: none;
+  }
+  
+  .tr-blog-header,
+  .tr-blog-content,
+  .tr-blog-footer {
+    @extend .tr-container;
+    
+    padding: ($gutter-width * 2) ($gutter-width / 2);
+  }
+}
+
+.tr-page-title {
+  @include border($black-light);
+  font-size: rem-calc(40);
+  font-weight: lighter;
+  text-align: center;
+  
+  margin: 0;
+  @include padding();
+  width: 100%;
 }
 
 .tr-section-title {
@@ -95,13 +115,11 @@
 // - - - - - - - - - - - - -
 
 .tr-on-stage-show-cards {
-  @include border();
+  @extend .tr-container;
   
-  padding: ($gutter-width * 2) ($gutter-width / 2);
+  padding: $gutter-width ($gutter-width / 2);
   
   &.nt-live {
-    @include border($yellow);
-    
     .tr-section-title {
       a {
         color: $yellow;
@@ -115,8 +133,6 @@
   }
   
   &.wild-card {
-    @include border($purple);
-    
     .tr-section-title {
       a {
         color: $purple;
@@ -130,8 +146,6 @@
   }
   
   &.bloody-sunday {
-    @include border($red);
-    
     .tr-section-title {
       a {
         color: $red;
@@ -142,6 +156,40 @@
         }
       }
     }
+  }
+}
+
+.tr-on-stage-content {
+  @extend .tr-container;
+}
+
+.tr-on-stage-post {
+  @include border($gray-dark);
+}
+
+// PAGINATION
+// - - - - - - - - - - - - -
+
+.tr-pagination {
+  list-style: none;
+  
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  li {
+    @include padding();
+    
+    &.current {
+      a {
+        @include button-color($gray-light);
+      }
+    }
+  }
+  
+  a {
+    @include button($orange, rem-calc(10));
   }
 }
 

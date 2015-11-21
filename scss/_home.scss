@@ -12,17 +12,19 @@
 .tr-home-blog {
   @include border($black-light, top);
   
-  padding: ($gutter-width * 2) ($gutter-width / 2);
-  
-  @extend .tr-container;
+  .tr-blog-header,
+  .tr-blog-content,
+  .tr-blog-footer {
+    @extend .tr-container;
+    
+    padding: ($gutter-width * 2) ($gutter-width / 2);
+  }
 }
 
 .tr-home-calendar {
   @include border($side: top);
   
   padding: ($gutter-width * 2) ($gutter-width / 2);
-  
-  @extend .tr-container;
 }
 
 // ALTERNATE DISPLAYS
@@ -31,19 +33,40 @@
 // SMALL
 
 @media #{$small-only} {
-
+  .tr-home-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tr-home-show-cards {
+    padding: ($gutter-width * 2) 0;
+    
+    order: 1;
+  }
+  
+  .tr-home-calendar {
+    border-color: $black-light;
+    
+    order: 1;
+  }
+  
+  .tr-home-blog {
+    order: 3;
+  }
 }
 
 // MEDIUM-UP
 
 @media #{$medium-up} {
   .tr-home-show-cards {
-    padding: ($gutter-width * 6) 0;
+    padding: ($gutter-width * 3) 0;
   }
 }
 
 // LARGE-UP
 
 @media #{$large-up} {
-
+  .tr-home-show-cards {
+    padding: ($gutter-width * 6) 0;
+  }
 }

@@ -1,57 +1,49 @@
 // SHOW CARDS
 // - - - - - - - - - - - - -
 
-.tr-show-card {
-  @include border($side: top, $width: rem-calc(3));
-  @include border($width: rem-calc(3));
+@mixin show-card-base() {
+  box-shadow: 0 0 8px 0 rgba($gray, .8);
   text-align: center;
   
-  margin: 0 ($gutter-width / 2);
+  margin: $gutter-width / 2;
   min-width: rem-calc(300);
   
+  @include transition();
+  
   flex: 0 0 calc((100% / 3) - #{$gutter-width});
+}
+
+@mixin show-card-color($color: $brand-primary) {
+  $color-dark: darken($color, 12%);
   
-  &.nt-live {
-    @include border($yellow, top, rem-calc(3));
-    @include border($yellow, bottom, rem-calc(3));
+  @include border($color);
+  
+  &:hover {
+    box-shadow: 0 0 12px 0 rgba($color-dark, .8);
+  }
     
-    h2 a {
-      color: $yellow;
-      
-      &:hover,
-      &:focus {
-        color: darken($yellow, 12%);
-      }
+  h2 a {
+    color: $color;
+    
+    &:hover,
+    &:focus {
+      color: $color-dark;
     }
   }
+}
+
+@mixin show-card($color: $brand-primary) {
+  @include show-card-base();
+  @include show-card-color();
+}
+
+
+.tr-show-card {
+  @include show-card();
   
-  &.wild-card {
-    @include border($purple, top, rem-calc(3));
-    @include border($purple, bottom, rem-calc(3));
-    
-    h2 a {
-      color: $purple;
-      
-      &:hover,
-      &:focus {
-        color: darken($purple, 12%);
-      }
-    }
-  }
-  
-  &.bloody-sunday {
-    @include border($red, top, rem-calc(3));
-    @include border($red, bottom, rem-calc(3));
-    
-    h2 a {
-      color: $red;
-      
-      &:hover,
-      &:focus {
-        color: darken($red, 12%);
-      }
-    }
-  }
+  &.nt-live {@include show-card-color($yellow)}
+  &.wild-card {@include show-card-color($purple)}
+  &.bloody-sunday {@include show-card-color($red)}
 }
 
 .tr-show-card-overlay {
@@ -61,7 +53,7 @@
   
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   
   header {
     flex: 1;
@@ -73,6 +65,7 @@
   }
   
   a {
+    margin: 0 ($gutter-width / 2);
     flex: 0 0 auto;
   }
 }
@@ -95,6 +88,10 @@
 @media #{$medium-only} {
 	.tr-show-card {
 		flex-basis: calc((100% / 2) - #{$gutter-width});
+		
+		&:last-child {
+  		display: none;
+		}
 	}
 }
 

@@ -30,22 +30,10 @@ get_header(); ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article class="tr-page-article" id="post-<?php the_ID(); ?>">
 			<header class="tr-article-header">
-				<h1 class="page-title"><?php the_title(); ?></h1>
+				<h1 class="tr-page-title"><?php the_title(); ?></h1>
 			</header>
-			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
-			<div class="tr-entry-content">
-				<?php the_content(); ?>
-			</div>
 			
-			<footer class="tr-article-footer">
-				
-			</footer>
-		</article>
-	<?php endwhile;?>
-
-	<?php do_action( 'thirdrail_after_content' ); ?>
-			
-  		<?php
+    	<?php
         $categories = get_children(array(
           'post_parent'   => get_the_ID(),
           'numberposts'   => -1,
@@ -149,10 +137,67 @@ get_header(); ?>
     			}
     			wp_reset_postdata();
     		}
-  		?> <!-- End query for current shows -->
+    	?> <!-- End query for current shows -->
+			
+			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
+			
+			<div class="tr-on-stage-content">
+        <?php the_content(); ?>
+			</div>
+      
+      <?php do_action( 'thirdrail_after_content' ); ?>
+			
+			<footer class="tr-article-footer">
+				
+			</footer>
+		</article>
+	<?php endwhile;?>
+</div>
 
-	</div>
-<?php get_sidebar( 'on-stage' ); ?>
+<div class="tr-on-stage-post">
+  <?php
+		$args = array(
+	    'post_type'  	   => 'post',
+	    'post_status'    => 'publish',
+	    'posts_per_page' => 1,
+	    'category_name'  => 'this-month'
+		);
+	
+		$query = new WP_Query( $args );
+		
+		if ( $query->have_posts() ) { ?>
+		  <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+        <article class="tr-page-article" id="post-<?php the_ID(); ?>">
+          <header class="tr-blog-header">
+            <div class="title">
+              <?php the_title( sprintf( '<h1><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+              <h4><?php the_time('l - F jS, Y') ?></h4>
+              <h5><?php the_category( ' ' ); ?></h5>
+        <!--       <?php thirdrail_entry_meta(); ?> -->
+            </div>
+            <div class="image">
+              <?php if ( has_post_thumbnail() ) { ?>
+                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'square' , array( 'class' => '' ) ); ?></a> 
+              <?php } ?>
+            </div>
+          </header>
+        	<div class="tr-blog-content">
+        		<?php the_content( __( 'Continue reading...', 'thirdrail' ) ); ?>
+        	</div>
+        	<footer class="tr-blog-footer">
+            <?php if ( get_the_tags() ) { ?>
+              <ul class="tr-blog-tags">
+                <?php the_tags('<li>', '</li><li>', '</li>'); ?>
+              </ul>
+            <?php } ?>
+        	</footer>
+        </article>
+  		<?php endwhile; ?>
+		<?php }
+	
+    wp_reset_postdata();
+	?>
+</div>
 
 <section class="tr-page-calendar">
   <div id="trCalendar"></div>
@@ -161,15 +206,18 @@ get_header(); ?>
   </div>
 </section>
 
+<?php get_sidebar( 'on-stage' ); ?>
+
 <?php get_footer(); ?>
-  <script>
-    $(function() {
-      return getEvents(api, createMonths);
-    });
-    
-  	$('#membershipJoin').on('click', function (e) {
-    	e.preventDefault();
-  		$('#membershipMessage').replaceWith('<h5>Would you rather join annually or monthly?</h5>');
-  		$(this).replaceWith('<a href="https://thirdrailrep.secure.force.com/ticket#membership_a0So0000002BughEAC" class="button buy large">$352/year</a> <a href="https://thirdrailrep.secure.force.com/donate/?dfId=a0no000000HByN7AAL" class="button buy large">$29.33/month</a>');
-  	});	
-  </script>
+
+<script>
+  $(function() {
+    return getEvents(api, createMonths);
+  });
+  
+	$('#membershipJoin').on('click', function (e) {
+  	e.preventDefault();
+		$('#membershipMessage').replaceWith('<h5>Would you rather join annually or monthly?</h5>');
+		$(this).replaceWith('<a href="https://thirdrailrep.secure.force.com/ticket#membership_a0So0000002BughEAC" class="button buy large">$352/year</a> <a href="https://thirdrailrep.secure.force.com/donate/?dfId=a0no000000HByN7AAL" class="button buy large">$29.33/month</a>');
+	});	
+</script>

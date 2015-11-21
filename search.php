@@ -9,12 +9,11 @@
 
 get_header(); ?>
 
-<div class="row">
-	<div class="small-12 large-8 columns" role="main">
+<div class="tr-page-container" role="main">
 
-		<?php do_action( 'thirdrail_before_content' ); ?>
-
-		<h2><?php _e( 'Search Results for', 'thirdrail' ); ?> "<?php echo get_search_query(); ?>"</h2>
+  <?php do_action( 'thirdrail_before_content' ); ?>
+	
+	<h1 class="tr-page-title"><?php _e( 'Search Results for', 'thirdrail' ); ?> "<?php echo get_search_query(); ?>"</h1>
 
 	<?php if ( have_posts() ) : ?>
 
@@ -39,7 +38,7 @@ get_header(); ?>
 
 	<?php do_action( 'thirdrail_after_content' ); ?>
 
-	</div>
 	<?php get_sidebar(); ?>
+</div>
 
 <?php get_footer(); ?>

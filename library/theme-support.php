@@ -21,6 +21,13 @@ function thirdrail_theme_support() {
 	// Add post thumbnail support: http://codex.wordpress.org/Post_Thumbnails
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'portrait', 400, 600, true );
+	add_image_size( 'square', 300, 300, true );
+	add_image_size( 'poster', 2200, 1550, true );
+	add_image_size( 'poster-small', 880, 620, true );
+	add_image_size( 'full', 2400, 1600 );
+	add_image_size( 'large', 1200, 800 );
+	add_image_size( 'medium', 900, 600 );
+	add_image_size( 'small', 300, 200 );
 
 	// RSS thingy
 	add_theme_support( 'automatic-feed-links' );
