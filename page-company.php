@@ -33,6 +33,7 @@ get_header(); ?>
 							  	'orderby'			=> 'rand',
 							  	'post_type'   => 'page',
 							  	'post_status' => 'publish'
+							  	'posts_per_page'	=>	50
 							  );
 							  $company_query = new WP_Query( $args );
 							  $company_members = $company_query->get_posts();
