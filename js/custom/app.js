@@ -237,7 +237,7 @@ createLinks = function(data, show) {
   $('.event').on('click', function() {
     buttonPrint(this);
     return $('html, body').animate({
-      scrollTop: $('#trCalendarDisplay').offset().top - 160
+      scrollTop: cal.offset().top - $('.tr-site-header').height()
     }, 500);
   });
   return buttonPrint($('.event').first());
