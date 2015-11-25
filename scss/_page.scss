@@ -226,7 +226,7 @@
     flex-wrap: wrap;
     
     li {
-      @include show-card(5, 200);
+      @include show-card(5, 160);
       
       &.company-member {@include show-card-color($orange)}
       &.guest-artist {@include show-card-color($gray-dark)}
@@ -253,7 +253,7 @@
 	}
 	
 	li {
-		@include show-card(5, 200);
+		@include show-card(5, 160);
 	}
 }
 
