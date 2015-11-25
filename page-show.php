@@ -221,20 +221,22 @@ function isCompanyMember( $name ) {
   			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
       			<?php foreach ($cast as $actor) { 
         			if ( isCompanyMember( $actor[1] ) ) { 
-          			$actorPage = get_page_by_title( strtolower( str_replace( ' ', '-', $actor[1] ) ) );
+          			$actorPage = get_page_by_title( $actor[1] );
           			$className = "company-member";
-                $actorImage = get_the_post_thumbnail( $actorPage, 'portrait', array( 'class' => 'actor-image' ) );
+          			$actorUrl = get_page_link($actorPage);
+                $actorImage = get_the_post_thumbnail( $actorPage->ID, 'portrait', array( 'class' => 'actor-image' ) );
         			} else {
-          			$actorPage = get_page_by_title( strtolower( str_replace( ' ', '-', $actor[1] ) ) );
+          			$actorPage = get_page_by_title( $actor[1] );
           			$className = "guest-artist";
+          			$actorUrl = site_url() . "/actor/" . strtolower( str_replace( ' ', '-', $actor[1] ) );
                 $actorImage = "<img src=\"" . get_stylesheet_directory_uri() . "/assets/img/actors/" . strtolower( str_replace( ' ', '-', $actor[1] ) ) . "\" alt=\"" . $actor[1] . "\">";
         			}
       			?>
         			<li class="role <?php echo $className; ?>">
-                <a href="<?php echo $$actorPage ?>" title="<?php echo $actor[1]; ?>"><?php echo $actorImage; ?></a> 
+                <a href="<?php echo $actorUrl ?>" title="<?php echo $actor[1]; ?>"><?php echo $actorImage; ?></a> 
                 <div class="tr-card-overlay">
                   <header>
-                    <h2><a href="<?php echo $actorPage; ?>" title="<?php $actor[1]; ?>"><?php echo $actor[1]; ?></a></h2>
+                    <h2><a href="<?php echo $actorUrl; ?>" title="<?php $actor[1]; ?>"><?php echo $actor[1]; ?></a></h2>
                     <h5><span>as</span> <?php echo $actor[0]; ?></h5>
                   </header>
                 </div>
