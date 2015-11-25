@@ -223,12 +223,12 @@ function isCompanyMember( $name ) {
   			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
       			<?php foreach ($cast as $actor) { 
         			if ( isCompanyMember( $actor[1] ) ) { 
-          			$actorPage = get_page_by_title( $actor[1] );
+          			$actorPage = get_page_by_title( strtolower( str_replace( ' ', '-', $actor[1] ) ) );
           			$className = "company-member";
           			$pageUrl = get_page_link( $actorPage->ID );
                 $imageUrl = get_the_post_thumbnail( $actorPage->ID, 'portrait', array( 'class' => 'actor-image' ) );
         			} else {
-          			$actorPage = get_page_by_title( $actor[1] );
+          			$actorPage = get_page_by_title( strtolower( str_replace( ' ', '-', $actor[1] ) ) );
           			$className = "guest-artist";
           			$pageUrl = site_url() . "/actor/" . strtolower( str_replace( ' ', '-', $actor[1] ) );
                 $imageUrl = get_stylesheet_directory_uri() . "/assets/img/actors/" . strtolower( str_replace( ' ', '-', $actor[1] ) );
