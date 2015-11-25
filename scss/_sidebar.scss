@@ -80,6 +80,10 @@
 	
 	.tr-sidebar-recent-news-item {
 		flex-basis: calc((100% / 2) - #{$gutter-width});
+		
+		&:last-child {
+  		display: none;
+		}
 	}
 }
 
