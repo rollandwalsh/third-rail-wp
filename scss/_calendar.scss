@@ -60,57 +60,63 @@
   }
   
   &.event {
-	  @include border($width: 2px);
-    color: $brand-primary;
+	  background: $brand-primary;
+	  @include border($color: darken($brand-primary, 12%), $width: 1px);
+    color: $white;
     font-weight: bolder;
     
     cursor: pointer;
     
+    @include transition();
+    
     &:hover {
-      background: $brand-primary;
-      color: $white;
-      
-      @include transition();
+      background: $white;
+      border-color: $brand-primary;
+      color: $brand-primary;
     }
     
     &.nt-live {
-	    border-color: $yellow;
-	    color: $yellow;
+	    background: $yellow;
+	    border-color: darken($yellow, 12%);
 	    
 	    &:hover {
-		    background: $yellow;
-		    color: $white;
+		    background: $white;
+		    border-color: $yellow;
+		    color: $yellow;
 	    }
     }
     
     &.wild-card {
-	    border-color: $purple;
-	    color: $purple;
+	    background: $purple;
+	    border-color: darken($purple, 12%);
 	    
 	    &:hover {
-		    background: $purple;
-		    color: $white;
+		    background: $white;
+		    border-color: $purple;
+		    color: $purple;
 	    }
     }
     
     &.bloody-sunday {
-	    border-color: $red;
-	    color: $red;
+	    background: $red;
+	    border-color: darken($red, 12%);
 	    
 	    &:hover {
-		    background: $red;
-		    color: $white;
+		    background: $white;
+		    border-color: $red;
+		    color: $red;
 	    }
     }
     
     &.main-stage {
-      border-color: $orange;
-      color: $orange;
-      
-      &:hover {
-        background: $orange;
-        color: $white;
-      }
+	    background: $orange;
+	    border-color: darken($orange, 12%);
+	    
+	    &:hover {
+		    background: $white;
+		    border-color: $orange;
+		    color: $orange;
+	    }
     }
   }
 }

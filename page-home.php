@@ -14,14 +14,14 @@ get_header(); ?>
 <section class="tr-page-banner">
   <div class="tr-container">
     <header class="tr-page-banner-header">
-			<h2>Third Rail Membership</h2>
-			<h5 id="membershipMessage">Join the Movement!</h5>
+			<h2>Mr. Kolpert</h2>
+			<h5>by David Gieselmann</h5>
 			<div class="tr-page-banner-buttons">
-			  <a href="/test/membership/" class="button">Learn More</a><a href="#" class="button buy" id="membershipJoin"><i class="fa fa-bolt"></i> Join Now</a>
+			  <a href="/test/mr-kolpert/" class="button">Learn More</a><a href="#" class="button buy"><i class="fa fa-tickets"></i> Book Now</a>
 			</div>
 		</header>
 		
-		<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailMembership.svg" ); ?>
+		<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/mrKolpert.svg" ); ?>
   </div>
 </section>
   
