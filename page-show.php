@@ -98,11 +98,9 @@ function isCompanyMember( $name ) {
   foreach ( $company_members as $member ) {
     if ( $name == $member->post_title ) {
       return $member->guid;
-    } else {
-      return false;
     }
   }
-} /* test to determin if provided name is a company member */
+} /* test to determine if provided name is a company member */
 ?>
 
 <section class="tr-page-banner">
@@ -225,20 +223,18 @@ function isCompanyMember( $name ) {
         			if ( isCompanyMember( $actor[1] ) ) { 
           			$actorPage = get_page_by_title( strtolower( str_replace( ' ', '-', $actor[1] ) ) );
           			$className = "company-member";
-          			$pageUrl = get_page_link( $actorPage->ID );
-                $imageUrl = get_the_post_thumbnail( $actorPage->ID, 'portrait', array( 'class' => 'actor-image' ) );
+                $actorImage = get_the_post_thumbnail( $actorPage->ID, 'portrait', array( 'class' => 'actor-image' ) );
         			} else {
           			$actorPage = get_page_by_title( strtolower( str_replace( ' ', '-', $actor[1] ) ) );
           			$className = "guest-artist";
-          			$pageUrl = site_url() . "/actor/" . strtolower( str_replace( ' ', '-', $actor[1] ) );
-                $imageUrl = get_stylesheet_directory_uri() . "/assets/img/actors/" . strtolower( str_replace( ' ', '-', $actor[1] ) );
+                $actorImage = get_stylesheet_directory_uri() . "/assets/img/actors/" . strtolower( str_replace( ' ', '-', $actor[1] ) );
         			}
       			?>
         			<li class="role <?php echo $className; ?>">
-                <a href="<?php echo $pageUrl ?>" title="<?php echo $actor[1]; ?>"><img src="<?php echo $imageUrl; ?>" alt="<?php echo $actor[1]; ?>"></a> 
+                <a href="<?php echo $$actorPage ?>" title="<?php echo $actor[1]; ?>"><img src="<?php echo $actorImage; ?>" alt="<?php echo $actor[1]; ?>"></a> 
                 <div class="tr-card-overlay">
                   <header>
-                    <h2><a href="<?php echo $pageUrl; ?>" title="<?php $actor[1]; ?>"><?php echo $actor[1]; ?></a></h2>
+                    <h2><a href="<?php echo $actorPage; ?>" title="<?php $actor[1]; ?>"><?php echo $actor[1]; ?></a></h2>
                     <h5><span>as</span> <?php echo $actor[0]; ?></h5>
                   </header>
                 </div>
