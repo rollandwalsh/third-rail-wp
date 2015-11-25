@@ -25,8 +25,32 @@ get_header(); ?>
 				  <header>
 				    <h3>Third Rail Company Members</h3>
 				  </header>
-				  <div>
-				    
+				  <div class="tr-company-members">
+					  <ul>
+					    <?php
+							  $args = array(
+							  	'child_of'     => get_page_by_title( 'Company' )->ID,
+							  	'post_type'    => 'page',
+							  	'post_status'  => 'publish'
+							  );
+							  $company_members = get_pages($args);
+							  
+							  foreach ( $company_members as $member ) {
+								  $memberName = get_the_title($member->ID);
+	          			$memberLink = get_page_link($member);
+	                $memberImage = get_the_post_thumbnail( $member->ID, 'portrait', array( 'class' => 'actor-image' ) );
+								  
+								  echo '<li>' .
+								  	'<a href="' . $memberLink . '" title="' . $memberName . '">' . $memberImage . '</a>' . 
+							  		'<div class="tr-card-overlay">' .
+							  			'<header>' . 
+							  				'<h2><a href="' . $memberLink . '" title="' . $memberName . '">' . $memberName . '</a></h2>'. 
+							  			'</header>' .
+							  		'</div>' .
+								  '</li>';
+		  					}
+		  				?>
+	  				</ul>
 				  </div>
 				</section>
 			</div>

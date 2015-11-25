@@ -238,6 +238,25 @@
   }
 }
 
+// COMPANY PAGE
+// - - - - - - - - - - - - -
+
+.tr-company-members {
+	ul {
+		margin: 0;
+		padding: 0;
+		
+		list-style: none;
+		
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	li {
+		@include show-card(5, 200);
+	}
+}
+
 // PAGINATION
 // - - - - - - - - - - - - -
 
@@ -332,6 +351,14 @@
     	font-size: rem-calc(14);
   	}
 	}
+	
+	// COMPANY PAGE
+	
+	.tr-company-members {
+		li {
+			flex-basis: (100% / 2)
+		}
+	}
 }
 
 // MEDIUM-ONLY
@@ -351,6 +378,14 @@
   	h5 {
     	font-size: rem-calc(14);
   	}
+	}
+	
+	// COMPANY PAGE
+	
+	.tr-company-members {
+		li {
+			flex-basis: (100% / 4)
+		}
 	}
 }
 
