@@ -29,12 +29,13 @@ get_header(); ?>
 					  <ul>
 					    <?php
 							  $args = array(
-							  	'child_of'     => get_page_by_title( 'Company' )->ID,
-							  	'orderby'			 => 'rand',
-							  	'post_type'    => 'page',
-							  	'post_status'  => 'publish'
+							  	'post_parent'	=> get_page_by_title( 'Company' )->ID,
+							  	'orderby'			=> 'rand',
+							  	'post_type'   => 'page',
+							  	'post_status' => 'publish'
 							  );
-							  $company_members = get_pages($args);
+							  $company_query = new WP_Query( $args );
+							  $company_members = $company_query->get_posts();
 							  
 							  foreach ( $company_members as $member ) {
 								  $memberName = get_the_title($member->ID);
@@ -50,6 +51,8 @@ get_header(); ?>
 							  		'</div>' .
 								  '</li>';
 		  					}
+		  					
+		  					wp_reset_query();
 		  				?>
 	  				</ul>
 				  </div>
