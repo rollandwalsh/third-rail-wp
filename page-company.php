@@ -32,7 +32,7 @@ get_header(); ?>
 							  	'post_parent'	=> get_page_by_title( 'Company' )->ID,
 							  	'orderby'			=> 'rand',
 							  	'post_type'   => 'page',
-							  	'post_status' => 'publish'
+							  	'post_status' => 'publish',
 							  	'posts_per_page'	=>	50
 							  );
 							  $company_query = new WP_Query( $args );
