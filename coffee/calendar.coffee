@@ -1,5 +1,6 @@
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList'
 cal = $('#trCalendar')
+calContainer = $('#trCalendarContainer');
 mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom', 'annapurna', 'the nether', 'the angry brigade']
 ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it', 'the winter\'s tale', 'les liaisons dangereuses']
 wildCard = ['the bylines: meant to be', 'pete: all well', 'eowyn emerald & dancers']
@@ -17,8 +18,6 @@ getEvents = (url, callback, show = false) ->
 	      callback (event for event in events when new RegExp(show).test event.name), show
       else
 	      callback(data.query.results.json.events)
-    error: (xhr) ->
-      console.log(xhr.responseText)
 
 createMonths = (data, show = false) -> # creates a list of months with events in them
   dates = []
@@ -51,7 +50,7 @@ createMonths = (data, show = false) -> # creates a list of months with events in
       ms += m2.getMonth() - m1.getMonth() + 1
       ms = 0 if ms <= 0
       ms
-      
+    
     months = []
     i = 0
     while i < mDiff minDate, maxDate
@@ -67,13 +66,14 @@ createMonths = (data, show = false) -> # creates a list of months with events in
     else
       getEvents(api, createLinks)
       
-    $('#trCalendar').slick 
+    cal.slick 
       prevArrow: $('.fa-angle-double-left'),
       nextArrow: $('.fa-angle-double-right'),
       infinite: false,
       adaptiveHeight: true
   else
-    $('#trCalendar').remove()
+    console.log('fail')
+    calContainer.remove()
 		
 printMonth = (date) -> # prints calendar months as tables
 	mNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] # names of months

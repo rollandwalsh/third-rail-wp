@@ -333,7 +333,7 @@ function isCompanyMember( $name ) {
 	
 </div><!-- #primary -->
 
-<section class="tr-page-calendar">
+<section class="tr-page-calendar" id="trCalendarContainer">
   <div class="tr-container">
     <div id="trCalendar"></div>
     <div class="tr-calendar-display" id="trCalendarDisplay">

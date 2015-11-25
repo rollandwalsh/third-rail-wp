@@ -10,12 +10,14 @@ navButton.on('click', function(e) {
   return e.preventDefault();
 });
 
-var api, buttonPrint, cal, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripNTLive, timeStamp, wildCard,
+var api, buttonPrint, cal, calContainer, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripNTLive, timeStamp, wildCard,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
 
 cal = $('#trCalendar');
+
+calContainer = $('#trCalendarContainer');
 
 mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom', 'annapurna', 'the nether', 'the angry brigade'];
 
@@ -52,9 +54,6 @@ getEvents = function(url, callback, show) {
       } else {
         return callback(data.query.results.json.events);
       }
-    },
-    error: function(xhr) {
-      return console.log(xhr.responseText);
     }
   });
 };
@@ -127,14 +126,15 @@ createMonths = function(data, show) {
     } else {
       getEvents(api, createLinks);
     }
-    return $('#trCalendar').slick({
+    return cal.slick({
       prevArrow: $('.fa-angle-double-left'),
       nextArrow: $('.fa-angle-double-right'),
       infinite: false,
       adaptiveHeight: true
     });
   } else {
-    return $('#trCalendar').remove();
+    console.log('fail');
+    return calContainer.remove();
   }
 };
 

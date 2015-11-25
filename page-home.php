@@ -155,7 +155,7 @@ get_header(); ?>
   wp_reset_postdata();
 ?>
 
-<section class="tr-home-calendar">
+<section class="tr-home-calendar" id="trCalendarContainer">
   <div class="tr-container">
     <div id="trCalendar"></div>
     <div class="tr-calendar-display" id="trCalendarDisplay">
