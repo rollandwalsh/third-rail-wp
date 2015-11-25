@@ -356,7 +356,7 @@
 	
 	.tr-company-members {
 		li {
-			flex-basis: (100% / 2)
+			flex-basis: calc((100% / 2) - #{$gutter-width});
 		}
 	}
 }
@@ -384,7 +384,7 @@
 	
 	.tr-company-members {
 		li {
-			flex-basis: (100% / 4)
+			flex-basis: calc((100% / 4) - #{$gutter-width});
 		}
 	}
 }
