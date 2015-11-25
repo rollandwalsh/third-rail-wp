@@ -39,7 +39,7 @@
 }
 
 .tr-sidebar-recent-news-item {
-  @include show-card();
+  @include show-card($min: 200);
 }
 
 .tr-sidebar-recent-news-content {
@@ -56,4 +56,34 @@
     overflow: hidden;
     white-space: nowrap;
   }
+}
+
+// ALTERNATE DISPLAYS
+// - - - - - - - - - - - - -
+
+// SMALL
+
+@media #{$small-only} {
+	// RECENT NEWS
+	
+  .tr-sidebar-recent-news-item {
+    margin: $gutter-width / 2;
+    
+		flex: 0 1 100%;
+  }
+}
+
+// MEDIUM
+
+@media #{$medium-only} {
+	// RECENT NEWS
+	
+	.tr-sidebar-recent-news-item {
+		flex-basis: calc((100% / 2) - #{$gutter-width});
+	}
+}
+
+// LARGE-UP
+
+@media #{$large-up} {
 }
