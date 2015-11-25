@@ -149,7 +149,9 @@ body {
     }
     
     a {
-      padding: $gutter-width;
+	    font-size: rem-calc(15);
+	    
+      padding: ($gutter-width / 2) $gutter-width;
       
       &:hover {
         background: $brand-primary;
