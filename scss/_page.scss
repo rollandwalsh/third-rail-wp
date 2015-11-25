@@ -94,6 +94,10 @@
   margin: 0;
   @include padding();
   width: 100%;
+  
+  &.show {
+    border: none;
+  }
 }
 
 .tr-section-title {
@@ -159,7 +163,8 @@
   }
 }
 
-.tr-on-stage-content {
+.tr-on-stage-content,
+.tr-show-content {
   @extend .tr-container;
 }
 
@@ -171,7 +176,7 @@
 // - - - - - - - - - - - - -
 
 .tr-show-details {
-  @include border($gray);
+  @include border();
   
   padding: ($gutter-width * 2) 0;
   
