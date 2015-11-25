@@ -14,14 +14,14 @@ get_header(); ?>
 <section class="tr-page-banner">
   <div class="tr-container">
     <header class="tr-page-banner-header">
-			<h2>Third Rail Membership</h2>
-			<h5 id="membershipMessage">Join the Movement!</h5>
+			<h2>Mr. Kolpert</h2>
+			<h5>by David Gieselmann</h5>
 			<div class="tr-page-banner-buttons">
-			  <a href="/test/membership/" class="button">Learn More</a><a href="#" class="button buy" id="membershipJoin"><i class="fa fa-bolt"></i> Join Now</a>
+			  <a href="/test/mr-kolpert/" class="button">Learn More</a><a href="https://thirdrailrep.secure.force.com/ticket#details_a0So0000002AylaEAC" class="button buy"><i class="fa fa-tickets"></i> Book Now</a>
 			</div>
 		</header>
 		
-		<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/thirdRailMembership.svg" ); ?>
+		<?php echo file_get_contents( get_stylesheet_directory_uri() . "/svg/mrKolpert.svg" ); ?>
   </div>
 </section>
   
@@ -172,10 +172,4 @@ get_header(); ?>
   $(function() {
     return getEvents(api, createMonths);
   });
-  
-  $('#membershipJoin').on('click', function (e) {
-  	e.preventDefault();
-		$('#membershipMessage').replaceWith('<h5>Would you rather join annually or monthly?</h5>');
-		$(this).replaceWith('<br><a href="https://thirdrailrep.secure.force.com/ticket#membership_a0So0000002BughEAC" class="button buy large">$352/year</a> <a href="https://thirdrailrep.secure.force.com/donate/?dfId=a0no000000HByN7AAL" class="button buy large">$29.33/month</a>');
-	});	
 </script>

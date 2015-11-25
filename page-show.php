@@ -321,6 +321,6 @@ function isCompanyMember( $name ) {
 
 <script>
   $(function() {
-    return getEvents(api, createMonths);
+    return getEvents(api, createMonths, '<?php the_title(); ?>');
   });
 </script>

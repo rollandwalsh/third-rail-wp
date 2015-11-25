@@ -79,6 +79,15 @@
   
 @media #{$small-only} {
   .tr-footer-nav {
+	  li {
+		  text-align: center;
+		  
+		  width: 50%;
+		  
+		  &:first-child {
+			  width: 100%;
+		  }
+	  }
     justify-content: center;
   }
 }

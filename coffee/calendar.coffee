@@ -1,6 +1,6 @@
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList'
 cal = $('#trCalendar')
-mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom']
+mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom', 'annapurna', 'the nether', 'the angry brigade']
 ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it', 'the winter\'s tale', 'les liaisons dangereuses']
 wildCard = ['the bylines: meant to be', 'pete: all well', 'eowyn emerald & dancers']
 	    
@@ -17,6 +17,8 @@ getEvents = (url, callback, show = false) ->
 	      callback (event for event in events when new RegExp(show).test event.name), show
       else
 	      callback(data.query.results.json.events)
+    error: (xhr) ->
+      console.log(xhr.responseText)
 
 createMonths = (data, show = false) -> # creates a list of months with events in them
   dates = []
@@ -46,7 +48,7 @@ createMonths = (data, show = false) -> # creates a list of months with events in
   
     mDiff = (m1, m2) -> # get number of months between first and last months with events
       ms = (m2.getFullYear() - m1.getFullYear()) * 12
-      ms += m2.getMonth() - m1.getMonth()
+      ms += m2.getMonth() - m1.getMonth() + 1
       ms = 0 if ms <= 0
       ms
       

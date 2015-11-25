@@ -17,7 +17,7 @@ api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEvent
 
 cal = $('#trCalendar');
 
-mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom'];
+mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom', 'annapurna', 'the nether', 'the angry brigade'];
 
 ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it', 'the winter\'s tale', 'les liaisons dangereuses'];
 
@@ -52,6 +52,9 @@ getEvents = function(url, callback, show) {
       } else {
         return callback(data.query.results.json.events);
       }
+    },
+    error: function(xhr) {
+      return console.log(xhr.responseText);
     }
   });
 };
@@ -102,7 +105,7 @@ createMonths = function(data, show) {
     mDiff = function(m1, m2) {
       var ms;
       ms = (m2.getFullYear() - m1.getFullYear()) * 12;
-      ms += m2.getMonth() - m1.getMonth();
+      ms += m2.getMonth() - m1.getMonth() + 1;
       if (ms <= 0) {
         ms = 0;
       }
