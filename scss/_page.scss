@@ -78,6 +78,7 @@
   
   .tr-blog-header,
   .tr-blog-content,
+  .tr-page-content,
   .tr-blog-footer {
     @extend .tr-container;
     
@@ -201,8 +202,25 @@
   }
   
   h5 {
-    font-size: rem-calc(16);
+    font-size: rem-calc(18);
     font-weight: lighter;
+  }
+}
+
+.tr-show-cast,
+.tr-show-creative {
+  ul {
+    margin: 0;
+    padding: 0;
+    
+    list-style: none;
+    
+    display: flex;
+    flex-wrap: wrap;
+    
+    li {
+      @include show-card();
+    }
   }
 }
 

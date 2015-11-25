@@ -70,7 +70,7 @@
     @include transition();
     
     &:hover {
-      background: $white;
+      background: lighten($brand-primary, 25%);
       border-color: $brand-primary;
       color: $brand-primary;
     }
@@ -80,7 +80,7 @@
 	    border-color: darken($yellow, 12%);
 	    
 	    &:hover {
-		    background: $white;
+		    background: lighten($yellow, 45%);
 		    border-color: $yellow;
 		    color: $yellow;
 	    }
@@ -91,7 +91,7 @@
 	    border-color: darken($purple, 12%);
 	    
 	    &:hover {
-		    background: $white;
+		    background: lighten($purple, 45%);
 		    border-color: $purple;
 		    color: $purple;
 	    }
@@ -102,7 +102,7 @@
 	    border-color: darken($red, 12%);
 	    
 	    &:hover {
-		    background: $white;
+		    background: lighten($red, 45%);
 		    border-color: $red;
 		    color: $red;
 	    }
@@ -113,7 +113,7 @@
 	    border-color: darken($orange, 12%);
 	    
 	    &:hover {
-		    background: $white;
+		    background: lighten($brand-primary, 45%);
 		    border-color: $orange;
 		    color: $orange;
 	    }
