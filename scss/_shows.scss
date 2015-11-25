@@ -76,6 +76,8 @@
 // SMALL
 
 @media #{$small-only} {
+	// SHOW CARDS
+	
   .tr-show-card {
     margin: $gutter-width / 2;
     
@@ -86,6 +88,8 @@
 // MEDIUM
 
 @media #{$medium-only} {
+	// SHOW CARDS
+	
 	.tr-show-card {
 		flex-basis: calc((100% / 2) - #{$gutter-width});
 		
