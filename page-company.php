@@ -30,6 +30,7 @@ get_header(); ?>
 					    <?php
 							  $args = array(
 							  	'child_of'     => get_page_by_title( 'Company' )->ID,
+							  	'orderby'			 => 'rand',
 							  	'post_type'    => 'page',
 							  	'post_status'  => 'publish'
 							  );
