@@ -207,6 +207,13 @@
   }
 }
 
+.tr-show-creators {
+  ul {
+    justify-content: center;
+  }
+}
+
+.tr-show-creators,
 .tr-show-cast,
 .tr-show-creative {
   ul {
@@ -219,7 +226,14 @@
     flex-wrap: wrap;
     
     li {
-      @include show-card();
+      @include show-card(5, 200);
+      
+      &.company-member {@include show-card-color($orange)}
+      &.guest-artist {@include show-card-color($gray-dark)}
+    }
+      
+    span {
+      font-weight: lighter;
     }
   }
 }

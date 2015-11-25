@@ -84,7 +84,7 @@ get_header(); ?>
           <?php if ( has_post_thumbnail() ) { ?>
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large' , array( 'class' => '' ) ); ?></a> 
           <?php } ?>
-          <div class="tr-show-card-overlay">
+          <div class="tr-card-overlay">
             <header>
               <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
               <h5><?php echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) )), date('M j', strtotime( rwmb_meta( 'closing_date' ) )); ?></h5>

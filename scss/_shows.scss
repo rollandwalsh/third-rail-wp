@@ -1,16 +1,16 @@
 // SHOW CARDS
 // - - - - - - - - - - - - -
 
-@mixin show-card-base() {
+@mixin show-card-base($width: 3, $min: 300) {
   box-shadow: 0 0 8px 0 rgba($gray, .8);
   text-align: center;
   
   margin: $gutter-width / 2;
-  min-width: rem-calc(300);
+  min-width: rem-calc($min);
   
   @include transition();
   
-  flex: 0 0 calc((100% / 3) - #{$gutter-width});
+  flex: 0 0 calc((100% / #{$width}) - #{$gutter-width});
 }
 
 @mixin show-card-color($color: $brand-primary) {
@@ -32,9 +32,9 @@
   }
 }
 
-@mixin show-card($color: $brand-primary) {
-  @include show-card-base();
-  @include show-card-color();
+@mixin show-card($width: 3, $min: 300, $color: $brand-primary) {
+  @include show-card-base($width, $min);
+  @include show-card-color($color);
 }
 
 
@@ -46,7 +46,7 @@
   &.bloody-sunday {@include show-card-color($red)}
 }
 
-.tr-show-card-overlay {
+.tr-card-overlay {
   line-height: 1.4;
   
   padding: ($gutter-width / 2) 0;
