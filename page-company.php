@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying 'membership' page
+ * The template for displaying 'Company' page
  *
  * @package WordPress
  * @subpackage ThirdRail
