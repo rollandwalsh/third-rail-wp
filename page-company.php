@@ -14,12 +14,12 @@ get_header(); ?>
 	<?php do_action( 'thirdrail_before_content' ); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+		<article class="tr-page-article" id="post-<?php the_ID(); ?>">
+			<header class="tr-page-content-header">
+  			<h1 class="tr-page-title company"><?php the_title(); ?></h1>
 			</header>
 			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
-			<div class="entry-content">
+			<div class="tr-page-content">
 				<?php the_content(); ?>
 				<section>
 				  <header>
@@ -59,7 +59,7 @@ get_header(); ?>
 				  </div>
 				</section>
 			</div>
-			<footer>
+			<footer class="tr-page-content-footer">
 				<?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'thirdrail' ), 'after' => '</p></nav>' ) ); ?>
 				<p><?php the_tags(); ?></p>
 			</footer>
