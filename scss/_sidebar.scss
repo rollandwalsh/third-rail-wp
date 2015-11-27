@@ -1,11 +1,13 @@
-.rn-sidebar-widget {
+.tr-sidebar-widget {
   @extend .tr-container;
   
   padding: $gutter-width ($gutter-width / 2);
   
-  &.recent-news {
+  &.recent-news,
+  &.upcoming-shows {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
   
   &.widget_search,
@@ -38,23 +40,21 @@
   width: 100%;
 }
 
-.tr-sidebar-recent-news-item {
+.tr-sidebar-recent-news-item,
+.tr-sidebar-upcoming-show {
   @include show-card($min: 200);
 }
 
-.tr-sidebar-recent-news-content {
+.tr-sidebar-recent-news-content,
+.tr-sidebar-upcoming-show-content {
   font-size: rem-calc(12);
   
   @include padding();
   
   h2 {
     font-size: rem-calc(24);
-    text-overflow: ellipsis;
     
     margin: 0;
-    
-    overflow: hidden;
-    white-space: nowrap;
   }
 }
 
@@ -66,7 +66,8 @@
 @media #{$small-only} {
 	// RECENT NEWS
 	
-  .tr-sidebar-recent-news-item {
+  .tr-sidebar-recent-news-item,
+  .tr-sidebar-upcoming-show {
     margin: $gutter-width / 2;
     
 		flex: 0 1 100%;
@@ -78,7 +79,8 @@
 @media #{$medium-only} {
 	// RECENT NEWS
 	
-	.tr-sidebar-recent-news-item {
+	.tr-sidebar-recent-news-item,
+	.tr-sidebar-upcoming-show {
 		flex-basis: calc((100% / 2) - #{$gutter-width});
 		
 		&:last-child {

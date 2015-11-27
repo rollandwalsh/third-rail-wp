@@ -257,6 +257,58 @@
 	}
 }
 
+.tr-page-content.company-member {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+.tr-company-member-image {
+	@include border($side: top);
+	
+	margin: 0 0 ($gutter-width / 2) ($gutter-width / 2);
+	max-width: rem-calc(200);
+	
+	float: right;
+}
+
+.tr-company-member-history {
+  @extend .tr-container;
+  
+  padding: ($gutter-width * 2) ($gutter-width / 2);
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.tr-company-member-section-title {
+  font-size: rem-calc(24);
+  font-weight: lighter;
+  text-align: center;
+  
+  margin: 0;
+  width: 100%;
+}
+
+.tr-company-member-show {
+	@include show-card(5, 160, $gray-dark);
+}
+
+.tr-company-member-show-content {
+  font-size: rem-calc(12);
+  
+  @include padding();
+  
+  h2 {
+    font-size: rem-calc(18);
+    
+    margin: 0;
+  }
+}
+
 // PAGINATION
 // - - - - - - - - - - - - -
 
@@ -358,6 +410,12 @@
 		li {
 			flex-basis: calc((100% / 2) - #{$gutter-width});
 		}
+	}
+	
+	.tr-company-member-image {
+		margin: 0 auto;
+		
+		float: none;
 	}
 }
 
