@@ -34,7 +34,9 @@ $slug = basename(get_permalink());
 	<section class="tr-company-member-history">
   	<?php
   		$args = array(
+	  		'meta_compare'		=> '<',
 				'meta_key'        => 'closing_date',
+				'meta_value'			=> date('Ymd'),
 			  'order' 					=> 'DESC',
 			  'orderby'         => 'meta_value',
   	    'post_type'				=> 'page',
@@ -62,7 +64,7 @@ $slug = basename(get_permalink());
         <?php while ( $query->have_posts() ) : $query->the_post(); ?>
   			  <div class="tr-company-member-show">
             <?php if ( has_post_thumbnail() ) { ?>
-              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'poster-small' , array( 'class' => '' ) ); ?></a> 
+              <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'poster-small' , array( 'class' => 'tr-company-member-show-image' ) ); ?></a> 
             <?php } ?>
             <div class="tr-company-member-show-content">
               <header>
