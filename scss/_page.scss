@@ -207,10 +207,39 @@
   }
 }
 
-.tr-show-creators {
-  ul {
-    justify-content: center;
-  }
+.tr-show-content {
+	@include padding();
+}
+
+.tr-show-runtime {
+	text-align: center;
+	
+	@extend .tr-container;
+	
+	padding: ($gutter-width / 2);
+	width: 100%;
+	
+	h5 {
+	  font-size: rem-calc(20);
+	  font-weight: lighter;
+
+	  margin: 0;
+	}
+}
+
+.tr-show-artists {
+	@extend .tr-container;
+	
+	padding: ($gutter-width * 2) ($gutter-width / 2);
+	
+	.tr-section-title {
+	  font-size: rem-calc(24);
+	  font-weight: lighter;
+	  text-align: center;
+	  
+	  margin: ($gutter-width * 2) 0 0;
+	  width: 100%;
+	}
 }
 
 .tr-show-creators,
@@ -224,9 +253,10 @@
     
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     
     li {
-      @include show-card(5, 120);
+      @include show-card(5, 160);
       
       &.company-member {@include show-card-color($orange)}
       &.guest-artist {@include show-card-color($gray-dark)}
@@ -236,6 +266,12 @@
       font-weight: lighter;
     }
   }
+}
+
+.tr-show-creators {
+	ul li {
+		flex-basis: calc((100% / 3) - #{$gutter-width});
+	}
 }
 
 // COMPANY PAGE
@@ -425,6 +461,15 @@
 	.tr-company-member-show-image {
 		display: none;
 	}
+	
+	// SHOW PAGE
+	
+	.tr-show-cast,
+	.tr-show-creative {
+		ul li {
+			flex-basis: calc((100% / 2) - #{$gutter-width});
+		}
+	}
 }
 
 // MEDIUM-ONLY
@@ -456,6 +501,15 @@
 	
 	.tr-company-member-show {
 		flex-basis: calc((100% / 4) - #{$gutter-width});
+	}
+	
+	// SHOW PAGE
+	
+	.tr-show-cast,
+	.tr-show-creative {
+		ul li {
+			flex-basis: calc((100% / 3) - #{$gutter-width});
+		}
 	}
 }
 

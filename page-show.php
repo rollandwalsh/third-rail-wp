@@ -162,18 +162,18 @@ function isCompanyMember( $name ) {
   			<div class="tr-show-content">
   				<?php the_content(); ?>
   			</div>
-  			<footer>
-  				<?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'thirdrail' ), 'after' => '</p></nav>' ) ); ?>
-  				<p><?php the_tags(); ?></p>
+  			<footer class="tr-show-runtime">
+		  		<?php if ( !null == $run_time ) { ?> 
+		  			<h5>Runtime</h5>
+		  		  <p><?php echo $run_time; ?></p>
+		  		<?php } ?>
   			</footer>
   		</article>
   	<?php endwhile;?>
   
   	<?php do_action( 'thirdrail_after_content' ); ?>
   	
-  	<div class="tr-container">
-		
-  		<?php if ( !null == $run_time ) { ?> <p>Runtime: <strong><?php echo $run_time; ?></strong></p> <?php } ?>
+  	<div class="tr-show-artists">
   		
   		<div class="tr-show-creators">
     		<ul>
@@ -218,7 +218,7 @@ function isCompanyMember( $name ) {
   		<?php if ( !null == $cast ) { ?>
   			<div class="tr-show-cast">
   			  <h3 class="tr-section-title">Cast</h3>
-  			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
+  			  <ul>
       			<?php foreach ($cast as $actor) { 
         			if ( isCompanyMember( $actor[1] ) ) { 
           			$actorPage = get_page_by_title( $actor[1] );
@@ -249,7 +249,7 @@ function isCompanyMember( $name ) {
   		<?php if ( !null == $creatives ) { ?>
   			<div class="tr-show-creative">
   		    <h3 class="tr-section-title">Creative</h3>
-  			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
+  			  <ul>
       			<?php foreach ($creatives as $creative) { 
         			if ( !in_array($creative[1], array($director, $playwright) ) ) { ?>
           			<li class="role">
@@ -307,7 +307,7 @@ function isCompanyMember( $name ) {
   			if ( $query->have_posts() ) { ?>
     			<div class="tr-show-media">
     			  <h3 class="tr-section-title">Media</h3>
-    			  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-5">
+    			  <ul>
       				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
                 <li <?php post_class() ?> id="post-<?php the_ID(); ?>">
             		  <div class="media-container">
