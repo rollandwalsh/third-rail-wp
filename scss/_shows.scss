@@ -11,6 +11,14 @@
   @include transition();
   
   flex: 0 0 calc((100% / #{$width}) - #{$gutter-width});
+  
+  @media #{$medium-only} {
+	  flex-basis: calc((100% / 2) - #{$gutter-width});
+  }
+  
+  @media #{$small-only} {
+	  flex: 0 0 100%;
+  }
 }
 
 @mixin show-card-color($color: $brand-primary) {
