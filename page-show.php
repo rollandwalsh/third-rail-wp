@@ -162,7 +162,7 @@ function isCompanyMember( $name ) {
 			<div class="tr-show-content">
         <?php if ( has_post_thumbnail() ) { ?>
         	<div>
-        	  <?php the_post_thumbnail( 'full' ); ?>
+        	  <?php the_post_thumbnail( 'large' ); ?>
         	</div>
         <?php } ?>
 				<?php the_content(); ?>
