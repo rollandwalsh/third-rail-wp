@@ -253,7 +253,7 @@ function isCompanyMember( $name ) {
   		
 		<?php if ( !null == $creatives ) { ?>
 			<div class="tr-show-creative">
-		    <h3 class="tr-section-title">Creative</h3>
+		    <h3 class="tr-section-title">Creative Team</h3>
 			  <ul>
     			<?php foreach ($creatives as $creative) { 
       			if ( isCompanyMember( $creative[1] ) ) { 
