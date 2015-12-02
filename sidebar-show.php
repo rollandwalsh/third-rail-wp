@@ -16,18 +16,6 @@
   	  <?php the_post_thumbnail( 'medium' ); ?>
   	</article>
   <?php } ?>
-	
-	<div id="calendarContainer">
-    <h3 class="section-title">Calendar</h3>
-  	<article class="show-sidebar-section tr-calendar">
-      <span class="calendar-nav" id="calendarNavPrev"><i class="fa fa-long-arrow-left"></i> Prev</span>
-      <span class="calendar-nav" id="calendarNavNext">Next <i class="fa fa-long-arrow-right"></i></span>
-    	<div id="calendar">
-    	</div>
-    	<div id="calendarDisplay">
-    	</div>
-    </article>
-	</div>
   		
 	<?php
 		$args = array(

@@ -221,13 +221,17 @@
 	
 	h5 {
 	  font-size: rem-calc(20);
-	  font-weight: lighter;
 
 	  margin: 0;
 	}
 }
 
 .tr-show-artists {
+  @include border($gray-light);
+}
+
+.tr-show-artists,
+.tr-show-media {
 	@extend .tr-container;
 	
 	padding: ($gutter-width * 2) ($gutter-width / 2);
@@ -272,6 +276,10 @@
 	ul li {
 		flex-basis: calc((100% / 3) - #{$gutter-width});
 	}
+}
+
+.tr-show-media {
+  padding-top: 0;
 }
 
 // COMPANY PAGE
@@ -464,6 +472,12 @@
 	
 	// SHOW PAGE
 	
+	.tr-show-creators {
+  	ul li {
+    	flex-basis: calc(100% - #{$gutter-width});
+    }
+	}
+	
 	.tr-show-cast,
 	.tr-show-creative {
 		ul li {
@@ -504,6 +518,12 @@
 	}
 	
 	// SHOW PAGE
+	
+	.tr-show-creators {
+  	ul li {
+    	flex-basis: calc((100% / 2) - #{$gutter-width});
+    }
+	}
 	
 	.tr-show-cast,
 	.tr-show-creative {
