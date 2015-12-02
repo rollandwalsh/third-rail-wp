@@ -8,7 +8,7 @@
  */
 
 ?>
-<aside id="sidebar" class="show-sidebar">
+<aside id="sidebar" class="rn-page-sidebar">
 	<?php do_action( 'thirdrail_before_sidebar' ); ?>
 	<?php dynamic_sidebar( 'sidebar-widgets' ); ?>
 	<?php do_action( 'thirdrail_after_sidebar' ); ?>
