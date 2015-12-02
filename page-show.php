@@ -161,7 +161,7 @@ function isCompanyMember( $name ) {
 			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
 			<div class="tr-show-content">
         <?php if ( has_post_thumbnail() ) { ?>
-        	<div>
+        	<div class="tr-show-image">
         	  <?php the_post_thumbnail( 'large' ); ?>
         	</div>
         <?php } ?>

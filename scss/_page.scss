@@ -207,6 +207,13 @@
   }
 }
 
+.tr-show-image {
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
 .tr-show-content {
 	@include padding();
 }
