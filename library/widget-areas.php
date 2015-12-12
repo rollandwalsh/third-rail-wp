@@ -13,7 +13,7 @@ function thirdrail_sidebar_widgets() {
 	  'id' => 'sidebar-widgets',
 	  'name' => __( 'Sidebar widgets', 'thirdrail' ),
 	  'description' => __( 'Drag widgets to this sidebar container.', 'thirdrail' ),
-	  'before_widget' => '<article id="%1$s" class="rn-sidebar-widget %2$s">',
+	  'before_widget' => '<article id="%1$s" class="tr-sidebar-widget %2$s">',
 	  'after_widget' => '</article>',
 	  'before_title' => '<h3 class="tr-sidebar-section-title">',
 	  'after_title' => '</h3>',

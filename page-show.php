@@ -160,11 +160,6 @@ function isCompanyMember( $name ) {
 			</header>
 			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
 			<div class="tr-show-content">
-        <?php if ( has_post_thumbnail() ) { ?>
-        	<div class="tr-show-image">
-        	  <?php the_post_thumbnail( 'large' ); ?>
-        	</div>
-        <?php } ?>
 				<?php the_content(); ?>
 			</div>
 			<footer class="tr-show-runtime">
@@ -172,6 +167,11 @@ function isCompanyMember( $name ) {
 	  			<h5>Runtime</h5>
 	  		  <p><?php echo $run_time; ?></p>
 	  		<?php } ?>
+        <?php if ( has_post_thumbnail() ) { ?>
+        	<div class="tr-show-image">
+        	  <?php the_post_thumbnail( 'large' ); ?>
+        	</div>
+        <?php } ?>
 			</footer>
 		</article>
 	<?php endwhile;?>

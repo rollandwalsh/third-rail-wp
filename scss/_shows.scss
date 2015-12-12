@@ -14,10 +14,18 @@
   
   @media #{$medium-only} {
 	  flex-basis: calc((100% / 2) - #{$gutter-width});
+	  
+	  &:nth-child(3) {
+		  display: none;
+	  }
   }
   
   @media #{$small-only} {
 	  flex: 0 0 100%;
+	  
+	  &:nth-child(3) {
+		  display: none;
+	  }
   }
 }
 
