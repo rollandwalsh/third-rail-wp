@@ -137,7 +137,11 @@ function isCompanyMember( $name ) {
   </div>
   <div class="tr-show-detail">
     <?php if ( !null == $show_times ) { ?><h3><?php echo $show_times; ?></h3><?php } ?>
-    <?php if ( !null == $show_days ) { ?><h5 class="subheader"><?php echo $show_days; ?></h5><?php } ?>
+    <?php if ($current_date <= $closing_date) { ?>
+    	<a href="#trCalendar"><?php if ( !null == $show_days ) { ?><h5 class="subheader"><?php echo $show_days; ?></h5><?php } ?></a>
+    <?php } else { ?>
+    	<?php if ( !null == $show_days ) { ?><h5 class="subheader"><?php echo $show_days; ?></h5><?php } ?>
+    <?php } ?>
   </div>
   <div class="tr-show-detail">
     <?php if ( isset( $venue ) ) { ?><h3><?php echo $venue; ?></h3>
