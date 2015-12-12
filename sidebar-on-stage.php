@@ -8,10 +8,10 @@
  */
 
 ?>
-<aside id="sidebar" class="rn-page-sidebar">
+<aside id="sidebar" class="tr-page-sidebar">
 	<?php do_action( 'thirdrail_before_sidebar' ); ?>
 	
-	<article class="rn-sidebar-widget search">
+	<article class="tr-sidebar-widget search">
     <h3 class="tr-sidebar-section-title">Search</h3>
 	  <?php do_action( 'thirdrail_before_searchform' ); ?>
     <form class="tr-search-form" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
@@ -35,7 +35,7 @@
 		$query = new WP_Query( $args );
 		
 		if ( $query->have_posts() ) { ?>
-  		<article class="rn-sidebar-widget post">
+  		<article class="tr-sidebar-widget post">
   			<h3 class="tr-sidebar-section-title">This Week at Third Rail</h3>
   			<div class="tr-sidebar-post this-week">
   				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
