@@ -169,7 +169,7 @@ function isCompanyMember( $name ) {
 	  		<?php } ?>
         <?php if ( has_post_thumbnail() ) { ?>
         	<div class="tr-show-image">
-        	  <?php the_post_thumbnail( 'medium' ); ?>
+        	  <?php the_post_thumbnail( 'poster-small' ); ?>
         	</div>
         <?php } ?>
 			</footer>
