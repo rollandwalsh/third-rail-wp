@@ -73,8 +73,8 @@ get_header(); ?>
               case 'Mainstage':
                 $show_class = 'main-stage';
                 break;
-              case 'National Theatre Live':
-                $show_class = 'nt-live';
+              case 'Hi-Definition Screening':
+                $show_class = 'hi-def-screening';
                 break;
               case 'Wild Card':
                 $show_class = 'wild-card';
@@ -101,8 +101,8 @@ get_header(); ?>
                     case 'mainstage':
                       $show_type = 'Mainstage';
                       break;
-                    case 'nt_live':
-                      $show_type = 'National Theatre Live';
+                    case 'hi_def_screening':
+                      $show_type = 'Hi-Definition Screening';
                       break;
                     case 'wildcard':
                       $show_type = 'Wild Card';

@@ -125,7 +125,8 @@
   
   padding: $gutter-width ($gutter-width / 2);
   
-  &.nt-live {
+  &.nt-live,
+  &.branagh {
     .tr-section-title {
       a {
         color: $yellow;

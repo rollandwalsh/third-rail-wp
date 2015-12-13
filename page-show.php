@@ -52,6 +52,9 @@ switch ($show_type) {
   case "nt_live":
     $svg = "ntLive";
     break;
+  case "branagh":
+  	$svg = "branagh";
+  	break;
   case "wildcard":
     $svg = "wildcard";
     break;
