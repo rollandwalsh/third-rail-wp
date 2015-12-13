@@ -73,7 +73,10 @@ get_header(); ?>
               case 'Mainstage':
                 $show_class = 'main-stage';
                 break;
-              case 'Hi-Definition Screening':
+              case 'National Theatre Live':
+                $show_class = 'hi-def-screening';
+                break;
+              case 'Branagh':
                 $show_class = 'hi-def-screening';
                 break;
               case 'Wild Card':
