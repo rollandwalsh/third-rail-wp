@@ -127,7 +127,13 @@ get_header(); ?>
                     <div class="tr-card-overlay">
                       <header>
                         <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
-                        <h5>by *Playwright*</h5>
+                        <h5>
+	                        <?php foreach (rwmb_meta( 'creatives' ) as $creative) {
+		                        if ($creative[0] === 'Playwright') {
+			                        echo 'by ' . $creative[1];
+		                        }
+	                        } ?>
+                        </h5>
                       </header>
                       <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
                     </div>
