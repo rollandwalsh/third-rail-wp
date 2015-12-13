@@ -57,7 +57,7 @@
 .tr-show-card {
   @include show-card();
   
-  &.nt-live {@include show-card-color($yellow)}
+  &.hi-def-screening {@include show-card-color($yellow)}
   &.wild-card {@include show-card-color($purple)}
   &.bloody-sunday {@include show-card-color($red)}
 }
