@@ -8,10 +8,10 @@
  */
 
 ?>
-<aside id="sidebar" class="rn-page-sidebar">
+<aside id="sidebar" class="tr-page-sidebar">
 	<?php do_action( 'thirdrail_before_sidebar' ); ?>
 	
-	<article class="rn-sidebar-widget recent-news">
+	<article class="tr-sidebar-widget recent-news">
   	<?php
   		$args = array(
   	    'post_type'  	   => 'post',
