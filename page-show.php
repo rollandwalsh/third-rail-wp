@@ -241,7 +241,7 @@ function isCompanyMember( $name ) {
         			$actorPage = get_page_by_title( $actor[1] );
         			$className = "guest-artist";
         			$actorUrl = site_url() . "/actor/" . strtolower( str_replace( ' ', '-', $actor[1] ) );
-              $actorImage = "<img src=\"" . get_stylesheet_directory_uri() . "/assets/img/actors/" . strtolower( str_replace( ' ', '-', $actor[1] ) ) . ".jpg" alt=\"" . $actor[1] . "\">";
+              $actorImage = "<img src=\"" . get_stylesheet_directory_uri() . "/assets/img/actors/" . strtolower( str_replace( ' ', '-', $actor[1] ) ) . ".jpg\" alt=\"" . $actor[1] . "\">";
       			}
     			?>
       			<li class="role <?php echo $className; ?>">
