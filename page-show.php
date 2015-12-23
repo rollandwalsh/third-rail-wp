@@ -46,23 +46,29 @@ switch ($show_venue) {
 } /* get the $venue name */
 
 switch ($show_type) {
-  case "mainstage":
+  case "main-stage":
     $svg = camelCase(get_the_title());
+    $class = 'main-stage';
     break;
   case "nt_live":
     $svg = "ntLive";
+    $class = 'hi-def-screening';
     break;
   case "branagh":
   	$svg = "branagh";
+    $class = 'hi-def-screening';
   	break;
-  case "wildcard":
+  case "wild-card":
     $svg = "wildcard";
+    $class = 'wild-card';
     break;
   case "bloody_sunday":
     $svg = "bloodySunday";
+    $class = 'bloody-sunday';
     break;
   case "event":
     $svg = "thirdRailMembership";
+    $class = 'event';
     break;
   default:
     $svg = "thirdRailMembership";
@@ -123,7 +129,7 @@ function isCompanyMember( $name ) {
   </div>
 </section>
 	
-<section class="tr-show-details">
+<section class="tr-show-details<?php echo ' ' . $class; ?>">
   <div class="tr-show-detail">
     <?php if ( !null == $opening_date && !null == $closing_date ) { ?>
       <h3><?php if ( $opening_date == $closing_date ) { 
@@ -156,7 +162,7 @@ function isCompanyMember( $name ) {
   </div>
 </section>
 
-<div id="primary" class="tr-page-container" role="main">
+<div id="primary" class="tr-page-container<?php echo ' ' . $class; ?>" role="main">
 
 	<?php do_action( 'thirdrail_before_content' ); ?>
 

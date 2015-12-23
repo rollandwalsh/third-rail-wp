@@ -60,7 +60,11 @@ get_header(); ?>
             $show_class = '';
             $show_type = 'Mainstage';
             break;
-          case 'hi_def_screening':
+          case 'nt_live':
+            $show_class = 'hi-def-screening';
+            $show_type = 'Hi-Def Screening';
+            break;
+          case 'branagh':
             $show_class = 'hi-def-screening';
             $show_type = 'Hi-Def Screening';
             break;

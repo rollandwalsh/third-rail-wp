@@ -163,6 +163,19 @@
       }
     }
   }
+  
+  &.event {
+    .tr-section-title {
+      a {
+        color: $blue;
+        
+        &:hover,
+        &:focus {
+          color: darken($blue, 8%);
+        }
+      }
+    }
+  }
 }
 
 .tr-on-stage-content,
@@ -184,6 +197,11 @@
   
   display: flex;
   justify-content: center;
+  
+  &.hi-def-screening {@include border($yellow)}
+  &.wild-card {@include border($purple)}
+  &.bloody-sunday {@include border($red)}
+  &.event {@include border($blue)}
 }
 
 .tr-show-detail {

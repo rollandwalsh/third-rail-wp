@@ -57,9 +57,12 @@
 .tr-show-card {
   @include show-card();
   
-  &.hi-def-screening {@include show-card-color($yellow)}
+  &.hi-def-screening,
+  &.nt-live,
+  &.branagh {@include show-card-color($yellow)}
   &.wild-card {@include show-card-color($purple)}
   &.bloody-sunday {@include show-card-color($red)}
+  &.event {@include show-card-color($blue)}
 }
 
 .tr-card-overlay {
