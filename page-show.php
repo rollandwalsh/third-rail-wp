@@ -94,6 +94,7 @@ if ( !null == $creatives ) {
 } /* get the name of a creative, optionally wrap / print it */
 
 $playwright = role('Playwright', $creatives, false);
+$translator = role('Translator', $creatives, false);
 $director = role('Director', $creatives, false);
 
 function isCompanyMember( $name ) {
@@ -116,7 +117,8 @@ function isCompanyMember( $name ) {
   <div class="tr-container">
     <header class="tr-page-banner-header">
 		  <?php the_title( '<h2>', '</h2>' ); ?>
-			<?php if ( !null == role('Playwright', $creatives, false) ) { role('Playwright', $creatives, true, '<h5>by ', '</h5>'); } ?>
+			<?php if ( !null == role('Playwright', $creatives, false) ) { role('Playwright', $creatives, true, '<h5><span>by</span> ', '</h5>'); } ?>
+			<?php if ( !null == role('Translator', $creatives, false) ) { role('Translator', $creatives, true, '<h6><span>translation by</span> ', '</h6>'); } ?>
 			
 			<div class="tr-page-banner-buttons">
   			<?php if ($current_date <= $closing_date && isset($tickets_url) && $tickets_url !== '') { ?>
