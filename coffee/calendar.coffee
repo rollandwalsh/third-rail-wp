@@ -3,7 +3,8 @@ cal = $('#trCalendar')
 calContainer = $('#trCalendarContainer');
 mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ballroom', 'annapurna', 'the nether', 'the angry brigade']
 ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it', 'the winter\'s tale', 'les liaisons dangereuses']
-wildCard = ['the bylines: meant to be', 'pete: all well', 'eowyn emerald & dancers']
+wildCard = ['the bylines: meant to be', 'pete: all well', 'éowyn emerald & dancers']
+trEvent = ['summer in the winter announcement']
 	    
 getEvents = (url, callback, show = false) ->
 	$.ajax
@@ -123,6 +124,9 @@ createLinks = (data, show = false) -> # create links based off of event instance
     if eventName in wildCard
       date.addClass 'wild-card'
       button = 'wild-card'
+    if eventName in trEvent
+      date.addClass 'tr-event'
+      button = 'tr-event'
     
     date.data(
       eventId,
@@ -177,5 +181,5 @@ dayStamp = (input) -> # return day of week based on date
   day = weekdays[date.getDay()]
   
 stripNTLive = (input) -> # remove nt live prefix from Patron Manager event name
-  name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace('branagh: ', '').replace(' wildcard', '').replace('wildcard: ', '').replace(' - january 8', '')
+  name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace('branagh: ', '').replace(' wildcard', '').replace('wildcard: ', '').replace(' - january 8', '').replace(' event', '')
   

@@ -10,7 +10,7 @@ navButton.on('click', function(e) {
   return e.preventDefault();
 });
 
-var api, buttonPrint, cal, calContainer, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripNTLive, timeStamp, wildCard,
+var api, buttonPrint, cal, calContainer, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripNTLive, timeStamp, trEvent, wildCard,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
@@ -23,7 +23,9 @@ mainStage = ['or,', 'the realistic joneses', 'mr. kolpert', 'the new electric ba
 
 ntLive = ['hamlet', 'skylight', 'the beaux stratagem', 'coriolanus', 'jane eyre', 'as you like it', 'the winter\'s tale', 'les liaisons dangereuses'];
 
-wildCard = ['the bylines: meant to be', 'pete: all well', 'eowyn emerald & dancers'];
+wildCard = ['the bylines: meant to be', 'pete: all well', 'éowyn emerald & dancers'];
+
+trEvent = ['summer in the winter announcement'];
 
 getEvents = function(url, callback, show) {
   if (show == null) {
@@ -220,6 +222,10 @@ createLinks = function(data, show) {
       date.addClass('wild-card');
       button = 'wild-card';
     }
+    if (indexOf.call(trEvent, eventName) >= 0) {
+      date.addClass('tr-event');
+      button = 'tr-event';
+    }
     date.data(eventId, {
       sold: instance.soldOut,
       status: instance.saleStatus,
@@ -282,5 +288,5 @@ dayStamp = function(input) {
 
 stripNTLive = function(input) {
   var name;
-  return name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace('branagh: ', '').replace(' wildcard', '').replace('wildcard: ', '').replace(' - january 8', '');
+  return name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace('branagh: ', '').replace(' wildcard', '').replace('wildcard: ', '').replace(' - january 8', '').replace(' event', '');
 };

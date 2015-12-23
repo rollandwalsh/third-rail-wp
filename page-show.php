@@ -46,7 +46,7 @@ switch ($show_venue) {
 } /* get the $venue name */
 
 switch ($show_type) {
-  case "main-stage":
+  case "main_stage":
     $svg = camelCase(get_the_title());
     $class = 'main-stage';
     break;
@@ -58,7 +58,7 @@ switch ($show_type) {
   	$svg = "branagh";
     $class = 'hi-def-screening';
   	break;
-  case "wild-card":
+  case "wild_card":
     $svg = "wildcard";
     $class = 'wild-card';
     break;
@@ -66,9 +66,9 @@ switch ($show_type) {
     $svg = "bloodySunday";
     $class = 'bloody-sunday';
     break;
-  case "event":
+  case "tr_event":
     $svg = "thirdRailMembership";
-    $class = 'event';
+    $class = 'tr-event';
     break;
   default:
     $svg = "thirdRailMembership";

@@ -21,12 +21,12 @@ function third_rail_show_data( $meta_boxes )
 				'id'      => "show_type",
 				'type'    => 'radio',
 				'options' => array(
-					'main-stage' => __( 'Main Stage', 'tr_' ),
+					'main_stage' => __( 'Main Stage', 'tr_' ),
 					'nt_live' => __( 'NT Live', 'tr_' ),
 					'branagh' => __( 'Branagh', 'tr_' ),
-					'wild-card' => __( 'Wild Card', 'tr_' ),
+					'wild_card' => __( 'Wild Card', 'tr_' ),
 					'bloody_sunday' => __( 'Bloody Sunday', 'tr_' ),
-					'event' => __( 'Event', 'tr_' ),
+					'tr_event' => __( 'Event', 'tr_' ),
 				),
 			),
 			array(

@@ -164,7 +164,7 @@
     }
   }
   
-  &.event {
+  &.tr-event {
     .tr-section-title {
       a {
         color: $blue;
@@ -201,7 +201,7 @@
   &.hi-def-screening {@include border($yellow)}
   &.wild-card {@include border($purple)}
   &.bloody-sunday {@include border($red)}
-  &.event {@include border($blue)}
+  &.tr-event {@include border($blue)}
 }
 
 .tr-show-detail {

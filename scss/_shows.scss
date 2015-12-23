@@ -62,7 +62,7 @@
   &.branagh {@include show-card-color($yellow)}
   &.wild-card {@include show-card-color($purple)}
   &.bloody-sunday {@include show-card-color($red)}
-  &.event {@include show-card-color($blue)}
+  &.tr-event {@include show-card-color($blue)}
 }
 
 .tr-card-overlay {

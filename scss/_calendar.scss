@@ -108,6 +108,17 @@
 	    }
     }
     
+    &.tr-event {
+	    background: $blue;
+	    border-color: darken($blue, 12%);
+	    
+	    &:hover {
+		    background: lighten($blue, 45%);
+		    border-color: $blue;
+		    color: $blue;
+	    }
+    }
+    
     &.main-stage {
 	    background: $orange;
 	    border-color: darken($orange, 12%);

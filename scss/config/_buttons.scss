@@ -59,6 +59,7 @@ button,
   &.nt-live {@include button-color($yellow)}
   &.wild-card {@include button-color($purple)}
   &.bloody-sunday {@include button-color($red)}
+  &.tr-event {@include button-color($blue)}
   
   &.tiny {@include button-size(rem-calc(8))}
   &.small {@include button-size(rem-calc(10))}

@@ -56,9 +56,9 @@ get_header(); ?>
 			while ( $query->have_posts() ) : $query->the_post(); 
 			
 				switch ( rwmb_meta( 'show_type' ) ) {
-          case 'mainstage':
+          case 'main_stage':
             $show_class = '';
-            $show_type = 'Mainstage';
+            $show_type = 'Main Stage';
             break;
           case 'nt_live':
             $show_class = 'hi-def-screening';
@@ -68,7 +68,7 @@ get_header(); ?>
             $show_class = 'hi-def-screening';
             $show_type = 'Hi-Def Screening';
             break;
-          case 'wildcard':
+          case 'wild_card':
             $show_class = 'wild-card';
             $show_type = 'Wild Card';
             break;
@@ -76,8 +76,8 @@ get_header(); ?>
             $show_class = 'bloody-sunday';
             $show_type = 'Bloody Sunday';
             break;
-          case 'event':
-            $show_class = 'event';
+          case 'tr_event':
+            $show_class = 'tr-event';
             $show_type = 'Event';
             break;
           default:

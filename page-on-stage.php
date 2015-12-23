@@ -83,7 +83,7 @@ get_header(); ?>
                 $show_class = 'bloody-sunday';
                 break;
               case 'Event':
-                $show_class = 'event';
+                $show_class = 'tr-event';
                 break;
               default:
                 $show_type = ''; 
@@ -99,7 +99,7 @@ get_header(); ?>
         				  
           				switch ( rwmb_meta( 'show_type' ) ) {
                     case 'mainstage':
-                      $show_type = 'Mainstage';
+                      $show_type = 'Main Stage';
                       break;
                     case 'nt_live':
                       $show_type = 'Hi-Definition Screening';
