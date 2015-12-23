@@ -55,7 +55,7 @@ switch ($show_type) {
     $class = 'hi-def-screening';
     break;
   case "branagh":
-  	$svg = "branagh";
+  	$svg = "btLive";
     $class = 'hi-def-screening';
   	break;
   case "wild_card":

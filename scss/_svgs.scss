@@ -14,7 +14,8 @@
   }
   
   #ntLive {
-		.national, .theatre {fill: $white}
+		.national,
+		.theatre {fill: $white}
 		
 		.live {fill: url(#gradient)}
 		
@@ -22,9 +23,15 @@
 			stop {stop-color: $white}
 		}
 	}
+  
+  #btLive {
+		.kenneth-branagh-theatre-company,
+		.live {fill: $white}
+	}
 	
 	#or {
-		.feather, .hilt {fill: $white}
+		.feather,
+		.hilt {fill: $white}
 		
 		.blade {fill: $orange}
 	}
@@ -42,7 +49,9 @@
 	}
 	
 	#theNewElectricBallroom {
-		.shoe-inside, .heel, .shadow {fill: $white}
+		.shoe-inside,
+		.heel,
+		.shadow {fill: $white}
 		
 		.shoe-outside {fill: $orange}
 	}
@@ -57,6 +66,10 @@
 		
 		#ntLive {
 			#gradient stop.bottom {stop-color: rgba($orange, 1)}
+		}
+		
+		#btLive {
+			.live {fill: $orange}
 		}
 		
 		#or {
