@@ -28,6 +28,15 @@
 		.kenneth-branagh-theatre-company,
 		.live {fill: $white}
 	}
+  
+  #wildCard {
+		.cards,
+		.wildcard {fill: $white}
+		
+		.bolt {fill: $orange}
+		
+		.symbols .special {opacity: 1}
+	}
 	
 	#or {
 		.feather,
@@ -55,8 +64,6 @@
 		
 		.shoe-outside {fill: $orange}
 	}
-
-  
 	
 	&:hover {
 		#thirdRailMembership {
@@ -70,6 +77,14 @@
 		
 		#btLive {
 			.live {fill: $orange}
+		}
+		
+		#wildCard {
+			.bolt {fill: $black}
+			
+			.wildcard {fill: $orange}
+			
+			.symbols .special {opacity: 0}
 		}
 		
 		#or {
