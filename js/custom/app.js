@@ -42,8 +42,6 @@ getEvents = function(url, callback, show) {
       var event, events;
       if (show) {
         events = data.query.results.json.events;
-        console.log(show);
-        console.log(events);
         return callback((function() {
           var j, len, results;
           results = [];

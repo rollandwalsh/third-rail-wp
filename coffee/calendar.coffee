@@ -16,8 +16,6 @@ getEvents = (url, callback, show = false) ->
 	  success: (data) ->
 	    if show
 	      events = data.query.results.json.events
-	      console.log show
-	      console.log events
 	      callback (event for event in events when new RegExp(show).test event.name), show
       else
 	      callback(data.query.results.json.events)
