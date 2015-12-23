@@ -408,7 +408,11 @@ function isCompanyMember( $name ) {
 <?php get_footer(); ?>
 
 <script>
+	var convertAmpersand = function(str) {
+		return str.replace(/&#038;/g, "\&");
+	};
+	
   $(function() {
-    return getEvents(api, createMonths, '<?php the_title(); ?>');
+    return getEvents(api, createMonths, convertAmpersand('<?php the_title(); ?>'));
   });
 </script>

@@ -16,6 +16,8 @@ getEvents = (url, callback, show = false) ->
 	  success: (data) ->
 	    if show
 	      events = data.query.results.json.events
+	      console.log show
+	      console.log events
 	      callback (event for event in events when new RegExp(show).test event.name), show
       else
 	      callback(data.query.results.json.events)
@@ -113,7 +115,7 @@ createLinks = (data, show = false) -> # create links based off of event instance
 
   for instance in instances # loops through instances to get dates to link to | TODO: illimnate duplicate code
     date = $('#' + instance.formattedDates.YYYYMMDD)
-    eventName = stripNTLive events[instance.eventId].toLowerCase()
+    eventName = stripExtraChars events[instance.eventId].toLowerCase()
     eventId = instance.id
     button = 'main-stage'
     
@@ -180,6 +182,6 @@ dayStamp = (input) -> # return day of week based on date
   weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   day = weekdays[date.getDay()]
   
-stripNTLive = (input) -> # remove nt live prefix from Patron Manager event name
+stripExtraChars = (input) -> # remove nt live prefix from Patron Manager event name
   name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace('branagh: ', '').replace(' wildcard', '').replace('wildcard: ', '').replace(' - january 8', '').replace(' event', '')
   

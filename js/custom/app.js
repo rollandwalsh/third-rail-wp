@@ -10,7 +10,7 @@ navButton.on('click', function(e) {
   return e.preventDefault();
 });
 
-var api, buttonPrint, cal, calContainer, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripNTLive, timeStamp, trEvent, wildCard,
+var api, buttonPrint, cal, calContainer, createLinks, createMonths, dayStamp, getEvents, mainStage, ntLive, printMonth, stripExtraChars, timeStamp, trEvent, wildCard,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 api = 'https://thirdrailrep.secure.force.com/ticket/PatronTicket__PublicApiEventList';
@@ -42,6 +42,8 @@ getEvents = function(url, callback, show) {
       var event, events;
       if (show) {
         events = data.query.results.json.events;
+        console.log(show);
+        console.log(events);
         return callback((function() {
           var j, len, results;
           results = [];
@@ -208,7 +210,7 @@ createLinks = function(data, show) {
   for (l = 0, len2 = instances.length; l < len2; l++) {
     instance = instances[l];
     date = $('#' + instance.formattedDates.YYYYMMDD);
-    eventName = stripNTLive(events[instance.eventId].toLowerCase());
+    eventName = stripExtraChars(events[instance.eventId].toLowerCase());
     eventId = instance.id;
     button = 'main-stage';
     if (indexOf.call(mainStage, eventName) >= 0) {
@@ -286,7 +288,7 @@ dayStamp = function(input) {
   return day = weekdays[date.getDay()];
 };
 
-stripNTLive = function(input) {
+stripExtraChars = function(input) {
   var name;
   return name = input.replace('nt live ', '').replace('nt live: ', '').replace('nt live encore: ', '').replace('branagh: ', '').replace(' wildcard', '').replace('wildcard: ', '').replace(' - january 8', '').replace(' event', '');
 };
