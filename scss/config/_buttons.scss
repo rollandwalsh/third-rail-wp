@@ -64,6 +64,7 @@ button,
   &.tiny {@include button-size(rem-calc(8))}
   &.small {@include button-size(rem-calc(10))}
   &.large {@include button-size(rem-calc(16))}
+  &.huge {@include button-size(rem-calc(20))}
   &.wide {@include button-size($full-width: true)}
 }
 
