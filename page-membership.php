@@ -30,7 +30,7 @@ get_header(); ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article class="tr-page-article" id="post-<?php the_ID(); ?>">
 			<header class="tr-page-content-header">
-				<h1 class="section-title"><?php the_title(); ?></h1>
+				<h1 class="tr-page-title"><?php the_title(); ?></h1>
 			</header>
 			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
 			<div class="tr-page-content">
