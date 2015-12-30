@@ -43,7 +43,7 @@ get_header(); ?>
                 'type'      		=> 'DATE',
                 'compare'   		=> '>='
               )
-
+    		    )
 					) );
 				
 					if ( $parent->have_posts() ) :
