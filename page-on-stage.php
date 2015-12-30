@@ -33,6 +33,21 @@ get_header(); ?>
 				<h1 class="tr-page-title"><?php the_title(); ?></h1>
 			</header>
 			
+			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
+			
+			<div class="tr-on-stage-content">
+				<div class="tr-on-stage-menu">
+					<a href="#mainStage" class="button huge"><i class="fa fa-bolt"></i></a>
+					<a href="#hiDefScreening" class="button huge nt-live"><i class="fa fa-film"></i></a>
+					<a href="#wildCard" class="button huge wild-card"><i class="fa fa-question-circle"></i></a>
+					<a href="#bloodySunday" class="button huge bloody-sunday"><i class="fa fa-calendar-o"></i></a>
+					<a href="#trEvent" class="button huge tr-event"><i class="fa fa-group"></i></a>
+				</div>
+        <?php the_content(); ?>
+			</div>
+      
+      <?php do_action( 'thirdrail_after_content' ); ?>
+			
     	<?php
         $categories = get_children(array(
           'post_parent'   => get_the_ID(),
@@ -72,24 +87,30 @@ get_header(); ?>
     				switch ( get_the_title( $category->ID ) ) {
               case 'Mainstage':
                 $show_class = 'main-stage';
+                $show_id = 'mainStage';
                 break;
               case 'Hi-Definition Screening':
                 $show_class = 'hi-def-screening';
+                $show_id = 'hiDefScreening';
                 break;
               case 'Wild Card':
                 $show_class = 'wild-card';
+                $show_id = 'wildCard';
                 break;
               case 'Bloody Sunday':
                 $show_class = 'bloody-sunday';
+                $show_id = 'bloodySunday';
                 break;
               case 'Event':
                 $show_class = 'tr-event';
+                $show_id = 'trEvent';
                 break;
               default:
-                $show_type = ''; 
+                $show_class = 'main-stage'; 
+                $show_id = 'mainStage'; 
             } ?>
     			
-      			<section class="tr-on-stage-show-cards <?php echo $show_class; ?>">
+      			<section class="tr-on-stage-show-cards <?php echo $show_class; ?>" id="<?php echo $show_id; ?>">
       			  <header class="tr-on-stage-show-cards-header">
       			    <h2 class="tr-section-title"><a href="<?php echo get_page_link( get_page_by_title( get_the_title( $category->ID ) )->ID ); ?>" title="<?php echo get_the_title( $category->ID ); ?>"><?php echo get_the_title( $category->ID ); ?></a></h2>
       			  </header>
@@ -147,14 +168,6 @@ get_header(); ?>
     			wp_reset_postdata();
     		}
     	?> <!-- End query for current shows -->
-			
-			<?php do_action( 'thirdrail_page_before_entry_content' ); ?>
-			
-			<div class="tr-on-stage-content">
-        <?php the_content(); ?>
-			</div>
-      
-      <?php do_action( 'thirdrail_after_content' ); ?>
 			
 			<footer class="tr-article-footer">
 				
