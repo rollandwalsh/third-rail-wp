@@ -131,6 +131,15 @@
 // ON STAGE PAGE
 // - - - - - - - - - - - - -
 
+.tr-on-stage-show-cards-header {
+	font-size: rem-calc(24);
+	text-align: center;
+}
+
+.tr-on-stage-menu {
+	display: none;
+}
+
 .tr-on-stage-show-cards {
   @extend .tr-container;
   
@@ -464,6 +473,23 @@
   
   .tr-show-card {
     margin: $gutter-width / 2;
+  }
+  
+  .tr-blog-header,
+  .tr-blog-content,
+  .tr-page-content,
+  .tr-blog-footer {
+	  padding: $gutter-width / 2;
+  }
+  
+  .tr-page-show-cards {
+	  padding: 0;
+  }
+  
+  .tr-on-stage-menu {
+	  text-align: center;
+	  
+	  display: block;
   }
   
 	// SHOW PAGE
