@@ -131,7 +131,7 @@
 
 .tr-page-show-cards-small {
 	.tr-show-card {
-		min-width: rem-calc(150);
+		min-width: rem-calc(90);
 		flex-basis: calc((100% / 5) - #{$gutter-width});
 		
 	  @media #{$medium-only} {
