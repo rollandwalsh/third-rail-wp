@@ -119,13 +119,29 @@
 // SHOW CARDS
 // - - - - - - - - - - - - -
 
-.tr-page-show-cards {
+.tr-page-show-cards,
+.tr-page-show-cards-small {
   margin: 0 ($gutter-width / -2);
   padding: ($gutter-width * 2) 0;
   
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.tr-page-show-cards-small {
+	.tr-show-card {
+		min-width: rem-calc(150);
+		flex-basis: calc((100% / 5) - #{$gutter-width});
+		
+	  @media #{$medium-only} {
+		  flex-basis: calc((100% / 3) - #{$gutter-width});
+	  }
+	  
+	  @media #{$small-only} {
+		  flex-basis: calc((100% / 2) - #{$gutter-width});
+	  }
+	}
 }
 
 // ON STAGE PAGE

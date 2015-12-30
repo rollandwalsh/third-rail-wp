@@ -23,51 +23,100 @@ get_header(); ?>
 			<div class="tr-page-content">
 				<?php the_content(); ?>
 				
-				<?php
-					$parent = new WP_Query( array(
-						'post_type'					=> 'page',
-						'post_parent'				=> $post->ID,
-						'posts_per_page'		=> -1,
-						'order'							=> 'ASC',
-						'orderby'						=> 'menu_order',
-    		    'meta_key'      		=> 'closing_date',
-    		    'meta_query' 	  		=> array( 
-              'relation'    		=> 'AND',
-    		      array(
-    		        'key'   	  		=> '_wp_page_template', 
-    		        'value' 	  		=> array('page-show.php')
-    		      ),	
-              array(
-                'key'       		=> 'closing_date',
-                'value'     		=> date('Y-m-d'),
-                'type'      		=> 'DATE',
-                'compare'   		=> '>='
-              )
-    		    )
-					) );
-				
-					if ( $parent->have_posts() ) :
-						while ( $parent->have_posts() ) : $parent->the_post(); ?>
-					
-							<article class="tr-show-card" id="post-<?php the_ID(); ?>">
-							  <?php if ( has_post_thumbnail() ) { ?>
-							    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large' , array( 'class' => '' ) ); ?></a> 
-							  <?php } ?>
-							  <div class="tr-card-overlay">
-							    <header>
-							      <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
-							        <h5><?php echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) )), date('M j', strtotime( rwmb_meta( 'closing_date' ) )); ?></h5>
-							    </header>
-							    <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
-							  </div>
-							</article>
-					
+				<div class="tr-page-show-cards">
 					<?php
-						endwhile;
-					endif; 
-					
-					wp_reset_query();
-				?>
+						$parent = new WP_Query( array(
+							'post_type'					=> 'page',
+							'post_parent'				=> $post->ID,
+							'posts_per_page'		=> -1,
+							'order'							=> 'ASC',
+							'orderby'						=> 'menu_order',
+	    		    'meta_key'      		=> 'closing_date',
+	    		    'meta_query' 	  		=> array( 
+	              'relation'    		=> 'AND',
+	    		      array(
+	    		        'key'   	  		=> '_wp_page_template', 
+	    		        'value' 	  		=> array('page-show.php')
+	    		      ),	
+	              array(
+	                'key'       		=> 'closing_date',
+	                'value'     		=> date('Y-m-d'),
+	                'type'      		=> 'DATE',
+	                'compare'   		=> '>='
+	              )
+	    		    )
+						) );
+						
+						if ( $parent->have_posts() ) :
+							while ( $parent->have_posts() ) : $parent->the_post(); ?>
+						
+								<article class="tr-show-card" id="post-<?php the_ID(); ?>">
+								  <?php if ( has_post_thumbnail() ) { ?>
+								    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large' , array( 'class' => '' ) ); ?></a> 
+								  <?php } ?>
+								  <div class="tr-card-overlay">
+								    <header>
+								      <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
+								        <h5><?php echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) )), date('M j', strtotime( rwmb_meta( 'closing_date' ) )); ?></h5>
+								    </header>
+								    <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
+								  </div>
+								</article>
+						
+						<?php
+							endwhile;
+						endif; 
+						
+						wp_reset_query();
+					?>
+				</div>
+				
+				<div class="tr-page-show-cards-small">
+					<?php
+						$parent = new WP_Query( array(
+							'post_type'					=> 'page',
+							'post_parent'				=> $post->ID,
+							'posts_per_page'		=> -1,
+							'order'							=> 'ASC',
+							'orderby'						=> 'menu_order',
+	    		    'meta_key'      		=> 'closing_date',
+	    		    'meta_query' 	  		=> array( 
+	              'relation'    		=> 'AND',
+	    		      array(
+	    		        'key'   	  		=> '_wp_page_template', 
+	    		        'value' 	  		=> array('page-show.php')
+	    		      ),	
+	              array(
+	                'key'       		=> 'closing_date',
+	                'value'     		=> date('Y-m-d'),
+	                'type'      		=> 'DATE',
+	                'compare'   		=> '<'
+	              )
+	    		    )
+						) );
+						
+						if ( $parent->have_posts() ) :
+							while ( $parent->have_posts() ) : $parent->the_post(); ?>
+						
+								<article class="tr-show-card" id="post-<?php the_ID(); ?>">
+								  <?php if ( has_post_thumbnail() ) { ?>
+								    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large' , array( 'class' => '' ) ); ?></a> 
+								  <?php } ?>
+								  <div class="tr-card-overlay">
+								    <header>
+								      <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
+								        <h5><?php echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) )), date('M j', strtotime( rwmb_meta( 'closing_date' ) )); ?></h5>
+								    </header>
+								  </div>
+								</article>
+						
+						<?php
+							endwhile;
+						endif; 
+						
+						wp_reset_query();
+					?>
+				</div>
 			</div>
 			<footer class="tr-page-content-footer">
 				<?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'thirdrail' ), 'after' => '</p></nav>' ) ); ?>
