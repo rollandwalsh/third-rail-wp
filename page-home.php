@@ -92,7 +92,11 @@ get_header(); ?>
           <div class="tr-card-overlay">
             <header>
               <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title() ;?></a></h2>
-	              <h5><?php echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) )), date('M j', strtotime( rwmb_meta( 'closing_date' ) )); ?></h5>
+	              <h5><?php if ( rwmb_meta( 'opening_date' ) === rwmb_meta( 'closing_date' )) {
+		              echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) ));
+	              } else {
+		              echo date('M j - ', strtotime( rwmb_meta( 'opening_date' ) )), date('M j', strtotime( rwmb_meta( 'closing_date' ) )); 
+		            } ?></h5>
             </header>
             <a href="#" class="button buy large"><i class="fa fa-ticket fa-lg"></i></a>
           </div>
