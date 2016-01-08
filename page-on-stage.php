@@ -37,11 +37,11 @@ get_header(); ?>
 			
 			<div class="tr-on-stage-content">
 				<div class="tr-on-stage-menu">
-					<a href="#mainStage" class="button huge"><i class="fa fa-bolt"></i></a>
-					<a href="#hiDefScreening" class="button huge nt-live"><i class="fa fa-film"></i></a>
-					<a href="#wildCard" class="button huge wild-card"><i class="fa fa-question-circle"></i></a>
-					<a href="#bloodySunday" class="button huge bloody-sunday"><i class="fa fa-calendar-o"></i></a>
-					<a href="#trEvent" class="button huge tr-event"><i class="fa fa-group"></i></a>
+					<a href="#" id="mainStageButton" class="button huge"><i class="fa fa-bolt"></i></a>
+					<a href="#" id="hiDefScreeningButton" class="button huge nt-live"><i class="fa fa-film"></i></a>
+					<a href="#" id="wildCardButton" class="button huge wild-card"><i class="fa fa-question-circle"></i></a>
+					<a href="#" id="bloodySundayButton" class="button huge bloody-sunday"><i class="fa fa-calendar-o"></i></a>
+					<a href="#" id="trEventButton" class="button huge tr-event"><i class="fa fa-group"></i></a>
 				</div>
         <?php the_content(); ?>
 			</div>
@@ -236,6 +236,13 @@ get_header(); ?>
   $(function() {
     return getEvents(api, createMonths);
   });
+  
+  $('#mainStageButton').on('click', function (e) {
+	  e.preventDefault();
+	  $('html, body').animate({
+		  scrollTop: $('#mainStage').offset().top;
+		}, 1000);
+  })
   
 	$('#membershipJoin').on('click', function (e) {
   	e.preventDefault();
