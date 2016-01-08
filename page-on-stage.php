@@ -37,11 +37,80 @@ get_header(); ?>
 			
 			<div class="tr-on-stage-content">
 				<div class="tr-on-stage-menu">
-					<a href="#" id="mainStageButton" class="button huge"><i class="fa fa-bolt"></i></a>
-					<a href="#" id="hiDefScreeningButton" class="button huge nt-live"><i class="fa fa-film"></i></a>
-					<a href="#" id="wildCardButton" class="button huge wild-card"><i class="fa fa-question-circle"></i></a>
-					<a href="#" id="bloodySundayButton" class="button huge bloody-sunday"><i class="fa fa-calendar-o"></i></a>
-					<a href="#" id="trEventButton" class="button huge tr-event"><i class="fa fa-group"></i></a>
+					<?php 
+		        $categories = get_children(array(
+		          'post_parent'   => get_the_ID(),
+		          'numberposts'   => -1,
+		          'post_status'   => 'publish',
+		        	'child_of'      => 'on-stage',
+		        	'orderby'       => 'menu_order',
+		        	'order'         => 'ASC'
+		        ));
+						
+						foreach ($categories as $current_show_type) {
+							switch ( $current_show_type->post_title ) {
+	              case 'Main Stage':
+	              	$show_name = $current_show_type->post_title;
+	                $show_id = 'mainStage';
+	                $show_class = '';
+	                $show_icon = 'bolt';
+	                break;
+	              case 'Hi-Definition Screening':
+	              	$show_name = 'Hi-Def Screenings';
+	                $show_id = 'hiDefScreening';
+	                $show_class = 'nt-live';
+	                $show_icon = 'film';
+	                break;
+	              case 'Wild Card':
+	              	$show_name = $current_show_type->post_title;
+	                $show_id = 'wildCard';
+	                $show_class = 'wild-card';
+	                $show_icon = 'question-circle';
+	                break;
+	              case 'Bloody Sunday':
+	              	$show_name = $current_show_type->post_title;
+	                $show_id ='bloodySunday';
+	                $show_class = 'bloody-sunday';
+	                $show_icon = 'calendar-o';
+	                break;
+	              case 'Event':
+	              	$show_name = $current_show_type->post_title;
+	                $show_id = 'trEvent';
+	                $show_class = 'tr-event';
+	                $show_icon = 'group';
+	                break;
+	              default:
+	              	$show_name = $current_show_type->post_title;
+	                $show_id = 'mainStage'; 
+	                $show_class = '';
+	                $show_icon = 'bolt';
+	            }
+							
+		    			$args = array(
+		    		    'post_type'  	  => 'page',
+		    		    'post_status'   => 'publish',
+		    		    'post_parent'   => $current_show_type->ID,
+		    		    'meta_query' 	  => array( 
+		              'relation'    => 'AND',
+		    		      array(
+		    		        'key'   	  => '_wp_page_template', 
+		    		        'value' 	  => array('page-show.php')
+		    		      ),
+		              array(
+		                'key'       => 'closing_date',
+		                'value'     => date('Y-m-d'),
+		                'type'      => 'DATE',
+		                'compare'   => '>='
+		              )
+		    		    )
+		    			);
+		    			
+		    			$query = new WP_Query( $args );
+		    			if ( $query->have_posts() ) { 
+			    			echo '<a href="#" id="' . $show_id . 'Button" class="button huge ' . $show_class . '"><i class="fa fa-' . $show_icon . '"></i><span class="text">' . $show_name . '</span></a> ';
+			    		}
+						}
+					?>
 				</div>
         <?php the_content(); ?>
 			</div>
@@ -57,6 +126,7 @@ get_header(); ?>
         	'orderby'       => 'menu_order',
         	'order'         => 'ASC'
         ));
+        
     		foreach ($categories as $category) {
     			$args = array(
     		    'post_type'  	  => 'page',
@@ -237,12 +307,17 @@ get_header(); ?>
     return getEvents(api, createMonths);
   });
   
-  $('#mainStageButton').on('click', function (e) {
+  $('.tr-on-stage-menu a').on('click', function (e) {
 	  e.preventDefault();
+	  
+	  headerHeight = $('.tr-site-header').height();
+	  id = '#' + $(this).attr('id');
+	  id = id.slice(0, -6);
+	  
 	  $('html, body').animate({
-		  scrollTop: $('#mainStage').offset().top;
-		}, 1000);
-  })
+		  scrollTop: $(id).offset().top - headerHeight
+		}, 750);
+  });
   
 	$('#membershipJoin').on('click', function (e) {
   	e.preventDefault();

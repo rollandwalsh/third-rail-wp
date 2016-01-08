@@ -166,6 +166,13 @@
 }
 
 .tr-on-stage-menu {
+	text-align: center;
+	
+	.text {
+		font-size: rem-calc(14);
+		
+		display: block;
+	}
 }
 
 .tr-on-stage-show-cards {
@@ -514,10 +521,10 @@
 	  padding: 0;
   }
   
-  .tr-on-stage-menu {
-	  text-align: center;
-	  
-	  display: block;
+  .tr-on-stage-menu {	  
+	  .text {
+		  display: none;
+	  }
   }
   
 	// SHOW PAGE
