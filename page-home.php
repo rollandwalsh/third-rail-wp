@@ -18,7 +18,7 @@ get_header(); ?>
 			<h5><span>by</span> David Gieselmann</h5>
 			<h6><span>translation by</span> David Tushingham</h6>
 			<div class="tr-page-banner-buttons">
-			  <a href="/test/mr-kolpert/" class="button">Learn More</a><a href="https://thirdrailrep.secure.force.com/ticket#details_a0So0000002AylaEAC" class="button buy"><i class="fa fa-tickets"></i> Book Now</a>
+			  <a href="/test/mr-kolpert/" class="button">Learn More</a><a href="https://thirdrailrep.secure.force.com/ticket#details_a0So0000002AylaEAC" class="button buy"><i class="fa fa-ticket"></i> Book Now</a>
 			</div>
 		</header>
 		
