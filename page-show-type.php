@@ -25,7 +25,7 @@ get_header(); ?>
 				
 				<div class="tr-page-show-cards">
 					<?php
-						$parent = new WP_Query( array(
+						$shows = new WP_Query( array(
 							'post_type'					=> 'page',
 							'post_parent'				=> $post->ID,
 							'posts_per_page'		=> -1,
@@ -47,8 +47,8 @@ get_header(); ?>
 	    		    )
 						) );
 						
-						if ( $parent->have_posts() ) :
-							while ( $parent->have_posts() ) : $parent->the_post(); ?>
+						if ( $shows->have_posts() ) :
+							while ( $shows->have_posts() ) : $shows->the_post(); ?>
 						
 								<article class="tr-show-card" id="post-<?php the_ID(); ?>">
 								  <?php if ( has_post_thumbnail() ) { ?>
@@ -71,33 +71,43 @@ get_header(); ?>
 					?>
 				</div>
 				
-				<div class="tr-page-show-cards-small">
-					<?php
-						$parent = new WP_Query( array(
-							'post_type'					=> 'page',
-							'post_parent'				=> $post->ID,
-							'posts_per_page'		=> -1,
-							'order'							=> 'ASC',
-							'orderby'						=> 'menu_order',
-	    		    'meta_key'      		=> 'closing_date',
-	    		    'meta_query' 	  		=> array( 
-	              'relation'    		=> 'AND',
-	    		      array(
-	    		        'key'   	  		=> '_wp_page_template', 
-	    		        'value' 	  		=> array('page-show.php')
-	    		      ),	
-	              array(
-	                'key'       		=> 'closing_date',
-	                'value'     		=> date('Y-m-d'),
-	                'type'      		=> 'DATE',
-	                'compare'   		=> '<'
-	              )
-	    		    )
-						) );
-						
-						if ( $parent->have_posts() ) :
-							while ( $parent->have_posts() ) : $parent->the_post(); ?>
-						
+				<h2 class="tr-page-secondary-title">Production History</h2>
+				
+				<?php
+					$year = 2000;
+					$past_shows = new WP_Query( array(
+						'post_type'					=> 'page',
+						'post_parent'				=> $post->ID,
+						'posts_per_page'		=> -1,
+						'order'							=> 'ASC',
+						'orderby'						=> 'menu_order',
+    		    'meta_key'      		=> 'closing_date',
+    		    'meta_query' 	  		=> array( 
+              'relation'    		=> 'AND',
+    		      array(
+    		        'key'   	  		=> '_wp_page_template', 
+    		        'value' 	  		=> array('page-show.php')
+    		      ),	
+              array(
+                'key'       		=> 'closing_date',
+                'value'     		=> date('Y-m-d'),
+                'type'      		=> 'DATE',
+                'compare'   		=> '<'
+              )
+    		    )
+					) ); ?>
+					
+					<div class="tr-page-show-cards-small">
+								
+					<?php if ( $past_shows->have_posts() ) :
+						while ( $past_shows->have_posts() ) : $past_shows->the_post(); 
+							if ( date('Y', strtotime(rwmb_meta( 'closing_date' ))) > $year) : 
+								$year = date('Y', strtotime(rwmb_meta( 'closing_date' ))); ?>
+								</div>
+								<h3 class="tr-page-tertiary-title"><?php echo $year; ?></h3>
+								<div class="tr-page-show-cards-small">
+							<?php endif;?>
+								
 								<article class="tr-show-card" id="post-<?php the_ID(); ?>">
 								  <?php if ( has_post_thumbnail() ) { ?>
 								    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large' , array( 'class' => '' ) ); ?></a> 
@@ -109,14 +119,13 @@ get_header(); ?>
 								    </header>
 								  </div>
 								</article>
-						
-						<?php
-							endwhile;
-						endif; 
-						
-						wp_reset_query();
+					
+					<?php
+						endwhile;
+					endif;
 					?>
-				</div>
+					</div>
+				<?php wp_reset_query();?>
 			</div>
 			<footer class="tr-page-content-footer">
 				<?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'thirdrail' ), 'after' => '</p></nav>' ) ); ?>

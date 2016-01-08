@@ -116,6 +116,19 @@
   margin: 0;
 }
 
+.tr-page-secondary-title {
+	font-size: rem-calc(28);
+	font-weight: 300;
+	text-align: center;
+	
+	@include border();
+}
+
+.tr-page-tertiary-title {
+	font-weight: 100;
+	text-align: center;
+}
+
 // SHOW CARDS
 // - - - - - - - - - - - - -
 
